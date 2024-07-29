@@ -1,0 +1,85 @@
+<body>
+    <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="public/img/github.png" alt="Github">
+                        </div>
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left">
+                                <h1 class="h1 text-success"><b>WELCOMES!</b></h1>
+                                <p>
+                                    Welcomes to my page! Hope it's useful for you! :D
+                                </p>
+                                Follow my <a href="https://github.com/ImThienz">Github</a> to know more!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="public/img/cydia.png" alt="Cydia">
+                        </div>
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left">
+                                <h1 class="h1 text-success"><b>Cydia</b></h1>
+                                <p>
+                                    Cydia is an alternative app store that allows you to install third-party apps and
+                                    tweaks on iPhones, iPads, and iPod touches. If you are an iDevice user for a
+                                    considerable time, you may have already noticed that the Apple app store doesn’t
+                                    offer you third-party apps to install on your device. Therefore, you have to use an
+                                    alternative app store on your device to get third-party apps and tweaks on the
+                                    device. And that alternative app store is indeed the Cydia app store because it
+                                    provides the best-featured third-party apps, extensions, tweaks, add-ons, games, and
+                                    themes for iDevices.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="public/img/trollstore.png" alt="TrollStore">
+                        </div>
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left align-self-center">
+                                <h1 class="h1 text-success"><b>TrollStore</b></h1>
+                                <p>
+                                    TrollStore is a utility which is able to permanently sign and install any
+                                    application with almost any entitlement with the help of a CoreTrust bug. The latest
+                                    releases of TrollStore (specifically 2.0 and later) work through the use of a
+                                    CoreTrust bug in which code signatures are not correctly verified under certain
+                                    circumstances. <br>
+                                    <a href="https://ios.cfw.guide/installing-trollstore/">Installing TrollStore</a> is
+                                    a process which varies depending on what device and iOS you are running, as a
+                                    result, different guides are attached below depending on said combination
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel"
+            role="button" data-bs-slide="prev">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel"
+            role="button" data-bs-slide="next">
+            <i class="fas fa-chevron-right"></i>
+        </a>
+    </div>
+</body>

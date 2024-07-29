@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ImThienz</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet"href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="apple-touch-icon" href="public/img/logotron.png"> <!--chỉnh logo trên tiêu đề  -->
+    <link rel="shortcut icon" type="public/image/x-icon" href="public/img/logotron.png"><!--chỉnh logo trên tiêu đề  -->
+
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/main.css">
+
+
+
+    <!-- font chữ: Roboto -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="public/css/fontawesome.min.css">
+</head>
+
+<body>
+    <!--phần top nav-->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+        <div class="container text-light">
+            <div class="w-100 d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="https://mail.google.com/mail/?view=cm&fs=1&to=imthienz@gmail.com">Send an Email</a>
+                    <!--    <i class="fa fa-phone mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="#"></a>    -->
+                    <i class="fab fa-paypal fa-sm fa-fw"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="https://paypal.me/vtdvuthanhdat" target="_blank">Buy for me a coffee!</a>
+
+                </div>
+                <div>
+                    <a class="text-light" href="https://github.com/ImThienz" target="_blank"><i class="fab fa-github fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.facebook.com/profile.php?id=100011968744036" target="_blank" rel="sponsored"><i
+                            class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.instagram.com/vux_thanhf_ddatj.23/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--end-->
+    <!-- Phần Header -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand text-success logo h1 align-self-center" href="index.php">
+                ImThienz
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
+                id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?act=about">TrollStore & TrollFools</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://t.me/WHO_Am_iHEre">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+
+        </div>
+    </nav>
+    <!-- End Header -->
+</body>
+
+<!-- js -->
+<script src="public/js/jquery-1.11.0.min.js"></script>
+    <script src="public/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script src="public/js/templatemo.js"></script>
+    <script src="public/js/custom.js"></script>
+<!-- end js -->
