@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ImThienz</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet"href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="apple-touch-icon" href="../public/img/logotron.png">
+    <link rel="shortcut icon" type="public/image/x-icon" href="../public/img/logotron.png">
+
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/main.css">
+
+
+
+    <!-- font chữ: Roboto -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="./public/css/fontawesome.min.css">
+
+
+    <script>
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp, basepath;
+            /*loop through a collection of all HTML elements:*/
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                /*search for elements with a certain attribute:*/
+                file = elmnt.getAttribute("include-html");
+                basepath = elmnt.getAttribute("data-basepath");
+                if (file) {
+                    /* Adjust the file path based on the basepath */
+                    if (basepath) {
+                        file = basepath + file;
+                    }
+
+                    /*make an HTTP request using the attribute value as the file name:*/
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                            /*remove the attribute, and call this function once more:*/
+                            elmnt.removeAttribute("include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    /*exit the function:*/
+                    return;
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="includeHTML()">
+    <div include-html="view/header.html" data-basepath="../"></div>
+    
+    <main>
+        <section class="about1"> 
+            <div class="heading">
+                <a class="nav-link" href="https://ios.cfw.guide/installing-trollstore/"><h1>TrollStore</h1></a>
+            </div>
+    
+            <div class="main-about"> 
+                <div class="content-about"> 
+                    <h1 class="menu" onclick="toggleSection('ipaApps')">iPA Apps:</h1>
+                    <div id="ipaApps">
+                        <div class="submenu" onclick="toggleIntroduction('intro1')">AudioRecorder</div>
+                        <div id="intro1" class="introduction">
+                            <h4>AudioRecorder</h4>
+                            <p>⚙ AudioRecorder - Ghi âm cuộc gọi 🆕<br>
+                                ✅ Chỉ có tác dụng cho ứng dụng nào được tiêm   <br>
+                                ✅ Đồng bộ hóa qua Dropbox ; Google Drive   <br>
+                                ✅ Tùy chỉnh ứng dụng ghi âm: (Telegram/Facetime/Zalo/Telephony/...)
+                            </p>
+                            <a href="./iPA TrollStore/AudioRecorder_6.0.3.tipa" download><button>Download Now</button></a>
+                        </div>
+    
+                        <br><br>
+    
+                        <div class="submenu" onclick="toggleIntroduction('intro2')">AirTroller</div>
+                        <div id="intro2" class="introduction">
+                            <h4>AirTroller</h4>
+                            <p>⚙ Spam AirDrop 🆕</p>
+                            <a href="./iPA TrollStore/AirTroller.ipa" download><button>Download Now</button></a>
+                        </div>
+    
+                        <br><br>
+                        
+                        <div class="submenu" onclick="toggleIntroduction('intro3')">AppsManager</div>
+                        <div id="intro3" class="introduction">
+                            <h4>AppsManager</h4>
+                            <p>⚙ AppsManager - Trình quản lý ipa & Apps 🆕  <br>
+                                ✅ Sửa bundle Định danh    <br>
+                                ✅ Điều hướng đến đường dẫn Package & Data trong Filza  <br>
+                                ✅ Cho phép Sao lưu & Khôi phục & Xóa
+                            </p>
+                            <a href="./iPA TrollStore/AppsManager_1.8.4.ipa" download><button>Download Now</button></a>
+                        </div>
+    
+                        <br><br>
+                        
+                        <div class="submenu" onclick="toggleIntroduction('intro4')">Azula</div>
+                        <div id="intro4" class="introduction">
+                            <h4>Azula</h4>
+                            <p>⚙ Azula - Tiêm .dylib(s) vào ipa 🆕 <br>
+                                ✅ Chỉ hỗ trợ trên TrollStore!    <br>
+                            </p>
+                            <a href="./iPA TrollStore/Azula.ipa" download><button>Download Now</button></a>
+                        </div>
+                        
+                        <br><br>
+                        
+                        <div class="submenu" onclick="toggleIntroduction('intro5')">DebToIPA</div>
+                        <div id="intro5" class="introduction">
+                            <h4>DebToIPA</h4>
+                            <p>⚙ Chuyển .deb sang .ipa 🆕</p>
+                            <a href="./iPA TrollStore/DebToIPA-1.1.1.ipa" download><button>Download Now</button></a>
+                        </div>
+                                        
+                        <br><br>
+                        
+                        <div class="submenu" onclick="toggleIntroduction('intro6')">iMemScanTS</div>
+                        <div id="intro6" class="introduction">
+                            <h4>iMemScanTS</h4>
+                            <p>⚙ Dễ dàng sửa đổi bộ nhớ ứng dụng, hữu ích cho việc gian lận trong game offline.🆕</p>
+                            <a href="./iPA TrollStore/iMemScanTS.tipa" download><button>Download Now</button></a>
+                        </div>
+                                                        
+                        <br><br>
+                        
+                        <div class="submenu" onclick="toggleIntroduction('intro7')">TrollLock</div>
+                        <div id="intro7" class="introduction">
+                            <h4>TrollLock</h4>
+                            <p>⚙ Tạo logo chuyển động tại vị trí màn hình khóa iphone 🆕  <br>
+                                ✅ Yêu cầu từ iOS 15. <br>
+                                ✅ Path: /System/Library/PrivateFrameworks/SpringBoardUIServices.framework/ <br>
+                                ✅ Demo <a href="./iPA TrollStore/trolllock-demo.mp4">TrollLock.mp4</a>
+                            </p>
+                            <a href="./iPA TrollStore/TrollLock-1.1.ipa" download><button>Download Now</button></a>
+                            <a href="./iPA TrollStore/TrollLock_HuTao.zip" download><button>Download Folder HuTao's Themes</button></a>
+                        </div>
+    
+                        <br><br>
+                        
+                        <div class="submenu" onclick="toggleIntroduction('intro8')">AppStore++</div>
+                        <div id="intro8" class="introduction">
+                            <h4>AppStore++</h4>
+                            <p>⚙ AppStore++ - Cho phép hạ cấp phiên bản ứng dụng (Nhấn giữ) 🆕
+                                ✅ Demo <a href="./iPA TrollStore/Audiorecorder-demo.mp4">AudioRecorder.mp4</a>
+                            </p>
+                            <a href="./iPA TrollStore/AppStore++_v1.0.3-1.ipa" download><button>Download Now</button></a>
+                        </div>
+    
+                        <br><br>
+                        
+                        <div class="submenu" onclick="toggleIntroduction('intro9')">Provenance</div>
+                        <div id="intro9" class="introduction">
+                            <h4>Provenance</h4>
+                            <p>⚙ Provenance - iOS & tvOS multi-emulator frontend, supporting various Atari, Bandai, NEC, Nintendo, Sega, SNK and Sony console systems… 🆕    <br>
+                                ✅ Full <a href="https://github.com/Provenance-Emu/Provenance">Provenance</a>                 
+                            </p>
+                            <a href="./iPA TrollStore/Provenance.ipa" download><button>Download Now</button></a>
+                        </div>
+                        
+                        <br><br>
+                        
+                        <div class="submenu" onclick="toggleIntroduction('intro9')">Provenance</div>
+                        <div id="intro9" class="introduction">
+                            <h4>Provenance</h4>
+                            <p>⚙ Provenance - iOS & tvOS multi-emulator frontend, supporting various Atari, Bandai, NEC, Nintendo, Sega, SNK and Sony console systems… 🆕    <br>
+                                ✅ Full <a href="https://github.com/Provenance-Emu/Provenance">Provenance</a>                 
+                            </p>
+                            <a href="./iPA TrollStore/Provenance.ipa" download><button>Download Now</button></a>
+                        </div>
+    
+                    <script>
+                        function toggleSection(id) {
+                            var section = document.getElementById(id);
+                            var submenus = section.getElementsByClassName("submenu");
+                            if (section.style.display === "none" || section.style.display === "") {
+                                section.style.display = "block";
+                                for (var i = 0; i < submenus.length; i++) {
+                                    submenus[i].style.display = "block";
+                                }
+                            } else {
+                                section.style.display = "none";
+                                for (var i = 0; i < submenus.length; i++) {
+                                    submenus[i].style.display = "none";
+                                }
+                            }
+                        }
+    
+                        function toggleIntroduction(id) {
+                            var intro = document.getElementById(id);
+                            if (intro.style.display === "none" || intro.style.display === "") {
+                                intro.style.display = "block";
+                            } else {
+                                intro.style.display = "none";
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+    
+        </section>
+        <section class="about"> 
+            <div class="heading">
+                <h1>TrollFools</h1>
+                <p>Do not have TrollFools?</p>
+                <a href="./iPA TrollStore/TrollFools_2.5-2.tipa" download><button>TrollFools for iOS 15-16-17</button></a>  <br><br>
+                <a href="./iPA TrollStore/TrollFools14_2.5-2.tipa" download><button>TrollFools for iOS 14</button></a>
+            </div>
+    
+            <div class="main-about"> 
+                <div class="content-about"> 
+                    <h1 class="menu" onclick="toggleSection('injectFiles')">Inject Files:</h1>
+                    <div id="injectFiles">
+                        <div class="submenu" onclick="toggleIntroduction('introInject1')">ActionBarReborn</div>
+                        <div id="introInject1" class="introduction">
+                            <h4>ActionBarReborn</h4>
+                            <p>⚙ ActionBarReborn - Dylib bổ trợ chức năng cho bàn phím 🆕<br>
+                                ✅ Chỉ có tác dụng cho ứng dụng nào được tiêm   <br>
+                                ✅ Thêm 3 nút vào bàn phím :    <br>
+                                🟢Undo (Hoàn tác)   <br>
+                                🟢Select (Chọn, chọn tất cả)    <br>
+                                🟢Paste (Dán)   <br>
+                                ✅ Dành cho ai có nhu cầu sao chép và dán nhiều nội dung rất phù hợp cho công việc và spammer 😂
+                            </p>
+                            <a href="./Inject into TrollFools's Apps/ActionBarReborn.dylib" download><button>Download Now</button></a>
+                        </div>
+    
+                        <br><br>
+    
+                        <div class="submenu" onclick="toggleIntroduction('introInject2')">adSpeed-Noads-purchase</div>
+                        <div id="introInject2" class="introduction">
+                            <h4>adSpeed-Noads-purchase</h4>
+                            <p>⚙ Dylib đa chức năng 🆕  <br>
+                                ✅ Chặn quảng cáo   <br>
+                                ✅ Tua nhanh quảng cáo tự chỉnh tốc độ đảm bảo cho việc tua quảng cáo nhận thưởng trong game/app    <br>
+                                ✅ Miễn phí thanh toán mua hàng như Satella <br>
+                                ❌ Không mở cùng lúc 2 chức năng chặn quảng cáo và tua quảng cáo    <br>
+                                ⚠️ Dùng 3 ngón tay chạm 2-3 lần vào màn hình để mở bảng điều khiển
+                            </p>
+                            <a href="./Inject into TrollFools's Apps/adSpeed-Noads-purchase.dylib" download><button>Download Now</button></a>
+                        </div>
+    
+                        <br><br>
+                        
+                        <div class="submenu" onclick="toggleIntroduction('introInject3')">BHTiktokPlus</div>
+                        <div id="introInject3" class="introduction">
+                            <h4>BHTiktokPlus</h4>
+                            <p>⚙ BHTikTokPlus - Gói tiện ích cho Tiktok 🆕  <br>
+                                ✅ Tải video không logo chất lượng thường và HD.    <br>
+                                ✅ Rất nhiều tiện ích khác ai chưa dùng tự nghiên cứu nhé.  <br>
+                                Cách mở bảng điều khiển BHTiktokPlus : Vào trang cá nhân ➠ chọn dấu 3 gạch góc phải ➠ Vòng tròn góc phải ➠ BHTikTok Plus
+                            </p>
+                            <a href="./Inject into TrollFools's Apps/BHTiktokPlus.zip" download><button>Download Now</button></a>
+                        </div>
+    
+                        <br><br>
+                        
+                        <div class="submenu" onclick="toggleIntroduction('introInject4')">EeveeSpotify</div>
+                        <div id="introInject4" class="introduction">
+                            <h4>EeveeSpotify</h4>
+                            <p>⚙ EeveeSpotify 4.5 - Gói tiện ích cho Spotify 🆕 <br>
+                                ✅ Cho phép sử dụng một số tính năng của Premium    <br>
+                                Nếu không kích hoạt được tính năng Premium hãy thử mở Bảng điều khiển EeveeSpotify : Biểu tượng trang cá nhân góc trái ➠ Cài đặt và quyền riêng tư ➠ EeveeSpotify ➠ Patching ➠ Patching Method ➠ Dynamic ➠ Quay ra đánh tích vào mục Overwrite Configuration
+                            </p>
+                            <a href="./Inject into TrollFools's Apps/EeveeSpotify.zip" download><button>Download Now</button></a>
+                        </div>
+                        
+                        <br><br>
+                        
+                        <div class="submenu" onclick="toggleIntroduction('introInject5')">CamScanner Gold</div>
+                        <div id="introInject5" class="introduction">
+                            <h4>CamScanner Gold</h4>
+                            <p>⚙ Dylib nâng cấp gói Gold cao cấp miễn phí cho CamScanner ứng dụng scan văn bản thành PFD 🆕     <br>
+                                ✅ Tự động mở khoá gói Gold.    <br>
+                                🅰️ Tải về từ Appstore                    
+                            </p>
+                            <a href="./Inject into TrollFools's Apps/CamScanner Gold.dylib" download><button>Download Now</button></a>
+                        </div>
+                                        
+                        <br><br>
+                        
+                        <div class="submenu" onclick="toggleIntroduction('introInject6')">Hiển thị chạm</div>
+                        <div id="introInject6" class="introduction">
+                            <h4>Hiển thị chạm</h4>
+                            <p>⚙ Dylib hiển thị vị trí cảm ứng chạm màn hình 🆕 <br>
+                                ✅ Chỉ có tác dụng khi quay màn hình và chỉ có tác dụng cho ứng dụng nào được tiêm  <br>
+                                😎 Gói được phát triển bởi i82
+                            </p>
+                            <a href="./Inject into TrollFools's Apps/Hiển thị chạm.dylib" download><button>Download Now</button></a>
+                        </div>
+                                                        
+                        <br><br>
+                        
+                        <div class="submenu" onclick="toggleIntroduction('introInject7')">Ghi âm tắt màn</div>
+                        <div id="introInject7" class="introduction">
+                            <h4>Ghi âm tắt màn</h4>
+                            <p>⚙ Dylib tiêm cho ứng dụng ghi âm mặc định của iPhone 🆕  <br>
+                                ✅ Ẩn hoàn toàn giao diện ghi âm khi khoá màn hình.
+                            </p>
+                            <a href="./Inject into TrollFools's Apps/Ghi âm tắt màn.dylib" download><button>Download Now</button></a>
+                        </div>
+    
+                        <br><br>
+                        
+                        <div class="submenu" onclick="toggleIntroduction('introInject8')">iGameGod_NoAds</div>
+                        <div id="introInject8" class="introduction">
+                            <h4>iGameGod_NoAds</h4>
+                            <p>⚙ iGameGod - Cheat Engine for iPhone 🆕
+                                <h6>✅ Memory/Cheat Engine</h6>
+                                iGameGod's iOS Cheat Engine cung cấp nhiều tính năng như tìm kiếm chính xác, mờ, gần & nhóm. Nó cũng có trình duyệt bộ nhớ và khả năng sửa đổi hàng loạt kết quả, khóa giá trị, địa chỉ yêu thích & nhiều hơn nữa! Tất cả các tính năng này đều hoạt động trên thiết bị Jailbroken/Non-Jailbroken.   <br><br>
+                                <h6>✅ Speed Manager</h6>
+                                Điều chỉnh tốc độ trò chơi! Tăng hoặc giảm tốc độ trò chơi xuống mức mong muốn. <br><br>
+                                <h6>✅ Record & Replay Touches</h6>
+                                Dễ dàng ghi lại và phát lại các lần chạm một lần hoặc lặp lại. Hoàn hảo cho các trò chơi nông trại và chạm như Tap Titans 2.   <br><br>
+                                <h6>✅ Device Information Spoofer</h6>
+                                Công cụ iGSpoof của iGameGod cho phép thay đổi hoặc giả mạo thông tin thiết bị của mình cho các ứng dụng App Store. Điều này giúp bạn có thể dễ dàng thay đổi kiểu máy, UDID, số sê-ri, phiên bản iOS và nhiều thông tin khác! Hiện chỉ khả dụng cho các thiết bị đã Jailbreak.  <br><br>
+                                <h6>✅ More features!</h6>
+                                iGameGod cung cấp nhiều tính năng như trình cài đặt tweak (.deb), công cụ giải mã ứng dụng để hỗ trợ các nhà nghiên cứu bảo mật, chế độ sáng & tối và nhiều hơn nữa! Kiểm tra <a href="https://iosgods.com/topic/134184-introducing-igamegod-cheat-engine-speed-manager-auto-touch-device-spoofer-more/#comment-4265745">danh sách đầy đủ các tính năng và cách sử dụng chúng tại đây.</a>
+                            </p>
+                            <a href="./Inject into TrollFools's Apps/iGameGod_NoAds.zip" download><button>Download Now</button></a>
+                        </div>
+    
+                        <br><br>
+                        
+                        <div class="submenu" onclick="toggleIntroduction('introInject9')">Locket Gold</div>
+                        <div id="introInject9" class="introduction">
+                            <h4>Locket Gold</h4>
+                            <p>⚙ Locket Gold - Gói tiện ích cho Locket Widget 🆕    <br>
+                                ✅ Nâng cấp Gold miễn phí.     <br>
+                                Nếu không kích hoạt được Gold   <br>
+                                1. Dùng Appsmanager xoá sạch dữ liệu ứng dụng Locket    <br>
+                                2. Mở Locket đăng nhập lại và kiểm tra  <br>
+                                ==========================================  <br>
+                                ✅ Để upload video 10s, cần dán (thay thế) file RemoteConfig.sqlite3 vào path sau:
+                                ✅ /var/mobile/Containers/Data/Application/Locket/Library/Application Support/Google/RemoteConfig.sqlite3                   
+                            </p>
+                            <a href="./Inject into TrollFools's Apps/Locket_Gold.zip" download><button>Download Now</button></a>
+                            <a href="./Inject into TrollFools's Apps/RemoteConfig.sqlite3" download><button>Kéo dài video 10s</button></a>
+    
+                        </div>
+    
+                        <br>
+                        <a href="../index.html"><button class="bnt-about">Let's go</button></a>
+                
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <script>
+            function toggleSection(id) {
+                var section = document.getElementById(id);
+                var submenus = section.getElementsByClassName("submenu");
+                if (section.style.display === "none" || section.style.display === "") {
+                    section.style.display = "block";
+                    for (var i = 0; i < submenus.length; i++) {
+                        submenus[i].style.display = "block";
+                    }
+                } else {
+                    section.style.display = "none";
+                    for (var i = 0; i < submenus.length; i++) {
+                        submenus[i].style.display = "none";
+                    }
+                }
+            }
+    
+            function toggleIntroduction(id) {
+                var intro = document.getElementById(id);
+                if (intro.style.display === "none" || intro.style.display === "") {
+                    intro.style.display = "block";
+                } else {
+                    intro.style.display = "none";
+                }
+            }
+        </script>
+
+    </main>
+    
+    <div include-html="view/footer.html" data-basepath="../"></div>
+    
+</body>
+<!-- js -->
+<script src="public/js/jquery-1.11.0.min.js"></script>
+    <script src="public/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script src="public/js/templatemo.js"></script>
+    <script src="public/js/custom.js"></script>
+<!-- end js -->
+
+<style>
+    .introduction {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    .menu {
+        cursor: pointer;
+        color: blue;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+    .submenu {
+        cursor: pointer;
+        color: green;
+        text-decoration: underline;
+        margin-top: 10px;
+        display: none;
+    }
+    * {
+        margin: auto;
+        padding: auto;
+        box-sizing: border-box;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .about {
+        background-color: #f8f8f8;
+    }
+
+    .heading h1 {
+        color: #116A7B;
+        font-size: 55px;
+        text-align: center;
+        margin-top: 35px;
+    }
+
+    .main-about {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        margin: 65px auto;
+    }
+
+    .content-about h2 {
+        font-size: 30px;
+        margin-bottom: 20px;
+        color: #333;
+        text-align: center;
+    }
+
+    .content-about p {
+        font-size: 30px;
+        line-height: 2;
+        margin-bottom: 40px;
+        color: #666;
+    }
+
+    .content-about button {
+        display: inline-block;
+        background-color: #116A7B;
+        color: #ECE5C7;
+        padding: 12px 24px;
+        border-radius: 5px;
+        font-size: 20px;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+    .content-about button:hover {
+        background-color: #fff;
+        color: black;
+        transform: scale(1.1);
+    }
+
+    button {
+        display: inline-block;
+        background-color: #116A7B;
+        color: #ECE5C7;
+        padding: 12px 24px;
+        border-radius: 5px;
+        font-size: 20px;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #fff;
+        color: black;
+        transform: scale(1.1);
+    }
+
+    button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+
+    .content-about {
+        flex: 1;
+        width: 600px;
+        margin: 0px 25px;
+        animation: fadeInUp 2s ease;
+    }
+
+    .img-about {
+        flex: 1;
+        width: 600px;
+        margin: auto;
+        animation: fadeInUp 2s ease;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    @media screen and (max-width:768px) {
+        .heading h1 {
+            font-size: 45px;
+            margin-top: 30px;
+        }
+
+        .about {
+            margin: 0px;
+        }
+
+        .main-about {
+            width: 100%;
+            flex-direction: column;
+            margin: 0px;
+            padding: 0px 40px;
+        }
+
+        .content-about {
+            width: 100%;
+            margin: 35px 0px;
+        }
+
+        .content-about h2 {
+            font-size: 30px;
+        }
+
+        .content-about p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .content-about button {
+            font-size: 16px;
+            padding: 8px 16px;
+        }
+
+        .content-about img {
+            width: 100%;
+        }
+    }
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translate(50px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translate(0px);
+        }
+    }
+</style>
