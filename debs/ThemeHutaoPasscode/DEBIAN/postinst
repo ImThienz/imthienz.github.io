@@ -1,0 +1,4 @@
+#!/bin/bash
+chown -R mobile:mobile /var/mobile/Library/Caches/TelephonyUI-8
+chmod -R 755 /var/mobile/Library/Caches/TelephonyUI-8
+killall -HUP SpringBoard
