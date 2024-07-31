@@ -90,3 +90,14 @@ button:hover {
 .bnt-about:hover {
   background-color: #218838;
 }
+
+/* Carousel Hero */
+#template-mo-zay-hero-carousel .carousel-indicators li {
+  margin-top: -50px;
+  background-color: #116A7B;
+}
+#template-mo-zay-hero-carousel .carousel-control-next i,
+#template-mo-zay-hero-carousel .carousel-control-prev i {
+  color: #000000 !important;
+  font-size: 2.8em !important;
+}
