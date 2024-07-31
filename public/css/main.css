@@ -3,6 +3,12 @@ body, h1, h2, h3, p {
   margin: 0;
   padding: 0;
 }
+.h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 48px !important;
+  font-weight: 200 !important;
+}
+.logo { font-weight: 500 !important;}
 
 /* Basic styling */
 body {
