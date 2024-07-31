@@ -107,3 +107,9 @@ button:hover {
   justify-content: center;
   margin-bottom: -10px;
 }
+.carousel-indicators li {
+  background-color: #000000;
+  width: 30px;
+  height: 5px;
+  margin: 5px;
+}
