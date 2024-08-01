@@ -1,7 +1,0 @@
-Package: com.imthienz.themehutaopasscode
-Name: ThemeHutaoPasscode
-Version: 1.0-1
-Architecture: iphoneos-arm
-Description: A theme for TelephonyUI Passcode
-Maintainer: ImThienz imthienz@gmail.com
-Depends: firmware (>= 14.0), com.tigisoftware.filza
