@@ -1,0 +1,14 @@
+Package: com.cggio.check0ver.TrollStoreLock
+Version: 1.0
+Architecture: all
+Filename: ./TrollFaceLock_rootless.deb
+Size: 163700
+MD5sum: dbbf42826d03ebeb68569c428714bc1e
+SHA1: ce88f4ce7561d56e22c60de3e359606e9d3fbd0c
+SHA256: dbc098aa5fa73dd8970cf071250c6e8c8338cc8624045afe2bbbbb4de7ff2649
+Section: Themes
+Description: Change Your Lock Icon
+Author: CG Gió
+Icon: https://check0ver.com/icon/icon1.png
+Name: TrollStore Lock
+
