@@ -59,6 +59,7 @@ h1.menu:hover {
   margin: 10px 0;
   cursor: pointer;
   color: #007bff;
+  padding: 20px;
 }
 
 .submenu:hover {
@@ -95,6 +96,12 @@ button:hover {
 
 .bnt-about:hover {
   background-color: #218838;
+}
+
+.downloads-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px; 
 }
 
 /* Carousel Hero */
