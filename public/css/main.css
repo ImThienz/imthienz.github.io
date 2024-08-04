@@ -47,11 +47,13 @@ section {
 }
 
 h1.menu {
+  font-size: 30px;
   cursor: pointer;
   color: #007bff;
 }
 
 h1.menu:hover {
+  font-size: 35px;
   text-decoration: underline;
 }
 
@@ -75,33 +77,66 @@ h1.menu:hover {
   background-color: #fff;
 }
 
-/* Button Styling */
+.about {
+  background-color: #f8f8f8;
+}
+
+.heading h1 {
+  color: #116A7B;
+  font-size: 45px;
+  text-align: center;
+  margin-top: 35px;
+}
+
+
+
 button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
+  display: inline-block;
+  background-color: #116A7B;
+  color: #ECE5C7;
+  font-size: 16px;
+  padding: 8px 16px;
   border-radius: 5px;
-  padding: 10px 20px;
+  border: none;
   cursor: pointer;
-  font-size: 1rem;
+  transition: 0.3s ease;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #fff;
+  color: black;
+  transform: scale(1.1);
+  border: 2px solid black;
 }
 
-.bnt-about {
-  background-color: #28a745;
+
+@media screen and (max-width:768px) {
+  .heading h1 {
+      font-size: 45px;
+      margin-top: 30px;
+  }
+
+  .about {
+      margin: 0px;
+  }
+
+  .content-about button {
+      font-size: 16px;
+      padding: 8px 16px;
+  }
+
 }
 
-.bnt-about:hover {
-  background-color: #218838;
-}
+@keyframes fadeInUp {
+  0% {
+      opacity: 0;
+      transform: translate(50px);
+  }
 
-.downloads-container {
-  display: flex;
-  flex-direction: row;
-  gap: 10px; 
+  100% {
+      opacity: 1;
+      transform: translate(0px);
+  }
 }
 
 /* Carousel Hero */

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/new.css">
+    <title>Tìm kiếm sản phẩm</title>
+
+    <style>
+        .search-container {
+            display: none;
+            margin-top: 10px;
+            position: absolute;
+            right: 20px;
+            top: 60px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .search-container.active {
+            display: block;
+        }
+
+        .search-container input[type="text"] {
+            width: 300px;
+            padding: 5px;
+            margin-right: 5px;
+        }
+
+        .search-container button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #0056b3;
+        }
+
+        a.download-button {
+            display: inline-block;
+            background-color: #116A7B;
+            color: #ECE5C7;
+            font-size: 16px;
+            padding: 8px 16px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s ease;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        a.download-button:hover {
+            background-color: #fff;
+            color: black;
+            transform: scale(1.1);
+            border: 2px solid black;
+        }
+
+        .expanded {
+            display: block;
+        }
+
+        .collapsed {
+            display: none;
+        }
+    </style>
+    <script>
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp, basepath;
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                file = elmnt.getAttribute("include-html");
+                basepath = elmnt.getAttribute("data-basepath");
+                if (file) {
+                    if (basepath) {
+                        file = basepath + file;
+                    }
+
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                            elmnt.removeAttribute("include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    return;
+                }
+            }
+        }
+    </script>
+
+    <script>
+        function toggleContent(event) {
+            const content = event.target.nextElementSibling;
+            const links = content.nextElementSibling;
+            const downloadLinks = links.nextElementSibling;
+
+            // Toggle visibility of description and links
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                links.style.display = 'block';
+                downloadLinks.style.display = 'block';
+            } else {
+                content.style.display = 'none';
+                links.style.display = 'none';
+                downloadLinks.style.display = 'none';
+            }
+        }
+
+
+        async function fetchProducts() {
+            const response = await fetch('products.json');
+            const products = await response.json();
+            return products;
+        }
+
+        function searchProducts(products, query) {
+            return products.filter(product => product.name.toLowerCase().includes(query.toLowerCase()));
+        }
+
+        function formatDescription(description) {
+            return description.replace(/\n/g, '<br>');
+        }
+
+        async function displaySearchResults() {
+            const query = document.getElementById('search-input').value;
+            const products = await fetchProducts();
+            const results = searchProducts(products, query);
+
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = '';
+
+            results.forEach(product => {
+                const productElement = document.createElement('div');
+                productElement.innerHTML = `
+                    <h2 onclick="toggleContent(event)" title="Click to expand">${product.name}</h2>
+                    <div class="introduction">${formatDescription(product.description)}</div>
+                    <div class="links">
+                        <a href="${product.link}" class="download-button" download>Download Now</a><br><br>
+                        ${product.link1 ? `<a href="${product.link1}" class="download-button" download>Tải về video 10s</a><br><br>` : ''}
+                    </div>
+                `;
+                resultsContainer.appendChild(productElement);
+            });
+        }
+    </script>
+
+</head>
+<body onload="includeHTML()">
+    <div include-html="view/header.html" data-basepath="../"></div>
+
+    <main>
+        <h1>Tìm kiếm ipa/dylib</h1>
+        <input type="text" id="search-input" placeholder="Nhập tên sản phẩm cần tìm!">
+        <button onclick="displaySearchResults()">Tìm kiếm</button>
+        <div id="search-results"></div>
+    </main>
+    <div include-html="view/footer.html" data-basepath="../"></div>
+    <script src="public/js/news-1.11.0.min.js"></script>
+    <script src="public/js/news-migrate-1.2.1.min.js"></script>
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script src="public/js/templatemo.js"></script>
+    <script src="public/js/custom.js"></script>   
+</body>
+</html>
