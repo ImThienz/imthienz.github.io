@@ -117,7 +117,7 @@
     {
       "id": 21,
       "name": "Locket Gold (dylib)",
-      "description": "⚙ Locket Gold - Gói tiện ích cho Locket Widget 🆕 \n ✅ Nâng cấp Gold miễn phí. \n Nếu không kích hoạt được Gold \n 1. Dùng Appsmanager xoá sạch dữ liệu ứng dụng Locket \n 2. Mở Locket đăng nhập lại và kiểm tra \n ========================================== \n ✅ Để upload video 10s, cần dán (thay thế) file RemoteConfig.sqlite3 vào path sau: \n ✅ /var/mobile/Containers/Data/Application/Locket/Library/Application Support/Google/RemoteConfig.sqlite3",
+      "description": "⚙ Locket Gold - Gói tiện ích cho Locket Widget 🆕 \n ✅ Nâng cấp Gold miễn phí. \n Nếu không kích hoạt được Gold \n 1. Dùng Appsmanager xoá sạch dữ liệu ứng dụng Locket \n 2. Mở Locket đăng nhập lại và kiểm tra \n ========================================== \n ✅ Để upload video 10s, cần dán (thay thế) file RemoteConfig.sqlite3 vào path sau: \n ✅ /var/mobile/Containers/Data/Application/Locket/Library/Application Support/Google/RemoteConfig.sqlite3 \n ========================================== \n ✅ Hoặc có thể đăng tải ảnh/video trực tiếp <a href='https://locket-uploader.thuthuatjb.com'>tại đây</a> (yêu cầu kích thước ảnh nhỏ hơn 5Mb ; video nhỏ hơn 12Mb) \n ✅ <a href='https://www.video2edit.com/vi/compress-video'>Nén kích thước video tại đây</a>",
       "link": "./Inject into TrollFools's Apps/Locket_Gold.zip",
       "link1": "./Inject into TrollFools's Apps/RemoteConfig.sqlite3"
     }
