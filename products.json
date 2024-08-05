@@ -38,8 +38,10 @@
     {
       "id": 7,
       "name": "Troll Lock (iPA)",
-      "description": "⚙ Tạo logo chuyển động tại vị trí màn hình khóa iphone 🆕 \n ✅ Yêu cầu từ iOS 15. \n ✅ Path: /System/Library/PrivateFrameworks/SpringBoardUIServices.framework/ \n ✅ Demo TrollLock.mp4",
-      "link": "<a href='./iPA TrollStore/TrollLock-1.1.ipa' download>DOWNLOAD NOW</a> <a href='./iPA TrollStore/TrollLock_HuTao.zip' download>Download Folder HuTao's Themes</a> <a href='./iPA TrollStore/trolllock-main.zip' download>Another Themes</a>"
+      "description": "⚙ Tạo logo chuyển động tại vị trí màn hình khóa iphone 🆕 \n ✅ Yêu cầu từ iOS 15. \n ✅ Path: /System/Library/PrivateFrameworks/SpringBoardUIServices.framework/ \n ✅ Demo <a href='./iPA TrollStore/trolllock-demo.mp4'>TrollLock.mp4</a>",
+      "link": "./iPA TrollStore/TrollLock-1.1.ipa",
+      "link2": "./iPA TrollStore/TrollLock_HuTao.zip",
+      "link3": "./iPA TrollStore/trolllock-main.zip",
     },
     {
       "id": 8,
