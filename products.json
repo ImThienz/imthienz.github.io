@@ -2,8 +2,14 @@
     {
       "id": 1,
       "name": "Audio Recorder (iPA)",
-      "description": "⚙ Audio Recorder - Ghi âm cuộc gọi 🆕 \n ✅ Đồng bộ hóa qua Dropbox ; Google Drive \n ✅ Tùy chỉnh ứng dụng ghi âm: (Telegram/Facetime/Zalo/Telephony/...) \n ✅ Demo: <a href='./iPA TrollStore/Audiorecorder-demo.mp4' download>AudioRecorder.mp4</a>",
+      "description": "⚙ Audio Recorder - Ghi âm cuộc gọi 🆕 \n ✅ Đồng bộ hóa qua Dropbox ; Google Drive \n ✅ Tùy chỉnh ứng dụng ghi âm: (Telegram/Facetime/Zalo/Telephony/...) \n ✅ Demo: <a href='./public/vid/Audiorecorder-demo.mp4'>AudioRecorder.mp4</a>",
       "link": "./iPA TrollStore/AudioRecorder_6.0.3.tipa"
+    },
+    {
+      "id": 13,
+      "name": "Wifi List (iPA)",
+      "description": "✅ Cài đặt qua Troll Store \n ✅ <a href='./public/img/wifi_list.jpg'>Example</a>",
+      "link": "./iPA TrollStore/WiFiList_1.0.tipa"
     },
     {
       "id": 2,
@@ -38,7 +44,7 @@
     {
       "id": 7,
       "name": "Troll Lock (iPA)",
-      "description": "⚙ Tạo logo chuyển động tại vị trí màn hình khóa iphone 🆕 \n ✅ Yêu cầu từ iOS 15. \n ✅ Path: /System/Library/PrivateFrameworks/SpringBoardUIServices.framework/ \n ✅ Demo <a href='./iPA TrollStore/trolllock-demo.mp4'>TrollLock.mp4</a>",
+      "description": "⚙ Tạo logo chuyển động tại vị trí màn hình khóa iphone 🆕 \n ✅ Yêu cầu từ iOS 15. \n ✅ Path: /System/Library/PrivateFrameworks/SpringBoardUIServices.framework/ \n ✅ Demo <a href='./public/vid/trolllock-demo.mp4'>TrollLock.mp4</a>",
       "link": "./iPA TrollStore/TrollLock-1.1.ipa",
       "link2": "./iPA TrollStore/TrollLock_HuTao.zip",
       "link3": "./iPA TrollStore/trolllock-main.zip"
