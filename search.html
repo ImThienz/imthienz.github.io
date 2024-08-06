@@ -73,6 +73,7 @@
         .collapsed {
             display: none;
         }
+        
     </style>
     <script>
         function includeHTML() {
@@ -151,10 +152,12 @@
                     <h2 onclick="toggleContent(event)" title="Click to expand">${product.name}</h2>
                     <div class="introduction">${formatDescription(product.description)}</div>
                     <div class="links">
-                        <a href="${product.link}" class="download-button" download>Download Now</a><br><br>
-                        ${product.link1 ? `<a href="${product.link1}" class="download-button" download>Tải về video 10s</a><br><br>` : ''}
-                        ${product.link2 ? `<a href="${product.link2}" class="download-button" download>Download Hutao's Themes</a><br><br>` : ''}
-                        ${product.link3 ? `<a href="${product.link3}" class="download-button" download>Another Themes</a><br><br>` : ''}
+                        <div class="downloads-container">
+                            <a href="${product.link}" class="download-button" download>Download Now</a><br><br>
+                            ${product.link1 ? `<a href="${product.link1}" class="download-button" download>Tải về video 10s</a><br><br>` : ''}
+                            ${product.link2 ? `<a href="${product.link2}" class="download-button" download>Download Hutao's Themes</a><br><br>` : ''}
+                            ${product.link3 ? `<a href="${product.link3}" class="download-button" download>Another Themes</a><br><br>` : ''}
+                        </div>
                     </div>
                 `;
                 resultsContainer.appendChild(productElement);

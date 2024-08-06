@@ -109,6 +109,12 @@ button:hover {
   border: 2px solid black;
 }
 
+.downloads-container {
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+}
+
 
 @media screen and (max-width:768px) {
   .heading h1 {
