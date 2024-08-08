@@ -75,6 +75,8 @@ h1.menu:hover {
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #fff;
+  overflow: auto;
+  word-wrap: break-word;
 }
 
 .about {
@@ -111,6 +113,7 @@ button:hover {
 
 .downloads-container {
   display: flex;
+  margin-top: 5px;
   flex-direction: row;
   gap: 13px;
 }
