@@ -15,7 +15,8 @@
       "id": 22,
       "name": "Youtube Plus ++ (dylib)",
       "description": "⚙ Gói đa chức năng tiêm cho Youtube 🆕 \n ⚠️ Đẩy các gói cũ đã tiêm ra, rồi tiêm lại nhé ! Tiêm luôn tệp zip mới này nha, giải nén ra rồi mới tiêm là ăn ban \n ✅ iSponsorBlock : Chặn quảng cáo chèn trong video \n ✅ YouMute : Nút tắt tiếng nhanh  \n ✅ YouPiP : Hỗ trợ bật PiP  \n ✅ YouQuality : Chất lượng video Premium  \n  ✅ YoutubeLite : hay còn gọi là Youtube Plus chặn quảng cáo, hỗ trợ tải video, nhạc trực tiếp về Album; Tuỳ biến giao diện...  \n ✅ Và các gói bổ trợ khác : YTClassicVideoQuality, YTUHD,YTVideoOverlay, Alderis.",
-      "link": "./Inject into TrollFools's Apps/Youtube Plus ++.zip"
+      "link": "./Inject into TrollFools's Apps/Youtube Plus ++.zip",
+      "link4": "./Inject into TrollFools's Apps/YouTube Dylib.zip"
     },
     {
       "id": 23,
@@ -23,6 +24,25 @@
       "description": "⚙ Gỡ bỏ trình duyệt/ứng dụng chặn ra khỏi danh sách đen 🆕 \n ✅ Cài đặt bằng Sideloadly (<a href='https://sideloadly.io/SideloadlySetup64.exe'>x64bit</a> / <a href='https://sideloadly.io/SideloadlySetup32.exe'>x32bit</a>) qua PC hoặc trực tiếp từ Troll Store   \n ➤ <a href='./public/vid/'>How to install via Sideloadly?</a>",
       "link": "./iPA TrollStore/Blacklist_1.0.ipa"
     },
+    {
+      "id": 24,
+      "name": "Facebook Wolf (dylib)",
+      "description": "⚙ Facebook Wolf - Tiêm vào ứng dụng Facebook qua TrollFool 🆕 \n 🖥️ Chức năng: Tính năng của Facebook Wolf: \n ✅ Chặn quảng cáo Facebook \n ✅ Tải video bằng cách nhấn giữ vào videos \n ",
+      "link": "./Inject into TrollFools's Apps/Wolf.dylib"
+    },
+    {
+      "id": 25,
+      "name": "Messed (dylib)",
+      "description": "⚙  Messed - dylib được nâng cấp bởi npt HuyNguyen(Little34306) 🆕\n 🖥️ Chức năng: Chặn quảng cáo Messenger \n ✅ Chặn đối phương phát hiện đã xem tin nhắn. (Công tắt bật tắt chức năng ở phía trên gần thanh trạng thái) \n ",
+      "link": "./Inject into TrollFools's Apps/Messed.dylib"
+    },
+    {
+      "id": 26,
+      "name": "Rocket Instagram (dylib)",
+      "description": "⚙  Rocket Pro - Gói tiện ích cho Instagram 🆕 \n 🖥️ Chức năng: Tải video mọi nơi không logo \n ✅ Rất nhiều tiện ích khác ai chưa dùng tự nghiên cứu nhé. \n ➤ Cách mở bảng điều khiển Rocket và nâng cấp lên Rocket Pro với đầy đủ tính năng : Vào trang cá nhân ➠ chọn dấu 3 gạch góc phải ➠ Rocket Settings ➠ Upgrade Now ➠ Restore Purchases!",
+      "link": "./Inject into TrollFools's Apps/Rocket_Instagram.zip"
+    },
+
     {
       "id": 2,
       "name": "Air Troller (iPA)",
