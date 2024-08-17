@@ -42,6 +42,42 @@
       "description": "⚙  Rocket Pro - Gói tiện ích cho Instagram 🆕 \n 🖥️ Chức năng: Tải video mọi nơi không logo \n ✅ Rất nhiều tiện ích khác ai chưa dùng tự nghiên cứu nhé. \n ➤ Cách mở bảng điều khiển Rocket và nâng cấp lên Rocket Pro với đầy đủ tính năng : Vào trang cá nhân ➠ chọn dấu 3 gạch góc phải ➠ Rocket Settings ➠ Upgrade Now ➠ Restore Purchases!",
       "link": "./Inject into TrollFools's Apps/Rocket_Instagram.zip"
     },
+    {
+      "id": 27,
+      "name": "TrueCaller Premium (dylib)",
+      "description": "⚙  TrueCaller Premium - Gói tiện ích cho TrueCaller ứng dụng chặn cuộc gọi spam tự động 🆕 \n ✅ Nâng cấp tự động Premium miễn phí",
+      "link": "./Inject into TrollFools's Apps/TrueCaller Premium.dylib"
+    },
+    {
+      "id": 28,
+      "name": "Postbox (iPA)",
+      "description": "⚙ Postbox - bạn có thể sử dụng ứng dụng này để giải nén tệp Deb lấy các nội dung như dylib, bundle, framework có trong deb sử dụng với  TrollFools \"tiêm chích\" 🆕",
+      "link": "./iPA TrollStore/Postbox.ipa"
+    },
+    {
+      "id": 29,
+      "name": "Picsart Gold (dylib)",
+      "description": "⚙ Picsart Gold  - Dylib nâng cấp gói Gold đầy đủ tính năng cao cấp cho Picsart ứng dụng chỉnh ảnh nổi tiếng 🆕 \n ✅ Nâng cấp Gold tự động.    ",
+      "link": "./Inject into TrollFools's Apps/PicsArt_Gold.dylib"
+    },
+    {
+      "id": 30,
+      "name": "LightRoom (dylib)",
+      "description": "⚙ LightRoom - Dylib nâng cấp gói Pro cao cấp miễn phí cho Lightroom ứng dụng chỉnh sửa ảnh 🆕",
+      "link": "./Inject into TrollFools's Apps/Lightroom.dylib"
+    },
+    {
+      "id": 31,
+      "name": "We Chat ++ (dylib)",
+      "description": "✅ Gói đa chức năng ++ cho Wechat - Mạng xã hội Trung Quốc \n ✅ Rất nhiều chức năng thú vị tự tìm hiểu, gói này mình tự tổng hợp theo nhu cầu cá nhân \n <a href='./public/img/wechat-demo.jpg'>Cách tải video</a>",
+      "link": "./Inject into TrollFools's Apps/Wechat++.zip"
+    },
+    {
+      "id": 32,
+      "name": "Xingtu ++ (dylib)",
+      "description": "✅ Dylib mở khoá chức năng VIP miễn phí cho Xingtu (醒图) ứng dụng chỉnh ảnh sịn sò Trung Quốc \n <a href='./public/img/xingtu-demo.jpg'>Cách chuyển vùng</a>",
+      "link": "./Inject into TrollFools's Apps/Xingtu.dylib"
+    },
 
     {
       "id": 2,
