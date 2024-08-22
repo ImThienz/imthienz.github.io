@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" href="public/img/logotron.png">
+    <link rel="shortcut icon" type="public/image/x-icon" href="./public/img/logotron.png">
+
+    <script>
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp, basepath;
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                file = elmnt.getAttribute("include-html");
+                basepath = elmnt.getAttribute("data-basepath");
+                if (file) {
+                    if (basepath) {
+                        file = basepath + file;
+                    }
+
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                            elmnt.removeAttribute("include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    return;
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="includeHTML()">
+    <div include-html="view/header.html" data-basepath="../"></div>
+    <main>
+        <h1>Locket Gold</h1>
+        <p>
+            <h2>Hướng Dẫn Dùng Egern Up Locket Gold (by <a href="https://gauapple.com/">Gấu Apple</a>)</h2>
+            <img width="100%" height="500" src="./public/img/dung-egern-up-locket-gold.png">
+
+            <br>Dùng <b>Egern up locket gold</b>, đây là cách cũng mới ra cách đây 1-2 tuần gì đấy mình không nhớ nữa của bạn <b><i>Lea_qun</i></b> được share tut ầm ầm trên các nhóm, thì hôm nay mình mới có thời gian để Re-up tut về.    <br><br>
+
+            <h2>Cách Dùng Egern Up Locket Gold</h2>
+            <a href="https://egernapp.com/">Egern App</a>, đầu tiên muốn dùng <b>egern up locket gold</b> thì bạn phải có app này trước nhé, sau đó cũng tự tải Locket về máy và đăng nhập tài khoản Locket vào, nếu có sẵn rồi thì càng tốt chỉ cần <a href="./iPA TrollStore/Egern-v1.22.0.ipa"><b>tải .ipa Egern tại đây</b></a> về và làm theo các bước sau đây:<br>
+            
+            <br>Vào <b>Egern</b> và dán <b>URL</b> sau <b>(bước 2)</b>: https://aqvpn.me/scripts/locket.yaml
+            <br><i>Các bước thực hiện lần lượt:</i><br>
+            <img width="350" height="500" margin="5px 5px 5px 5px" border="2px solid black" src="./public/img/egern_locketgold_step1.jpg">
+            <img width="350" height="500" margin="5px 5px 5px 5px" border="2px solid black" src="./public/img/egern_locketgold_step3.jpg">
+            <img width="350" height="500" margin="5px 5px 5px 5px" border="2px solid black" src="./public/img/egern_locketgold_step2.jpg">
+            <img width="350" height="500" margin="5px 5px 5px 5px" border="2px solid black" src="./public/img/egern_locketgold_step4.jpg">
+            <img width="350" height="500" margin="5px 5px 5px 5px" border="2px solid black" src="./public/img/egern_locketgold_step5.jpg">
+            <img width="350" height="500" margin="5px 5px 5px 5px" border="2px solid black" src="./public/img/egern_locketgold_step6.jpg">
+            <img width="350" height="500" margin="5px 5px 5px 5px" border="2px solid black" src="./public/img/egern_locketgold_step7.jpg">
+            <img width="350" height="500" margin="5px 5px 5px 5px" border="2px solid black" src="./public/img/egern_locketgold_step8.jpg">
+            <img width="350" height="500" margin="5px 5px 5px 5px" border="2px solid black" src="./public/img/egern_locketgold_step9.jpg">
+            <img width="350" height="500" margin="5px 5px 5px 5px" border="2px solid black" src="./public/img/egern_locketgold_step10.jpg">
+            <img width="350" height="500" margin="5px 5px 5px 5px" border="2px solid black" src="./public/img/egern_locketgold_step11.jpg">
+            <img width="350" height="500" margin="5px 5px 5px 5px" border="2px solid black" src="./public/img/egern_locketgold_step12.jpg">
+            <br>
+            
+            <br>Sau khi đã up locket gold thành công thì bạn không cần phải bật egern nữa :v
+
+            <br><br>Egern App nó khá giống với <a href="https://apps.apple.com/vn/app/shadowrocket/id932747118?l=vi">Shadowrocket</a>, ngoài việc add Proxy và vô vàn tính năng liên quan tới VPN và mạng thì Egern app cũng có thể dùng để crack nhiều app khác như: Picsart, Alight motion, Kinemaster,…
+
+        </p>
+    </main>
+    <div include-html="view/footer.html" data-basepath="../"></div>
+    
+    <script src="public/js/news-1.11.0.min.js"></script>
+    <script src="public/js/news-migrate-1.2.1.min.js"></script>
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script src="public/js/templatemo.js"></script>
+    <script src="public/js/custom.js"></script>   
+</body>
+</html>
