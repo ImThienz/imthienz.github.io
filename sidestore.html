@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" href="public/img/logotron.png">
+    <link rel="shortcut icon" type="public/image/x-icon" href="./public/img/logotron.png">
+
+    <script>
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp, basepath;
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                file = elmnt.getAttribute("include-html");
+                basepath = elmnt.getAttribute("data-basepath");
+                if (file) {
+                    if (basepath) {
+                        file = basepath + file;
+                    }
+
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                            elmnt.removeAttribute("include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    return;
+                }
+            }
+        }
+    </script>
+
+    <style>
+        main{
+            size:30px;
+        }
+    </style>
+</head>
+<body onload="includeHTML()">
+    <div include-html="view/header.html" data-basepath="../"></div>
+    <main>
+        <h1>Hướng dẫn cài đặt và sử dụng SideStore</h1>
+        <br><img src="./public/img/sidestore/SideStore1.png" alt="SideStore" style="width:fit-content; height:300px; display: flex; margin:auto">
+        <br><h4>| Chuẩn bị:</h4>
+        <ul>
+            <li>Máy tính: Windows hay Mac tùy các bạn (Cài đặt sẵn AltServer trên máy, tham khảo <a href="https://faq.altstore.io/">tại đây</a>).</li>
+            <li>Cáp kết nối iPhone với máy tính.            </li>
+            <li>Thiết bị iOS/iPados 14.0 trở lên và yêu cầu có đặt mật khẩu máy.            </li>
+        </ul>
+
+        <h4>|| Thực hiện:        </h4>
+        <h5> 1. Download tài nguyên        </h5>
+        <h5>Trên iPhone/iPad        </h5>
+        <ul>
+            <li>Tải ứng dụng <a href="https://apps.apple.com/app/wireguard/id1441195209">WireGuard</a>.            </li>
+            <li>Tải file <a href="https://github.com/SideStore/SideStore/releases/download/0.1.1/SideStore.conf">SideStore.conf</a></li>
+        </ul>
+
+        <p>Sau khi tải xong file <b>SideStore.conf</b> về iPhone/iPad, tiến hành mở ứng dụng <b>WireGuard</b> sau đó bấm vào dấu cộng ở góc phải và tìm đến file <b>SideStore.conf</b> vừa tải về để thêm vào <b>WireGuard</b> sử dụng cho việc ký và gia hạn hạn ứng dụng.</p>
+        
+        <h5>Trên máy Mac/Windows        </h5>
+        <ul>
+            <li>Tải <a href="https://github.com/SideStore/SideStore/releases/latest/download/SideStore.ipa">SideStore iPA</a> hoặc <a href="https://github.com/SideStore/SideStore/releases/download/nightly/SideStore.ipa">SideStore iPA (Beta)</a>.</li>
+            <li>Tải Jitterbug Pair: <a href="https://github.com/osy/Jitterbug/releases/download/v1.3.1/jitterbugpair-macos.zip">macOS</a> hoặc <a href="https://github.com/osy/Jitterbug/releases/download/v1.3.1/jitterbugpair-win64.zip">Windows (x64 bit)</a>.</li>
+        </ul>
+
+        <h5>2. Pair Jitterbug        </h5>
+        Đầu tiên là cắm iPhone/iPad vào máy Mac/Windows.
+        <br><b>Pair Jitterbug</b>: tiến hành giải nén file zip Jitterbug Pair đã download ở <b>bước 1</b> sau đó mở <b>Terminal</b> (macOS) hoặc <b>CMD</b> (Windows) và chạy lệnh sau:
+        <br><br><b>Đối với macOS</b>: /Users/imthienz/Downloads/jitterbugpair
+        <br>Trong đó <b>imthienz</b> chính là user máy của bạn. Cách đơn giản nhất là bạn kéo cái file <b>jitterbugpair</b> vô Terminal sau đó bấm Enter (return) và cấp quyền cho nó để nó có thể chạy.
+        <br>Sau khi chạy xong nó sẽ sinh ra file *<b>.mobiledevicepairing</b> là được, nếu chưa sinh ra file này thì bạn chưa thực hiện thành công.
+        
+        <br><br><br><b>Đối với Windows</b>: 
+        <ol>
+            <li>Kết nối iPhone của bạn với PC <b>(Tin cậy thiết bị)</b></li>
+            <li>Trên PC, tạo folder chứa file <b>jitterbugpair-win64.zip</b> và giải nén nó ra (Extract files)</li>
+            <img src="./public/img/sidestore/jitterbugpair-win64 install.jpg" alt="jitterbugpair" style="width:300px; height:300px">
+            <li>Tiếp đến, vào menu search trên windows <b>(Windows + S)</b> và tìm kiếm <b>"Windows Security"</b></li>
+            <img src="./public/img/sidestore/windows security.jpg" alt="windows security" style="width:300px; height:300px">
+            <li>Tại  <b>Windows Security</b>, chọn menu Virus & threat protection và chọn mục <b>Manage settings</b> trong <b>Virus & threat protection settings</b>. </li>
+            <img src="./public/img/sidestore/Virus & Threat protection.jpg" alt="Virus & Threat protection" style="width:350px; height:300px">
+            <li>Lướt xuống tại mục Exclusions, nhấp chọn mục <b>Add or remove exclusions</b></li>
+            <img src="./public/img/sidestore/Exclusions.jpg" alt="Exclusions" style="width:350px; height:300px">
+            <li>Chọn <b>Add an exclusion</b> và chọn Path chứa file jitterbugpair.exe (Ở đây mình đã add path SideStore, bên trong có chứa file jitterbugpair như ở bước 2)</li>
+            <img src="./public/img/sidestore/path jitterbugpair.jpg" alt="Chọn Path Chứa file jitterbugpair.exe" style="width:350px; height:300px">
+            <li>Vào folder jitterbugpair-win64, right-click và mở trong Terminal</li>
+            <img src="./public/img/sidestore/open in terminal.jpg" alt="jitterbugpair - open in terminal" style="width:300px; height:300px">
+            <li>Đảm bảo iPhone đã kết nối với PC, kéo thả file jitterbugpair.exe vào CMD sau đó nhấn Enter, thấy menu cmd báo Success và xuất hiện file *.mobiledevicepairing là được.</li>
+            <img src="./public/img/sidestore/jitterbugpair success.jpg" alt="jitterbugpair - success" style="width:500px; height:300px">
+
+        </ol>
+        <br>Sau khi đã có file *<b>.mobiledevicepairing</b>, hãy đổi đuôi nó thành *<b>.plist</b> và chuyển file đó vào iPhone/iPad của bạn (bạn có thể tải lên Google Drive, Dropbox… sau đó trên iPhone/iPad truy cập vào link đó để tải về).<br><br>
+
+        <h5>3. Cài đặt SideStore và sử dụng</h5>
+        <b>Cài đặt:        </b>
+        <br>Sử dụng <b>AltServer</b> (không phải AltStore) để cài đặt SideStore iPA:
+        <ul>
+            <li>Với <b>macOS</b>: bấm giữ phím Option + click chuột trái vào biểu tượng AltServer ở menu bar trên cùng của màn hình và chọn sideload .iPA            </li>
+            <li>Với <b>Windows</b>: bấm giữ phím Shift + click chuột trái vào biểu tượng AltServer ở góc phải màn hình và chọn sideload iPA.            </li>
+        </ul>
+
+        <p>Sau khi cài đặt thành công và mở <a href="https://sidestore.io/">SideStore</a> lên, nó sẽ yêu cầu file *<b>.plist</b> mà bạn đã tạo ra ở bước 2, lúc này hãy chọn đến file *<b>.plist</b> để hoàn thành quá trình cài đặt SideStore.        </p>
+        <br><b>Sử dụng:  </b>
+        <br>Đăng nhập Apple ID vào SideStore, khi cài đặt hoặc gia hạn ứng dụng hãy mở WireGuard lên và bật cấu hình SideStore.
+        <br><i><b>P/s</b>: nếu bạn đăng nhập Apple ID vào SideStore bị lỗi, hãy thử cách sau: Vào <b>Cài đặt</b> của iPhone/iPad -> Kéo xuống dưới bấm vào <b>SideStore</b> -> Ở phần Anisette URL nhập <b>http://anisette.icert.cc/</b>        </i>
+        <br><br><br>Như vậy là mỗi khi cài ứng dụng hoặc gia hạn ứng dụng bạn sẽ không cần máy tính mà chỉ cần bật cấu hình SideStore bên trong ứng dụng WireGuard mà thôi.
+
+    </main>
+    <div include-html="view/footer.html" data-basepath="../"></div>
+    
+    <script src="public/js/news-1.11.0.min.js"></script>
+    <script src="public/js/news-migrate-1.2.1.min.js"></script>
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script src="public/js/templatemo.js"></script>
+    <script src="public/js/custom.js"></script>   
+</body>
+</html>
