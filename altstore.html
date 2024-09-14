@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" href="public/img/logotron.png">
+    <link rel="shortcut icon" type="public/image/x-icon" href="./public/img/logotron.png">
+
+    <script>
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp, basepath;
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                file = elmnt.getAttribute("include-html");
+                basepath = elmnt.getAttribute("data-basepath");
+                if (file) {
+                    if (basepath) {
+                        file = basepath + file;
+                    }
+
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                            elmnt.removeAttribute("include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    return;
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="includeHTML()">
+    <div include-html="view/header.html" data-basepath="../"></div>
+    <main>
+        <h1>Hướng dẫn cài đặt & sử dụng AltStore (Trên Windows)</h1>
+        <p><a href="https://altstore.io/">AltStore</a> - ứng dụng giúp bạn sideload file .ipa trên iphone (chỉ có hiệu lực trong 7 ngày, sau đó bạn cần PC cài đặt lại altstore để thực hiện việc signload .ipa một lần nữa - Đồng nghĩa với việc data trên .ipa sẽ bị mất đi). Khuyển nghị nên <a href="./sidestore.html">cài đặt SideStore sẽ hiệu quả hơn vì không mất dữ liệu file .ipa</a></p>
+        <h3>Trước khi cài đặt AltStore:        </h3>
+        <ol>
+            <li>Tải xuống và cài đặt phiên bản <b>iTunes</b> và <b>iCloud</b> mới nhất trực tiếp từ Apple <b>(không phải Microsoft Store)</b>.            </li>
+            <ul>
+                <li>Liên kết tải xuống trực tiếp iTunes: <a href="https://www.apple.com/itunes/download/win64">Windows 64-bit</a> / <a href="https://www.apple.com/itunes/download/win32">Windows 32-bit</a>                </li>
+                <li>Liên kết tải xuống trực tiếp iCloud: <a href="https://updates.cdn-apple.com/2020/windows/001-39935-20200911-1A70AA56-F448-11EA-8CC0-99D41950005E/iCloudSetup.exe">Windows 32-bit và 64-bit</a>                </li>
+            </ul> 
+        </ol>
+        <h3>Cài đặt AltStore:        </h3>
+        <ol>
+            <li>Tải xuống <a href="https://cdn.altstore.io/file/altstore/altinstaller.zip">AltServer cho Windows</a></li>
+            <li>Giải nén <b>AltInstaller.zip</b> và chạy <b>Setup.exe</b>            </li>
+            <li>Vào mục tìm kiếm trên thanh tác vụ Windows, sau đó nhập "AltServer" và nhấp vào "Chạy với tư cách quản trị viên". Đảm bảo cho phép truy cập vào mạng riêng nếu được nhắc. AltStore sẽ xuất hiện dưới dạng biểu tượng trên thanh tác vụ.            </li>
+            <li>Kết nối thiết bị iOS của bạn với máy tính và đảm bảo thiết bị đã được mở khóa. Nếu cần, hãy tin tưởng thiết bị của bạn với máy tính.</li>
+            <li>Mở iTunes, sau đó bật "Đồng bộ hóa Wi-Fi" trên thiết bị của bạn.</li>
+            <img src="./public/img/altstore/itunes-sync wifi.webp" alt="" style="width:350px; height:300px">
+            <li>Nhấp vào biểu tượng AltServer ở thanh tác vụ góc dưới bên phải. Sau đó, đi đến “Cài đặt AltStore” và chọn thiết bị iOS của bạn.</li>
+            <li>Nhập địa chỉ email và mật khẩu Apple ID của bạn. Điều này sẽ cho phép AltServer xác thực với Apple và cấu hình tài khoản của bạn để hỗ trợ tải ứng dụng.</li>
+            <ul>
+                <li><b>Notes:</b> ID Apple và mật khẩu của bạn chỉ được gửi cho Apple — không phải chúng tôi hay bất kỳ ai khác.                </li>
+            </ul>
+            <li>Đợi vài giây, sau đó thông báo <b>AltServer</b> sẽ xuất hiện cho biết AltStore đã được cài đặt thành công vào thiết bị của bạn.</li>
+            <li>Trên thiết bị iOS của bạn, hãy vào Cài đặt -> Chung -> Quản lý hồ sơ & thiết bị. Chạm vào “Tin cậy [ID Apple của bạn]”, sau đó chạm vào “Tin cậy” một lần nữa để xác nhận.</li>
+            <img src="./public/img/altstore/set up configuration.jpg" alt="set up configuration" style="width:350px; height:300px">
+            <ul>
+                <li><b>Notes:</b> "Quản lý hồ sơ và thiết bị" có thể được hiểu theo nhiều cách khác nhau tùy thuộc vào phiên bản của bạn, nhưng bạn luôn có thể tìm thấy mục này ở gần cuối mục Cài đặt -> Chung.                </li>
+            </ul>
+            <br><h5>Bật Chế độ nhà phát triển (iOS 16 trở lên)            </h5>
+            <li>Để sử dụng AltStore trên iOS 16 trở lên, bạn cần bật Chế độ nhà phát triển trên thiết bị của mình bằng cách vào Cài đặt -> Quyền riêng tư và Bảo mật -> Chế độ nhà phát triển.</li>
+            <img src="./public/img/altstore/developer mode.png" alt="Developer Mode" style="width:350px; height:300px">
+
+        </ol>
+        <p>Và bây giờ bạn đã sẵn sàng tải ứng dụng về máy bằng AltStore!        </p>
+
+
+
+    </main>
+    <div include-html="view/footer.html" data-basepath="../"></div>
+    
+    <script src="public/js/news-1.11.0.min.js"></script>
+    <script src="public/js/news-migrate-1.2.1.min.js"></script>
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script src="public/js/templatemo.js"></script>
+    <script src="public/js/custom.js"></script>   
+</body>
+</html>
