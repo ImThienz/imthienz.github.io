@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Style Layout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <script>
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp, basepath;
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                file = elmnt.getAttribute("include-html");
+                basepath = elmnt.getAttribute("data-basepath");
+                if (file) {
+                    if (basepath) {
+                        file = basepath + file;
+                    }
+
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                            elmnt.removeAttribute("include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    return;
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        main {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .story-container {
+            width: 80%;
+            max-width: 900px;
+            height: 500px;
+            position: relative;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .story-content {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .story-content h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .story-content p {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        .story-content img {
+            margin-top: 15px;
+            width: 80%;
+            min-width: 400px;
+            min-height: 300px;
+            border-radius: 10px;
+        }
+        
+        .story-slide {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%; /* Để các slide ẩn ra khỏi màn hình */
+            width: 100%;
+            height: 100%;
+            transition: all 0.5s ease-in-out;
+        }
+        
+        .story-slide.active {
+            left: 0;
+            display: block; /* Hiển thị slide đang active */
+        }
+        
+        .story-container .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 2rem;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+        
+        .left-btn {
+            left: 10px;
+        }
+        
+        .right-btn {
+            right: 10px;
+        }
+        
+        .story-container.nav-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        @media (max-width: 768px) {
+            .story-container {
+                width: 95%;
+                height: auto;
+            }
+            
+            .story-content h2 {
+                font-size: 1.5rem;
+            }
+        
+            .story-content img {
+                max-width: 300px;
+            }
+        }
+        
+    </style>
+</head>
+<body onload="includeHTML()">
+    <div include-html="view/header.html" data-basepath="../"></div>
+    
+    <main>
+        <div class="story-container">
+            <button class="nav-button left-btn" id="prevBtn">&#10094;</button>
+    
+            <div class="story-slide active">
+                <div class="story-content">
+                    <h2>Hello guys!</h2>
+                    <p>For a moment, i thought that i'd give up!</p>
+                    <img src="./public/img/hihihi/1.jpg" alt="Story Image 1">
+                </div>
+            </div>
+            <div class="story-slide">
+                <div class="story-content">
+                    <h2>Don't give up!</h2>
+                    <p>But then I realized that every challenge is a chance to grow...</p>
+                    <img src="https://via.placeholder.com/400" alt="Story Image 2">
+                </div>
+            </div>
+            <div class="story-slide">
+                <div class="story-content">
+                    <h2>Go ahead, my buddy!</h2>
+                    <p>...and you're stronger than you think</p>
+                    <img src="https://via.placeholder.com/400" alt="Story Image 3">
+                </div>
+            </div>
+            <div class="story-slide">
+                <div class="story-content">
+                    <h2>Believe in yourself!</h2>
+                    <p>Keep pushing forward—you're doing great, even when it feels tough!</p>
+                    <img src="https://via.placeholder.com/400" alt="Story Image 4">
+                </div>
+            </div>
+            <div class="story-slide">
+                <div class="story-content">
+                    <h2>Will we meet again? <a class="nav-link" href="https://github.com/ImThienz">Don't forget me</a></h2>
+                    <p>Stay determined, you'll reach your goals!</p>
+                    <img src="https://via.placeholder.com/400" alt="Story Image 5">
+                </div>
+            </div>
+    
+            <!-- Nút điều hướng phải -->
+            <button class="nav-button right-btn" id="nextBtn">&#10095;</button>
+        </div>
+    </main>
+
+    <div include-html="view/footer.html" data-basepath="../"></div>
+
+    <script src="public/js/news-1.11.0.min.js"></script>
+    <script src="public/js/news-migrate-1.2.1.min.js"></script>
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script src="public/js/templatemo.js"></script>
+    <script src="public/js/custom.js"></script>  
+    
+    <script src="script.js"></script>
+</body>
+</html>
