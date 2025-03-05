@@ -146,7 +146,8 @@
             background-color: rgba(0, 0, 0, 0.8);
         }        
         
-        @media (max-width: 768px) {
+
+        @media (max-width: 768px) {  
             .story-content img {
                 width: 100%; 
                 height: auto; 
@@ -154,33 +155,49 @@
             }
 
             main {
+                min-height: 100vh; 
                 height: auto; 
                 overflow-y: auto; 
+                display: flex; 
+                justify-content: center;
+                align-items: center;
             }
 
             .story-container {
                 width: 95%;
-                height: auto;
+                min-height: 500px; 
+                height: auto; 
                 flex-direction: column; 
+                overflow: hidden; 
             }
-        
+
             .story-content h2 {
-                font-size: 1.5rem; /* Giảm kích thước tiêu đề */
+                font-size: 1.5rem;
             }
-        
+
             .story-content p {
-                font-size: 0.9rem; /* Giảm kích thước đoạn văn */
+                font-size: 0.9rem;
             }
-        
+
             .story-content img {
                 width: 100%; 
                 height: auto;
                 min-width: 0; 
             }
-        
+
             .nav-button {
-                font-size: 1.2rem;
-                padding: 10px;
+                font-size: 1.2rem; 
+                padding: 10px; 
+                z-index: 99; 
+            }
+
+            .story-slide {
+                display: none; 
+                position: relative; 
+            }
+
+            .story-slide.active {
+                display: block; 
             }
         }
         
