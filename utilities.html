@@ -17,86 +17,277 @@
     <link rel="stylesheet" href="./public/css/fontawesome.min.css">
 
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #1abc9c;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --border-color: #e9ecef;
+            --shadow-color: rgba(0,0,0,0.1);
         }
 
-        header {
-            background-color: #1e90ff;
-            color: #fff;
-            text-align: center;
-            padding: 15px;
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-bg);
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
         .main-about {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 15px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .content-about {
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .menu {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #1e90ff;
+            color: var(--primary-color);
+            font-size: 2.2em;
+            font-weight: 700;
+            margin: 30px 0;
             cursor: pointer;
-            margin-bottom: 15px;
-            transition: color 0.3s ease;
+            padding: 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background: var(--light-bg);
+            border-left: 5px solid var(--secondary-color);
+            box-shadow: 0 2px 10px var(--shadow-color);
+            position: relative;
         }
 
         .menu:hover {
-            color: #004080;
+            background: linear-gradient(135deg, var(--light-bg), white);
+            transform: translateX(10px);
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
+        #ipaApps {
+            display: none;
+            position: relative;
+            padding-left: 80px;
+        }
+
+        #ipaApps::before {
+            content: '';
+            position: absolute;
+            left: 40px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--accent-color);
+        }
+
+        #ipaApps.active {
+            display: block;
         }
 
         .submenu {
-            font-size: 1.2rem;
-            margin: 10px 0;
+            background: white;
+            padding: 15px 25px;
+            margin: 15px 0;
+            border-radius: 10px;
             cursor: pointer;
-            color: #333;
-            padding-left: 20px;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 2px 5px var(--shadow-color);
+            font-size: 1.1em;
+            color: var(--text-color);
+            margin-left: 80px;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: slideIn 0.5s ease forwards;
+            animation-delay: calc(var(--order) * 0.1s);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .submenu::before {
+            content: '';
+            position: absolute;
+            left: -60px;
+            top: 50%;
+            width: 60px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+        .submenu:first-child::before {
+            top: 50%;
+        }
+
+        .submenu:last-child::before {
+            top: 50%;
         }
 
         .submenu:hover {
-            color: #1e90ff;
+            transform: translateX(10px);
+            background: var(--light-bg);
+            box-shadow: 0 4px 10px var(--shadow-color);
         }
 
         .introduction {
-            background: #f7f7f7;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 10px;
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            margin-left: 140px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px var(--shadow-color);
             display: none;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.3s ease;
+        }
+
+        .introduction.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .introduction::before {
+            content: '';
+            position: absolute;
+            left: -60px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: var(--accent-color);
         }
 
         .introduction h4 {
-            color: #1e90ff;
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .introduction p {
+            color: var(--text-color);
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .introduction a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .introduction a:hover {
+            color: var(--accent-color);
+        }
+
+        .downloads-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .downloads-container a {
+            text-decoration: none;
+        }
+
+        .downloads-container button {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px var(--shadow-color);
+            min-width: 200px;
+        }
+
+        .downloads-container button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow-color);
         }
 
         .introduction img {
             max-width: 25px;
             height: auto;
             margin-right: 10px;
+            vertical-align: middle;
         }
 
-
         @media (max-width: 768px) {
+            main {
+                padding: 0 15px;
+            }
+
+            .main-about {
+                padding: 20px;
+            }
+
             .menu {
-                font-size: 1.5rem;
+                font-size: 1.8em;
+                padding: 15px;
+            }
+
+            #ipaApps {
+                padding-left: 40px;
+            }
+
+            #ipaApps::before {
+                left: 20px;
             }
 
             .submenu {
-                font-size: 1rem;
+                margin-left: 40px;
+            }
+
+            .submenu::before {
+                left: -30px;
+                width: 30px;
+            }
+
+            .introduction {
+                margin-left: 80px;
+            }
+
+            .introduction::before {
+                left: -40px;
+            }
+
+            .introduction h4 {
+                font-size: 1.5em;
             }
 
             .downloads-container {
                 flex-direction: column;
-                align-items: stretch;
+            }
+
+            .downloads-container button {
+                width: 100%;
             }
         }
     </style>
@@ -176,7 +367,7 @@
                     <div id="intro3" class="introduction">
                         <h4>📁 Path to Wifi</h4>
                         <p>⚙:/var/preferences/SystemConfiguration/com.apple.wifi.plist<br>
-                            ✅ Mở tập tin com.apple.wifi.plist bấm biểu tượng “ i ” <img class="info" src="./public/img/info.png"> và thêm item mới: <br>
+                            ✅ Mở tập tin com.apple.wifi.plist bấm biểu tượng " i " <img class="info" src="./public/img/info.png"> và thêm item mới: <br>
                             <img class="username" src="./public/img/user.png">Tên: kWiFiShowKnownNetworks <br>
                             <img class="category" src="./public/img/category.png">Loại: Boolean   <br>
                             <img class="index" src="./public/img/index.png">Giá trị: Yes    <br>
@@ -195,12 +386,28 @@
     <script>
         function toggleSection(id) {
             const section = document.getElementById(id);
-            section.style.display = (section.style.display === 'block') ? 'none' : 'block';
+            section.classList.toggle('active');
+            if (section.classList.contains('active')) {
+                const submenus = section.getElementsByClassName('submenu');
+                Array.from(submenus).forEach((submenu, index) => {
+                    submenu.style.setProperty('--order', index + 1);
+                });
+            }
         }
 
         function toggleIntroduction(id) {
             const intro = document.getElementById(id);
-            intro.style.display = (intro.style.display === 'block') ? 'none' : 'block';
+            if (intro.style.display === 'none' || intro.style.display === '') {
+                intro.style.display = 'block';
+                setTimeout(() => {
+                    intro.classList.add('active');
+                }, 10);
+            } else {
+                intro.classList.remove('active');
+                setTimeout(() => {
+                    intro.style.display = 'none';
+                }, 300);
+            }
         }
     </script>
 

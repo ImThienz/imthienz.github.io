@@ -16,25 +16,30 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="./public/css/fontawesome.min.css">
 
-
     <script>
+        console.log("Script starting...");
         function includeHTML() {
-            var z, i, elmnt, file, xhttp, basepath;
+            console.log("includeHTML function started");
+            var z, i, elmnt, file, xhttp;
             z = document.getElementsByTagName("*");
+            console.log("Found " + z.length + " elements");
             for (i = 0; i < z.length; i++) {
                 elmnt = z[i];
                 file = elmnt.getAttribute("include-html");
-                basepath = elmnt.getAttribute("data-basepath");
                 if (file) {
-                    if (basepath) {
-                        file = basepath + file;
-                    }
-
+                    console.log("Found include-html attribute with file: " + file);
                     xhttp = new XMLHttpRequest();
                     xhttp.onreadystatechange = function() {
                         if (this.readyState == 4) {
-                            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-                            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                            console.log("Request completed with status: " + this.status);
+                            if (this.status == 200) {
+                                elmnt.innerHTML = this.responseText;
+                                console.log("Successfully loaded: " + file);
+                            }
+                            if (this.status == 404) {
+                                elmnt.innerHTML = "Page not found.";
+                                console.log("File not found: " + file);
+                            }
                             elmnt.removeAttribute("include-html");
                             includeHTML();
                         }
@@ -45,7 +50,311 @@
                 }
             }
         }
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM loaded, calling includeHTML");
+            includeHTML();
+        });
     </script>
+
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #1abc9c;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --border-color: #e9ecef;
+            --shadow-color: rgba(0,0,0,0.1);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .about1, .about {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .heading h1 {
+            color: var(--primary-color);
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .heading h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .heading p {
+            color: var(--text-color);
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .heading button {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+
+        .heading button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
+        .menu {
+            color: var(--primary-color);
+            font-size: 2.2em;
+            font-weight: 700;
+            margin: 30px 0;
+            cursor: pointer;
+            padding: 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background: var(--light-bg);
+            border-left: 5px solid var(--secondary-color);
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+
+        .menu:hover {
+            background: linear-gradient(135deg, var(--light-bg), white);
+            transform: translateX(10px);
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
+        #ipaApps, #injectFiles {
+            position: relative;
+            padding-left: 60px;
+        }
+
+        #ipaApps::before, #injectFiles::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--accent-color);
+        }
+
+        .submenu {
+            background: white;
+            padding: 15px 25px;
+            margin: 15px 0;
+            margin-left: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 2px 5px var(--shadow-color);
+            font-size: 1.1em;
+            color: var(--text-color);
+            position: relative;
+            display: block;
+        }
+
+        .submenu::before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            width: 40px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+        .submenu:hover {
+            transform: translateX(10px);
+            background: var(--light-bg);
+            box-shadow: 0 4px 10px var(--shadow-color);
+        }
+
+        .introduction {
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            margin-left: 60px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            display: none;
+            position: relative;
+        }
+
+        .introduction::before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--accent-color);
+        }
+
+        .introduction h4 {
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .introduction p {
+            color: var(--text-color);
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .introduction button {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px var(--shadow-color);
+        }
+
+        .introduction button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px var(--shadow-color);
+        }
+
+        .downloads-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .downloads-container .downloads {
+            text-decoration: none;
+        }
+
+        .downloads-container button {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px var(--shadow-color);
+        }
+
+        .downloads-container button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px var(--shadow-color);
+        }
+
+        .bnt-about {
+            display: block;
+            margin: 30px auto;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
+        .bnt-about:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px var(--shadow-color);
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 0 15px;
+            }
+
+            .about1, .about {
+                padding: 20px;
+            }
+
+            .heading h1 {
+                font-size: 2.2em;
+            }
+
+            .menu {
+                font-size: 1.8em;
+                padding: 15px;
+            }
+
+            #ipaApps, #injectFiles {
+                padding-left: 40px;
+            }
+
+            #ipaApps::before, #injectFiles::before {
+                left: 15px;
+            }
+
+            .submenu {
+                margin-left: 15px;
+                padding: 12px 20px;
+            }
+
+            .submenu::before {
+                left: -30px;
+                width: 30px;
+            }
+
+            .introduction {
+                margin-left: 45px;
+                padding: 20px;
+            }
+
+            .introduction::before {
+                left: -30px;
+            }
+
+            .introduction h4 {
+                font-size: 1.5em;
+            }
+
+            .downloads-container {
+                flex-direction: column;
+            }
+
+            .downloads-container button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body onload="includeHTML()">
     <div include-html="view/header.html" data-basepath="../"></div>
@@ -238,7 +547,7 @@
                     <h1 class="menu" onclick="toggleSection('injectFiles')">Inject Files:</h1>
                     <div id="injectFiles">
 
-                        <div class="submenu" onclick="toggleIntroduction('introInject10')">Social Network: Fb/Mess/Ig/Tiktok/Yt/Locket/Spotify/... (Update: 23/08/2024)</div>
+                        <div class="submenu" onclick="toggleIntroduction('introInject10')">Social Network: Fb/Mess/Ig/Tiktok/Yt/Locket/Spotify/... (Update: 26/03/2025)</div>
                         <div id="introInject10" class="introduction">
                             ========================================    <br>
                             ========================================    <br><br>
@@ -260,6 +569,33 @@
                                 ✅ Chặn đối phương phát hiện đã xem tin nhắn. (Công tắt bật tắt chức năng ở phía trên gần thanh trạng thái)    <br>
                                 <a href="./Inject into TrollFools's Apps/Messed.dylib" download><button>Download Now</button></a> <br><br>
                             </p>
+                            ========================================    <br>
+                            ========================================    <br><br>
+
+                            <h4>Locket Gold (Update: 14/03/2025)</h4>
+                            <p>⚙ Locket Gold - Gói tiện ích cho Locket Widget 🆕    <br>
+                                ✅ Nâng cấp Gold miễn phí.     <br>
+                                Nếu không kích hoạt được Gold   <br>
+                                1. Dùng <a href="#" onclick="scrollToAppsManager(); return false;">Appsmanager</a> xoá sạch dữ liệu ứng dụng Locket    <br>
+                                2. Mở Locket đăng nhập lại và kiểm tra  <br>
+                                ------------------------------------------------------------------------------  <br>
+                                ✅ Để upload video 10s, cần dán (thay thế) file RemoteConfig.sqlite3 vào path sau:  <br>
+                                ⚙:/var/mobile/Containers/Data/Application/Locket/Library/Application Support/Google/RemoteConfig.sqlite3                   
+                            </p>
+                            <div class="downloads-container">
+                                <a href="./Inject into TrollFools's Apps/Locket-Gold.dylib" download><button>Download Now</button></a>
+                                <a href="./Inject into TrollFools's Apps/RemoteConfig.sqlite3" download><button>Kéo dài video 10s</button></a>
+                            </div>  
+                            <p>
+                                ------------------------------------------------------------------------------  <br>
+                                Nếu xảy ra lỗi cài đặt .ipa Locket Gold, bạn có thể <a href="./up_locket_gold.html">cài đặt bằng cách khác</a>
+                                <!--
+                                ✅ Hoặc có thể đăng tải ảnh/video trực tiếp <a href="https://locket-uploader.thuthuatjb.com">tại đây</a> (yêu cầu kích thước ảnh nhỏ hơn 5Mb ; video nhỏ hơn 12Mb) <br>
+                                
+                                ✅ <a href="https://www.video2edit.com/vi/compress-video">Nén kích thước video tại đây</a> 
+                                --><br><br>
+                            </p>  
+
 
                             ========================================    <br>
                             ========================================    <br><br>
@@ -286,34 +622,6 @@
 
                             ========================================    <br>
                             ========================================    <br><br>
-
-                            <h4>Locket Gold (Update: 23/08/2024)</h4>
-                            <p>⚙ Locket Gold - Gói tiện ích cho Locket Widget 🆕    <br>
-                                ✅ Nâng cấp Gold miễn phí.     <br>
-                                Nếu không kích hoạt được Gold   <br>
-                                1. Dùng Appsmanager xoá sạch dữ liệu ứng dụng Locket    <br>
-                                2. Mở Locket đăng nhập lại và kiểm tra  <br>
-                                ------------------------------------------------------------------------------  <br>
-                                ✅ Để upload video 10s, cần dán (thay thế) file RemoteConfig.sqlite3 vào path sau:  <br>
-                                ⚙:/var/mobile/Containers/Data/Application/Locket/Library/Application Support/Google/RemoteConfig.sqlite3                   
-                            </p>
-                            <div class="downloads-container">
-                                <a href="./Inject into TrollFools's Apps/Locket_Gold.zip" download><button>Download Now</button></a>
-                                <a href="./Inject into TrollFools's Apps/RemoteConfig.sqlite3" download><button>Kéo dài video 10s</button></a>
-                            </div>  
-                            <p>
-                                ------------------------------------------------------------------------------  <br>
-                                Nếu xảy ra lỗi cài đặt .ipa Locket Gold, bạn có thể <a href="./up_locket_gold.html">cài đặt bằng cách khác</a>
-                                <!--
-                                ✅ Hoặc có thể đăng tải ảnh/video trực tiếp <a href="https://locket-uploader.thuthuatjb.com">tại đây</a> (yêu cầu kích thước ảnh nhỏ hơn 5Mb ; video nhỏ hơn 12Mb) <br>
-                                
-                                ✅ <a href="https://www.video2edit.com/vi/compress-video">Nén kích thước video tại đây</a> <br><br>
-                                -->
-                            </p>  
-
-
-                            ========================================    <br>
-                            ========================================    <br><br>
                             <h4>Youtube Plus ++</h4>
                             <p>⚙ Gói đa chức năng tiêm cho Youtube 🆕 <br>
                                 ⚠️ Đẩy các gói cũ đã tiêm ra, rồi tiêm lại nhé ! Tiêm luôn tệp zip mới này nha, giải nén ra rồi mới tiêm là ăn ban <br>
@@ -334,12 +642,12 @@
                             ========================================    <br>
                             ========================================    <br><br>
                         
-                            <h4>Eevee Spotify</h4>
-                            <p>⚙ Eevee Spotify 4.5 - Gói tiện ích cho Spotify 🆕 <br>
+                            <h4>Eevee Spotify (Update: 26/03/2025)</h4>
+                            <p>⚙ Eevee Spotify 5.9 - Gói tiện ích cho Spotify 🆕 <br>
                                 ✅ Cho phép sử dụng một số tính năng của Premium    <br>
                                 Nếu không kích hoạt được tính năng Premium hãy thử mở Bảng điều khiển Eevee Spotify : Biểu tượng trang cá nhân góc trái ➠ Cài đặt và quyền riêng tư ➠ EeveeSpotify ➠ Patching ➠ Patching Method ➠ Dynamic ➠ Quay ra đánh tích vào mục Overwrite Configuration
                             </p>
-                            <a href="./Inject into TrollFools's Apps/EeveeSpotify.zip" download><button>Download Now</button></a><br>
+                            <a href="./Inject into TrollFools's Apps/Spotify-Eevee-5.9.zip" download><button>Download Now</button></a><br>
                             
                             <br>
                             ========================================    <br>
@@ -502,6 +810,86 @@
         </section>
     
         <script>
+            // Function to format current date
+            function getCurrentDate() {
+                const today = new Date();
+                const day = today.getDate().toString().padStart(2, '0');
+                const month = (today.getMonth() + 1).toString().padStart(2, '0');
+                const year = today.getFullYear();
+                return `${day}/${month}/${year}`;
+            }
+
+            // Function to update date in h4 tags and their parent sections
+            function updateSectionDates() {
+                const sections = document.querySelectorAll('.introduction');
+                sections.forEach(section => {
+                    const h4Tag = section.querySelector('h4');
+                    if (h4Tag) {
+                        const text = h4Tag.textContent;
+                        if (text.includes('(Upload:') || text.includes('(Update:')) {
+                            const newDate = getCurrentDate();
+                            const newText = text.replace(/\(Upload:.*?\)|\(Update:.*?\)/, `(Update: ${newDate})`);
+                            h4Tag.textContent = newText;
+                        }
+                    }
+                });
+            }
+
+            // Create a MutationObserver to watch for changes
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.type === 'childList' && mutation.target.tagName === 'H4') {
+                        updateSectionDates();
+                    }
+                });
+            });
+
+            // Start observing all h4 tags
+            document.querySelectorAll('h4').forEach(h4 => {
+                observer.observe(h4, { childList: true, characterData: true, subtree: true });
+            });
+
+            // Initial update
+            updateSectionDates();
+
+            // Handle scroll from other pages
+            window.onload = function() {
+                if (localStorage.getItem('scrollToTrollFools') === 'true') {
+                    localStorage.removeItem('scrollToTrollFools');
+                    const targetId = localStorage.getItem('scrollTarget');
+                    if (targetId) {
+                        localStorage.removeItem('scrollTarget');
+                        setTimeout(function() {
+                            const element = document.getElementById(targetId);
+                            if (element) {
+                                // First ensure the parent section is visible
+                                const parentSection = document.getElementById('injectFiles');
+                                if (parentSection) {
+                                    parentSection.style.display = "block";
+                                }
+                                // Then ensure the target section is visible
+                                element.style.display = "block";
+                                // Finally scroll to it
+                                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                        }, 1000);
+                    }
+                }
+            }
+
+            function scrollToAppsManager() {
+                const element = document.getElementById('intro3');
+                const parentSection = document.getElementById('ipaApps');
+                if (element && parentSection) {
+                    // First ensure the parent section is visible
+                    parentSection.style.display = "block";
+                    // Then ensure the AppsManager section is visible
+                    element.style.display = "block";
+                    // Finally scroll to it
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+
             function toggleSection(id) {
                 var section = document.getElementById(id);
                 var submenus = section.getElementsByClassName("submenu");
@@ -531,10 +919,12 @@
     </main>
     
     <div include-html="view/footer.html" data-basepath="../"></div>
+    
     <script src="public/js/news-1.11.0.min.js"></script>
     <script src="public/js/news-migrate-1.2.1.min.js"></script>
     <script src="public/js/bootstrap.bundle.min.js"></script>
     <script src="public/js/templatemo.js"></script>
     <script src="public/js/custom.js"></script>    
 </body>
+</html>
 

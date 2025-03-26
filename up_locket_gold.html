@@ -34,6 +34,34 @@
                 }
             }
         }
+
+        // Function to handle TrollFools link click
+        function scrollToTrollFools() {
+            // Store the scroll position and target section in localStorage
+            localStorage.setItem('scrollToTrollFools', 'true');
+            localStorage.setItem('scrollTarget', 'introInject10');
+            // Redirect to about.html
+            window.location.href = '../about.html';
+        }
+
+        // Check if we need to scroll when page loads
+        window.onload = function() {
+            if (localStorage.getItem('scrollToTrollFools') === 'true') {
+                // Clear the flag
+                localStorage.removeItem('scrollToTrollFools');
+                // Wait for the page to fully load
+                setTimeout(function() {
+                    const targetId = localStorage.getItem('scrollTarget');
+                    if (targetId) {
+                        localStorage.removeItem('scrollTarget');
+                        const element = document.getElementById(targetId);
+                        if (element) {
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
+                }, 1000);
+            }
+        }
     </script>
 </head>
 <body onload="includeHTML()">
@@ -69,6 +97,27 @@
 
             <br><br>Egern App nó khá giống với <a href="https://apps.apple.com/vn/app/shadowrocket/id932747118?l=vi">Shadowrocket</a>, ngoài việc add Proxy và vô vàn tính năng liên quan tới VPN và mạng thì Egern app cũng có thể dùng để crack nhiều app khác như: Picsart, Alight motion, Kinemaster,…
 
+            <br><br>
+            <div class="highlight-box">
+                ⮑ Bạn đã có <a href="https://ios.cfw.guide/installing-trollstore/" style="text-decoration: none;">TrollStore</a> và muốn thử cách khác với <a href="#" onclick="scrollToTrollFools(); return false;" style="text-decoration: none; font-style: italic;">TrollFools</a>?
+            </div>
+
+            <style>
+                .highlight-box {
+                    background-color: #f8f9fa;
+                    border: 2px solid #007bff;
+                    border-radius: 8px;
+                    padding: 15px 20px;
+                    margin: 20px 0;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                    display: inline-block;
+                    transition: all 0.3s ease;
+                }
+                .highlight-box:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+                }
+            </style>
         </p>
     </main>
     <div include-html="view/footer.html" data-basepath="../"></div>

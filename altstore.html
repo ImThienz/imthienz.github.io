@@ -5,6 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="apple-touch-icon" href="public/img/logotron.png">
     <link rel="shortcut icon" type="public/image/x-icon" href="./public/img/logotron.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        h5 {
+            color: #2c3e50;
+            font-size: 1.4em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        b {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.02);
+        }
+
+        .note-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .note-box b {
+            color: #3498db;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h3 {
+                font-size: 1.5em;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+    </style>
 
     <script>
         function includeHTML() {
@@ -40,7 +165,13 @@
     <div include-html="view/header.html" data-basepath="../"></div>
     <main>
         <h1>Hướng dẫn cài đặt & sử dụng AltStore (Trên Windows)</h1>
-        <p><a href="https://altstore.io/">AltStore</a> - ứng dụng giúp bạn sideload file .ipa trên iphone (chỉ có hiệu lực trong 7 ngày, sau đó bạn cần PC cài đặt lại altstore để thực hiện việc signload .ipa một lần nữa - Đồng nghĩa với việc data trên .ipa sẽ bị mất đi). Khuyển nghị nên <a href="./sidestore.html">cài đặt SideStore sẽ hiệu quả hơn vì không mất dữ liệu file .ipa</a></p>
+        <div class="note-box">
+            <p><a href="https://altstore.io/">AltStore</a> - ứng dụng giúp bạn sideload file .ipa trên iphone (chỉ có hiệu lực trong 7 ngày,
+                sau đó bạn cần PC cài đặt lại altstore để thực hiện việc signload .ipa một lần nữa - Đồng nghĩa với việc data trên .ipa sẽ bị mất đi). 
+                Khuyển nghị nên <a href="./sidestore.html" style="text-decoration: none; font-style: italic;">cài đặt SideStore</a> sẽ hiệu quả hơn vì không mất dữ liệu file .ipa
+           </p>
+        </div>
+
         <h3>Trước khi cài đặt AltStore:        </h3>
         <ol>
             <li>Tải xuống và cài đặt phiên bản <b>iTunes</b> và <b>iCloud</b> mới nhất trực tiếp từ Apple <b>(không phải Microsoft Store)</b>.            </li>
@@ -57,17 +188,17 @@
             <li>Kết nối thiết bị iOS của bạn với máy tính và đảm bảo thiết bị đã được mở khóa. Nếu cần, hãy tin tưởng thiết bị của bạn với máy tính.</li>
             <li>Mở iTunes, sau đó bật "Đồng bộ hóa Wi-Fi" trên thiết bị của bạn.</li>
             <img src="./public/img/altstore/itunes-sync wifi.webp" alt="" style="width:350px; height:300px">
-            <li>Nhấp vào biểu tượng AltServer ở thanh tác vụ góc dưới bên phải. Sau đó, đi đến “Cài đặt AltStore” và chọn thiết bị iOS của bạn.</li>
+            <li>Nhấp vào biểu tượng AltServer ở thanh tác vụ góc dưới bên phải. Sau đó, đi đến "Cài đặt AltStore" và chọn thiết bị iOS của bạn.</li>
             <li>Nhập địa chỉ email và mật khẩu Apple ID của bạn. Điều này sẽ cho phép AltServer xác thực với Apple và cấu hình tài khoản của bạn để hỗ trợ tải ứng dụng.</li>
-            <ul>
-                <li><b>Notes:</b> ID Apple và mật khẩu của bạn chỉ được gửi cho Apple — không phải chúng tôi hay bất kỳ ai khác.                </li>
-            </ul>
+            <div class="note-box">
+                <b>Notes:</b> ID Apple và mật khẩu của bạn chỉ được gửi cho Apple — không phải chúng tôi hay bất kỳ ai khác.
+            </div>
             <li>Đợi vài giây, sau đó thông báo <b>AltServer</b> sẽ xuất hiện cho biết AltStore đã được cài đặt thành công vào thiết bị của bạn.</li>
-            <li>Trên thiết bị iOS của bạn, hãy vào Cài đặt -> Chung -> Quản lý hồ sơ & thiết bị. Chạm vào “Tin cậy [ID Apple của bạn]”, sau đó chạm vào “Tin cậy” một lần nữa để xác nhận.</li>
-            <img src="./public/img/altstore/set up configuration.jpg" alt="set up configuration" style="width:350px; height:300px">
-            <ul>
-                <li><b>Notes:</b> "Quản lý hồ sơ và thiết bị" có thể được hiểu theo nhiều cách khác nhau tùy thuộc vào phiên bản của bạn, nhưng bạn luôn có thể tìm thấy mục này ở gần cuối mục Cài đặt -> Chung.                </li>
-            </ul>
+            <li>Trên thiết bị iOS của bạn, hãy vào Cài đặt -> Chung -> Quản lý hồ sơ & thiết bị. Chạm vào "Tin cậy [ID Apple của bạn]", sau đó chạm vào "Tin cậy" một lần nữa để xác nhận.</li>
+            <img src="./public/img/altstore/set up configuration.jpg" alt="Set up configuration" style="width:350px; height:300px">
+            <div class="note-box">
+                <b>Notes:</b> "Quản lý hồ sơ và thiết bị" có thể được hiểu theo nhiều cách khác nhau tùy thuộc vào phiên bản của bạn, nhưng bạn luôn có thể tìm thấy mục này ở gần cuối mục Cài đặt -> Chung.
+            </div>
             <br><h5>Bật Chế độ nhà phát triển (iOS 16 trở lên)            </h5>
             <li>Để sử dụng AltStore trên iOS 16 trở lên, bạn cần bật Chế độ nhà phát triển trên thiết bị của mình bằng cách vào Cài đặt -> Quyền riêng tư và Bảo mật -> Chế độ nhà phát triển.</li>
             <img src="./public/img/altstore/developer mode.png" alt="Developer Mode" style="width:350px; height:300px">
