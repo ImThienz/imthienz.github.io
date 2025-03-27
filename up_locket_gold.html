@@ -1,10 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hướng dẫn chi tiết cách sử dụng Egern Up Locket Gold - Được chia sẻ bởi ImThienz">
+    <meta name="keywords" content="Egern, Locket Gold, iOS, TrollStore, jailbreak, ImThienz">
+    <meta name="author" content="ImThienz">
+    
+    <title>Hướng Dẫn Up Locket Gold | ImThienz</title>
+    
     <link rel="apple-touch-icon" href="public/img/logotron.png">
-    <link rel="shortcut icon" type="public/image/x-icon" href="./public/img/logotron.png">
+    <link rel="shortcut icon" type="image/x-icon" href="./public/img/logotron.png">
+    <link rel="stylesheet" href="public/css/main.css">
+
+    <style>
+        .tutorial-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .tutorial-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .tutorial-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .step-image {
+            width: 350px;
+            height: 500px;
+            margin: 15px;
+            border: 3px solid #FFD700;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .step-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            margin-top: 30px;
+        }
+        
+        .highlight-box {
+            background-color: #f8f9fa;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .highlight-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .tutorial-link {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .tutorial-link:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .tutorial-container {
+                padding: 10px;
+            }
+            
+            .step-image {
+                width: 100%;
+                height: auto;
+                margin: 10px 0;
+            }
+            
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .copy-link {
+            position: relative;
+            cursor: pointer;
+            padding: 5px 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-link:hover {
+            background: #e9ecef;
+        }
+        
+        .copy-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .copy-link:hover .copy-tooltip {
+            opacity: 1;
+            visibility: visible;
+            bottom: 120%;
+        }
+        
+        .copy-success {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .copy-success.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
 
     <script>
         function includeHTML() {
@@ -62,64 +208,84 @@
                 }, 1000);
             }
         }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                showCopySuccess();
+            }).catch(function(err) {
+                console.error('Không thể copy: ', err);
+            });
+        }
+        
+        function showCopySuccess() {
+            const success = document.getElementById('copySuccess');
+            success.classList.add('show');
+            setTimeout(() => {
+                success.classList.remove('show');
+            }, 2000);
+        }
     </script>
 </head>
 <body onload="includeHTML()">
     <div include-html="view/header.html" data-basepath="../"></div>
-    <main>
-        <h1>Locket Gold</h1>
-        <p>
-            <h2>Hướng Dẫn Dùng Egern Up Locket Gold (by <a href="https://gauapple.com/">Gấu Apple</a>)</h2>
-            <img width="100%" height="500" src="./public/img/locket-gold/dung-egern-up-locket-gold.png">
+    
+    <main class="tutorial-container">
+        <div class="tutorial-header">
+            <h1>Hướng Dẫn Up Locket Gold</h1>
+            <p class="text-muted">Được chia sẻ bởi <a href="https://gauapple.com/" class="tutorial-link">Gấu Apple</a></p>
+        </div>
 
-            <br>Dùng <b>Egern up locket gold</b>, đây là cách cũng mới ra cách đây 1-2 tuần gì đấy mình không nhớ nữa của bạn <b><i>Lea_qun</i></b> được share tut ầm ầm trên các nhóm, thì hôm nay mình mới có thời gian để Re-up tut về.    <br><br>
+        <div class="tutorial-content">
+            <img class="img-fluid rounded shadow mb-4" width="100%" src="./public/img/locket-gold/dung-egern-up-locket-gold.png" alt="Hướng dẫn dùng Egern Up Locket Gold">
 
-            <h2>Cách Dùng Egern Up Locket Gold</h2>
-            <a href="https://egernapp.com/">Egern App</a>, đầu tiên muốn dùng <b>egern up locket gold</b> thì bạn phải có app này trước nhé, sau đó cũng tự tải Locket về máy và đăng nhập tài khoản Locket vào, nếu có sẵn rồi thì càng tốt chỉ cần <a href="./iPA TrollStore/Egern-v1.22.0.ipa"><b>tải .ipa Egern tại đây</b></a> về và làm theo các bước sau đây:<br>
-            
-            <br>Vào <b>Egern</b> và dán <b>URL</b> sau <b>(bước 2)</b>: <i>https://aqvpn.me/scripts/locket.yaml</i>
-            <br><i>Các bước thực hiện lần lượt:</i><br>
-            <img width="350" height="500" style="margin: 5px 5px 5px 5px; border: 3px solid #FFD700" src="./public/img/locket-gold/egern_locketgold_step1.jpg">
-            <img width="350" height="500" style="margin: 5px 5px 5px 5px; border: 3px solid #FFD700" src="./public/img/locket-gold/egern_locketgold_step3.jpg">
-            <img width="350" height="500" style="margin: 5px 5px 5px 5px; border: 3px solid #FFD700" src="./public/img/locket-gold/egern_locketgold_step2.jpg">
-            <img width="350" height="500" style="margin: 5px 5px 5px 5px; border: 3px solid #FFD700" src="./public/img/locket-gold/egern_locketgold_step4.jpg">
-            <img width="350" height="500" style="margin: 5px 5px 5px 5px; border: 3px solid #FFD700" src="./public/img/locket-gold/egern_locketgold_step5.jpg">
-            <img width="350" height="500" style="margin: 5px 5px 5px 5px; border: 3px solid #FFD700" src="./public/img/locket-gold/egern_locketgold_step6.jpg">
-            <img width="350" height="500" style="margin: 5px 5px 5px 5px; border: 3px solid #FFD700" src="./public/img/locket-gold/egern_locketgold_step7.jpg">
-            <img width="350" height="500" style="margin: 5px 5px 5px 5px; border: 3px solid #FFD700" src="./public/img/locket-gold/egern_locketgold_step8.jpg">
-            <img width="350" height="500" style="margin: 5px 5px 5px 5px; border: 3px solid #FFD700" src="./public/img/locket-gold/egern_locketgold_step9.jpg">
-            <img width="350" height="500" style="margin: 5px 5px 5px 5px; border: 3px solid #FFD700" src="./public/img/locket-gold/egern_locketgold_step10.jpg">
-            <img width="350" height="500" style="margin: 5px 5px 5px 5px; border: 3px solid #FFD700" src="./public/img/locket-gold/egern_locketgold_step11.jpg">
-            <img width="350" height="500" style="margin: 5px 5px 5px 5px; border: 3px solid #FFD700" src="./public/img/locket-gold/egern_locketgold_step12.jpg">
-            <br>
-            
-            <br>Sau khi đã up locket gold thành công thì bạn không cần phải bật egern nữa :v
-
-            <br><br>Egern App nó khá giống với <a href="https://apps.apple.com/vn/app/shadowrocket/id932747118?l=vi">Shadowrocket</a>, ngoài việc add Proxy và vô vàn tính năng liên quan tới VPN và mạng thì Egern app cũng có thể dùng để crack nhiều app khác như: Picsart, Alight motion, Kinemaster,…
-
-            <br><br>
-            <div class="highlight-box">
-                ⮑ Bạn đã có <a href="https://ios.cfw.guide/installing-trollstore/" style="text-decoration: none;">TrollStore</a> và muốn thử cách khác với <a href="#" onclick="scrollToTrollFools(); return false;" style="text-decoration: none; font-style: italic;">TrollFools</a>?
+            <div class="mb-4">
+                <h2>Giới Thiệu</h2>
+                <p>Dùng <strong>Egern up locket gold</strong> là phương pháp mới được chia sẻ bởi <em>Lea_qun</em>. Hôm nay chúng tôi sẽ hướng dẫn chi tiết cách thực hiện.</p>
             </div>
 
-            <style>
-                .highlight-box {
-                    background-color: #f8f9fa;
-                    border: 2px solid #007bff;
-                    border-radius: 8px;
-                    padding: 15px 20px;
-                    margin: 20px 0;
-                    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-                    display: inline-block;
-                    transition: all 0.3s ease;
-                }
-                .highlight-box:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-                }
-            </style>
-        </p>
+            <div class="mb-4">
+                <h2>Yêu Cầu</h2>
+                <ul>
+                    <li>Cài đặt <a href="https://egernapp.com/" class="tutorial-link">Egern App</a></li>
+                    <li>Tải và cài đặt Locket</li>
+                    <li>Tải <a href="./iPA TrollStore/Egern-v1.22.0.ipa" class="tutorial-link">Egern IPA</a></li>
+                </ul>
+            </div>
+
+            <div class="mb-4">
+                <h2>Các Bước Thực Hiện</h2>
+                <p>URL cần sử dụng: <span class="copy-link" onclick="copyToClipboard('https://aqvpn.me/scripts/locket.yaml')" onmouseover="copyToClipboard('https://aqvpn.me/scripts/locket.yaml')"><code>https://aqvpn.me/scripts/locket.yaml</code><span class="copy-tooltip">Click để copy</span></span></p>
+                
+                <div class="copy-success" id="copySuccess">Đã copy vào clipboard!</div>
+                
+                <div class="image-grid">
+                    <img class="step-image" src="./public/img/locket-gold/egern_locketgold_step1.jpg" alt="Bước 1">
+                    <img class="step-image" src="./public/img/locket-gold/egern_locketgold_step3.jpg" alt="Bước 2">
+                    <img class="step-image" src="./public/img/locket-gold/egern_locketgold_step2.jpg" alt="Bước 3">
+                    <img class="step-image" src="./public/img/locket-gold/egern_locketgold_step4.jpg" alt="Bước 4">
+                    <img class="step-image" src="./public/img/locket-gold/egern_locketgold_step5.jpg" alt="Bước 5">
+                    <img class="step-image" src="./public/img/locket-gold/egern_locketgold_step6.jpg" alt="Bước 6">
+                    <img class="step-image" src="./public/img/locket-gold/egern_locketgold_step7.jpg" alt="Bước 7">
+                    <img class="step-image" src="./public/img/locket-gold/egern_locketgold_step8.jpg" alt="Bước 8">
+                    <img class="step-image" src="./public/img/locket-gold/egern_locketgold_step9.jpg" alt="Bước 9">
+                    <img class="step-image" src="./public/img/locket-gold/egern_locketgold_step10.jpg" alt="Bước 10">
+                    <img class="step-image" src="./public/img/locket-gold/egern_locketgold_step11.jpg" alt="Bước 11">
+                    <img class="step-image" src="./public/img/locket-gold/egern_locketgold_step12.jpg" alt="Bước 12">
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h2>Lưu Ý</h2>
+                <p>Sau khi up locket gold thành công, bạn không cần phải bật Egern nữa.</p>
+                <p>Egern App tương tự như <a href="https://apps.apple.com/vn/app/shadowrocket/id932747118?l=vi" class="tutorial-link">Shadowrocket</a>, ngoài tính năng Proxy và VPN, còn có thể crack nhiều ứng dụng khác như Picsart, Alight Motion, Kinemaster,...</p>
+            </div>
+
+            <div class="highlight-box">
+                ⮑ Bạn đã có <a href="https://ios.cfw.guide/installing-trollstore/" class="tutorial-link">TrollStore</a> và muốn thử cách khác với <a href="#" onclick="scrollToTrollFools(); return false;" class="tutorial-link">TrollFools</a>?
+            </div>
+        </div>
     </main>
+
     <div include-html="view/footer.html" data-basepath="../"></div>
     
     <script src="public/js/news-1.11.0.min.js"></script>

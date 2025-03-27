@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Story Style Layout</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Never Give Up | ImThienz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <script>
         function includeHTML() {
@@ -18,7 +18,6 @@
                     if (basepath) {
                         file = basepath + file;
                     }
-
                     xhttp = new XMLHttpRequest();
                     xhttp.onreadystatechange = function() {
                         if (this.readyState == 4) {
@@ -43,165 +42,209 @@
             box-sizing: border-box;
         }
         
-        main {
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
             font-family: 'Poppins', sans-serif;
-            background-color: #f7f7f7;
+        }
+        
+        main {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+            padding: 20px;
         }
         
         .story-container {
-            width: 80%;
-            max-width: 900px;
-            height: 500px;
+            width: 90%;
+            max-width: 1000px;
+            height: 600px;
             position: relative;
-            background: #fff;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .story-content {
-            padding: 20px;
+            padding: 30px;
             text-align: center;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s ease;
         }
         
         .story-content h2 {
-            font-size: 2rem;
-            color: #333;
-            margin-bottom: 10px;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeInDown 0.8s ease;
         }
         
         .story-content p {
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease;
         }
         
         .story-content img {
-            margin-top: 15px;
-            width: 55%;
+            width: 60%;
             min-width: 400px;
             min-height: 300px;
-            border-radius: 10px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            animation: fadeIn 1s ease;
+        }
+
+        .story-content img:hover {
+            transform: scale(1.02);
         }
         
         .story-slide {
             display: none;
             position: absolute;
             top: 0;
-            left: 100%; /* Để các slide ẩn ra khỏi màn hình */
+            left: 100%;
             width: 100%;
             height: 100%;
-            transition: all 0.5s ease-in-out;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
         }
         
         .story-slide.active {
             left: 0;
-            display: block; /* Hiển thị slide đang active */
-        }
-        
-        .story-container .nav-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 2rem;
-            border-radius: 50%;
-            transition: background-color 0.3s ease;
+            display: block;
+            opacity: 1;
         }
         
         .nav-button {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
+            background: rgba(255, 255, 255, 0.9);
+            color: #2c3e50;
             border: none;
-            padding: 15px;
+            width: 50px;
+            height: 50px;
             cursor: pointer;
             font-size: 1.5rem;
             border-radius: 50%;
-            z-index: 10; /* Đảm bảo nút luôn hiển thị trên cùng */
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .left-btn {
-            left: 10px;
+            left: 20px;
         }
         
         .right-btn {
-            right: 10px;
+            right: 20px;
         }
         
         .nav-button:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }        
-        
+            background: #2c3e50;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         @media (max-width: 768px) {  
             .story-content img {
-                width: 100%; 
-                height: auto; 
-                min-width: 0; 
+                width: 90%;
+                min-width: 0;
+                height: auto;
             }
 
             main {
-                min-height: 100vh; 
-                height: auto; 
-                overflow-y: auto; 
-                display: flex; 
-                justify-content: center;
-                align-items: center;
+                padding: 10px;
             }
 
             .story-container {
-                width: 95%;
-                min-height: 500px; 
-                height: auto; 
-                flex-direction: column; 
-                overflow: hidden; 
+                width: 100%;
+                height: auto;
+                min-height: 500px;
             }
 
             .story-content h2 {
-                font-size: 1.5rem;
+                font-size: 2rem;
             }
 
             .story-content p {
-                font-size: 0.9rem;
-            }
-
-            .story-content img {
-                width: 100%; 
-                height: auto;
-                min-width: 0; 
+                font-size: 1rem;
             }
 
             .nav-button {
-                font-size: 1.2rem; 
-                padding: 10px; 
-                z-index: 99; 
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
 
-            .story-slide {
-                display: none; 
-                position: relative; 
+            .left-btn {
+                left: 10px;
             }
 
-            .story-slide.active {
-                display: block; 
+            .right-btn {
+                right: 10px;
             }
         }
-        
-        
     </style>
 </head>
 <body onload="includeHTML()">
@@ -214,7 +257,7 @@
             <div class="story-slide active">
                 <div class="story-content">
                     <h2>Hello guys!</h2>
-                    <p>For a moment, i thought that i'd give up!</p>
+                    <p>For a moment, I thought that I'd give up!</p>
                     <img src="./public/img/hihihi/1.png" alt="Story Image 1">
                 </div>
             </div>
@@ -247,7 +290,6 @@
                 </div>
             </div>
     
-            <!-- Nút điều hướng phải -->
             <button class="nav-button right-btn" id="nextBtn">&#10095;</button>
         </div>
     </main>

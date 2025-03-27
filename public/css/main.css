@@ -3,6 +3,111 @@ body, h1, h2, h3, p {
   margin: 0;
   padding: 0;
 }
+
+/* Navigation menu styles */
+.navbar-nav .nav-item .nav-link {
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+  color: #40E0D0;
+  text-decoration: none;
+}
+
+/* Remove underline from all nav links */
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link:focus,
+.navbar-nav .nav-item .nav-link:active {
+  text-decoration: none;
+}
+
+/* Social Icons and Links Styling */
+.text-light[href*="github.com"],
+.text-light[href*="twitter.com"],
+.text-light[href*="x.com"],
+.text-light[href*="facebook.com"],
+.text-light[href*="mail.google.com"],
+.text-light[href*="paypal.me"],
+.footer-icons a,
+.footer-link-list a {
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+/* GitHub Icon */
+.text-light[href*="github.com"]:hover {
+  color: #6e5494 !important;
+  transform: translateY(-3px) rotate(8deg);
+}
+
+/* Twitter/X Icon */
+.text-light[href*="x.com"]:hover,
+.text-light[href*="twitter.com"]:hover,
+.footer-icons a[href*="x.com"]:hover,
+.footer-icons a[href*="twitter.com"]:hover {
+  color: #1DA1F2 !important;
+  transform: translateY(-3px) rotate(-8deg);
+}
+
+/* Facebook Icon */
+.text-light[href*="facebook.com"]:hover {
+  color: #4267B2 !important;
+  transform: translateY(-3px) rotate(8deg);
+}
+
+/* Email Icon */
+.text-light[href*="mail.google.com"]:hover,
+.footer-link-list a[href*="mail.google.com"]:hover {
+  color: #EA4335 !important;
+  transform: translateY(-3px) scale(1.1);
+}
+
+/* PayPal Icon */
+.text-light[href*="paypal.me"]:hover,
+.footer-link-list a[href*="paypal.me"]:hover {
+  color: #00457C !important;
+  transform: translateY(-3px) scale(1.1);
+}
+
+/* Footer Social Icons */
+.footer-icons .list-inline-item {
+  transition: all 0.3s ease;
+}
+
+.footer-icons .list-inline-item:hover {
+  transform: translateY(-5px);
+}
+
+.footer-icons .list-inline-item a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Footer Links */
+.footer-link-list a {
+  color: #fff !important;
+  transition: all 0.3s ease;
+}
+
+.footer-link-list a:hover {
+  color: #40E0D0 !important;
+  text-decoration: none;
+  transform: translateX(5px);
+}
+
+/* Email and PayPal links */
+.navbar-sm-brand.text-light {
+  transition: all 0.3s ease;
+}
+
+.navbar-sm-brand.text-light:hover {
+  color: #40E0D0 !important;
+  text-decoration: none;
+  transform: translateX(5px);
+}
+
 .h1 {
   font-family: 'Roboto', sans-serif;
   font-size: 48px !important;
@@ -90,8 +195,6 @@ h1.menu:hover {
   margin-top: 35px;
 }
 
-
-
 button {
   display: inline-block;
   background-color: #116A7B;
@@ -117,7 +220,6 @@ button:hover {
   flex-direction: row;
   gap: 13px;
 }
-
 
 @media screen and (max-width:768px) {
   .heading h1 {
@@ -169,4 +271,36 @@ button:hover {
   width: 30px;
   height: 5px;
   margin: 5px;
+}
+
+/* Search button styling */
+.btn-primary {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary .fa-search {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background-color: #40E0D0 !important;
+    border-color: #40E0D0 !important;
+    box-shadow: 0 4px 8px rgba(64, 224, 208, 0.3);
+}
+
+.btn-primary:hover .fa-search {
+    color: white !important;
+    animation: searchZoom 0.6s infinite alternate;
+}
+
+@keyframes searchZoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.3);
+    }
 }
