@@ -4,6 +4,7 @@
         <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
         <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
         <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="3"></li>
+        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="4"></li>
     </ol>
 
     <div class="carousel-inner">
@@ -88,6 +89,28 @@
                             <h1 class="h1 carousel-title" style="color: #ba30fe"><b>SideStore</b></h1>
                             <p class="carousel-text">
                                 <a href="https://sidestore.io/" class="tutorial-link">SideStore</a> is an alternative app store for seamless sideloading. No jailbreak needed, and no computer after the initial install, only a WiFi connection. <br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="container">
+                <div class="row p-5">
+                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                        <img class="img-fluid carousel-img" src="public/img/nugget.ico" alt="Nugget">
+                    </div>
+                    <div class="col-lg-6 mb-0 d-flex align-items-center">
+                        <div class="text-align-left">
+                            <h1 class="h1 carousel-title" style="color: #D2B48C"><b>Nugget</b></h1>
+                            <p class="carousel-text">
+                                Unlock your device's full potential! </br>
+                                Sparserestore works on all versions iOS 17.0-18.1.1. There is partial support for iOS 18.2 developer beta 3 and newer not using any exploits.</br>
+                                Mobilegestalt and AI Enabler tweaks are not supported on iOS 18.2+. It will never be supported, do not make issues asking for when it is supported.</br>
+                                <a href="https://github.com/leminlimez/Nugget/releases" class="nugget-link">More Details</a>
+
                             </p>
                         </div>
                     </div>
@@ -211,9 +234,22 @@
         animation: fadeInUp 0.8s ease-out, glowPulse 2s infinite;
     }
 
+    .carousel-item:nth-child(5).active .carousel-title {
+        animation: glowPulse 2s infinite;
+    }
+
     .carousel-img {
         transition: transform 0.5s ease;
         filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+    }
+
+    /* Add specific style for Nugget icon */
+    .carousel-item:nth-child(5) .carousel-img {
+        width: 300px;
+        height: 300px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
     }
 
     .carousel-img:hover {
@@ -254,12 +290,36 @@
         background: #ffffff; /* SideStore color */
         box-shadow: 0 0 0 2px #4a90e2; /* Add black border */
     }
+    .carousel-item:nth-child(5) .carousel-title::after {
+        background: #ffffff;
+        box-shadow: 0 0 0 2px #e1ba87; /* Change border color to almond */
+    }
 
     .carousel-text {
         font-size: 1.1rem;
         line-height: 1.8;
         color: #666;
         margin-bottom: 1.5rem;
+    }
+
+    /* Style for Nugget's More Details link */
+    .nugget-link {
+        color: #D2B48C;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 8px 16px;
+        border: 2px solid #D2B48C;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    .nugget-link:hover {
+        background-color: #D2B48C;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(210, 180, 140, 0.3);
     }
 
     .github-link, .tutorial-link {
@@ -293,6 +353,9 @@
     }
     .carousel-item:nth-child(4) .github-link::after {
         background-color: #4a90e2;
+    }
+    .carousel-item:nth-child(5) .github-link::after {
+        background-color: #000;
     }
 
     .github-link:hover::after, .tutorial-link:hover::after {
