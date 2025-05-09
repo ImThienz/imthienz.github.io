@@ -176,6 +176,29 @@
             color: #856404;
         }
 
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background-color: #f8f9fa;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .highlight-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
         @media (max-width: 768px) {
             main {
                 padding: 20px;
@@ -192,6 +215,10 @@
             img {
                 max-width: 100%;
                 height: auto;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -267,7 +294,7 @@
             </ol>
         </div>
 
-        <img src="./public/img/sidestore/SideStore1.png" alt="SideStore" style="width:350px; height:300px">
+        <img src="./public/img/sidestore/SideStore.jpg" alt="SideStore" style="width:350px; height:300px">
         
         <h4>Chuẩn bị:</h4>
         <ul>
@@ -281,15 +308,25 @@
         
         <h5>Trên iPhone/iPad</h5>
         <ul>
-            <li>Tải ứng dụng <a href="https://apps.apple.com/app/wireguard/id1441195209">WireGuard</a>.</li>
-            <li>Tải file <a href="https://github.com/SideStore/SideStore/releases/download/0.1.1/SideStore.conf">SideStore.conf</a></li>
+            <li>Tải ứng dụng <a href="https://apps.apple.com/us/app/stosvpn/id6744003051">StosVPN</a>.</li>
         </ul>
 
-        <p>Sau khi tải xong file <b>SideStore.conf</b> về iPhone/iPad, tiến hành mở ứng dụng <b>WireGuard</b> sau đó bấm vào dấu cộng ở góc phải và tìm đến file <b>SideStore.conf</b> vừa tải về để thêm vào <b>WireGuard</b> sử dụng cho việc ký và gia hạn hạn ứng dụng.</p>
+        <!-- <p>Sau khi tải xong file <b>SideStore.conf</b> về iPhone/iPad, tiến hành mở ứng dụng <b>WireGuard</b> sau đó bấm vào dấu cộng ở góc phải và tìm đến file <b>SideStore.conf</b> vừa tải về để thêm vào <b>WireGuard</b> sử dụng cho việc ký và gia hạn hạn ứng dụng.</p> -->
         
         <h5>Trên máy Mac/Windows</h5>
         <ul>
-            <li>Tải <a href="https://github.com/SideStore/SideStore/releases/latest/download/SideStore.ipa">SideStore iPA</a> hoặc <a href="https://github.com/SideStore/SideStore/releases/download/nightly/SideStore.ipa">SideStore iPA (Beta)</a>.</li>
+            <li>Tải <a href="https://drive.google.com/file/d/1T6QSHYEnryTonme_lvRxFnIu6TK_JxcZ/view?usp=sharing" target="_blank">SideStore iPA (mặc định chỉ sideload được tối đa 3 ứng dụng)</a>.</li>
+            <img src="./public/img/sidestore/SideStore-1.jpg" title="SideStore allow sideload only 3 apps" style="width:300px; height:500px">
+
+            <li>Tải <a href="https://drive.google.com/file/d/1OiqdIe71VIyH_lOHl0RwG16e-_SOK_0N/view?usp=sharing" target="_blank">LiveContainer Multitask iPA (Nếu bạn muốn sideload nhiều ứng dụng cùng lúc)</a>.</li>
+            <div class="image-grid">
+                <img class="step-image" src="./public/img/sidestore/LiveContainer.jpg" style="width:300px; height:500px" title="LiveContainer allow run many apps and create multy task"> 
+                <img class="step-image" src="./public/img/sidestore/LiveContainer-Multitask.jpg" style="width:300px; height:500px" title="LiveContainer Multitask allow run many apps and create multy task">
+            </div>
+
+            <li>Tải <a href="https://drive.google.com/file/d/1QZr3hU57ppSrAESw1d1rvRr3TRdZL5aT/view?usp=sharing" target="_blank">SparseBox iPA (Cho phép SideStore load > 3 ứng dụng)</a>.</li>
+            <img src="./public/img/sidestore/SideStore-2.jpg" title="SparseBox allow sideload > 3 apps" style="width:300px; height:500px">
+
             <li>Tải Jitterbug Pair: <a href="https://github.com/osy/Jitterbug/releases/download/v1.3.1/jitterbugpair-macos.zip">macOS</a> hoặc <a href="https://github.com/osy/Jitterbug/releases/download/v1.3.1/jitterbugpair-win64.zip">Windows (x64 bit)</a>.</li>
         </ul>
 
@@ -308,16 +345,30 @@
             <ol>
                 <li>Kết nối iPhone của bạn với PC <b>(Tin cậy thiết bị)</b></li>
                 <li>Trên PC, tạo folder chứa file <b>jitterbugpair-win64.zip</b> và giải nén nó ra (Extract files)</li>
+                <img src="./public/img/sidestore/jitterbugpair-win64 install.jpg" alt="jitterbugpair" style="width:300px; height:300px">
+                
                 <li>Tiếp đến, vào <b><i>menu search</i></b> trên windows <b>(Windows + S)</b> và tìm kiếm <b>"Windows Security"</b></li>
+                <img src="./public/img/sidestore/windows security.jpg" alt="windows security" style="width:300px; height:300px">
+
                 <li>Tại <b><i>Windows Security</i></b>, chọn menu <b>Virus & threat protection</b> và chọn mục <b>Manage settings</b> trong <b>Virus & threat protection settings</b>.</li>
+                <img src="./public/img/sidestore/Virus & Threat protection.jpg" alt="Virus & Threat protection" style="width:350px; height:300px">
+
                 <li>Lướt xuống tại mục <b>Exclusions</b>, nhấp chọn mục <b>Add or remove exclusions</b></li>
+                <img src="./public/img/sidestore/Exclusions.jpg" alt="Exclusions" style="width:350px; height:300px">
+
                 <li>Chọn <b>Add an exclusion</b> và chọn Path chứa file <b>jitterbugpair.exe</b></li>
+                <img src="./public/img/sidestore/path jitterbugpair.jpg" alt="Chọn Path Chứa file jitterbugpair.exe" style="width:350px; height:300px">
+
                 <li>Vào folder <b><i>jitterbugpair-win64</i></b>, right-click và mở trong <b>Terminal</b></li>
+                <img src="./public/img/sidestore/open in terminal.jpg" alt="jitterbugpair - open in terminal" style="width:300px; height:300px">
+
                 <li>Đảm bảo iPhone đã kết nối với PC, kéo thả file <b><i>jitterbugpair.exe</i></b> vào <b>CMD</b> sau đó nhấn <b>Enter</b>, thấy menu cmd báo <i><u>Success</u></i> và xuất hiện file <i><u>*.mobiledevicepairing</u></i> là được.</li>
+                <img src="./public/img/sidestore/jitterbugpair success.jpg" alt="jitterbugpair - success" style="width:350px; height:300px">
+
             </ol>
         </div>
 
-        <p>Sau khi đã có file *<b>.mobiledevicepairing</b>, hãy đổi đuôi nó thành *<b>.plist</b> và chuyển file đó vào iPhone/iPad của bạn (bạn có thể tải lên <a href="https://drive.google.com/drive/home" style="text-decoration:none">Google Drive</a>, <a href="https://www.dropbox.com" style="text-decoration:none">Dropbox</a>… sau đó trên iPhone/iPad truy cập vào link đó để tải về).</p>
+        <p>Sau khi đã có file *<b>.mobiledevicepairing</b>, hãy nén file đó thành *<b>.zip</b> và chuyển vào iPhone/iPad của bạn (bạn có thể tải lên <a href="https://drive.google.com/drive/home" style="text-decoration:none" target="_blank">Google Drive</a>, <a href="https://www.dropbox.com" style="text-decoration:none" target="_blank">Dropbox</a>… sau đó trên iPhone/iPad truy cập vào link đó để tải về).</p>
 
         <h4>Bật Chế độ nhà phát triển (iOS 16 trở lên)</h4>
         <p>Nếu nhận được <i><b>yêu cầu bật chế độ nhà phát triển</b></i> đối với iOS 16 trở lên, bạn cần bật Chế độ nhà phát triển trên thiết bị của mình bằng cách vào <b><i>Cài đặt -> Quyền riêng tư và Bảo mật -> Chế độ nhà phát triển.</i></b></p>
@@ -325,25 +376,60 @@
 
         <h5><span class="step-number">3</span>Cài đặt SideStore và sử dụng</h5>
         <p><b>Cài đặt:</b></p>
-        <p>Sử dụng <b>AltServer</b> (không phải AltStore) để cài đặt SideStore iPA:</p>
+        <p>Đảm bảo iPhone đã kết nối sạc truyền dữ liệu với PC (Tin cậy) và đã được kích hoạt mật khẩu máy.</p>
+        <div class="image-grid">
+            <img src="./public/img/sidestore/Trust.jpg" title="Trust device" style="width:350px; height:500px">
+            <img src="./public/img/sidestore/Trust-1.jpg" title="Enter Passcode iPhone" style="width:350px; height:500px">
+        </div>
+        
+        <p><span style="color: #09aaff; font-weight: bold; font-style: italic;">Với PC:</span> Sử dụng <b>AltServer</b> (không phải AltStore) để cài đặt SideStore iPA:</p>
         <ul>
             <li>Với <b>macOS</b>: bấm giữ phím Option + click chuột trái vào biểu tượng AltServer ở menu bar trên cùng của màn hình và chọn sideload .iPA</li>
-            <li>Với <b>Windows</b>: bấm giữ phím Shift + click chuột trái vào biểu tượng AltServer ở góc phải màn hình và chọn sideload iPA.</li>
+            <li>Với <b>Windows</b>: bấm giữ phím Shift + click chuột trái vào biểu tượng AltServer ở góc phải màn hình và chọn <i>Sideload .ipa</i>, chọn iPA SideStore đã cài đặt trước đó và <i>đăng nhập Apple ID</i>, sau đó chờ SideStore được cài đặt trên màn hình iPhone.</li>
+            <div class="image-grid">
+                <img src="./public/img/sidestore/on-Windows.jpg" title="1. Hold Shift + click on AltServer icon ➙ 2. Sideload .ipa ➙ 3. Your device" style="width:350px; height:150px">
+                <img src="./public/img/sidestore/on-Windows-1.jpg" title="Fill your Apple ID, Accept device and enter F2A Code (6 digits), then wait for SideStore to install on your device" style="width:350px; height:150px">
+            </div>  
         </ul>
 
-        <p>Sau khi cài đặt thành công và mở <a href="https://sidestore.io/" style="text-decoration: none">SideStore</a> lên, nó sẽ yêu cầu file *<b>.plist</b> mà bạn đã tạo ra ở bước 2, lúc này hãy chọn đến file *<b>.plist</b> để hoàn thành quá trình cài đặt SideStore.</p>
+        <p>Sau khi cài đặt thành công và mở <a href="https://sidestore.io/" style="text-decoration: none">SideStore</a> lên (iPhone), nó sẽ yêu cầu file *<b>.mobiledevicepairing</b> mà bạn đã tạo ra ở bước 2, lúc này hãy chọn đến file *<b>.mobiledevicepairing</b> để hoàn thành quá trình cài đặt SideStore.</p><br>
+        <div class="image-grid">
+            <img src="./public/img/sidestore/Pairing-File.jpg" title="SideStore Pairing File" style="width:350px; height:500px">
+            <img src="./public/img/sidestore/MobileDevicePairing.jpg" title="Choose the file .mobiledevicepairing to config SideStore" style="width:350px; height:500px">
+        </div>
 
         <p><b>Sử dụng:</b></p>
-        <p>Đăng nhập Apple ID vào SideStore, khi cài đặt hoặc gia hạn ứng dụng hãy mở WireGuard lên và bật cấu hình SideStore.</p>
+        <p>Đăng nhập Apple ID vào SideStore, khi cài đặt hoặc gia hạn ứng dụng hãy mở <a href="https://apps.apple.com/us/app/stosvpn/id6744003051" style="text-decoration: none" target="_blank">StosVPN</a> lên và cho phép cài đặt cấu hình VPN cho SideStore.</p>
+        <div class="image-grid">
+            <img src="./public/img/sidestore/StosVPN.jpg" title="Run StosVPN" style="width:350px; height:500px">
+            <img src="./public/img/sidestore/SideStore-myapps.jpg" title="Make sure StosVPN has running" style="width:350px; height:500px">
+            <img src="./public/img/sidestore/SparseBox.jpg" title="Open .ipa file or SparseBox if you want to sideload more than 3 apps" style="width:350px; height:500px">
+        </div>
+
+        <p>Sau khi sideload thành công SparseBox, đảm bảo tắt ứng dụng SideStore đi (vì không thể đa nhiệm cùng lúc).</p>
+        <div class="image-grid">
+            <img src="./public/img/sidestore/SparseBox-PairingFile.jpg" title="Make sure SideStore is closed before running SparseBox ➙ Select Pairing File" style="width:350px; height:500px">
+            <img src="./public/img/sidestore/MobileDevicePairing.jpg" title="Choose the file .mobiledevicepairing to config SparseBox" style="width:350px; height:500px">
+        </div>
+
+        <p>Tiếp tục thực hiện Bypass giới hạn 3 apps cho SideStore, miễn là có thông báo: <i><b>"Result: restore successful"</b></i> là được.</p>
+        <div class="image-grid">
+            <img src="./public/img/sidestore/Bypass-apps.jpg" title="Choose Bypass 3 App Limit" style="width:350px; height:500px">
+            <img src="./public/img/sidestore/log.jpg" title="Choose Bypass 3 App Limit" style="width:350px; height:500px">
+        </div>
+
+        <div class="highlight-box">
+            <p><i><b>Nếu file .log báo lỗi, vào Ứng dụng Cài đặt -> Tài khoản iCloud -> Tìm iPhone -> Tắt Tìm iPhone đi và vào SparseBox thử lại.</b></i></p>
+        </div>
 
         <div class="note-box">
             <p><b>P/s</b>: nếu bạn đăng nhập Apple ID vào SideStore bị lỗi <b>(no valid server found)</b>, hãy thử cách sau:</p>
             <ul>
-                <li>1. Chuyển anisette servers (ex: to Macley). Các bước : Mở SideStore - Settings - Lướt xuống mục Anisette Servers - click Macley</li>
+                <li>1. Chuyển Anisette Servers (ex: to Macley). Các bước : Mở SideStore - Settings - Lướt xuống mục Anisette Servers - click Macley</li>
                 <li>2. Reset adi.pb</li>
                 <li>3. Nếu được nhắc thu hồi chứng chỉ trước đó, LUÔN LUÔN click yes.</li>
             </ul>
-            <p>Như vậy là mỗi khi cài ứng dụng hoặc gia hạn ứng dụng bạn sẽ không cần máy tính mà chỉ cần bật cấu hình SideStore bên trong ứng dụng WireGuard mà thôi.</p>
+            <p>Như vậy là mỗi khi cài ứng dụng hoặc gia hạn ứng dụng bạn sẽ không cần máy tính mà chỉ cần chạy <a href="https://apps.apple.com/us/app/stosvpn/id6744003051" style="text-decoration: none" target="_blank">StosVPN</a> rồi vào SideStore cài đặt ứng dụng  mà thôi.</p>
         </div>
     </main>
     <div include-html="view/footer.html" data-basepath="../"></div>
