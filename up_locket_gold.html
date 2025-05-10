@@ -150,6 +150,34 @@
             opacity: 1;
             visibility: visible;
         }
+
+        .warning-text {
+            color: #dc3545;
+            font-weight: 500;
+            padding: 10px;
+            border-left: 4px solid #dc3545;
+            background-color: #fff3f3;
+            margin: 10px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .warning-text strong {
+            color: #dc3545;
+            font-weight: 600;
+        }
+
+        .warning-box {
+            background-color: #fff3f3;
+            border: 1px solid #dc3545;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .warning-box p {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
     </style>
 
     <script>
@@ -178,6 +206,16 @@
                     xhttp.send();
                     return;
                 }
+            }
+        }
+
+        function scrollToShadowrocket() {
+            const element = document.getElementById('shadowrocket-install');
+            if (element) {
+                element.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }
         }
 
@@ -232,6 +270,9 @@
     <main class="tutorial-container">
         <div class="tutorial-header">
             <h1>Hướng Dẫn Up Locket Gold</h1>
+            <div class="highlight-box">
+                <h4 style="cursor: pointer;" onclick="scrollToShadowrocket()">Hiện tại Egern không còn hỗ trợ cài đặt locket gold, Click tại đây để chuyển đến cách cài đặt khác:</h4>
+            </div>
             <p class="text-muted">Được chia sẻ bởi <a href="https://gauapple.com/" class="tutorial-link">Gấu Apple</a></p>
         </div>
 
@@ -281,6 +322,19 @@
             </div>
 
             <div class="highlight-box">
+                <h3 id="shadowrocket-install">Cài đặt với Shadowrocket:</h3>
+                <p><i>☈ Yêu cầu:</i> App <a href="https://apps.apple.com/vn/app/shadowrocket/id932747118?l=vi" class="tutorial-link" target="_blank">Shadowrocket</a>
+                    <br>➥ Nếu chưa có app, bạn có thể vào group share id apple trên <a href="https://www.facebook.com/share/g/1C2r75fTR7/" style="text-decoration: none; color: #007bff; font-style: italic;" target="_blank">facebook</a> hoặc <a href="https://t.me/TroubIeiOS" style="text-decoration: none; color: #007bff; font-style: italic;" target="_blank">telegram</a> để săn id free.
+                </p>
+
+                <div class="warning-box">
+                    <p class="warning-text"><strong>Lưu ý quan trọng:</strong> Nghiêm cấm đăng nhập id apple được share vào tài khoản iCloud, vì iCloud trên tài khoản đó sẽ bị khóa ↔ iPhone/iPad của bạn không khác gì cục gạch 🧱.</p>
+                    <p>Vui lòng đăng nhập vào mục iTune & App Store (Phương tiện & Mục mua) trong Cài đặt, hoặc đăng nhập trực tiếp tài khoản được share trong <a href="https://www.apple.com/app-store/" class="tutorial-link" target="_blank">App Store</a>.</p>
+                    <img src="./public/img/sidestore/login-account-appstore.jpg" title="Login Apple ID on App Store" style="width: auto; height: 500px;">
+                    <p class="warning-text">Không chịu trách nhiệm về việc user bị khóa tài khoản share id apple cũng như đăng nhập trực tiếp vào iCloud.</p>
+                    <p>Sau khi cài đặt xong, nên đăng xuất tài khoản được share để tránh bị khóa tài khoản làm ảnh hưởng đến người sử dụng sau.</p>
+                </div>
+
                 ➤ <a href="./public/vid/locket-gold.mp4" style="text-decoration: none; color: #007bff; font-style: italic;">Demo video cho iPhone tại đây</a></br>
                 ➤ Copy URL:<span class="copy-link" onclick="copyToClipboard('https://raw.githubusercontent.com/vuong2023/shad/main/modules/Locket_ohb.sgmodule')" onmouseover="copyToClipboard('https://raw.githubusercontent.com/vuong2023/shad/main/modules/Locket_ohb.sgmodule')"><code>https://raw.githubusercontent.com/vuong2023/shad/main/modules/Locket_ohb.sgmodule</code><span class="copy-tooltip">Click để copy</span></span></br></br>
                 ⮑ Bạn đã có <a href="https://ios.cfw.guide/installing-trollstore/" class="tutorial-link">TrollStore</a> và muốn thử cách khác với <a href="#" onclick="scrollToTrollFools(); return false;" class="tutorial-link">TrollFools</a>?
