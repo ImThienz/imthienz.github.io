@@ -47,10 +47,17 @@
         
         .image-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             justify-items: center;
-            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        
+        .image-grid img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
         }
         
         .highlight-box {
@@ -93,6 +100,10 @@
             
             .image-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .image-grid img {
+                max-height: 400px;
             }
         }
         
@@ -330,7 +341,11 @@
                 <div class="warning-box">
                     <p class="warning-text"><strong>Lưu ý quan trọng:</strong> Nghiêm cấm đăng nhập id apple được share vào tài khoản iCloud, vì iCloud trên tài khoản đó sẽ bị khóa ↔ iPhone/iPad của bạn không khác gì cục gạch 🧱.</p>
                     <p>Vui lòng đăng nhập vào mục iTune & App Store (Phương tiện & Mục mua) trong Cài đặt, hoặc đăng nhập trực tiếp tài khoản được share trong <a href="https://www.apple.com/app-store/" class="tutorial-link" target="_blank">App Store</a>.</p>
-                    <img src="./public/img/sidestore/login-account-appstore.jpg" title="Login Apple ID on App Store" style="width: auto; height: 500px;">
+                    <div class="image-grid">
+                        <img src="./public/img/locket-gold/login-account-appstore-1.jpg" title="Login Apple ID on App Store" style="width: auto; height: 500px;">
+                        <img src="./public/img/locket-gold/login-account-appstore-2.jpg" title="Go to Purchased" style="width: auto; height: 500px;">
+                        <img src="./public/img/locket-gold/login-account-appstore-3.jpg" title="You see the Family Sharing!? Go ahead and enjoy!" style="width: auto; height: 500px;">
+                    </div>
                     <p class="warning-text">Không chịu trách nhiệm về việc user bị khóa tài khoản share id apple cũng như đăng nhập trực tiếp vào iCloud.</p>
                     <p>Sau khi cài đặt xong, nên đăng xuất tài khoản được share để tránh bị khóa tài khoản làm ảnh hưởng đến người sử dụng sau.</p>
                 </div>
