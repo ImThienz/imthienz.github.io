@@ -17,10 +17,13 @@
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
                             <h1 class="h1 carousel-title" style="color: #24292e"><b>Github</b></h1>
-                            <p class="carousel-text">
+                            <p class="carousel-text" id="github-text">
                                 Github is a developer platform that allows developers to create, store, manage and share their code. It uses Git software, providing the distributed version control of Git plus access control, bug tracking, software feature requests, task management, continuous integration.
                                 <br><br>Welcomes to my page! Hope it's useful for you! :D
                             </p>
+                            <button class="translate-btn" onclick="toggleTranslate('github-text')">
+                                <i class="fas fa-language"></i> Tiếng Việt
+                            </button>
                             <a href="https://github.com/ImThienz" class="github-link">Follow my Github</a> to know more!
                         </div>
                     </div>
@@ -37,7 +40,7 @@
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
                             <h1 class="h1 carousel-title" style="color: #6b3d2b"><b>Cydia</b></h1>
-                            <p class="carousel-text">
+                            <p class="carousel-text" id="cydia-text">
                                 Cydia is an alternative app store that allows you to install third-party apps and
                                 tweaks on iPhones, iPads, and iPod touches. If you are an iDevice user for a
                                 considerable time, you may have already noticed that the Apple app store doesn't
@@ -47,6 +50,9 @@
                                 provides the best-featured third-party apps, extensions, tweaks, add-ons, games, and
                                 themes for iDevices.
                             </p>
+                            <button class="translate-btn" onclick="toggleTranslate('cydia-text')">
+                                <i class="fas fa-language"></i> Tiếng Việt
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -62,7 +68,7 @@
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
                             <h1 class="h1 carousel-title" style="color: #0081fa"><b>TrollStore</b></h1>
-                            <p class="carousel-text">
+                            <p class="carousel-text" id="trollstore-text">
                                 TrollStore is a utility which is able to permanently sign and install any
                                 application with almost any entitlement with the help of a CoreTrust bug. The latest
                                 releases of TrollStore (specifically 2.0 and later) work through the use of a
@@ -72,6 +78,9 @@
                                 a process which varies depending on what device and iOS you are running, as a
                                 result, different guides are attached below depending on said combination
                             </p>
+                            <button class="translate-btn" onclick="toggleTranslate('trollstore-text')">
+                                <i class="fas fa-language"></i> Tiếng Việt
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -87,9 +96,12 @@
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
                             <h1 class="h1 carousel-title" style="color: #ba30fe"><b>SideStore</b></h1>
-                            <p class="carousel-text">
+                            <p class="carousel-text" id="sidestore-text">
                                 <a href="https://sidestore.io/" class="tutorial-link">SideStore</a> is an alternative app store for seamless sideloading. No jailbreak needed, and no computer after the initial install, only a WiFi connection. <br>
                             </p>
+                            <button class="translate-btn" onclick="toggleTranslate('sidestore-text')">
+                                <i class="fas fa-language"></i> Tiếng Việt
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -105,13 +117,16 @@
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
                             <h1 class="h1 carousel-title" style="color: #D2B48C"><b>Nugget</b></h1>
-                            <p class="carousel-text">
+                            <p class="carousel-text" id="nugget-text">
                                 Unlock your device's full potential! </br>
                                 Sparserestore works on all versions iOS 17.0-18.1.1. There is partial support for iOS 18.2 developer beta 3 and newer not using any exploits.</br>
                                 Mobilegestalt and AI Enabler tweaks are not supported on iOS 18.2+. It will never be supported, do not make issues asking for when it is supported.</br>
                                 <a href="https://github.com/leminlimez/Nugget/releases" class="nugget-link">More Details</a>
 
                             </p>
+                            <button class="translate-btn" onclick="toggleTranslate('nugget-text')">
+                                <i class="fas fa-language"></i> Tiếng Việt
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -432,4 +447,44 @@
             font-size: 2rem;
         }
     }
+
+    /* Translate Button Styles */
+    .translate-btn {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 10px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .translate-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    }
+
+    .translate-btn i {
+        font-size: 16px;
+    }
+
+    .translate-btn.translated {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    }
+
+    .translate-btn.translated:hover {
+        background: linear-gradient(135deg, #ee5a24 0%, #ff6b6b 100%);
+    }
 </style>
+
+<script>
+    // Translation functions are handled by index.html
+    // No need to duplicate translations here to avoid conflicts
+</script>

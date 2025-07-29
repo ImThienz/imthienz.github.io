@@ -52,7 +52,120 @@
                 }
             }
         }
+
+        // Translation data
+        const translations = {
+            'github-text': {
+                english: `Github is a developer platform that allows developers to create, store, manage and share their code. It uses Git software, providing the distributed version control of Git plus access control, bug tracking, software feature requests, task management, continuous integration.
+<br><br>Welcomes to my page! Hope it's useful for you! :D`,
+                vietnamese: `Github là một nền tảng dành cho các nhà phát triển cho phép họ tạo, lưu trữ, quản lý và chia sẻ mã nguồn của mình. Nó sử dụng phần mềm Git, cung cấp kiểm soát phiên bản phân tán của Git cùng với kiểm soát truy cập, theo dõi lỗi, yêu cầu tính năng phần mềm, quản lý tác vụ, tích hợp liên tục.
+<br><br>Chào mừng đến với trang của tôi! Hy vọng nó hữu ích cho bạn! :D`
+            },
+            'cydia-text': {
+                english: `Cydia is an alternative app store that allows you to install third-party apps and
+                    tweaks on iPhones, iPads, and iPod touches. If you are an iDevice user for a
+                    considerable time, you may have already noticed that the Apple app store doesn't
+                    offer you third-party apps to install on your device. Therefore, you have to use an
+                    alternative app store on your device to get third-party apps and tweaks on the
+                    device. And that alternative app store is indeed the Cydia app store because it
+                    provides the best-featured third-party apps, extensions, tweaks, add-ons, games, and
+                    themes for iDevices.`,
+                vietnamese: `Cydia là một cửa hàng ứng dụng thay thế cho phép bạn cài đặt các ứng dụng và sửa đổi thứ thế trên iPhone, iPad và iPod touch. Nếu bạn là người dùng iDevice trong một thời gian đủ lâu, bạn có thể đã nhận thấy rằng cửa hàng ứng dụng Apple không cung cấp cho bạn các ứng dụng thứ ba để cài đặt trên thiết bị của bạn. Do đó, bạn phải sử dụng một cửa hàng ứng dụng thay thế trên thiết bị của mình để có được các ứng dụng và sửa đổi thứ thế trên thiết bị. Và cửa hàng ứng dụng thay thế đó chính là cửa hàng ứng dụng Cydia vì nó cung cấp các ứng dụng thứ ba tốt nhất, phần mở rộng, sửa đổi, bổ sung, trò chơi và chủ đề cho iDevices.`
+            },
+            'trollstore-text': {
+                english: `TrollStore is a utility which is able to permanently sign and install any
+                    application with almost any entitlement with the help of a CoreTrust bug. The latest
+                    releases of TrollStore (specifically 2.0 and later) work through the use of a
+                    CoreTrust bug in which code signatures are not correctly verified under certain
+                    circumstances. <br>
+                    <a href="https://ios.cfw.guide/installing-trollstore/">Installing TrollStore</a> is
+                    a process which varies depending on what device and iOS you are running, as a
+                    result, different guides are attached below depending on said combination`,
+                vietnamese: `TrollStore là một công cụ có thể ký và cài đặt một ứng dụng bất kỳ với quyền cho phép gần như bất kỳ với sự trợ giúp của một lỗ hổng CoreTrust. Các phiên bản phát hành mới nhất của TrollStore (đặc biệt là 2.0 và sau đó) hoạt động thông qua việc sử dụng một lỗ hổng CoreTrust trong đó các chữ ký chứng thực không được xác minh đúng cách trong một số trường hợp. <br>
+                    <a href="https://ios.cfw.guide/installing-trollstore/">Cài đặt TrollStore</a> là một quá trình khác nhau tùy thuộc vào thiết bị và iOS bạn đang chạy, do đó, các hướng dẫn khác nhau được đính kèm dưới đây tùy thuộc vào sự kết hợp này`
+            },
+            'sidestore-text': {
+                english: `<a href="https://sidestore.io/" class="tutorial-link">SideStore</a> is an alternative app store for seamless sideloading. No jailbreak needed, and no computer after the initial install, only a WiFi connection. <br>`,
+                vietnamese: `<a href="https://sidestore.io/" class="tutorial-link">SideStore</a> là một cửa hàng ứng dụng thay thế cho việc sideloading mượt mà. Không cần jailbreak, và không cần máy tính sau khi cài đặt ban đầu, chỉ cần kết nối WiFi. <br>`
+            },
+            'nugget-text': {
+                english: `Unlock your device's full potential! <br>
+                                Sparserestore works on all versions iOS 17.0-18.1.1. There is partial support for iOS 18.2 developer beta 3 and newer not using any exploits.<br>
+                                Mobilegestalt and AI Enabler tweaks are not supported on iOS 18.2+. It will never be supported, do not make issues asking for when it is supported.<br>
+                                <a href="https://github.com/leminlimez/Nugget/releases" class="nugget-link">More Details</a>`,
+                vietnamese: `Mở khóa tiềm năng đầy đủ của thiết bị của bạn! <br>
+                                Sparserestore hoạt động trên tất cả các phiên bản iOS 17.0-18.1.1. Có sự hỗ trợ từng phần cho iOS 18.2 developer beta 3 và mới hơn không sử dụng bất kỳ trục trặc nào.<br>
+                                Các sửa đổi Mobilegestalt và AI Enabler không được hỗ trợ trên iOS 18.2+. Nó sẽ không bao giờ được hỗ trợ, đừng tạo các vấn đề yêu cầu khi nó được hỗ trợ.<br>
+                                <a href="https://github.com/leminlimez/Nugget/releases" class="nugget-link">Thêm chi tiết</a>`
+            }
+        };
+
+        // Toggle translation function
+        function toggleTranslate(elementId) {
+            const element = document.getElementById(elementId);
+            if (!element) {
+                console.error('Element not found:', elementId);
+                return;
+            }
+            
+            // Find the button more reliably
+            const button = element.parentNode.querySelector('.translate-btn');
+            if (!button) {
+                console.error('Button not found for element:', elementId);
+                return;
+            }
+            
+            const currentText = element.innerHTML.trim();
+            const englishText = translations[elementId].english.trim();
+            
+            if (currentText === englishText) {
+                element.innerHTML = translations[elementId].vietnamese;
+                button.innerHTML = '<i class="fas fa-language"></i> English';
+                button.classList.add('translated');
+            } else {
+                element.innerHTML = translations[elementId].english;
+                button.innerHTML = '<i class="fas fa-language"></i> Tiếng Việt';
+                button.classList.remove('translated');
+            }
+        }
     </script>
+
+    <style>
+        /* Translate Button Styles */
+        .translate-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .translate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        .translate-btn i {
+            font-size: 16px;
+        }
+
+        .translate-btn.translated {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+        }
+
+        .translate-btn.translated:hover {
+            background: linear-gradient(135deg, #ee5a24 0%, #ff6b6b 100%);
+        }
+    </style>
 </head>
 <body onload="includeHTML()">
     <div include-html="view/header.html" data-basepath="./"></div>
@@ -93,7 +206,7 @@
                             <div class="col-lg-6 mb-0 d-flex align-items-center">
                                 <div class="text-align-left">
                                     <h1 class="h1 text-success"><b>Cydia</b></h1>
-                                    <p>
+                                    <p id="cydia-text">
                                         Cydia is an alternative app store that allows you to install third-party apps and
                                         tweaks on iPhones, iPads, and iPod touches. If you are an iDevice user for a
                                         considerable time, you may have already noticed that the Apple app store doesn't
@@ -103,6 +216,9 @@
                                         provides the best-featured third-party apps, extensions, tweaks, add-ons, games, and
                                         themes for iDevices.
                                     </p>
+                                    <button class="translate-btn" onclick="toggleTranslate('cydia-text')">
+                                        <i class="fas fa-language"></i> Tiếng Việt
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -117,7 +233,7 @@
                             <div class="col-lg-6 mb-0 d-flex align-items-center">
                                 <div class="text-align-left align-self-center">
                                     <h1 class="h1 text-success"><b>TrollStore</b></h1>
-                                    <p>
+                                    <p id="trollstore-text">
                                         TrollStore is a utility which is able to permanently sign and install any
                                         application with almost any entitlement with the help of a CoreTrust bug. The latest
                                         releases of TrollStore (specifically 2.0 and later) work through the use of a
@@ -127,6 +243,9 @@
                                         a process which varies depending on what device and iOS you are running, as a
                                         result, different guides are attached below depending on said combination
                                     </p>
+                                    <button class="translate-btn" onclick="toggleTranslate('trollstore-text')">
+                                        <i class="fas fa-language"></i> Tiếng Việt
+                                    </button>
                                 </div>
                             </div>
                         </div>

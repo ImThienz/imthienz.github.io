@@ -45,7 +45,7 @@
     </nav>
 
     <!-- Main Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
+    <nav class="navbar navbar-expand-lg navbar-light shadow fixed-top" style="background: white;">
         <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
                 ImThienz
@@ -86,7 +86,154 @@
         </div>
     </nav>
 
+    <!-- Disclaimer Notification -->
+    <div class="disclaimer-notification" id="disclaimerNotification">
+        <div class="disclaimer-content">
+            <div class="disclaimer-icon">⚠️</div>
+            <div class="disclaimer-text">
+                <strong>Disclaimer:</strong> This website is for educational purposes only. We are not responsible for any damage, data loss, or warranty issues caused by using the tools or methods shared here. Use at your own risk.
+            </div>
+            <button class="disclaimer-close" onclick="closeDisclaimer()">×</button>
+        </div>
+    </div>
+
     <!-- Deferred JavaScript loading -->
     <script defer src="public/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Disclaimer Styles -->
+    <style>
+        body {
+            padding-top: 80px; 
+        }
+
+        .disclaimer-notification {
+            position: fixed;
+            top: 80px; 
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            z-index: 1000;
+            padding: 15px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+        }
+
+        .disclaimer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        .disclaimer-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .disclaimer-text {
+            flex: 1;
+            font-size: 14px;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .disclaimer-text strong {
+            font-weight: 700;
+        }
+
+        .disclaimer-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .disclaimer-close:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.1);
+        }
+
+        main {
+            margin-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px; 
+            }
+            
+            .disclaimer-notification {
+                top: 70px; 
+            }
+            
+            .disclaimer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .disclaimer-text {
+                font-size: 13px;
+            }
+
+            .disclaimer-close {
+                position: absolute;
+                top: -10px;
+                right: -10px;
+            }
+
+            main {
+                margin-top: 120px;
+            }
+        }
+    </style>
+
+    <!-- Disclaimer JavaScript -->
+    <script>
+        function closeDisclaimer() {
+            const disclaimer = document.getElementById('disclaimerNotification');
+            disclaimer.style.animation = 'slideUp 0.5s ease-out forwards';
+            
+            setTimeout(() => {
+                disclaimer.style.display = 'none';
+                // Adjust main content margin when disclaimer is closed
+                const mainElement = document.querySelector('main');
+                if (mainElement) {
+                    mainElement.style.marginTop = '0px';
+                }
+            }, 500);
+        }
+    </script>
 </body>
 </html>

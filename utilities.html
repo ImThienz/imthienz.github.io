@@ -12,9 +12,181 @@
     <link rel="stylesheet" href="../public/css/bootstrap.min.css">
     <link rel="stylesheet" href="../public/css/main.css">
 
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
+    <style>
+        .danger {
+            color: red;
+            font-weight: bold;
+        }
+        .danger-font {
+            font-family: 'Share Tech Mono', monospace;
+            color: red;
+            background-color: black;
+            padding: 10px;
+            border: 2px solid red;
+            font-size: 20px;
+            text-shadow: 0 0 5px red;
+          }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+        }
+
+        /* Carousel Styles */
+        .demo-carousel {
+            position: relative;
+            max-width: 600px;
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            background: #f8f9fa;
+        }
+
+        .demo-carousel .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+        }
+
+        .demo-carousel .carousel-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .demo-carousel .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .demo-carousel .carousel-image {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: block;
+            background: white;
+        }
+
+        .demo-carousel .carousel-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            text-align: center;
+            background: rgba(0,0,0,0.7);
+            padding: 8px 20px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            z-index: 5;
+        }
+
+        .demo-carousel .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.8);
+            border: none;
+            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 15px 20px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .demo-carousel .carousel-btn:hover {
+            background: rgba(255,255,255,0.95);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .demo-carousel .carousel-btn.prev {
+            left: 15px;
+        }
+
+        .demo-carousel .carousel-btn.next {
+            right: 15px;
+        }
+
+        .demo-carousel .carousel-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .demo-carousel .dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .demo-carousel .dot.active {
+            background: var(--secondary-color);
+            transform: scale(1.2);
+        }
+
+        .demo-carousel .dot:hover {
+            background: rgba(255,255,255,0.8);
+        }
+
+        @media (max-width: 768px) {
+            .demo-carousel {
+                max-width: 450px;
+            }
+            
+            .demo-carousel .carousel-container {
+                height: 350px;
+            }
+            
+            .demo-carousel .carousel-image {
+                max-height: 280px;
+            }
+            
+            .demo-carousel .carousel-btn {
+                padding: 12px 16px;
+                font-size: 20px;
+            }
+            
+            .demo-carousel .carousel-caption {
+                font-size: 14px;
+                padding: 6px 15px;
+            }
+        }
+    </style>
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -326,24 +498,49 @@
     
     <main>
         <div class="main-about"> 
-            <div class="content-about"> 
-                <h1 class="menu" onclick="toggleSection('ipaApps')">Filza (Click to expand)</h1>
+            <div class="content-about">
+                <h1 class="menu" onclick="toggleSection('ipaApps')">Filza (Click to expand) <p class="danger-font">⚠️ WARNING: REQUIRES JAILBROKEN IPHONE</p></h1>
                 <div id="ipaApps">
                     <div class="submenu" onclick="toggleIntroduction('intro1')">Change logo Lockscreen (Update 16/08/2024)</div>
                     <div id="intro1" class="introduction">
                         <h4>📁 Path Lockscreen</h4>
                         <p>⚙:/System/Library/PrivateFrameworks/SpringBoardUIServices.framework<br>
-                            ✅ <a href="./public/vid/ChangeLogoLockScreen-Demo.mp4">Demo Lockscreen</a>   <br>
+                            ✅ <div class="demo-carousel" id="lockscreen-carousel">
+                                <div class="carousel-container">
+                                    <!-- <div class="carousel-slide">
+                                        <img src="./public/img/Logo Lockscreen Root.gif" alt="Demo 4" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div class="carousel-caption">Root</div>
+                                    </div>
+                                    <div class="carousel-slide active">
+                                        <img src="./public/img/Logo Lockscreen Hello.gif" alt="Demo 1" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div class="carousel-caption">Hello</div>
+                                    </div> -->
+                                    <div class="carousel-slide active">
+                                        <img src="./public/img/Logo Hutao.gif" alt="Demo 2" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div class="carousel-caption">Hu Tao</div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="./public/img/Logo Conan.gif" alt="Demo 3" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div class="carousel-caption">Conan</div>
+                                    </div>
+                                </div>
+                                <button class="carousel-btn prev" onclick="changeLockscreenSlide(-1)">❮</button>
+                                <button class="carousel-btn next" onclick="changeLockscreenSlide(1)">❯</button>
+                                <div class="carousel-dots">
+                                    <span class="dot active" onclick="currentLockscreenSlide(1)"></span>
+                                    <span class="dot" onclick="currentLockscreenSlide(2)"></span>
+                                </div>
+                            </div> <br>
                             ➤ <a href="./public/vid/ChangeLogoLockScreen-How to set up.mp4">How to set up?</a>   <br>
                         </p>
                         <div class="downloads-container">
-                            <a href="https://shrinkme.io/st?api=4868be8543ffe6947139ba11cbdd4ac48737cdcf&url=https://shrinkme.ink/logo-lockscreen-1" target="_blank" download><button>Download Logo Lockscreen (root)</button></a>
+                            <a href="https://drive.google.com/file/d/16gPPZloDb2qfe6mzx-VMKo5efws2M1WY/view?usp=sharing" target="_blank" download><button>Download Logo Lockscreen (root)</button></a>
                             <!-- <a href="./path filza/Logo Lockscreen (root).zip" download><button>Download Logo Lockscreen (root)</button></a> -->
-                            <a href="https://shrinkme.io/st?api=4868be8543ffe6947139ba11cbdd4ac48737cdcf&url=https://shrinkme.ink/logo-lockscreen-2" target="_blank" download><button>Download Logo Lockscreen Hello</button></a>
+                            <a href="https://drive.google.com/file/d/1vyL7pwLddc8-FCwJfhpsYx8Z3DN_pbAy/view?usp=sharing" target="_blank" download><button>Download Logo Lockscreen Hello (author: #Little34306)</button></a>
                             <!-- <a href="./path filza/Face ID (hello).zip" download><button>Download Logo Lockscreen Hello</button></a> -->
-                            <a href="https://shrinkme.io/st?api=4868be8543ffe6947139ba11cbdd4ac48737cdcf&url=https://shrinkme.ink/logo-lockscreen-3" target="_blank" download><button>Download Logo Lockscreen Hutao</button></a>
+                            <a href="https://taixuongmienphi.click/s/logo-lockscreen-hu-tao-genshin-impactz1u11d3mdnx4mop" target="_blank" download><button>Download Logo Lockscreen Hutao (author: #ImThienz)</button></a>
                             <!-- <a href="./path filza/Logo Lockscreen Hutao Loop.zip" download><button>Download Logo Lockscreen Hutao</button></a> -->
-                            <a href="https://shrinkme.io/st?api=4868be8543ffe6947139ba11cbdd4ac48737cdcf&url=https://shrinkme.ink/logo-lockscreen-4" target="_blank" download><button>Download Logo Lockscreen Conan</button></a>
+                            <a href="https://taixuongmienphi.click/s/logo-lock-screen-conan-detective-conanz1u1tpmdo0qt7e" target="_blank" download><button>Download Logo Lockscreen Conan (author: #ImThienz)</button></a>
                             <!-- <a href="./path filza/Logo Lockscreen Edogawa Conan.zip" download><button>Download Logo Lockscreen Conan</button></a> -->
                         </div>
                     </div>
@@ -352,21 +549,46 @@
                     <div id="intro2" class="introduction">
                         <h4>📁 Path Passcode</h4>
                         <p>⚙:/var/mobile/Library/Caches/TelephonyUI-8 (hoặc TelephonyUI-7)<br>
-                           ✅ <a href="./public/img/Theme Hutao Passcode.PNG">Demo</a> <br>
+                           ✅ <div class="demo-carousel">
+                                <div class="carousel-container">
+                                    <div class="carousel-slide active">
+                                        <img src="./public/img/Theme Hutao Passcode.PNG" alt="Demo 1" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div class="carousel-caption">Hu Tao</div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="./public/img/Theme Chitoge Passcode.PNG" alt="Demo 2" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div class="carousel-caption">Chitoge</div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="./public/img/Theme Anna Passcode.PNG" alt="Demo 3" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div class="carousel-caption">Anna</div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="./public/img/Theme Paimon Passcode.PNG" alt="Demo 4" class="carousel-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIG5vdCBmb3VuZDwvdGV4dD48L3N2Zz4='; this.alt='Image not found';">
+                                        <div class="carousel-caption">Paimon</div>
+                                    </div>
+                                </div>
+                                <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
+                                <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
+                                <div class="carousel-dots">
+                                    <span class="dot active" onclick="currentSlide(1)"></span>
+                                    <span class="dot" onclick="currentSlide(2)"></span>
+                                </div>
+                            </div> <br>
                            🔍 Check trong Path xem hiện tại đang là TelephonyUI-8 hay TelephonyUI-7 để ghi đè folder cho phù hợp! <br>
                            ✅ Ngoài ra, bạn có thể kết hợp với icon lockscreen để kết hợp với theme trông hoàn chỉnh hơn nhé! 😁 <br>
                            ➤ <a href="./public/vid/ChangeThemeChitogePasscode-How to set up.mp4">How to set up?</a>   <br>
                         </p>
                         <div class="downloads-container">
-                            <a href="https://shrinkme.io/st?api=4868be8543ffe6947139ba11cbdd4ac48737cdcf&url=https://shrinkme.ink/theme-root" target="_blank" download><button>Download Theme Passcode (root)</button></a>
+                            <a href="https://drive.google.com/file/d/1qC5IrhNxs-QxDBoKzSDjcNKpLrifWej5/view?usp=sharing" target="_blank" download><button>Download Theme Passcode (root)</button></a>
                             <!-- <a href="./path filza/Theme Passcode (root).zip"download><button>Download Theme Passcode (root)</button></a> -->
-                            <a href="https://shrinkme.io/st?api=4868be8543ffe6947139ba11cbdd4ac48737cdcf&url=https://shrinkme.ink/theme-hutao" target="_blank" download><button>Download Hutao's Theme Passcode</button></a>
+                            <a href="https://taixuongmienphi.click/s/theme-hu-tao-s-passcode-genshin-impactz1u1tpmdo08oqy" target="_blank" download><button>Download Hutao's Theme Passcode (author: #ImThienz)</button></a>
                             <!-- <a href="./path filza/Theme Hutao Passcode.zip"download><button>Download Hutao's Theme Passcode</button></a> -->
-                            <a href="https://shrinkme.io/st?api=4868be8543ffe6947139ba11cbdd4ac48737cdcf&url=https://shrinkme.ink/theme-chitoge" target="_blank" download><button>Download Chitoge's Theme Passcode</button></a>
+                            <a href="https://taixuongmienphi.click/s/theme-chitoge-s-passcode-nisekoiz1u1tpmdo0dcaf" target="_blank" download><button>Download Chitoge's Theme Passcode (author: #ImThienz)</button></a>
                             <!-- <a href="./path filza/Theme Chitoge Passcode.zip" download><button>Download Chitoge's Theme Passcode</button></a> -->
-                            <a href="https://shrinkme.io/st?api=4868be8543ffe6947139ba11cbdd4ac48737cdcf&url=https://shrinkme.ink/theme-anna" target="_blank" download><button>Download Anna's Theme Passcode</button></a>
+                            <a href="https://taixuongmienphi.click/s/theme-anna-s-passcode-shimonetaz1u1tpmdo0uhoj" target="_blank" download><button>Download Anna's Theme Passcode (author: #ImThienz)</button></a>
                             <!-- <a href="./path filza/Theme Anna Senpai Passcode.zip" download><button>Download Anna's Theme Passcode</button></a> -->
-                            <a href="https://shrinkme.io/st?api=4868be8543ffe6947139ba11cbdd4ac48737cdcf&url=https://shrinkme.ink/theme-paimon" target="_blank" download><button>Download Paimon's Theme Passcode</button></a>
+                            <a href="https://drive.google.com/file/d/1lYJIijHoQ3wpUdxiXS6lMYAX0rd7Zmhc/view?usp=sharing" target="_blank" download><button>Download Paimon's Theme Passcode (author: #Little34306)</button></a>
                             <!-- <a href="./path filza/Theme Paimon Passcode.zip" download><button>Download Paimon's Theme Passcode</button></a> -->
                         </div>
                     </div>
@@ -417,6 +639,106 @@
                 }, 300);
             }
         }
+
+        function closeDisclaimer() {
+            const disclaimer = document.getElementById('disclaimerNotification');
+            if (disclaimer) {
+                disclaimer.style.animation = 'slideUp 0.5s ease-out forwards';
+                
+                setTimeout(() => {
+                    disclaimer.style.display = 'none';
+                    // Adjust main content margin when disclaimer is closed
+                    const mainElement = document.querySelector('main');
+                    if (mainElement) {
+                        mainElement.style.marginTop = '40px';
+                    }
+                }, 500);
+            }
+        }
+
+        // Carousel Functions (for Passcode carousel only)
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.demo-carousel:not(#lockscreen-carousel) .carousel-slide');
+        const dots = document.querySelectorAll('.demo-carousel:not(#lockscreen-carousel) .dot');
+
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Show current slide
+            if (slides[index]) {
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+            }
+        }
+
+        function changeSlide(direction) {
+            currentSlideIndex += direction;
+            
+            if (currentSlideIndex >= slides.length) {
+                currentSlideIndex = 0;
+            } else if (currentSlideIndex < 0) {
+                currentSlideIndex = slides.length - 1;
+            }
+            
+            showSlide(currentSlideIndex);
+        }
+
+        function currentSlide(index) {
+            currentSlideIndex = index - 1;
+            showSlide(currentSlideIndex);
+        }
+
+        // Auto-play carousel (only for passcode carousel)
+        function autoPlay() {
+            changeSlide(1);
+        }
+
+        // Start auto-play when page loads (only for passcode carousel)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto-play every 4 seconds (only for passcode carousel)
+            if (slides.length > 0) {
+                setInterval(autoPlay, 4000);
+            }
+        });
+
+        // Lockscreen Carousel Functions
+        let currentLockscreenSlideIndex = 0;
+        const lockscreenSlides = document.querySelectorAll('#lockscreen-carousel .carousel-slide');
+        const lockscreenDots = document.querySelectorAll('#lockscreen-carousel .dot');
+
+        function showLockscreenSlide(index) {
+            // Hide all slides
+            lockscreenSlides.forEach(slide => slide.classList.remove('active'));
+            lockscreenDots.forEach(dot => dot.classList.remove('active'));
+            
+            // Show current slide
+            if (lockscreenSlides[index]) {
+                lockscreenSlides[index].classList.add('active');
+                lockscreenDots[index].classList.add('active');
+            }
+        }
+
+        function changeLockscreenSlide(direction) {
+            currentLockscreenSlideIndex += direction;
+            
+            if (currentLockscreenSlideIndex >= lockscreenSlides.length) {
+                currentLockscreenSlideIndex = 0;
+            } else if (currentLockscreenSlideIndex < 0) {
+                currentLockscreenSlideIndex = lockscreenSlides.length - 1;
+            }
+            
+            showLockscreenSlide(currentLockscreenSlideIndex);
+        }
+
+        function currentLockscreenSlide(index) {
+            currentLockscreenSlideIndex = index - 1;
+            showLockscreenSlide(currentLockscreenSlideIndex);
+        }
+
+        // No auto-play for lockscreen carousel (GIF images)
+        // User must manually click to navigate
     </script>
 
     <div include-html="view/footer.html" data-basepath="../"></div>
