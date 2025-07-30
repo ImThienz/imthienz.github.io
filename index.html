@@ -53,6 +53,48 @@
             }
         }
 
+        // Disclaimer translation functions - Define early to ensure availability
+        window.disclaimerTranslations = {
+            en: {
+                disclaimer: "<strong>Disclaimer:</strong> This website is for educational purposes only. I'm not responsible for any damage, data loss, or warranty issues caused by using the tools or methods shared here. Use at your own risk.",
+                title: "Translate to Vietnamese"
+            },
+            vi: {
+                disclaimer: "<strong>Tuyên bố miễn trừ:</strong> Trang web này chỉ dành cho mục đích giáo dục. Tôi không chịu trách nhiệm về bất kỳ thiệt hại, mất dữ liệu hoặc vấn đề bảo hành nào do việc sử dụng các công cụ hoặc phương pháp được chia sẻ ở đây. Sử dụng có rủi ro của riêng bạn.",
+                title: "Dịch sang tiếng Anh"
+            }
+        };
+
+        window.currentDisclaimerLanguage = 'en';
+
+        window.toggleDisclaimerTranslate = function() {
+            const disclaimerText = document.getElementById('disclaimerText');
+            const translateBtn = document.getElementById('translateBtn');
+            
+            if (!disclaimerText || !translateBtn) {
+                console.error('Disclaimer elements not found');
+                return;
+            }
+            
+            // Toggle language
+            window.currentDisclaimerLanguage = window.currentDisclaimerLanguage === 'en' ? 'vi' : 'en';
+            
+            // Update text
+            disclaimerText.innerHTML = window.disclaimerTranslations[window.currentDisclaimerLanguage].disclaimer;
+            
+            // Update button title
+            translateBtn.title = window.disclaimerTranslations[window.currentDisclaimerLanguage].title;
+            
+            // Toggle active class for visual feedback
+            translateBtn.classList.toggle('active', window.currentDisclaimerLanguage === 'vi');
+            
+            // Add smooth transition effect
+            disclaimerText.style.opacity = '0.7';
+            setTimeout(() => {
+                disclaimerText.style.opacity = '1';
+            }, 150);
+        };
+
         // Translation data
         const translations = {
             'github-text': {
@@ -70,7 +112,14 @@
                     device. And that alternative app store is indeed the Cydia app store because it
                     provides the best-featured third-party apps, extensions, tweaks, add-ons, games, and
                     themes for iDevices.`,
-                vietnamese: `Cydia là một cửa hàng ứng dụng thay thế cho phép bạn cài đặt các ứng dụng và sửa đổi thứ thế trên iPhone, iPad và iPod touch. Nếu bạn là người dùng iDevice trong một thời gian đủ lâu, bạn có thể đã nhận thấy rằng cửa hàng ứng dụng Apple không cung cấp cho bạn các ứng dụng thứ ba để cài đặt trên thiết bị của bạn. Do đó, bạn phải sử dụng một cửa hàng ứng dụng thay thế trên thiết bị của mình để có được các ứng dụng và sửa đổi thứ thế trên thiết bị. Và cửa hàng ứng dụng thay thế đó chính là cửa hàng ứng dụng Cydia vì nó cung cấp các ứng dụng thứ ba tốt nhất, phần mở rộng, sửa đổi, bổ sung, trò chơi và chủ đề cho iDevices.`
+                vietnamese: `Cydia là gì? Hiểu nôm na thì Cydia là một "chợ ứng dụng thay thế" cho iPhone, iPad – cho phép bạn cài những app và tính năng mà App Store của Apple không cho phép.
+                    <br><br>Nếu bạn dùng iPhone lâu rồi thì chắc biết rằng App Store khá hạn chế, không cho tải app bên ngoài hoặc chỉnh sửa hệ thống. Cydia ra đời để giúp bạn làm được điều đó:
+                    <ul>
+                        <li>Cài ứng dụng bên thứ ba (gọi là file .iPA)</li>
+                        <li>Thêm tính năng tùy chỉnh (gọi là tweak: .dylib / .deb / ...)</li>
+                        <li>Cài theme, trò chơi, tiện ích mở rộng...</li>
+                    </ul>
+                    Tóm lại, Cydia giống như một cánh cửa mở rộng cho người dùng iPhone muốn "vượt rào" để dùng nhiều tính năng hơn.`
             },
             'trollstore-text': {
                 english: `TrollStore is a utility which is able to permanently sign and install any
@@ -78,15 +127,29 @@
                     releases of TrollStore (specifically 2.0 and later) work through the use of a
                     CoreTrust bug in which code signatures are not correctly verified under certain
                     circumstances. <br>
-                    <a href="https://ios.cfw.guide/installing-trollstore/">Installing TrollStore</a> is
+                    <a href="https://ios.cfw.guide/installing-trollstore/" class="tutorial-link">Installing TrollStore</a> is
                     a process which varies depending on what device and iOS you are running, as a
                     result, different guides are attached below depending on said combination`,
-                vietnamese: `TrollStore là một công cụ có thể ký và cài đặt một ứng dụng bất kỳ với quyền cho phép gần như bất kỳ với sự trợ giúp của một lỗ hổng CoreTrust. Các phiên bản phát hành mới nhất của TrollStore (đặc biệt là 2.0 và sau đó) hoạt động thông qua việc sử dụng một lỗ hổng CoreTrust trong đó các chữ ký chứng thực không được xác minh đúng cách trong một số trường hợp. <br>
-                    <a href="https://ios.cfw.guide/installing-trollstore/">Cài đặt TrollStore</a> là một quá trình khác nhau tùy thuộc vào thiết bị và iOS bạn đang chạy, do đó, các hướng dẫn khác nhau được đính kèm dưới đây tùy thuộc vào sự kết hợp này`
+                vietnamese: `TrollStore là gì? TrollStore là một công cụ cho phép bạn cài đặt và sử dụng vĩnh viễn các ứng dụng bên ngoài App Store trên iPhone/iPad — mà không cần jailbreak và không cần gia hạn chứng chỉ mỗi tuần như cách truyền thống.
+                    <br><br>Nó hoạt động nhờ lợi dụng một lỗi trong hệ thống bảo mật của iOS tên là "CoreTrust". Nhờ lỗi này, TrollStore có thể cài app mà Apple thường không cho phép, với đầy đủ quyền truy cập (entitlement) như app hệ thống.
+                    <ul>
+                        <li>Không cần jailbreak (iOS 14 beta 2 ~ iOS 17.0).</li>
+                        <li>App cài vào dùng vĩnh viễn, không bị Apple gỡ sau 7 ngày như cách dùng AltStore hay sideload thông thường.</li>
+                        <li>Cài được ứng dụng mod, tweak, app hệ thống – mà Apple thường chặn.</li>
+                    </ul>
+                    Tóm gọn: <a href="https://ios.cfw.guide/installing-trollstore/" class="tutorial-link">Cài đặt TrollStore</a> giống như một “cửa sau” bí mật giúp bạn cài app lạ trên iPhone mà không bị Apple chặn, và dùng lâu dài — cực kỳ tiện cho những ai thích "vọc vạch" hoặc cần app đặc biệt không có trên App Store.`
             },
             'sidestore-text': {
                 english: `<a href="https://sidestore.io/" class="tutorial-link">SideStore</a> is an alternative app store for seamless sideloading. No jailbreak needed, and no computer after the initial install, only a WiFi connection. <br>`,
-                vietnamese: `<a href="https://sidestore.io/" class="tutorial-link">SideStore</a> là một cửa hàng ứng dụng thay thế cho việc sideloading mượt mà. Không cần jailbreak, và không cần máy tính sau khi cài đặt ban đầu, chỉ cần kết nối WiFi. <br>`
+                vietnamese: `<a href="https://sidestore.io/" class="tutorial-link">SideStore là gì?</a>
+                    SideStore là một chợ ứng dụng thay thế (alternative app store) dành cho iPhone/iPad. Nó cho phép bạn cài đặt ứng dụng bên ngoài App Store (gọi là "sideload") mà không cần jailbreak. 
+                    <br>Tính năng nổi bật:
+                    <ul>
+                        <li>Không cần máy tính sau khi cài lần đầu.</li>
+                        <li>Không cần jailbreak.</li>
+                        <li>Chỉ cần kết nối WiFi là có thể cài thêm hoặc cập nhật ứng dụng dễ dàng.</li>
+                        <li>Dùng công nghệ giống <a href="https://altstore.io/" class="tutorial-link">AltStore</a>, nhưng giúp bạn tự làm mọi thứ trên chính thiết bị của mình, không phụ thuộc vào máy tính mỗi lần cài lại.</li>
+                    </ul>`
             },
             'nugget-text': {
                 english: `Unlock your device's full potential! <br>
@@ -94,7 +157,7 @@
                                 Mobilegestalt and AI Enabler tweaks are not supported on iOS 18.2+. It will never be supported, do not make issues asking for when it is supported.<br>
                                 <a href="https://github.com/leminlimez/Nugget/releases" class="nugget-link">More Details</a>`,
                 vietnamese: `Mở khóa tiềm năng đầy đủ của thiết bị của bạn! <br>
-                                Sparserestore hoạt động trên tất cả các phiên bản iOS 17.0-18.1.1. Có sự hỗ trợ từng phần cho iOS 18.2 developer beta 3 và mới hơn không sử dụng bất kỳ trục trặc nào.<br>
+                                Sparse Restore hoạt động trên tất cả các phiên bản iOS 17.0-18.1.1. Có sự hỗ trợ từng phần cho iOS 18.2 developer beta 3 và mới hơn không sử dụng bất kỳ trục trặc nào.<br>
                                 Các sửa đổi Mobilegestalt và AI Enabler không được hỗ trợ trên iOS 18.2+. Nó sẽ không bao giờ được hỗ trợ, đừng tạo các vấn đề yêu cầu khi nó được hỗ trợ.<br>
                                 <a href="https://github.com/leminlimez/Nugget/releases" class="nugget-link">Thêm chi tiết</a>`
             }
@@ -297,6 +360,22 @@
                     document.getElementById('content').innerHTML = '<p>Error loading content</p>';
                 });
         });
+
+        function closeDisclaimer() {
+            const disclaimer = document.getElementById('disclaimerNotification');
+            if (disclaimer) {
+                disclaimer.style.animation = 'slideUp 0.5s ease-out forwards';
+                
+                setTimeout(() => {
+                    disclaimer.style.display = 'none';
+                    // Adjust main content margin when disclaimer is closed
+                    const mainElement = document.querySelector('main');
+                    if (mainElement) {
+                        mainElement.style.marginTop = '40px';
+                    }
+                }, 500);
+            }
+        }
     </script>
 </body>
 

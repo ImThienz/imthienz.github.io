@@ -90,15 +90,63 @@
     <div class="disclaimer-notification" id="disclaimerNotification">
         <div class="disclaimer-content">
             <div class="disclaimer-icon">⚠️</div>
-            <div class="disclaimer-text">
-                <strong>Disclaimer:</strong> This website is for educational purposes only. We are not responsible for any damage, data loss, or warranty issues caused by using the tools or methods shared here. Use at your own risk.
+            <div class="disclaimer-text" id="disclaimerText">
+                <strong>Disclaimer:</strong> This website is for educational purposes only. I'm not responsible for any damage, data loss, or warranty issues caused by using the tools or methods shared here. Use at your own risk.
             </div>
+            <button class="disclaimer-translate" id="translateBtn" title="Translate to Vietnamese" onclick="window.toggleDisclaimerTranslate()">
+                <i class="fas fa-language"></i>
+            </button>
             <button class="disclaimer-close" onclick="closeDisclaimer()">×</button>
         </div>
     </div>
 
     <!-- Deferred JavaScript loading -->
     <script defer src="public/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Disclaimer Functions - Define early -->
+    <script>
+        // Define disclaimer functions immediately when script loads
+        window.disclaimerTranslations = {
+            en: {
+                disclaimer: "<strong>Disclaimer:</strong> This website is for educational purposes only. I'm not responsible for any damage, data loss, or warranty issues caused by using the tools or methods shared here. Use at your own risk.",
+                title: "Translate to Vietnamese"
+            },
+            vi: {
+                disclaimer: "<strong>Tuyên bố miễn trừ:</strong> Trang web này chỉ dành cho mục đích giáo dục. Tôi không chịu trách nhiệm về bất kỳ thiệt hại, mất dữ liệu hoặc vấn đề bảo hành nào do việc sử dụng các công cụ hoặc phương pháp được chia sẻ ở đây. Sử dụng có rủi ro của riêng bạn.",
+                title: "Dịch sang tiếng Anh"
+            }
+        };
+
+        window.currentDisclaimerLanguage = 'en';
+
+        window.toggleDisclaimerTranslate = function() {
+            const disclaimerText = document.getElementById('disclaimerText');
+            const translateBtn = document.getElementById('translateBtn');
+            
+            if (!disclaimerText || !translateBtn) {
+                console.error('Disclaimer elements not found');
+                return;
+            }
+            
+            // Toggle language
+            window.currentDisclaimerLanguage = window.currentDisclaimerLanguage === 'en' ? 'vi' : 'en';
+            
+            // Update text
+            disclaimerText.innerHTML = window.disclaimerTranslations[window.currentDisclaimerLanguage].disclaimer;
+            
+            // Update button title
+            translateBtn.title = window.disclaimerTranslations[window.currentDisclaimerLanguage].title;
+            
+            // Toggle active class for visual feedback
+            translateBtn.classList.toggle('active', window.currentDisclaimerLanguage === 'vi');
+            
+            // Add smooth transition effect
+            disclaimerText.style.opacity = '0.7';
+            setTimeout(() => {
+                disclaimerText.style.opacity = '1';
+            }, 150);
+        };
+    </script>
     
     <!-- Disclaimer Styles -->
     <style>
@@ -160,6 +208,7 @@
             font-size: 14px;
             line-height: 1.4;
             font-weight: 500;
+            transition: opacity 0.3s ease;
         }
 
         .disclaimer-text strong {
@@ -182,6 +231,30 @@
         .disclaimer-close:hover {
             background: rgba(255,255,255,0.3);
             transform: scale(1.1);
+        }
+
+        .disclaimer-translate {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+
+        .disclaimer-translate:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.1);
+        }
+
+        .disclaimer-translate.active {
+            background: rgba(255,255,255,0.4);
+            box-shadow: 0 0 10px rgba(255,255,255,0.3);
         }
 
         main {
@@ -209,8 +282,16 @@
 
             .disclaimer-close {
                 position: absolute;
-                top: -10px;
+                top: -5px;
                 right: -10px;
+            }
+
+            .disclaimer-translate {
+                position: absolute;
+                top: -10px;
+                right: 30px;
+                font-size: 14px;
+                padding: 6px 10px;
             }
 
             main {
@@ -221,6 +302,7 @@
 
     <!-- Disclaimer JavaScript -->
     <script>
+        // Function to close disclaimer (keep existing functionality)
         function closeDisclaimer() {
             const disclaimer = document.getElementById('disclaimerNotification');
             disclaimer.style.animation = 'slideUp 0.5s ease-out forwards';

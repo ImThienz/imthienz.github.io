@@ -128,11 +128,11 @@
         }
 
         .demo-carousel .carousel-btn.prev {
-            left: 15px;
+            left: -2px;
         }
 
         .demo-carousel .carousel-btn.next {
-            right: 15px;
+            right: 8px;
         }
 
         .demo-carousel .carousel-dots {
@@ -177,7 +177,7 @@
             }
             
             .demo-carousel .carousel-btn {
-                padding: 12px 16px;
+                padding: 4px 8px;
                 font-size: 20px;
             }
             
@@ -464,6 +464,48 @@
     </style>
 
     <script>
+        // Disclaimer translation functions - Define early to ensure availability
+        window.disclaimerTranslations = {
+            en: {
+                disclaimer: "<strong>Disclaimer:</strong> This website is for educational purposes only. I'm not responsible for any damage, data loss, or warranty issues caused by using the tools or methods shared here. Use at your own risk.",
+                title: "Translate to Vietnamese"
+            },
+            vi: {
+                disclaimer: "<strong>Tuyên bố miễn trừ:</strong> Trang web này chỉ dành cho mục đích giáo dục. Tôi không chịu trách nhiệm về bất kỳ thiệt hại, mất dữ liệu hoặc vấn đề bảo hành nào do việc sử dụng các công cụ hoặc phương pháp được chia sẻ ở đây. Sử dụng có rủi ro của riêng bạn.",
+                title: "Dịch sang tiếng Anh"
+            }
+        };
+
+        window.currentDisclaimerLanguage = 'en';
+
+        window.toggleDisclaimerTranslate = function() {
+            const disclaimerText = document.getElementById('disclaimerText');
+            const translateBtn = document.getElementById('translateBtn');
+            
+            if (!disclaimerText || !translateBtn) {
+                console.error('Disclaimer elements not found');
+                return;
+            }
+            
+            // Toggle language
+            window.currentDisclaimerLanguage = window.currentDisclaimerLanguage === 'en' ? 'vi' : 'en';
+            
+            // Update text
+            disclaimerText.innerHTML = window.disclaimerTranslations[window.currentDisclaimerLanguage].disclaimer;
+            
+            // Update button title
+            translateBtn.title = window.disclaimerTranslations[window.currentDisclaimerLanguage].title;
+            
+            // Toggle active class for visual feedback
+            translateBtn.classList.toggle('active', window.currentDisclaimerLanguage === 'vi');
+            
+            // Add smooth transition effect
+            disclaimerText.style.opacity = '0.7';
+            setTimeout(() => {
+                disclaimerText.style.opacity = '1';
+            }, 150);
+        };
+
         function includeHTML() {
             var z, i, elmnt, file, xhttp, basepath;
             z = document.getElementsByTagName("*");
@@ -536,11 +578,11 @@
                         <div class="downloads-container">
                             <a href="https://drive.google.com/file/d/16gPPZloDb2qfe6mzx-VMKo5efws2M1WY/view?usp=sharing" target="_blank" download><button>Download Logo Lockscreen (root)</button></a>
                             <!-- <a href="./path filza/Logo Lockscreen (root).zip" download><button>Download Logo Lockscreen (root)</button></a> -->
-                            <a href="https://drive.google.com/file/d/1vyL7pwLddc8-FCwJfhpsYx8Z3DN_pbAy/view?usp=sharing" target="_blank" download><button>Download Logo Lockscreen Hello (author: #Little34306)</button></a>
+                            <a href="https://drive.google.com/file/d/1vyL7pwLddc8-FCwJfhpsYx8Z3DN_pbAy/view?usp=sharing" target="_blank" title="https://github.com/34306" download><button>Download Logo Lockscreen Hello (author: #Little34306)</button></a>
                             <!-- <a href="./path filza/Face ID (hello).zip" download><button>Download Logo Lockscreen Hello</button></a> -->
-                            <a href="https://taixuongmienphi.click/s/logo-lockscreen-hu-tao-genshin-impactz1u11d3mdnx4mop" target="_blank" download><button>Download Logo Lockscreen Hutao (author: #ImThienz)</button></a>
+                            <a href="https://taixuongmienphi.click/s/logo-lockscreen-hu-tao-genshin-impactz1u11d3mdnx4mop" target="_blank" title="https://github.com/ImThienz" download><button>Download Logo Lockscreen Hutao (author: #ImThienz)</button></a>
                             <!-- <a href="./path filza/Logo Lockscreen Hutao Loop.zip" download><button>Download Logo Lockscreen Hutao</button></a> -->
-                            <a href="https://taixuongmienphi.click/s/logo-lock-screen-conan-detective-conanz1u1tpmdo0qt7e" target="_blank" download><button>Download Logo Lockscreen Conan (author: #ImThienz)</button></a>
+                            <a href="https://taixuongmienphi.click/s/logo-lock-screen-conan-detective-conanz1u1tpmdo0qt7e" target="_blank" title="https://github.com/ImThienz" download><button>Download Logo Lockscreen Conan (author: #ImThienz)</button></a>
                             <!-- <a href="./path filza/Logo Lockscreen Edogawa Conan.zip" download><button>Download Logo Lockscreen Conan</button></a> -->
                         </div>
                     </div>
@@ -582,13 +624,13 @@
                         <div class="downloads-container">
                             <a href="https://drive.google.com/file/d/1qC5IrhNxs-QxDBoKzSDjcNKpLrifWej5/view?usp=sharing" target="_blank" download><button>Download Theme Passcode (root)</button></a>
                             <!-- <a href="./path filza/Theme Passcode (root).zip"download><button>Download Theme Passcode (root)</button></a> -->
-                            <a href="https://taixuongmienphi.click/s/theme-hu-tao-s-passcode-genshin-impactz1u1tpmdo08oqy" target="_blank" download><button>Download Hutao's Theme Passcode (author: #ImThienz)</button></a>
+                            <a href="https://taixuongmienphi.click/s/theme-hu-tao-s-passcode-genshin-impactz1u1tpmdo08oqy" target="_blank" title="https://github.com/ImThienz" download><button>Download Hutao's Theme Passcode (author: #ImThienz)</button></a>
                             <!-- <a href="./path filza/Theme Hutao Passcode.zip"download><button>Download Hutao's Theme Passcode</button></a> -->
-                            <a href="https://taixuongmienphi.click/s/theme-chitoge-s-passcode-nisekoiz1u1tpmdo0dcaf" target="_blank" download><button>Download Chitoge's Theme Passcode (author: #ImThienz)</button></a>
+                            <a href="https://taixuongmienphi.click/s/theme-chitoge-s-passcode-nisekoiz1u1tpmdo0dcaf" target="_blank" title="https://github.com/ImThienz" download><button>Download Chitoge's Theme Passcode (author: #ImThienz)</button></a>
                             <!-- <a href="./path filza/Theme Chitoge Passcode.zip" download><button>Download Chitoge's Theme Passcode</button></a> -->
-                            <a href="https://taixuongmienphi.click/s/theme-anna-s-passcode-shimonetaz1u1tpmdo0uhoj" target="_blank" download><button>Download Anna's Theme Passcode (author: #ImThienz)</button></a>
+                            <a href="https://taixuongmienphi.click/s/theme-anna-s-passcode-shimonetaz1u1tpmdo0uhoj" target="_blank" title="https://github.com/ImThienz" download><button>Download Anna's Theme Passcode (author: #ImThienz)</button></a>
                             <!-- <a href="./path filza/Theme Anna Senpai Passcode.zip" download><button>Download Anna's Theme Passcode</button></a> -->
-                            <a href="https://drive.google.com/file/d/1lYJIijHoQ3wpUdxiXS6lMYAX0rd7Zmhc/view?usp=sharing" target="_blank" download><button>Download Paimon's Theme Passcode (author: #Little34306)</button></a>
+                            <a href="https://drive.google.com/file/d/1lYJIijHoQ3wpUdxiXS6lMYAX0rd7Zmhc/view?usp=sharing" target="_blank" title="https://github.com/34306" download><button>Download Paimon's Theme Passcode (author: #Little34306)</button></a>
                             <!-- <a href="./path filza/Theme Paimon Passcode.zip" download><button>Download Paimon's Theme Passcode</button></a> -->
                         </div>
                     </div>

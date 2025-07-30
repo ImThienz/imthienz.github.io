@@ -16,6 +16,48 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
 
     <script>
+        // Disclaimer translation functions - Define early to ensure availability
+        window.disclaimerTranslations = {
+            en: {
+                disclaimer: "<strong>Disclaimer:</strong> This website is for educational purposes only. I'm not responsible for any damage, data loss, or warranty issues caused by using the tools or methods shared here. Use at your own risk.",
+                title: "Translate to Vietnamese"
+            },
+            vi: {
+                disclaimer: "<strong>Tuyên bố miễn trừ:</strong> Trang web này chỉ dành cho mục đích giáo dục. Tôi không chịu trách nhiệm về bất kỳ thiệt hại, mất dữ liệu hoặc vấn đề bảo hành nào do việc sử dụng các công cụ hoặc phương pháp được chia sẻ ở đây. Sử dụng có rủi ro của riêng bạn.",
+                title: "Dịch sang tiếng Anh"
+            }
+        };
+
+        window.currentDisclaimerLanguage = 'en';
+
+        window.toggleDisclaimerTranslate = function() {
+            const disclaimerText = document.getElementById('disclaimerText');
+            const translateBtn = document.getElementById('translateBtn');
+            
+            if (!disclaimerText || !translateBtn) {
+                console.error('Disclaimer elements not found');
+                return;
+            }
+            
+            // Toggle language
+            window.currentDisclaimerLanguage = window.currentDisclaimerLanguage === 'en' ? 'vi' : 'en';
+            
+            // Update text
+            disclaimerText.innerHTML = window.disclaimerTranslations[window.currentDisclaimerLanguage].disclaimer;
+            
+            // Update button title
+            translateBtn.title = window.disclaimerTranslations[window.currentDisclaimerLanguage].title;
+            
+            // Toggle active class for visual feedback
+            translateBtn.classList.toggle('active', window.currentDisclaimerLanguage === 'vi');
+            
+            // Add smooth transition effect
+            disclaimerText.style.opacity = '0.7';
+            setTimeout(() => {
+                disclaimerText.style.opacity = '1';
+            }, 150);
+        };
+
         function includeHTML() {
             var z, i, elmnt, file, xhttp;
             z = document.getElementsByTagName("*");
@@ -527,18 +569,19 @@
         </section>
         <section class="about"> 
             <div class="heading">
-                <a class="nav-link" href="https://github.com/Lessica/TrollFools/releases"><h1>TrollFools</h1></a>
-                <p>Do not have TrollFools?</p>
-                <a href="https://drive.google.com/file/d/1ZWnHI2g-I1Jq3VhW4KZGyZg_8t0ozxwQ/view?usp=sharing" target="_blank" rel="noopener noreferrer" download><button>TrollFools for iOS 15-16-17</button></a>  <br><br>
-                <a href="https://drive.google.com/file/d/1kxtH5L-ljAFPVwhOfvNXyrx4sDWV9wee/view?usp=sharing" target="_blank" rel="noopener noreferrer" download><button>TrollFools for iOS 14</button></a>
+                <a class="nav-link" href="https://github.com/Lessica/TrollFools/releases" title="Author: #Lessica"><h1>TrollFools</h1></a>
+                <p style="font-size: 15px; font-style: italic;">Cho phép tiêm .dylib / .deb vào apps để thực thi các tin chỉnh thay đổi
+                   - &nbsp; <a href="./public/vid/demo-TrollFools.mp4">Demo by Jailbreak Tips</a>
+                </p>
+                <a href="https://github.com/Lessica/TrollFools/releases/download/v3.7-42/TrollFools_3.7-42.tipa" target="_blank" rel="noopener noreferrer" title="TrollFools_3.7-42.tipa" download><button>TrollFools for iOS 14.x ~ 17.0</button></a>  <br><br>
             </div>
     
             <div class="main-about"> 
                 <div class="content-about"> 
-                    <h1 class="menu" onclick="toggleSection('injectFiles')">Inject Files:</h1>
+                    <h1 class="menu" onclick="toggleSection('injectFiles')">Inject Files (.dylib):</h1>
                     <div id="injectFiles">
 
-                        <div class="submenu" onclick="toggleIntroduction('introInject10')">Social Network: Fb/Mess/Ig/Tiktok/Yt/Locket/Spotify/... (Update: 26/03/2025)</div>
+                        <div class="submenu" onclick="toggleIntroduction('introInject10')">Social Network: Fb / Mess / Ig / Tiktok / Yt / Locket / Spotify / ... (Update: 26/03/2025)</div>
                         <div id="introInject10" class="introduction">
                             ========================================    <br>
                             ========================================    <br><br>
@@ -905,6 +948,22 @@
                     intro.style.display = "none";
                 }
             }
+
+            function closeDisclaimer() {
+                const disclaimer = document.getElementById('disclaimerNotification');
+                if (disclaimer) {
+                    disclaimer.style.animation = 'slideUp 0.5s ease-out forwards';
+                    
+                    setTimeout(() => {
+                        disclaimer.style.display = 'none';
+                        // Adjust main content margin when disclaimer is closed
+                        const mainElement = document.querySelector('main');
+                        if (mainElement) {
+                            mainElement.style.marginTop = '40px';
+                        }
+                    }, 500);
+                }
+            }            
         </script>
 
     </main>
