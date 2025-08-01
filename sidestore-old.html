@@ -251,7 +251,7 @@
     </style>
 </head>
 <body onload="includeHTML()">
-    <div include-html="view/header.html" data-basepath="../"></div>
+    <div include-html="view/header.html" data-basepath="./"></div>
     <main>
         <h1>Hiện tại WireGuard đã được thay thế bằng StosVPN, hãy chuyển sang <a href="./sidestore.html" style="text-decoration: none">liên kết sau</a> để cài đặt SideStore</h1>
         
@@ -360,12 +360,66 @@
             <p>Như vậy là mỗi khi cài ứng dụng hoặc gia hạn ứng dụng bạn sẽ không cần máy tính mà chỉ cần bật cấu hình SideStore bên trong ứng dụng WireGuard mà thôi.</p>
         </div>
     </main>
-    <div include-html="view/footer.html" data-basepath="../"></div>
+    <div include-html="view/footer.html" data-basepath="./"></div>
     
     <script src="public/js/news-1.11.0.min.js"></script>
     <script src="public/js/news-migrate-1.2.1.min.js"></script>
     <script src="public/js/bootstrap.bundle.min.js"></script>
     <script src="public/js/templatemo.js"></script>
-    <script src="public/js/custom.js"></script>   
+    <script src="public/js/custom.js"></script>
+    
+    <script>
+        // Disclaimer translation functions
+        window.disclaimerTranslations = {
+            en: {
+                disclaimer: "<strong>Disclaimer:</strong> This website is for educational purposes only. I'm not responsible for any damage, data loss, or warranty issues caused by using the tools or methods shared here. Use at your own risk.",
+                title: "Translate to Vietnamese"
+            },
+            vi: {
+                disclaimer: "<strong>Tuyên bố miễn trừ:</strong> Trang web này chỉ dành cho mục đích giáo dục. Tôi không chịu trách nhiệm về bất kỳ thiệt hại, mất dữ liệu hoặc vấn đề bảo hành nào do việc sử dụng các công cụ hoặc phương pháp được chia sẻ ở đây. Sử dụng có rủi ro của riêng bạn.",
+                title: "Dịch sang tiếng Anh"
+            }
+        };
+
+        window.currentDisclaimerLanguage = 'en';
+
+        window.toggleDisclaimerTranslate = function() {
+            const disclaimerText = document.getElementById('disclaimerText');
+            const translateBtn = document.getElementById('translateBtn');
+            
+            if (!disclaimerText || !translateBtn) {
+                console.error('Disclaimer elements not found');
+                return;
+            }
+            
+            // Toggle language
+            window.currentDisclaimerLanguage = window.currentDisclaimerLanguage === 'en' ? 'vi' : 'en';
+            
+            // Update text
+            disclaimerText.innerHTML = window.disclaimerTranslations[window.currentDisclaimerLanguage].disclaimer;
+            
+            // Update button title
+            translateBtn.title = window.disclaimerTranslations[window.currentDisclaimerLanguage].title;
+            
+            // Toggle active class for visual feedback
+            translateBtn.classList.toggle('active', window.currentDisclaimerLanguage === 'vi');
+            
+            // Add smooth transition effect
+            disclaimerText.style.opacity = '0.7';
+            setTimeout(() => {
+                disclaimerText.style.opacity = '1';
+            }, 150);
+        };
+
+        function closeDisclaimer() {
+            const disclaimer = document.getElementById('disclaimerNotification');
+            if (disclaimer) {
+                disclaimer.style.animation = 'slideUp 0.5s ease-out forwards';
+                setTimeout(() => {
+                    disclaimer.style.display = 'none';
+                }, 500);
+            }
+        }
+    </script>
 </body>
 </html>
