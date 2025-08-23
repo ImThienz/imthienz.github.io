@@ -106,7 +106,7 @@
             background: #fff;
             border-radius: 16px;
             padding: 24px 28px;
-            text-align: left;
+            text-align: center;
             max-width: 520px;
             width: 100%;
             box-shadow: 0 12px 30px rgba(0,0,0,0.2);
@@ -131,11 +131,12 @@
 		/* Đảm bảo hộp quà trong success overlay nằm đúng vị trí */
 		.success .gift-box {
 			position: relative;
-			margin: 16px 0;
+			margin: 16px auto;
 			width: 80px;
 			height: 80px;
 			max-width: 100%;
 			box-sizing: border-box;
+			display: block;
 		}
 		.gift-overlay {
 			position: fixed;
@@ -201,7 +202,7 @@
             <h2>Yêu em nhiều ơi là nhiều! 🥰</h2>
             <img class="happy-gif" src="public/img/love/cat-love-5.gif" alt="Happy cat" onerror="this.src='public/img/Logo%20Hutao.gif'">
             <p>Tặng em một món quà nho nhỏ, nhớ mở nó ra nhéeee !! <span class="heart">❤</span></p>
-            <div style="margin: 16px 0; width: 100%; max-width: 100%;">
+            <div style="margin: 16px 0; width: 100%; max-width: 100%; text-align: center;">
                 <img class="gift-box" src="public/img/love/box.png" alt="Hộp quà" onclick="showGift()">
             </div>
             <button class="btn btn-yes" onclick="location.reload()">Mlem mlem</button>
@@ -214,24 +215,24 @@
 			<img src="public/img/love/kitkat.png" alt="KitKat">
 			<div class="gift-buttons">
 				<button class="btn btn-yes" onclick="showHappy()">Hết giận òiii 😍</button>
-				<button class="btn btn-no" onclick="hideGift()">Vẫn còn giận đôi chút 😳</button>
+				<button class="btn btn-no" onclick="hideGift()">Vẫn còn giận đôi chút... 😳</button>
 			</div>
 		</div>
 	</div>
 
 	<div id="happyOverlay" class="gift-overlay">
 		<div class="gift-content">
-			<h3>Aaaaaa vui quá, luv u ❤</h3>
+			<h3>Aaaaaa vui quá, luv u ❤, chúc nàngiu có một giấc ngủ ngoall & mơ đẹpppp. Nhớ ôm Conan chặt chặt vào nhennn </h3>
 			<img class="happy-gif" src="public/img/love/cat-love-1.gif" alt="Happy cat" onerror="this.src='public/img/Logo%20Hutao.gif'">
-			<button class="btn btn-yes" onclick="location.reload()">Yêu anh nhiều ❤</button>
+			<button class="btn btn-yes" onclick="location.reload()">Luv u chu cà mo ❤</button>
 		</div>
 	</div>
 
     <div id="loveuOverlay" class="gift-overlay">
 		<div class="gift-content">
 			<h3>Hmmm vậy thì... "chủ quán, order một ly matcha latte 🍵 cho buổi học thêm Toán hôm sau nhé!!!!"</h3>
-			<img class="happy-gif" src="public/img/love/cat-love-1.gif" alt="Happy cat" onerror="this.src='public/img/Logo%20Hutao.gif'">
-			<button class="btn btn-yes" onclick="location.reload()">Ựaaa hết giận òiii ❤</button>
+			<img class="happy-gif" src="public/img/love/cat-happy-2.gif" alt="Happy cat" onerror="this.src='public/img/Logo%20Hutao.gif'">
+			<button class="btn btn-yes" onclick="showHappy()">Ựaaa hết giận òiii 😍</button>
 		</div>
 	</div>
 
@@ -326,6 +327,7 @@
 
 		function showHappy() {
 			document.getElementById('giftOverlay').style.display = 'none';
+			document.getElementById('loveuOverlay').style.display = 'none';
 			document.getElementById('happyOverlay').style.display = 'flex';
 		}
 

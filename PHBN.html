@@ -3,400 +3,685 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tha lỗi nhaaa ❤️</title>
-    <link rel="apple-touch-icon" href="public/img/love.jpg">
-    <link rel="shortcut icon" type="image/x-icon" href="public/img/logotron.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Camonemvidaden</title>
     <style>
-        :root { --primary:#ff6b6b; --dark:#1f1f1f; --bg:#fff7fb; }
-        * { box-sizing: border-box; }
         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            font-family: 'Roboto', system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-            background: radial-gradient(1200px 800px at 10% 10%, #ffe3ec 0%, #fff7fb 50%, #ffffff 100%);
-            color: #333;
-			min-height: 100vh;
-			padding: 16px 16px 24px;
-            overflow-x: hidden;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .title {
-            font-size: 28px;
-            font-weight: 700;
-			margin: 0 0 10px 0;
-            color: var(--dark);
-        }
-        .subtitle {
-            font-size: 16px;
-			margin: 0 0 18px 0;
-            color: #555;
-        }
-        .gif {
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 600px;
             width: 100%;
-            max-width: 360px;
-            height: auto;
-            border-radius: 14px;
-            border: 2px dashed #ffb3c7;
-            padding: 8px;
-            background: #fff;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.06);
         }
-		.buttons {
-			margin-top: 22px;
-			position: relative;
-			min-height: 260px; /* vùng chạy mặc định của nút "Không" ở phía dưới */
-		}
-        .btn {
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        .link-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .link-section:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+        
+        .link-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .link-description {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .link-button {
             display: inline-block;
-            padding: 12px 22px;
-            border-radius: 999px;
-            border: 0;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 16px;
-            transition: transform .15s ease, box-shadow .15s ease, background .2s ease, color .2s ease;
-            user-select: none;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
-        .btn:active { transform: scale(0.98); }
-		.btn-yes {
-            background: linear-gradient(135deg, #ff6b6b, #ff8fab);
-            color: #fff;
-			box-shadow: 0 8px 18px rgba(255, 107, 107, 0.35);
-			/* set explicit base size to allow incremental growth */
-			width: 120px;
-			height: 48px;
-			font-size: 16px;
-			position: absolute;
-			left: 12px;
-			top: 12px;
-			z-index: 2;
+        
+        .link-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            color: white;
+            text-decoration: none;
         }
-        .btn-yes:hover { box-shadow: 0 10px 22px rgba(255, 107, 107, 0.45); }
-		/* Nút trong overlay không dùng absolute positioning */
-		.gift-content .btn-yes,
-		.success .box .btn-yes {
-			position: static;
-			left: auto;
-			top: auto;
-			z-index: auto;
-			margin: 8px auto;
-			display: block;
-		}
-		.btn-no {
-            background: #fff;
-            color: #ff4d6d;
-            border: 2px solid #ffb3c7;
-			box-shadow: 0 6px 14px rgba(0,0,0,0.07);
-			position: absolute; /* chạy trong vùng .buttons */
-			z-index: 1; /* luôn dưới Ucii */
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #888;
+            font-size: 0.9em;
         }
-        .heart { color: #ff4d6d; }
-        .success {
-            position: fixed;
-            inset: 0;
+
+        /* Story Modal Styles */
+        .story-modal {
             display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .story-modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            height: 80vh;
+            margin: 5vh auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: #aaa;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .story-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .story-content {
+            padding: 30px;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s ease;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        .story-content h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeInDown 0.8s ease;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+            line-height: 1.2;
+        }
+
+        .story-content p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+            text-align: justify;
+            padding: 0 10px;
+        }
+
+        .story-content img {
+            width: 60%;
+            max-width: 400px;
+            min-width: 200px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            animation: fadeIn 1s ease;
+            margin: 10px 0;
+        }
+
+        .story-content img:hover {
+            transform: scale(1.02);
+        }
+
+        .story-slide {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 100%;
+            height: 100%;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+        }
+
+        .story-slide.active {
+            left: 0;
+            display: block;
+            opacity: 1;
+        }
+
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            color: #2c3e50;
+            border: none;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0,0,0,0.4);
-            z-index: 9999;
-            padding: 20px;
         }
-        .success .box {
-            background: #fff;
-            border-radius: 16px;
-            padding: 24px 28px;
-            text-align: center;
-            max-width: 520px;
-            width: 100%;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-            border: 2px solid #ffd6e5;
-            overflow: hidden;
-        }
-        .confetti { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
 
-		/* bỏ chế độ fullscreen để không che nội dung */
-		.gift-box {
-			width: 80px;
-			height: 80px;
-			cursor: pointer;
-			transition: transform 0.3s ease;
-			margin: 20px auto;
-			display: block;
-            align-items: center;
-		}
-		.gift-box:hover {
-			transform: scale(1.1);
-		}
-		/* Đảm bảo hộp quà trong success overlay nằm đúng vị trí */
-		.success .gift-box {
-			position: relative;
-			margin: 16px auto;
-			width: 80px;
-			height: 80px;
-			max-width: 100%;
-			box-sizing: border-box;
-			display: block;
-		}
-		.gift-overlay {
-			position: fixed;
-			inset: 0;
-			display: none;
-			align-items: center;
-			justify-content: center;
-			background: rgba(0,0,0,0.6);
-			z-index: 9998;
-			padding: 20px;
-		}
-		.gift-content {
-			background: #fff;
-			border-radius: 16px;
-			padding: 24px 28px;
-			text-align: center;
-			max-width: 520px;
-			width: 100%;
-			box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-			border: 2px solid #ffd6e5;
-		}
-		.gift-content img {
-			max-width: 200px;
-			height: auto;
-			border-radius: 8px;
-			margin: 16px 0;
-		}
-		.gift-buttons {
-			display: flex;
-			gap: 12px;
-			justify-content: center;
-			margin-top: 16px;
-		}
-		.gift-buttons .btn {
-			flex: 1;
-			max-width: 160px;
-			position: static;
-			left: auto;
-			top: auto;
-			z-index: auto;
-		}
-		.happy-gif {
-			max-width: 300px;
-			height: auto;
-			border-radius: 12px;
-			margin: 16px 0;
-		}
+        .left-btn {
+            left: 20px;
+        }
+
+        .right-btn {
+            right: 20px;
+        }
+
+        .nav-button:hover {
+            background: #2c3e50;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .ok-button {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+            margin-top: 20px;
+            animation: fadeInUp 0.8s ease 0.5s both;
+        }
+
+        .ok-button:hover {
+            background: linear-gradient(45deg, #c0392b, #a93226);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+        }
+
+        .ok-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* Thank you notification */
+        .thank-you-notification {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(45deg, #f28ede, #ff03f7);
+            color: white;
+            padding: 30px 50px;
+            border-radius: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            display: none;
+            animation: thankYouFadeIn 0.5s ease;
+        }
+
+        .countdown {
+            font-size: 2rem;
+            margin-top: 10px;
+            font-weight: 700;
+        }
+
+        @keyframes thankYouFadeIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .story-modal-content {
+                width: 95%;
+                height: 90vh;
+                margin: 2.5vh auto;
+            }
+
+            .story-content {
+                padding: 20px 15px;
+            }
+
+            .story-content img {
+                width: 90%;
+                max-width: 300px;
+                min-width: 0;
+                height: auto;
+            }
+
+            .story-content h2 {
+                font-size: 1.5rem;
+                line-height: 1.3;
+                margin-bottom: 15px;
+            }
+
+            .story-content p {
+                font-size: 0.95rem;
+                line-height: 1.5;
+                margin-bottom: 20px;
+                padding: 0 5px;
+            }
+
+            .nav-button {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .left-btn {
+                left: 10px;
+            }
+
+            .right-btn {
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .story-modal-content {
+                width: 98%;
+                height: 95vh;
+                margin: 1vh auto;
+            }
+
+            .story-content {
+                padding: 15px 10px;
+            }
+
+            .story-content h2 {
+                font-size: 1.3rem;
+                line-height: 1.4;
+            }
+
+            .story-content p {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+
+            .story-content img {
+                width: 85%;
+                max-width: 250px;
+            }
+
+            .nav-button {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .left-btn {
+                left: 5px;
+            }
+
+            .right-btn {
+                right: 5px;
+            }
+
+            .ok-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+                margin-top: 15px;
+            }
+
+            .thank-you-notification {
+                padding: 20px 30px;
+                font-size: 1.2rem;
+            }
+
+            .countdown {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <h4> Em thoát ra ngoài, đồng nghĩa với việc em đồng ý đi ngủ sớm nhé !!!</h4>
-	<h1 class="title">Tối nay em đi ngủ sớm nhaaa ... <span class="heart">❤</span></h1>
-	<p class="subtitle">Anh biết có những lúc làm em buồn. Cho anh được sửa sai và được bù đắp nhiều nhiều nhaaa...</p>
-	<img class="gif" src="public/img/love/cat-sad-1.gif" alt="Cute gif" onerror="this.src='public/img/Logo%20Conan.gif'">
-
-	<div class="buttons">
-		<button id="yesBtn" class="btn btn-yes">Ucii nò ❤</button>
-		<button id="noBtn" class="btn btn-no">Không 😒!</button>
-	</div>
-
-    <div id="success" class="success">
-        <div class="box">
-            <h2>Yêu em nhiều ơi là nhiều! 🥰</h2>
-            <img class="happy-gif" src="public/img/love/cat-love-5.gif" alt="Happy cat" onerror="this.src='public/img/Logo%20Hutao.gif'">
-            <p>Tặng em một món quà nho nhỏ, nhớ mở nó ra nhéeee !! <span class="heart">❤</span></p>
-            <div style="margin: 16px 0; width: 100%; max-width: 100%; text-align: center;">
-                <img class="gift-box" src="public/img/love/box.png" alt="Hộp quà" onclick="showGift()">
+    <div class="container">
+        
+        <div class="link-section">
+            <div class="link-title">Xin lỗi, nhưng trang này hiện không còn hoạt động như trước</div>
+            <div class="link-description">
+                Nếu em muốn xem lại giao diện trước đó
             </div>
-            <button class="btn btn-yes" onclick="location.reload()">Mlem mlem</button>
+            <a href="./PHBN-forgiveme.html" class="link-button">
+                Hãy click vào đây
+            </a>
+        </div>
+        
+        <div class="link-section">
+            <div class="link-title">Xin lỗi, nhưng trang này hiện không còn hoạt động như trước</div>
+            <div class="link-description">
+                Đây là chia sẻ nhỏ của anh trong khoảng thời gian vừa qua, mong rằng em hãy đọc nó
+            </div>
+            <button id="openStoryBtn" class="link-button">
+                Cùng cảm nghiệm lại nhé!
+            </button>
+        </div>
+
+        <!-- Story Modal -->
+        <div id="storyModal" class="story-modal">
+            <div class="story-modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="story-container">
+                    <button class="nav-button left-btn" id="prevBtn">&#10094;</button>
+                    
+                    <div class="story-slide active">
+                        <div class="story-content">
+                            <h2>Một lời xin lỗi cuối cùng gửi đến em: </h2>
+                            <p>Anh xin lỗi vì đã đến bên em, 
+                                khi anh chưa có đủ sự quan tâm dành cho em!
+                            </p>
+                            <img src="./public/img/thankyou/1.webp" alt="Story Image 1">
+                        </div>
+                    </div>
+                    
+                    <div class="story-slide">
+                        <div class="story-content">
+                            <h2>Khi em đọc được những dòng này, thì có lẽ hai ta đã không còn trọn vẹn như trước nữa rồi!</h2>
+                            <p>
+                                Anh đã thiếu sót trong việc quan tâm em (ở những phần em repost, sau khi ketthuc mqh - 18/08/2025 
+                                [có lẽ chỉ đến từ phía anh, vì em đã move on từ trước] anh đã xem lại hết rồi) - và cảm nghiệm lại, 
+                                anh nhận thấy rằng mình chưa thật sự sẵn sàng cho một mqh lúc đó. 
+                            </p>
+                            <img src="./public/img/thankyou/2.gif" alt="Story Image 2">
+                        </div>
+                    </div>
+                    
+                    <div class="story-slide">
+                        <div class="story-content">
+                            <h2>“Một người có nhiều tâm sự nhưng không nói ra, một người hồn nhiên đón nhận những sự việc trước mắt, cùng với sự bận rộn.”</h2>
+                            <p>
+                                Em biết không, có nhiều lần anh muốn được cùng em để làm việc nào đó, 
+                                chỉ là cùng nhau thôi là anh thấy vui lắm - nhưng nhận lại câu trả lời là không, 
+                                vì lúc này em đã move on rồi nhưng lại giấu anh
+                            </p>
+                            <img src="./public/img/thankyou/3.gif" alt="Story Image 3">
+                        </div>
+                    </div>
+                    
+                    <div class="story-slide">
+                        <div class="story-content">
+                            <h2>Em nói em hết tình cảm với anh rồi, vậy tại sao còn giấu anh? </h2>
+                            <p>Anh biết những chuyện em giấu anh, nhưng không ngờ ngày đó lại xảy đến sớm như vậy: 
+                                những lần em nói đi ngủ sớm, là tắt TTHĐ & sau đó repost các video vào nửa đêm - mặc cho 
+                                những lời nói trước đó tưởng chừng là sự thật, nhưng lại “không thật”…
+                            </p>
+                            <img src="./public/img/thankyou/4.gif" alt="Story Image 4">
+                        </div>
+                    </div>
+
+                    <div class="story-slide">
+                        <div class="story-content">
+                            <h2>Dù gì cũng đã qua rồi...</h2>
+                            <p>Anh chỉ muốn chia sẻ với em: khi bước vào một mqh, mình có thể không hoàn toàn thật lòng 
+                                (vì những vết thương cũ chưa lành) nhưng mình “đừng dối nhau”, 
+                                vì chẳng ai luôn luôn đoán mò đoán non được - đặc biệt là với người yêu em thật lòng, 
+                                họ sẽ không có suy nghĩ quỡn theo hướng overlinhtinh cả
+                            </p>
+                            <img src="./public/img/thankyou/5.gif" alt="Story Image 5">
+                        </div>
+                    </div>
+
+                    <div class="story-slide">
+                        <div class="story-content">
+                            <h2>Dù gì cũng đã qua rồi...</h2>
+                            <p>Trước khi bước vào cũng như khi bước ra khỏi một mqh, mình nên tự học cách “healing”
+                                 thay vì tìm một bờ vai để nương tựa - vì có thể sẽ gây ra rất nhiều sự hiểu lầm hoặc những tổn thương sau đó.
+                                 Thật lòng mà nói thì ban đầu anh không có ấn tượng nhiều với em, nhưng khi nhận ra 
+                                 sự chân thành từ em thì lúc đó anh mới bị rung động - và lúc biết rằng em đã mệt mỏi 
+                                 không ít lần vì sự thiếu quan tâm đến từ anh, khi chợt nhận ra thì mọi chuyện lúc đó 
+                                 cũng đã muộn màng rồi
+                            </p>
+                            <img src="./public/img/thankyou/6.gif" alt="Story Image 6">
+                        </div>
+                    </div>
+
+                    <div class="story-slide">
+                        <div class="story-content">
+                            <h2>Một hành trình ngắn ngủi mà hai ta không thể cùng nhau bước tiếp ở hiện tại</h2>
+                            <p> 
+                                “Không thể hứa trước được điều gì, nhưng anh vẫn sẽ đồng hành cùng em” - nhớ câu này chứ?
+                                 Anh vẫn sẽ thực hiện lời nói này, nhưng có lẽ là trong âm thầm. Cảm ơn em vì cuộc gặp gỡ 
+                                 trong những ngày đầu, thật sự anh rất trân trọng những điều đó!
+                            </p>
+                            <img src="./public/img/thankyou/7.gif" alt="Story Image 7">
+                            <button id="okButton" class="ok-button">OK</button>
+                        </div>
+                    </div>
+                    
+                    <button class="nav-button right-btn" id="nextBtn">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Thank you notification -->
+        <div id="thankYouNotification" class="thank-you-notification">
+            <div>Cảm ơn em ❤️</div>
+            <div class="countdown" id="countdown">2</div>
+        </div>
+        
+        <div class="footer">
+            © ImThienz. All right reserved | 18/08/2025 ❤️‍🔥
         </div>
     </div>
 
-	<div id="giftOverlay" class="gift-overlay">
-		<div class="gift-content">
-			<h3>Woaaaa, là một thanh KitKat, hihi đừng giận nữa nha 👉👈</h3>
-			<img src="public/img/love/kitkat.png" alt="KitKat">
-			<div class="gift-buttons">
-				<button class="btn btn-yes" onclick="showHappy()">Lên giường thẳng tiếnnnn 😍</button>
-				<button class="btn btn-no" onclick="hideGift()">Vẫn còn chưa muốn ngủ lắm... 😳</button>
-			</div>
-		</div>
-	</div>
-
-	<div id="happyOverlay" class="gift-overlay">
-		<div class="gift-content">
-			<h3>Aaaaaa vui quá, luv u ❤, chúc nàngiu có một giấc ngủ ngoall & mơ đẹpppp. Nhớ ôm Conan chặt chặt vào nhennn </h3>
-			<img class="happy-gif" src="public/img/love/cat-love-1.gif" alt="Happy cat" onerror="this.src='public/img/Logo%20Hutao.gif'">
-			<button class="btn btn-yes" onclick="location.reload()">Luv u chu cà mo ❤</button>
-		</div>
-	</div>
-
-    <div id="loveuOverlay" class="gift-overlay">
-		<div class="gift-content">
-			<h3>Hmmm vậy thì... "chủ quán, order một ly matcha latte 🍵 cho buổi học thêm Toán hôm sau nhé!!!!", vậy em chơi thêm xí nữa rồi ngủ nhénnn</h3>
-			<img class="happy-gif" src="public/img/love/cat-happy-2.gif" alt="Happy cat" onerror="this.src='public/img/Logo%20Hutao.gif'">
-			<button class="btn btn-yes" onclick="showHappy()">Ựaaa ngủ ngoal 💤</button>
-		</div>
-	</div>
-
-    <canvas id="confetti" class="confetti"></canvas>
-
     <script>
-        const noBtn = document.getElementById('noBtn');
-        const yesBtn = document.getElementById('yesBtn');
-        const success = document.getElementById('success');
-        const confettiCanvas = document.getElementById('confetti');
-        let avoidRadius = 140;
+        // Modal functionality
+        const modal = document.getElementById('storyModal');
+        const openBtn = document.getElementById('openStoryBtn');
+        const closeBtn = document.querySelector('.close-modal');
 
-		function toRelativeInButtons() {
-			const wrap = document.querySelector('.buttons');
-			const padding = 12;
-			noBtn.style.position = 'absolute';
-			noBtn.style.right = 'auto';
-			noBtn.style.left = (wrap.clientWidth - noBtn.offsetWidth - padding) + 'px';
-			noBtn.style.top = padding + 'px';
-		}
-
-		function randomPosition() {
-			const padding = 8;
-			const wrap = document.querySelector('.buttons');
-			const maxX = Math.max(0, wrap.clientWidth - noBtn.offsetWidth - padding);
-			const maxY = Math.max(0, wrap.clientHeight - noBtn.offsetHeight - padding);
-			const x = Math.floor(Math.random() * (maxX - padding + 1)) + padding;
-			const y = Math.floor(Math.random() * (maxY - padding + 1)) + padding;
-			// Clear right to avoid stretching width when both left and right are set
-			noBtn.style.right = 'auto';
-			noBtn.style.left = x + 'px';
-			noBtn.style.top = y + 'px';
-		}
-
-        function distanceToNoBtn(x, y) {
-            const r = noBtn.getBoundingClientRect();
-            const cx = r.left + r.width / 2;
-            const cy = r.top + r.height / 2;
-            const dx = x - cx;
-            const dy = y - cy;
-            return Math.hypot(dx, dy);
-        }
-
-        function flee() {
-            randomPosition();
-        }
-
-		const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-		let lastMouseGrow = 0;
-		document.addEventListener('mousemove', (e) => {
-			if (distanceToNoBtn(e.clientX, e.clientY) < avoidRadius) {
-				fleeWithinButtons();
-				if (!isTouch) {
-					const now = Date.now();
-					if (now - lastMouseGrow > 250) {
-						incrementYesSize();
-						lastMouseGrow = now;
-					}
-				}
-			}
-		});
-
-		['pointerdown','touchstart','click'].forEach(evt => {
-            noBtn.addEventListener(evt, (e) => {
-                e.preventDefault();
-				fleeWithinButtons();
-				incrementYesSize(); // mỗi lần nhấp/chạm "Không" -> "Ucii" to thêm 10px
-            }, { passive: false });
+        // Open modal
+        openBtn.addEventListener('click', function() {
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            
+            // Reset to first slide when opening modal
+            currentSlide = 0;
+            showSlide(0);
         });
 
-        yesBtn.addEventListener('click', () => {
-            success.style.display = 'flex';
-            startConfetti();
+        // Close modal
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+            
+            // Reset to first slide when closing modal
+            currentSlide = 0;
+            showSlide(0);
         });
 
-        window.addEventListener('resize', () => {
-            avoidRadius = Math.max(120, Math.min(180, Math.floor(Math.min(window.innerWidth, window.innerHeight) / 6)));
-        });
-
-		window.addEventListener('load', () => {
-			toRelativeInButtons();
-		});
-
-		function showGift() {
-			document.getElementById('giftOverlay').style.display = 'flex';
-		}
-
-		function hideGift() {
-			document.getElementById('giftOverlay').style.display = 'none';
-            document.getElementById('loveuOverlay').style.display = 'flex';
-        }
-
-		function showHappy() {
-			document.getElementById('giftOverlay').style.display = 'none';
-			document.getElementById('loveuOverlay').style.display = 'none';
-			document.getElementById('happyOverlay').style.display = 'flex';
-		}
-
-		// Tăng kích thước Ucii thêm 10px mỗi lần
-		let uciiW = null, uciiH = null;
-		function incrementYesSize() {
-			if (uciiW === null || uciiH === null) {
-				uciiW = parseFloat(getComputedStyle(yesBtn).width) || 120;
-				uciiH = parseFloat(getComputedStyle(yesBtn).height) || 48;
-			}
-			uciiW += 10;
-			uciiH += 10;
-			yesBtn.style.width = uciiW + 'px';
-			yesBtn.style.height = uciiH + 'px';
-		}
-
-		// Giới hạn vùng chạy của nút "Không" trong .buttons
-		function fleeWithinButtons() {
-			const wrap = document.querySelector('.buttons');
-			const padding = 8;
-			// Cho phép chạy trái/phải/giữa trong toàn bộ vùng .buttons (không lên phần trên)
-			const maxX = Math.max(0, wrap.clientWidth - noBtn.offsetWidth - padding);
-			const maxY = Math.max(0, wrap.clientHeight - noBtn.offsetHeight - padding);
-			const x = Math.floor(Math.random() * (maxX - padding + 1)) + padding;
-			const y = Math.floor(Math.random() * (maxY - padding + 1)) + padding;
-			// Clear right to avoid 100% width issue
-			noBtn.style.right = 'auto';
-			noBtn.style.left = x + 'px';
-			noBtn.style.top = y + 'px';
-		}
-
-        function startConfetti() {
-            const ctx = confettiCanvas.getContext('2d');
-            let w = confettiCanvas.width = window.innerWidth;
-            let h = confettiCanvas.height = window.innerHeight;
-            const colors = ['#ff6b6b','#ffd166','#06d6a0','#118ab2','#ef476f'];
-            const pieces = Array.from({ length: 150 }, () => ({
-                x: Math.random() * w,
-                y: -20 - Math.random() * h,
-                s: 4 + Math.random() * 6,
-                a: Math.random() * Math.PI * 2,
-                v: 1 + Math.random() * 3,
-                c: colors[Math.floor(Math.random() * colors.length)]
-            }));
-            let anim;
-            function draw() {
-                ctx.clearRect(0,0,w,h);
-                pieces.forEach(p => {
-                    p.y += p.v;
-                    p.x += Math.sin(p.a += 0.03) * 1.5;
-                    if (p.y > h + 20) { p.y = -20; p.x = Math.random() * w; }
-                    ctx.fillStyle = p.c;
-                    ctx.fillRect(p.x, p.y, p.s, p.s * 0.6);
-                });
-                anim = requestAnimationFrame(draw);
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                
+                // Reset to first slide when closing modal
+                currentSlide = 0;
+                showSlide(0);
             }
-            draw();
-            window.addEventListener('resize', () => {
-                w = confettiCanvas.width = window.innerWidth;
-                h = confettiCanvas.height = window.innerHeight;
+        });
+
+        // Slide functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.story-slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
             });
-            success.addEventListener('click', () => {
-                cancelAnimationFrame(anim);
-                ctx.clearRect(0,0,w,h);
-                confettiCanvas.width = confettiCanvas.width;
-                success.style.display = 'none';
-            }, { once: true });
+
+            // Show current slide
+            if (slides[index]) {
+                slides[index].classList.add('active');
+            }
         }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        // Event listeners for navigation buttons
+        document.getElementById('nextBtn').addEventListener('click', nextSlide);
+        document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (modal.style.display === 'block') {
+                if (event.key === 'ArrowRight') {
+                    nextSlide();
+                } else if (event.key === 'ArrowLeft') {
+                    prevSlide();
+                } else if (event.key === 'Escape') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    
+                    // Reset to first slide when closing modal
+                    currentSlide = 0;
+                    showSlide(0);
+                }
+            }
+        });
+
+        // Initialize first slide
+        showSlide(0);
+
+        // OK button functionality
+        document.getElementById('okButton').addEventListener('click', function() {
+            const thankYouNotification = document.getElementById('thankYouNotification');
+            const countdownElement = document.getElementById('countdown');
+            
+            // Hide modal
+            modal.style.display = 'none';
+            
+            // Show thank you notification
+            thankYouNotification.style.display = 'block';
+            
+            // Countdown functionality
+            let countdown = 2;
+            countdownElement.textContent = countdown;
+            
+            const countdownInterval = setInterval(() => {
+                countdown--;
+                countdownElement.textContent = countdown;
+                
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    thankYouNotification.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            }, 1000);
+        });
     </script>
 </body>
 </html>
-

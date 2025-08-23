@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tha lỗi nhaaa ❤️</title>
+    <link rel="apple-touch-icon" href="public/img/love.jpg">
+    <link rel="shortcut icon" type="image/x-icon" href="public/img/logotron.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary:#ff6b6b; --dark:#1f1f1f; --bg:#fff7fb; }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Roboto', system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+            background: radial-gradient(1200px 800px at 10% 10%, #ffe3ec 0%, #fff7fb 50%, #ffffff 100%);
+            color: #333;
+			min-height: 100vh;
+			padding: 16px 16px 24px;
+            overflow-x: hidden;
+        }
+        .title {
+            font-size: 28px;
+            font-weight: 700;
+			margin: 0 0 10px 0;
+            color: var(--dark);
+        }
+        .subtitle {
+            font-size: 16px;
+			margin: 0 0 18px 0;
+            color: #555;
+        }
+        .gif {
+            width: 100%;
+            max-width: 360px;
+            height: auto;
+            border-radius: 14px;
+            border: 2px dashed #ffb3c7;
+            padding: 8px;
+            background: #fff;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+        }
+		.buttons {
+			margin-top: 22px;
+			position: relative;
+			min-height: 260px; /* vùng chạy mặc định của nút "Không" ở phía dưới */
+		}
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 999px;
+            border: 0;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 16px;
+            transition: transform .15s ease, box-shadow .15s ease, background .2s ease, color .2s ease;
+            user-select: none;
+        }
+        .btn:active { transform: scale(0.98); }
+		.btn-yes {
+            background: linear-gradient(135deg, #ff6b6b, #ff8fab);
+            color: #fff;
+			box-shadow: 0 8px 18px rgba(255, 107, 107, 0.35);
+			/* set explicit base size to allow incremental growth */
+			width: 120px;
+			height: 48px;
+			font-size: 16px;
+			position: absolute;
+			left: 12px;
+			top: 12px;
+			z-index: 2;
+        }
+        .btn-yes:hover { box-shadow: 0 10px 22px rgba(255, 107, 107, 0.45); }
+		/* Nút trong overlay không dùng absolute positioning */
+		.gift-content .btn-yes,
+		.success .box .btn-yes {
+			position: static;
+			left: auto;
+			top: auto;
+			z-index: auto;
+			margin: 8px auto;
+			display: block;
+		}
+		.btn-no {
+            background: #fff;
+            color: #ff4d6d;
+            border: 2px solid #ffb3c7;
+			box-shadow: 0 6px 14px rgba(0,0,0,0.07);
+			position: absolute; /* chạy trong vùng .buttons */
+			z-index: 1; /* luôn dưới Ucii */
+        }
+        .heart { color: #ff4d6d; }
+        .success {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.4);
+            z-index: 9999;
+            padding: 20px;
+        }
+        .success .box {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px 28px;
+            text-align: center;
+            max-width: 520px;
+            width: 100%;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+            border: 2px solid #ffd6e5;
+            overflow: hidden;
+        }
+        .confetti { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
+
+		/* bỏ chế độ fullscreen để không che nội dung */
+		.gift-box {
+			width: 80px;
+			height: 80px;
+			cursor: pointer;
+			transition: transform 0.3s ease;
+			margin: 20px auto;
+			display: block;
+            align-items: center;
+		}
+		.gift-box:hover {
+			transform: scale(1.1);
+		}
+		/* Đảm bảo hộp quà trong success overlay nằm đúng vị trí */
+		.success .gift-box {
+			position: relative;
+			margin: 16px auto;
+			width: 80px;
+			height: 80px;
+			max-width: 100%;
+			box-sizing: border-box;
+			display: block;
+		}
+		.gift-overlay {
+			position: fixed;
+			inset: 0;
+			display: none;
+			align-items: center;
+			justify-content: center;
+			background: rgba(0,0,0,0.6);
+			z-index: 9998;
+			padding: 20px;
+		}
+		.gift-content {
+			background: #fff;
+			border-radius: 16px;
+			padding: 24px 28px;
+			text-align: center;
+			max-width: 520px;
+			width: 100%;
+			box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+			border: 2px solid #ffd6e5;
+		}
+		.gift-content img {
+			max-width: 200px;
+			height: auto;
+			border-radius: 8px;
+			margin: 16px 0;
+		}
+		.gift-buttons {
+			display: flex;
+			gap: 12px;
+			justify-content: center;
+			margin-top: 16px;
+		}
+		.gift-buttons .btn {
+			flex: 1;
+			max-width: 160px;
+			position: static;
+			left: auto;
+			top: auto;
+			z-index: auto;
+		}
+		.happy-gif {
+			max-width: 300px;
+			height: auto;
+			border-radius: 12px;
+			margin: 16px 0;
+		}
+    </style>
+</head>
+<body>
+    <h4> Em thoát ra ngoài, đồng nghĩa với việc em đồng ý đi ngủ sớm nhé !!!</h4>
+	<h1 class="title">Tối nay em đi ngủ sớm nhaaa ... <span class="heart">❤</span></h1>
+	<p class="subtitle">Anh biết có những lúc làm em buồn. Cho anh được sửa sai và được bù đắp nhiều nhiều nhaaa...</p>
+	<img class="gif" src="public/img/love/cat-sad-1.gif" alt="Cute gif" onerror="this.src='public/img/Logo%20Conan.gif'">
+
+	<div class="buttons">
+		<button id="yesBtn" class="btn btn-yes">Ucii nò ❤</button>
+		<button id="noBtn" class="btn btn-no">Không 😒!</button>
+	</div>
+
+    <div id="success" class="success">
+        <div class="box">
+            <h2>Yêu em nhiều ơi là nhiều! 🥰</h2>
+            <img class="happy-gif" src="public/img/love/cat-love-5.gif" alt="Happy cat" onerror="this.src='public/img/Logo%20Hutao.gif'">
+            <p>Tặng em một món quà nho nhỏ, nhớ mở nó ra nhéeee !! <span class="heart">❤</span></p>
+            <div style="margin: 16px 0; width: 100%; max-width: 100%; text-align: center;">
+                <img class="gift-box" src="public/img/love/box.png" alt="Hộp quà" onclick="showGift()">
+            </div>
+            <button class="btn btn-yes" onclick="location.reload()">Mlem mlem</button>
+        </div>
+    </div>
+
+	<div id="giftOverlay" class="gift-overlay">
+		<div class="gift-content">
+			<h3>Woaaaa, là một thanh KitKat, hihi đừng giận nữa nha 👉👈</h3>
+			<img src="public/img/love/kitkat.png" alt="KitKat">
+			<div class="gift-buttons">
+				<button class="btn btn-yes" onclick="showHappy()">Lên giường thẳng tiếnnnn 😍</button>
+				<button class="btn btn-no" onclick="hideGift()">Vẫn còn chưa muốn ngủ lắm... 😳</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="happyOverlay" class="gift-overlay">
+		<div class="gift-content">
+			<h3>Aaaaaa vui quá, luv u ❤, chúc nàngiu có một giấc ngủ ngoall & mơ đẹpppp. Nhớ ôm Conan chặt chặt vào nhennn </h3>
+			<img class="happy-gif" src="public/img/love/cat-love-1.gif" alt="Happy cat" onerror="this.src='public/img/Logo%20Hutao.gif'">
+			<button class="btn btn-yes" onclick="location.reload()">Luv u chu cà mo ❤</button>
+		</div>
+	</div>
+
+    <div id="loveuOverlay" class="gift-overlay">
+		<div class="gift-content">
+			<h3>Hmmm vậy thì... "chủ quán, order một ly matcha latte 🍵 cho buổi học thêm Toán hôm sau nhé!!!!", vậy em chơi thêm xí nữa rồi ngủ nhénnn</h3>
+			<img class="happy-gif" src="public/img/love/cat-happy-2.gif" alt="Happy cat" onerror="this.src='public/img/Logo%20Hutao.gif'">
+			<button class="btn btn-yes" onclick="showHappy()">Ựaaa ngủ ngoal 💤</button>
+		</div>
+	</div>
+
+    <canvas id="confetti" class="confetti"></canvas>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const success = document.getElementById('success');
+        const confettiCanvas = document.getElementById('confetti');
+        let avoidRadius = 140;
+
+		function toRelativeInButtons() {
+			const wrap = document.querySelector('.buttons');
+			const padding = 12;
+			noBtn.style.position = 'absolute';
+			noBtn.style.right = 'auto';
+			noBtn.style.left = (wrap.clientWidth - noBtn.offsetWidth - padding) + 'px';
+			noBtn.style.top = padding + 'px';
+		}
+
+		function randomPosition() {
+			const padding = 8;
+			const wrap = document.querySelector('.buttons');
+			const maxX = Math.max(0, wrap.clientWidth - noBtn.offsetWidth - padding);
+			const maxY = Math.max(0, wrap.clientHeight - noBtn.offsetHeight - padding);
+			const x = Math.floor(Math.random() * (maxX - padding + 1)) + padding;
+			const y = Math.floor(Math.random() * (maxY - padding + 1)) + padding;
+			// Clear right to avoid stretching width when both left and right are set
+			noBtn.style.right = 'auto';
+			noBtn.style.left = x + 'px';
+			noBtn.style.top = y + 'px';
+		}
+
+        function distanceToNoBtn(x, y) {
+            const r = noBtn.getBoundingClientRect();
+            const cx = r.left + r.width / 2;
+            const cy = r.top + r.height / 2;
+            const dx = x - cx;
+            const dy = y - cy;
+            return Math.hypot(dx, dy);
+        }
+
+        function flee() {
+            randomPosition();
+        }
+
+		const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+		let lastMouseGrow = 0;
+		document.addEventListener('mousemove', (e) => {
+			if (distanceToNoBtn(e.clientX, e.clientY) < avoidRadius) {
+				fleeWithinButtons();
+				if (!isTouch) {
+					const now = Date.now();
+					if (now - lastMouseGrow > 250) {
+						incrementYesSize();
+						lastMouseGrow = now;
+					}
+				}
+			}
+		});
+
+		['pointerdown','touchstart','click'].forEach(evt => {
+            noBtn.addEventListener(evt, (e) => {
+                e.preventDefault();
+				fleeWithinButtons();
+				incrementYesSize(); // mỗi lần nhấp/chạm "Không" -> "Ucii" to thêm 10px
+            }, { passive: false });
+        });
+
+        yesBtn.addEventListener('click', () => {
+            success.style.display = 'flex';
+            startConfetti();
+        });
+
+        window.addEventListener('resize', () => {
+            avoidRadius = Math.max(120, Math.min(180, Math.floor(Math.min(window.innerWidth, window.innerHeight) / 6)));
+        });
+
+		window.addEventListener('load', () => {
+			toRelativeInButtons();
+		});
+
+		function showGift() {
+			document.getElementById('giftOverlay').style.display = 'flex';
+		}
+
+		function hideGift() {
+			document.getElementById('giftOverlay').style.display = 'none';
+            document.getElementById('loveuOverlay').style.display = 'flex';
+        }
+
+		function showHappy() {
+			document.getElementById('giftOverlay').style.display = 'none';
+			document.getElementById('loveuOverlay').style.display = 'none';
+			document.getElementById('happyOverlay').style.display = 'flex';
+		}
+
+		// Tăng kích thước Ucii thêm 10px mỗi lần
+		let uciiW = null, uciiH = null;
+		function incrementYesSize() {
+			if (uciiW === null || uciiH === null) {
+				uciiW = parseFloat(getComputedStyle(yesBtn).width) || 120;
+				uciiH = parseFloat(getComputedStyle(yesBtn).height) || 48;
+			}
+			uciiW += 10;
+			uciiH += 10;
+			yesBtn.style.width = uciiW + 'px';
+			yesBtn.style.height = uciiH + 'px';
+		}
+
+		// Giới hạn vùng chạy của nút "Không" trong .buttons
+		function fleeWithinButtons() {
+			const wrap = document.querySelector('.buttons');
+			const padding = 8;
+			// Cho phép chạy trái/phải/giữa trong toàn bộ vùng .buttons (không lên phần trên)
+			const maxX = Math.max(0, wrap.clientWidth - noBtn.offsetWidth - padding);
+			const maxY = Math.max(0, wrap.clientHeight - noBtn.offsetHeight - padding);
+			const x = Math.floor(Math.random() * (maxX - padding + 1)) + padding;
+			const y = Math.floor(Math.random() * (maxY - padding + 1)) + padding;
+			// Clear right to avoid 100% width issue
+			noBtn.style.right = 'auto';
+			noBtn.style.left = x + 'px';
+			noBtn.style.top = y + 'px';
+		}
+
+        function startConfetti() {
+            const ctx = confettiCanvas.getContext('2d');
+            let w = confettiCanvas.width = window.innerWidth;
+            let h = confettiCanvas.height = window.innerHeight;
+            const colors = ['#ff6b6b','#ffd166','#06d6a0','#118ab2','#ef476f'];
+            const pieces = Array.from({ length: 150 }, () => ({
+                x: Math.random() * w,
+                y: -20 - Math.random() * h,
+                s: 4 + Math.random() * 6,
+                a: Math.random() * Math.PI * 2,
+                v: 1 + Math.random() * 3,
+                c: colors[Math.floor(Math.random() * colors.length)]
+            }));
+            let anim;
+            function draw() {
+                ctx.clearRect(0,0,w,h);
+                pieces.forEach(p => {
+                    p.y += p.v;
+                    p.x += Math.sin(p.a += 0.03) * 1.5;
+                    if (p.y > h + 20) { p.y = -20; p.x = Math.random() * w; }
+                    ctx.fillStyle = p.c;
+                    ctx.fillRect(p.x, p.y, p.s, p.s * 0.6);
+                });
+                anim = requestAnimationFrame(draw);
+            }
+            draw();
+            window.addEventListener('resize', () => {
+                w = confettiCanvas.width = window.innerWidth;
+                h = confettiCanvas.height = window.innerHeight;
+            });
+            success.addEventListener('click', () => {
+                cancelAnimationFrame(anim);
+                ctx.clearRect(0,0,w,h);
+                confettiCanvas.width = confettiCanvas.width;
+                success.style.display = 'none';
+            }, { once: true });
+        }
+    </script>
+</body>
+</html>
+
