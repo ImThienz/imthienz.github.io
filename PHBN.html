@@ -138,7 +138,7 @@
         }
 
         .story-content {
-            padding: 30px;
+            padding: 30px 80px;
             text-align: center;
             width: 100%;
             height: 100%;
@@ -231,11 +231,11 @@
         }
 
         .left-btn {
-            left: 20px;
+            left: 10px;
         }
 
         .right-btn {
-            right: 20px;
+            right: 10px;
         }
 
         .nav-button:hover {
@@ -295,6 +295,86 @@
             font-weight: 700;
         }
 
+        /* Music Player Styles */
+        .music-player {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1002;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .music-toggle {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .music-toggle.playing {
+            background: linear-gradient(45deg, #27ae60, #2ecc71);
+            animation: pulse 2s infinite;
+        }
+
+        .music-toggle.paused {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .music-info {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #333;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            display: none;
+        }
+
+        .music-info.show {
+            display: block;
+            animation: slideInRight 0.3s ease;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
         @keyframes thankYouFadeIn {
             from {
                 opacity: 0;
@@ -341,7 +421,7 @@
             }
 
             .story-content {
-                padding: 20px 15px;
+                padding: 20px 60px;
             }
 
             .story-content img {
@@ -371,11 +451,11 @@
             }
 
             .left-btn {
-                left: 10px;
+                left: 5px;
             }
 
             .right-btn {
-                right: 10px;
+                right: 5px;
             }
         }
 
@@ -387,7 +467,7 @@
             }
 
             .story-content {
-                padding: 15px 10px;
+                padding: 15px 50px;
             }
 
             .story-content h2 {
@@ -412,11 +492,11 @@
             }
 
             .left-btn {
-                left: 5px;
+                left: 2px;
             }
 
             .right-btn {
-                right: 5px;
+                right: 2px;
             }
 
             .ok-button {
@@ -433,10 +513,43 @@
             .countdown {
                 font-size: 1.5rem;
             }
+
+            .music-player {
+                top: 10px;
+                right: 10px;
+            }
+
+            .music-toggle {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .music-info {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Music Player -->
+    <div class="music-player">
+        <button id="musicToggle" class="music-toggle" title="Bật/Tắt nhạc">
+            <i id="musicIcon">🎵</i>
+        </button>
+        <div id="musicInfo" class="music-info">
+            <span id="musicTitle">Đang phát: Nhạc nền</span>
+        </div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop autoplay muted>
+        <source src="./public/audio/background-music.mp3" type="audio/mpeg">
+        <!-- <source src="./public/audio/your-music-file.ogg" type="audio/ogg"> -->
+        Trình duyệt của bạn không hỗ trợ phát nhạc.
+    </audio>
+
     <div class="container">
         
         <div class="link-section">
@@ -655,6 +768,82 @@
 
         // Initialize first slide
         showSlide(0);
+
+        // Music Player functionality
+        const musicToggle = document.getElementById('musicToggle');
+        const musicIcon = document.getElementById('musicIcon');
+        const musicInfo = document.getElementById('musicInfo');
+        const bgMusic = document.getElementById('bgMusic');
+        let isMusicPlaying = false;
+
+        // Auto-play music when page loads
+        window.addEventListener('load', function() {
+            // Unmute and play music immediately
+            bgMusic.muted = false;
+            playMusic();
+        });
+
+        // Also try to play when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            bgMusic.muted = false;
+            playMusic();
+        });
+
+        // Fallback: play music on first user interaction
+        document.addEventListener('click', function() {
+            if (!isMusicPlaying) {
+                playMusic();
+            }
+        }, { once: true });
+
+        function playMusic() {
+            bgMusic.play().then(() => {
+                isMusicPlaying = true;
+                musicToggle.classList.add('playing');
+                musicToggle.classList.remove('paused');
+                musicIcon.textContent = '🎵';
+                musicInfo.classList.add('show');
+                
+                // Hide music info after 3 seconds
+                setTimeout(() => {
+                    musicInfo.classList.remove('show');
+                }, 3000);
+            }).catch(error => {
+                // Silently handle autoplay restriction (this is normal browser behavior)
+                isMusicPlaying = false;
+                musicToggle.classList.remove('playing');
+                musicToggle.classList.add('paused');
+                musicIcon.textContent = '🔇';
+            });
+        }
+
+        function pauseMusic() {
+            bgMusic.pause();
+            isMusicPlaying = false;
+            musicToggle.classList.remove('playing');
+            musicToggle.classList.add('paused');
+            musicIcon.textContent = '🔇';
+            musicInfo.classList.remove('show');
+        }
+
+        musicToggle.addEventListener('click', function() {
+            if (isMusicPlaying) {
+                pauseMusic();
+            } else {
+                playMusic();
+            }
+        });
+
+        // Show music info on hover
+        musicToggle.addEventListener('mouseenter', function() {
+            if (isMusicPlaying) {
+                musicInfo.classList.add('show');
+            }
+        });
+
+        musicToggle.addEventListener('mouseleave', function() {
+            musicInfo.classList.remove('show');
+        });
 
         // OK button functionality
         document.getElementById('okButton').addEventListener('click', function() {
