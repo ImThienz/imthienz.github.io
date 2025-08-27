@@ -80,7 +80,7 @@
     },
     {
       "id": 33,
-      "name": "Fake GPS 📍",
+      "name": "Fake GPS 📍 (.zip)",
       "description": "☄️ Dylib Fake vị trí - Có hiệu lực cho ứng dụng được tiêm 🆕 \n ✅ Gõ 2 lần bằng 3 ngón tay lên màn hình để gọi Menu. Bấm giữ vào vị trí muốn Fake để chọn sau đó bật công tắc bên trái màn hình. \n <a href='./public/vid/fake-gps.mp4'>👉Demo ở đây!👈</a> \n ✅ Vào TrollFools và tìm ứng dụng cần fake GPS, tiêm file <span style='font-style: italic'>'FakeGPS-v3.zip'</span> này vào",
       "link": "./Inject into TrollFools's Apps/FakeGPS-v3.zip"
     },
