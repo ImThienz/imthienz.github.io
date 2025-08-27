@@ -78,7 +78,12 @@
       "description": "✅ Dylib mở khoá chức năng VIP miễn phí cho Xingtu (醒图) ứng dụng chỉnh ảnh sịn sò Trung Quốc \n <a href='./public/img/xingtu-demo.jpg'>Cách chuyển vùng</a>",
       "link": "./Inject into TrollFools's Apps/Xingtu.dylib"
     },
-
+    {
+      "id": 33,
+      "name": "Fake GPS 📍",
+      "description": "☄️ Dylib Fake vị trí - Có hiệu lực cho ứng dụng được tiêm 🆕 \n ✅ Gõ 2 lần bằng 3 ngón tay lên màn hình để gọi Menu. Bấm giữ vào vị trí muốn Fake để chọn sau đó bật công tắc bên trái màn hình. \n <a href='./public/vid/fake-gps.mp4'>👉Demo ở đây!👈</a> \n ✅ Vào TrollFools và tìm ứng dụng cần fake GPS, tiêm file <span style='font-style: italic'>'FakeGPS-v3.zip'</span> này vào",
+      "link": "./Inject into TrollFools's Apps/FakeGPS-v3.zip"
+    },
     {
       "id": 2,
       "name": "Air Troller (iPA)",
@@ -193,7 +198,7 @@
     {
       "id": 21,
       "name": "Locket Gold (dylib)",
-      "description": "⚙ Locket Gold - Gói tiện ích cho Locket Widget 🆕 \n ✅ Nâng cấp Gold miễn phí. \n Nếu không kích hoạt được Gold \n 1. Dùng Appsmanager xoá sạch dữ liệu ứng dụng Locket \n 2. Mở Locket đăng nhập lại và kiểm tra \n ========================================== \n ✅ Để upload video 10s, cần dán (thay thế) file RemoteConfig.sqlite3 vào path sau: \n ✅ /var/mobile/Containers/Data/Application/Locket/Library/Application Support/Google/RemoteConfig.sqlite3 \n ========================================== \n ✅ Hoặc có thể đăng tải ảnh/video trực tiếp <a href='https://locket-uploader.thuthuatjb.com'>tại đây</a> (yêu cầu kích thước ảnh nhỏ hơn 5Mb ; video nhỏ hơn 12Mb) \n ✅ <a href='https://www.video2edit.com/vi/compress-video'>Nén kích thước video tại đây</a>",
+      "description": "⚙ Locket Gold - Gói tiện ích cho Locket Widget 🆕 \n ✅ Nâng cấp Gold miễn phí. \n Nếu không kích hoạt được Gold \n 1. Dùng Appsmanager xoá sạch dữ liệu ứng dụng Locket \n 2. Mở Locket đăng nhập lại và kiểm tra \n ========================================== \n ✅ Để upload video 10s, cần dán (thay thế) file RemoteConfig.sqlite3 vào path sau: \n ✅ /var/mobile/Containers/Data/Application/Locket/Library/Application Support/Google/RemoteConfig.sqlite3 \n ========================================== \n Nếu xảy ra lỗi cài đặt .ipa Locket Gold, bạn có thể <a href='./locket-gold.html'>cài đặt bằng cách khác</a>",
       "link": "./Inject into TrollFools's Apps/Locket-Gold.dylib",
       "link1": "./Inject into TrollFools's Apps/RemoteConfig.sqlite3"
     }
