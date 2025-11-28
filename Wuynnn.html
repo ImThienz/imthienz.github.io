@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="../public/img/Wuynnn/theme.jpg">
+
+    <title>Happy birthday to you</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        .link-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .link-section:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+        
+        .link-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .link-description {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .link-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .link-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        /* Story Modal Styles */
+        .story-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .story-modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            height: 80vh;
+            margin: 5vh auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: #aaa;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .story-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .story-content {
+            padding: 30px 80px;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s ease;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        .story-content h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeInDown 0.8s ease;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+            line-height: 1.2;
+        }
+
+        .story-content p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+            text-align: justify;
+            padding: 0 10px;
+        }
+
+        .story-content img {
+            width: 60%;
+            max-width: 400px;
+            min-width: 200px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            animation: fadeIn 1s ease;
+            margin: 10px 0;
+        }
+
+        .story-content img:hover {
+            transform: scale(1.02);
+        }
+
+        .story-slide {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 100%;
+            height: 100%;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+        }
+
+        .story-slide.active {
+            left: 0;
+            display: block;
+            opacity: 1;
+        }
+
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            color: #2c3e50;
+            border: none;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .left-btn {
+            left: 10px;
+        }
+
+        .right-btn {
+            right: 10px;
+        }
+
+        .nav-button:hover {
+            background: #2c3e50;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .ok-button {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+            margin-top: 20px;
+            animation: fadeInUp 0.8s ease 0.5s both;
+        }
+
+        .ok-button:hover {
+            background: linear-gradient(45deg, #c0392b, #a93226);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+        }
+
+        .ok-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* Thank you notification */
+        .thank-you-notification {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(45deg, #f28ede, #ff03f7);
+            color: white;
+            padding: 30px 50px;
+            border-radius: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            display: none;
+            animation: thankYouFadeIn 0.5s ease;
+        }
+
+        .countdown {
+            font-size: 2rem;
+            margin-top: 10px;
+            font-weight: 700;
+        }
+
+        /* Music Player Styles */
+        .music-player {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1002;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .music-toggle {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .music-toggle.playing {
+            background: linear-gradient(45deg, #27ae60, #2ecc71);
+            animation: pulse 2s infinite;
+        }
+
+        .music-toggle.paused {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .music-info {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #333;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            display: none;
+        }
+
+        .music-info.show {
+            display: block;
+            animation: slideInRight 0.3s ease;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes thankYouFadeIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .story-modal-content {
+                width: 95%;
+                height: 90vh;
+                margin: 2.5vh auto;
+            }
+
+            .story-content {
+                padding: 20px 60px;
+            }
+
+            .story-content img {
+                width: 90%;
+                max-width: 300px;
+                min-width: 0;
+                height: auto;
+            }
+
+            .story-content h2 {
+                font-size: 1.5rem;
+                line-height: 1.3;
+                margin-bottom: 15px;
+            }
+
+            .story-content p {
+                font-size: 0.95rem;
+                line-height: 1.5;
+                margin-bottom: 20px;
+                padding: 0 5px;
+            }
+
+            .nav-button {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .left-btn {
+                left: 5px;
+            }
+
+            .right-btn {
+                right: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .story-modal-content {
+                width: 98%;
+                height: 95vh;
+                margin: 1vh auto;
+            }
+
+            .story-content {
+                padding: 15px 50px;
+            }
+
+            .story-content h2 {
+                font-size: 1.3rem;
+                line-height: 1.4;
+            }
+
+            .story-content p {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+
+            .story-content img {
+                width: 85%;
+                max-width: 250px;
+            }
+
+            .nav-button {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .left-btn {
+                left: 2px;
+            }
+
+            .right-btn {
+                right: 2px;
+            }
+
+            .ok-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+                margin-top: 15px;
+            }
+
+            .thank-you-notification {
+                padding: 20px 30px;
+                font-size: 1.2rem;
+            }
+
+            .countdown {
+                font-size: 1.5rem;
+            }
+
+            .music-player {
+                top: 10px;
+                right: 10px;
+            }
+
+            .music-toggle {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .music-info {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Music Player -->
+    <div class="music-player">
+        <button id="musicToggle" class="music-toggle" title="Bật/Tắt nhạc">
+            <i id="musicIcon">🎵</i>
+        </button>
+        <div id="musicInfo" class="music-info">
+            <span id="musicTitle">Đang phát: Nhạc nền</span>
+        </div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop autoplay muted>
+        <source src="./public/audio/background-music-hpbd.m4a" type="audio/mpeg">
+        <!-- <source src="./public/audio/your-music-file.ogg" type="audio/ogg"> -->
+        Trình duyệt của bạn không hỗ trợ phát nhạc.
+    </audio>
+
+    <div class="container">
+        
+        <div class="link-section">
+            <div class="link-title">Happy birthday Kemiuuu 🥳 🎂 </div>
+            <div class="link-description">
+                
+            </div>
+            <button id="openStoryBtn" class="link-button">
+                👉Nhấp dô đây👈
+            </button>
+        </div>
+
+        <!-- Story Modal -->
+        <div id="storyModal" class="story-modal">
+            <div class="story-modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="story-container">
+                    <button class="nav-button left-btn" id="prevBtn">&#10094;</button>
+                    
+                    <div class="story-slide active">
+                        <div class="story-content">
+                            <h2>Happy birthday Kem Iu 🎉🎊 </h2>
+                            <p>Chúc chị Kem tủi mới gặt hái thêm thành công mới!!!
+                            </p>
+                            <img src="./public/img/Wuynnn/5.png" alt="Story Image 1">
+                        </div>
+                    </div>
+                    
+                    <div class="story-slide">
+                        <div class="story-content">
+                            <h2>Happy birthday Wuynnn 🎈🎁 </h2>
+                            <p>
+                                Luôn sai đẹp gíuuuu
+                            </p>
+                            <img src="./public/img/Wuynnn/3.jpg" alt="Story Image 2">
+                        </div>
+                    </div>
+
+                    <div class="story-slide">
+                        <div class="story-content">
+                            <h2>Happy birthday Kemiu291 🎈🎁 </h2>
+                            <p>
+                                Sớm trở thành Fuba 💰
+                            </p>
+                            <img src="./public/img/Wuynnn/5.jpg" alt="Story Image 2">
+                        </div>
+                    </div>
+                    
+                    <div class="story-slide">
+                        <div class="story-content">
+                            <h2>Happy birthday Minh Vy 🎉🎊 </h2>
+                            <p>
+                                Mình đến tuổi già
+                                sức yếu 🫩 rồi nên thôi Thiện chúc sức khỏe - luôn mạnh phẻ hà (nhma phải 
+                                heo thỳ thì mới phẻ chứ không tự dưng mà phẻ ào ào được nhen) 💪
+                            </p>
+                            <img src="./public/img/Wuynnn/7.jpg" alt="Story Image 3">
+                        </div>
+                    </div>
+                    
+                    <div class="story-slide">
+                        <div class="story-content">
+                            <h2>Happy birthday Shy Shy 🎉🎊 </h2>
+                            <p> Ngày càng tăng đô, 2-3-zoooooo 🍻
+                            </p>
+                            <img src="./public/img/Wuynnn/1.jpg" alt="Story Image 4">
+                        </div>
+                    </div>
+
+                    <div class="story-slide">
+                        <div class="story-content">
+                            <h2>Happy birthday Thy Thy 🎉🎊 </h2>
+                            <p>Không lùi bước, burn-out 🤯 thì cũng không sao - 
+                                đã có những người bạn đồng hành welỏ sát cánh 🪽
+                            </p>
+                            <img src="./public/img/Wuynnn/9.jpg" alt="Story Image 5">
+                            <button id="okButton" class="ok-button">OK</button>
+                        </div>
+                    </div>
+                    
+                    <button class="nav-button right-btn" id="nextBtn">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Thank you notification -->
+        <div id="thankYouNotification" class="thank-you-notification">
+            <div>Enjoy cái moment này nhé 🤝❤️‍🔥</div>
+            <div class="countdown" id="countdown">2</div>
+        </div>
+        
+        <div class="footer">
+            © ImThienz. All right reserved | 29/11/2025 ❤️‍🔥
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('storyModal');
+        const openBtn = document.getElementById('openStoryBtn');
+        const closeBtn = document.querySelector('.close-modal');
+
+        // Open modal
+        openBtn.addEventListener('click', function() {
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            
+            // Reset to first slide when opening modal
+            currentSlide = 0;
+            showSlide(0);
+        });
+
+        // Close modal
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+            
+            // Reset to first slide when closing modal
+            currentSlide = 0;
+            showSlide(0);
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                
+                // Reset to first slide when closing modal
+                currentSlide = 0;
+                showSlide(0);
+            }
+        });
+
+        // Slide functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.story-slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+
+            // Show current slide
+            if (slides[index]) {
+                slides[index].classList.add('active');
+            }
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        // Event listeners for navigation buttons
+        document.getElementById('nextBtn').addEventListener('click', nextSlide);
+        document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (modal.style.display === 'block') {
+                if (event.key === 'ArrowRight') {
+                    nextSlide();
+                } else if (event.key === 'ArrowLeft') {
+                    prevSlide();
+                } else if (event.key === 'Escape') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    
+                    // Reset to first slide when closing modal
+                    currentSlide = 0;
+                    showSlide(0);
+                }
+            }
+        });
+
+        // Initialize first slide
+        showSlide(0);
+
+        // Music Player functionality
+        const musicToggle = document.getElementById('musicToggle');
+        const musicIcon = document.getElementById('musicIcon');
+        const musicInfo = document.getElementById('musicInfo');
+        const bgMusic = document.getElementById('bgMusic');
+        let isMusicPlaying = false;
+
+        // Auto-play music when page loads
+        window.addEventListener('load', function() {
+            // Unmute and play music immediately
+            bgMusic.muted = false;
+            playMusic();
+        });
+
+        // Also try to play when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            bgMusic.muted = false;
+            playMusic();
+        });
+
+        // Fallback: play music on first user interaction
+        document.addEventListener('click', function() {
+            if (!isMusicPlaying) {
+                playMusic();
+            }
+        }, { once: true });
+
+        function playMusic() {
+            bgMusic.play().then(() => {
+                isMusicPlaying = true;
+                musicToggle.classList.add('playing');
+                musicToggle.classList.remove('paused');
+                musicIcon.textContent = '🎵';
+                musicInfo.classList.add('show');
+                
+                // Hide music info after 3 seconds
+                setTimeout(() => {
+                    musicInfo.classList.remove('show');
+                }, 3000);
+            }).catch(error => {
+                // Silently handle autoplay restriction (this is normal browser behavior)
+                isMusicPlaying = false;
+                musicToggle.classList.remove('playing');
+                musicToggle.classList.add('paused');
+                musicIcon.textContent = '🔇';
+            });
+        }
+
+        function pauseMusic() {
+            bgMusic.pause();
+            isMusicPlaying = false;
+            musicToggle.classList.remove('playing');
+            musicToggle.classList.add('paused');
+            musicIcon.textContent = '🔇';
+            musicInfo.classList.remove('show');
+        }
+
+        musicToggle.addEventListener('click', function() {
+            if (isMusicPlaying) {
+                pauseMusic();
+            } else {
+                playMusic();
+            }
+        });
+
+        // Show music info on hover
+        musicToggle.addEventListener('mouseenter', function() {
+            if (isMusicPlaying) {
+                musicInfo.classList.add('show');
+            }
+        });
+
+        musicToggle.addEventListener('mouseleave', function() {
+            musicInfo.classList.remove('show');
+        });
+
+        // OK button functionality
+        document.getElementById('okButton').addEventListener('click', function() {
+            const thankYouNotification = document.getElementById('thankYouNotification');
+            const countdownElement = document.getElementById('countdown');
+            
+            // Hide modal
+            modal.style.display = 'none';
+            
+            // Show thank you notification
+            thankYouNotification.style.display = 'block';
+            
+            // Countdown functionality
+            let countdown = 2;
+            countdownElement.textContent = countdown;
+            
+            const countdownInterval = setInterval(() => {
+                countdown--;
+                countdownElement.textContent = countdown;
+                
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    thankYouNotification.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
