@@ -138,14 +138,9 @@
       "id": 10,
       "name": "TrollFools (iPA)",
       "description": "TrollFools for iOS 15-16-17",
-      "link": "./iPA TrollStore/TrollFools_2.5-2.tipa"
+      "link": "./iPA TrollStore/TrollFools_4.2-227.tipa"
     },
-    {
-      "id": 11,
-      "name": "TrollFools (iPA)",
-      "description": "TrollFools for iOS 14",
-      "link": "./iPA TrollStore/TrollFools14_2.5-2.tipa"
-    },
+
     {
       "id": 12,
       "name": "Action Bar Reborn (dylib)",

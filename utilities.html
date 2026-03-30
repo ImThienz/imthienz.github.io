@@ -246,13 +246,15 @@
             box-shadow: 0 4px 15px var(--shadow-color);
         }
 
-        #ipaApps {
+        #ipaApps,
+        #telegramApps {
             display: none;
             position: relative;
             padding-left: 80px;
         }
 
-        #ipaApps::before {
+        #ipaApps::before,
+        #telegramApps::before {
             content: '';
             position: absolute;
             left: 40px;
@@ -262,7 +264,8 @@
             background: var(--accent-color);
         }
 
-        #ipaApps.active {
+        #ipaApps.active,
+        #telegramApps.active {
             display: block;
         }
 
@@ -424,11 +427,13 @@
                 padding: 15px;
             }
 
-            #ipaApps {
+            #ipaApps,
+            #telegramApps {
                 padding-left: 40px;
             }
 
-            #ipaApps::before {
+            #ipaApps::before,
+            #telegramApps::before {
                 left: 20px;
             }
 
@@ -648,9 +653,33 @@
                             ➤ <a href="./public/vid/ShowPassWifi-How to set up.mp4">How to set up?</a>   <br>
                         </p>
                     </div>
-                    </div>
-                    </div>
                 </div>
+
+                <h1 class="menu" onclick="toggleSection('telegramApps')">Telegram (Click to expand)</h1>
+                <div id="telegramApps">
+                    <div class="submenu">
+                        <a href="https://t.me/decrypt_download_bot" target="_blank" rel="noopener noreferrer">🤖Bot Decrypt .iPA (Clone Apps by ID)</a>
+                    </div>
+
+                    <div class="submenu">
+                        <a href="https://t.me/ProxyMTProto" target="_blank" rel="noopener noreferrer">🌐Server Proxy</a>
+                    </div>
+                    
+                    <div class="submenu">
+                        <a href="https://t.me/cld_community" target="_blank" rel="noopener noreferrer">👥Check Scam Link</a>
+                    </div>
+                    
+                    <!-- <div class="submenu" onclick="toggleIntroduction('tgIntro1')">Nhóm cộng đồng TroubIeiOS</div>
+                    <div id="tgIntro1" class="introduction">
+                        <h4>✈️ Cộng đồng iOS</h4>
+                        <p>
+                            Nhóm Telegram cộng đồng (được giới thiệu trên các trang dự án).<br>
+                            ➤ <a href="https://t.me/TroubIeiOS" target="_blank" rel="noopener noreferrer">Mở nhóm TroubIeiOS</a>
+                        </p>
+                    </div> -->
+
+                </div>
+
             </div>
         </div>
     </main>
