@@ -70,6 +70,12 @@
                         if (this.readyState == 4) {
                             if (this.status == 200) {
                                 elmnt.innerHTML = this.responseText;
+                                var cy = elmnt.querySelector("#copyright-year");
+                                if (cy) {
+                                    var y = new Date().getFullYear();
+                                    cy.textContent = y;
+                                    cy.setAttribute("datetime", String(y));
+                                }
                             }
                             if (this.status == 404) {
                                 elmnt.innerHTML = "Page not found.";
