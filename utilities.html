@@ -246,14 +246,14 @@
             box-shadow: 0 4px 15px var(--shadow-color);
         }
 
-        #ipaApps,
+        #ipaApps, #shortcut,
         #telegramApps {
             display: none;
             position: relative;
             padding-left: 80px;
         }
 
-        #ipaApps::before,
+        #ipaApps::before, #shortcut::before,
         #telegramApps::before {
             content: '';
             position: absolute;
@@ -265,6 +265,7 @@
         }
 
         #ipaApps.active,
+        #shortcut.active,
         #telegramApps.active {
             display: block;
         }
@@ -427,12 +428,12 @@
                 padding: 15px;
             }
 
-            #ipaApps,
+            #ipaApps, #shortcut,
             #telegramApps {
                 padding-left: 40px;
             }
 
-            #ipaApps::before,
+            #ipaApps::before, #shortcut::before,
             #telegramApps::before {
                 left: 20px;
             }
@@ -628,6 +629,8 @@
                                 <div class="carousel-dots">
                                     <span class="dot active" onclick="currentSlide(1)"></span>
                                     <span class="dot" onclick="currentSlide(2)"></span>
+                                    <span class="dot" onclick="currentSlide(3)"></span>
+                                    <span class="dot" onclick="currentSlide(4)"></span>
                                 </div>
                             </div> <br>
                            🔍 Check trong Path xem hiện tại đang là TelephonyUI-8 hay TelephonyUI-7 để ghi đè folder cho phù hợp! <br>
@@ -688,6 +691,26 @@
 
                 </div>
 
+                <h1 class="menu" onclick="toggleSection('shortcut')">🛠️ Shortcut (Click to expand)</h1>
+                <div id="shortcut">
+                    <div class="submenu">
+                        <a href="https://www.icloud.com/shortcuts/d51d56e6310f49a9b1786d4f6764b38d" target="_blank" rel="noopener noreferrer">🍎 Test iPhone</a>
+                    </div>
+                    <div class="submenu">
+                        <a href="https://www.icloud.com/shortcuts/873a0b635482494381811fdc962842a2" target="_blank" rel="noopener noreferrer">⚙️ Save Mobile Gestalt iOS < 18 </a>
+                    </div>
+                    <div class="submenu">
+                        <a href="https://www.icloud.com/shortcuts/7b0d2bb9a5c14e1783db1a3cb19b5f90" target="_blank" rel="noopener noreferrer">➤ Save Mobile Gestalt iOS 26.x</a> 
+                        &nbsp; || &nbsp; (required <a href="https://apps.apple.com/us/app/a-shell-mini/id1543537943" target="_blank" rel="noopener noreferrer">a-Shell mini</a> app to run)
+                    </div>
+                    <div class="submenu">
+                        <a href="https://www.icloud.com/shortcuts/7c3ff2a2f9164c3ca9db136cb412afc2" target="_blank" rel="noopener noreferrer">🔌SideStore via StosVPN</a>
+                    </div>
+                    <div class="submenu">
+                        <a href="https://www.icloud.com/shortcuts/aa897eb388ee4a82a908f52cda4037bb" target="_blank" rel="noopener noreferrer">🔌⚡SideStore via LocalDevVPN</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </main>
@@ -746,10 +769,13 @@
             dots.forEach(dot => dot.classList.remove('active'));
             
             // Show current slide
-            if (slides[index]) {
-                slides[index].classList.add('active');
-                dots[index].classList.add('active');
-            }
+            if (index < 0 || index >= slides.length) return;
+            
+            const slide = slides[index];
+            if (slide) slide.classList.add('active');
+
+            const dot = dots[index];
+            if (dot) dot.classList.add('active');
         }
 
         function changeSlide(direction) {
@@ -793,10 +819,14 @@
             lockscreenDots.forEach(dot => dot.classList.remove('active'));
             
             // Show current slide
-            if (lockscreenSlides[index]) {
-                lockscreenSlides[index].classList.add('active');
-                lockscreenDots[index].classList.add('active');
-            }
+            if (index < 0 || index >= lockscreenSlides.length) return;
+
+            const slide = lockscreenSlides[index];
+            if (slide) slide.classList.add('active');
+
+            // `lockscreenDots` có thể không khớp số lượng với `lockscreenSlides`
+            const dot = lockscreenDots[index];
+            if (dot) dot.classList.add('active');
         }
 
         function changeLockscreenSlide(direction) {
