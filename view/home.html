@@ -7,6 +7,33 @@
         <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="4"></li>
     </ol>
 
+    <!-- NEW FEATURE (Homepage highlight) -->
+<section class="container py-4">
+    <a class="new-feature-card" href="utilities.html" aria-label="Go to Utilities (New Feature)">
+        <div class="new-feature-badge">NEW FEATURE</div>
+        <div class="row align-items-center g-3">
+            <div class="col-12 col-lg-8">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="new-feature-icon">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div>
+                        <h2 class="new-feature-title mb-1">Utilities Hub</h2>
+                        <p class="new-feature-subtitle mb-0">
+                            <span class="new-feature-cta">
+                                Open Utilities <i class="fa-solid fa-arrow-right ms-2"></i>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 d-flex justify-content-lg-end">
+                
+            </div>
+        </div>
+    </a>
+</section>
+
     <div class="carousel-inner">
         <div class="carousel-item active">
             <div class="container">
@@ -180,6 +207,101 @@
 </section>
 
 <style>
+    /* NEW FEATURE Card */
+    .new-feature-card {
+        position: relative;
+        display: block;
+        text-decoration: none;
+        border-radius: 18px;
+        padding: 22px 22px;
+        background: linear-gradient(135deg, rgba(13, 110, 253, 0.12), rgba(102, 16, 242, 0.10));
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        overflow: hidden;
+        transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .new-feature-card::before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        background: radial-gradient(800px 200px at 20% 0%, rgba(13, 110, 253, 0.28), transparent 60%),
+                    radial-gradient(700px 240px at 90% 40%, rgba(102, 16, 242, 0.22), transparent 55%);
+        opacity: 0.95;
+        pointer-events: none;
+    }
+
+    .new-feature-card > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .new-feature-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+        border-color: rgba(13, 110, 253, 0.35);
+    }
+
+    .new-feature-badge {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        z-index: 2;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        font-size: 12px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        color: #0b1b3a;
+        background: linear-gradient(135deg, #ffd66b, #ff9f43);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+    }
+
+    .new-feature-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background: linear-gradient(135deg, #0d6efd, #6610f2);
+        box-shadow: 0 10px 22px rgba(13, 110, 253, 0.25);
+        flex: 0 0 auto;
+    }
+
+    .new-feature-title {
+        font-size: 20px;
+        font-weight: 800;
+        color: #0b1b3a;
+    }
+
+    .new-feature-subtitle {
+        color: rgba(11, 27, 58, 0.75);
+        font-weight: 500;
+    }
+
+    .new-feature-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        color: #0b1b3a;
+        background: rgba(255, 255, 255, 0.75);
+        border: 1px solid rgba(13, 110, 253, 0.18);
+        font-weight: 700;
+        transition: background 180ms ease, border-color 180ms ease;
+        white-space: nowrap;
+    }
+
+    .new-feature-card:hover .new-feature-cta {
+        background: rgba(255, 255, 255, 0.92);
+        border-color: rgba(13, 110, 253, 0.30);
+    }
+
     /* Carousel Styles */
     .carousel {
         background: #ffffff;
