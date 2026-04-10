@@ -163,24 +163,92 @@
             background: rgba(255,255,255,0.8);
         }
 
+        /* Respring preview — tách khỏi .demo-carousel để không bị JS autoplay/slide Passcode */
+        .respring-static {
+            position: relative;
+            max-width: min(100%, 800px);
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            background: #f8f9fa;
+        }
+
+        .respring-static-inner {
+            width: 100%;
+            min-height: 450px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        /*
+         * Ảnh/GIF pixel nhỏ: nếu chỉ đặt max-width/max-height thì trình duyệt vẫn vẽ đúng kích thước gốc → nhỏ xíu.
+         * width: 100% buộc scale theo khung; max-height giới hạn chiều cao; object-fit giữ tỉ lệ.
+         */
+        .respring-static-img {
+            width: 100%;
+            height: auto;
+            max-height: 410px;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: block;
+            background: white;
+        }
+
+        .respring-static-caption {
+            position: static;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            text-align: center;
+            background: rgba(0,0,0,0.7);
+            padding: 8px 20px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
         @media (max-width: 768px) {
+            .respring-static {
+                max-width: 100%;
+            }
+
+            .respring-static-inner {
+                min-height: 350px;
+            }
+
+            .respring-static-img {
+                max-height: 310px;
+            }
+
+            .respring-static-caption {
+                font-size: 14px;
+                padding: 6px 15px;
+            }
+
             .demo-carousel {
                 max-width: 450px;
             }
-            
+
             .demo-carousel .carousel-container {
                 height: 350px;
             }
-            
+
             .demo-carousel .carousel-image {
                 max-height: 280px;
             }
-            
+
             .demo-carousel .carousel-btn {
                 padding: 4px 8px;
                 font-size: 20px;
             }
-            
+
             .demo-carousel .carousel-caption {
                 font-size: 14px;
                 padding: 6px 15px;
@@ -414,6 +482,16 @@
             vertical-align: middle;
         }
 
+        /* Path Respring: tách scope — không dùng :not() trên toàn .introduction img (sẽ thắng cả .demo-carousel .carousel-image) */
+        .introduction .respring-path-preview img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            margin-right: 0;
+            object-fit: contain;
+            object-position: center;
+        }
+
         @media (max-width: 768px) {
             main {
                 padding: 0 15px;
@@ -566,15 +644,15 @@
                                 <div class="carousel-container">
                                     <div class="carousel-slide active">
                                         <img src="./public/img/Logo Hutao.gif" alt="Demo 1" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                        <div class="carousel-caption">Hu Tao [#ImThienz]</div>
+                                        <div class="carousel-caption">Hu Tao</div>
                                     </div>
                                     <div class="carousel-slide">
                                         <img src="./public/img/Logo Conan.gif" alt="Demo 2" class="carousel-image" style="width: 100%; height: 100%;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                        <div class="carousel-caption">Conan [#ImThienz]</div>
+                                        <div class="carousel-caption">Conan</div>
                                     </div>
                                     <div class="carousel-slide">
                                         <img src="./public/img/Logo hello.gif" alt="Demo 3" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                        <div class="carousel-caption">hello [#Little34306]</div>
+                                        <div class="carousel-caption">hello</div>
                                     </div>
                                 </div>
                                 <button class="carousel-btn prev" onclick="changeLockscreenSlide(-1)">❮</button>
@@ -599,12 +677,12 @@
                         </div>
                     </div>
 
-                    <div class="submenu" onclick="toggleIntroduction('intro2')">Change Theme Passcode (Upload 10/04/2026)</div>
+                    <div class="submenu" onclick="toggleIntroduction('intro2')">Change Theme Passcode (Update 10/04/2026)</div>
                     <div id="intro2" class="introduction">
                         <h4>📁 Path Passcode</h4>
                         <p>⚙:/var/mobile/Library/Caches/TelephonyUI-8 (hoặc TelephonyUI-7,10,...)<br>
                            <img class="filza-jailed" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/download/2.0/FilzaJailed.ipa" target="_blank" rel="noopener noreferrer">FilzaJailed</a> via Huy Nguyen is available to use! [non-jb, iOS 17.0-26.0.1 (except 18.7.2-18.7.7)] ✅<br>
-                           <div class="demo-carousel">
+                           <div class="demo-carousel" id="passcode-carousel">
                                 <div class="carousel-container">
                                     <div class="carousel-slide active">
                                         <img src="./public/img/Theme Hutao Passcode.PNG" alt="Demo 1" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
@@ -647,6 +725,28 @@
                             <!-- <a href="./path filza/Theme Anna Senpai Passcode.zip" download><button>Download Anna's Theme Passcode</button></a> -->
                             <a href="https://drive.google.com/file/d/1lYJIijHoQ3wpUdxiXS6lMYAX0rd7Zmhc/view?usp=sharing" target="_blank" title="https://github.com/34306" download><button>Download Paimon's Theme Passcode (author: #Little34306)</button></a>
                             <!-- <a href="./path filza/Theme Paimon Passcode.zip" download><button>Download Paimon's Theme Passcode</button></a> -->
+                        </div>
+                    </div>
+
+                    <div class="submenu" onclick="toggleIntroduction('intro4')">Change Logo Respring (Update 11/04/2026)</div>
+                    <div id="intro4" class="introduction">
+                        <h4>📁 Path Respring</h4>
+                        <p>⚙:/System/Library/PrivateFrameworks/BackBoardServices.framework<br>
+                            <img class="filza-jailed" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/download/2.0/FilzaJailed.ipa" target="_blank" rel="noopener noreferrer">FilzaJailed</a> via Huy Nguyen is unavailable! 🚫<br>
+                            <div class="respring-path-preview">
+                                <div class="respring-static">
+                                    <div class="respring-static-inner">
+                                        <img src="./public/img/Logo Respring HuTao.gif" alt="Logo Respring Hu Tao demo" class="respring-static-img" loading="lazy" decoding="async" onerror="this.style.display='none';">
+                                        <div class="respring-static-caption">Hu Tao</div>
+                                    </div>
+                                </div>
+                            </div> <br>
+                           🔍 Nhớ backup file root để còn restore lại sau này nhé! ✅<br>
+                        </p>
+                        <div class="downloads-container">
+                            <a href="https://drive.google.com/file/d/1E2b69n5cXlxF7LMm_wY1l2cIGSZuFweg/view?usp=sharing" target="_blank" download><button>Download Logo Respring (root) <img src="./public/img/logo apple.png"></button></a>
+                            <a href="https://taixuongmienphi.click/s/logo-respring-hu-taoz1u14rrmnt9r094/" target="_blank" title="https://github.com/ImThienz" download><button>Download Logo Respring HuTao <img src="./public/img/hutao respring.png">(author: #ImThienz)</button></a> <a href="https://github.com/ImThienz/imthienz.github.io/blob/master/public/img/hutao-respring-sample.gif?raw=true">Sample logo HuTao</a>
+                            <a href="https://taixuongmienphi.click/s/logo-respring-androidz1u14rrmntbb65m/" target="_blank" title="https://github.com/ImThienz" download><button>Download Logo Respring Samsung <img src="./public/img/samsung respring.png">(author: #ImThienz)</button></a> <a href="https://github.com/ImThienz/imthienz.github.io/blob/master/public/img/samsung-respring-sample.gif?raw=true">Sample logo Samsung</a>
                         </div>
                     </div>
 
@@ -759,8 +859,8 @@
 
         // Carousel Functions (for Passcode carousel only)
         let currentSlideIndex = 0;
-        const slides = document.querySelectorAll('.demo-carousel:not(#lockscreen-carousel) .carousel-slide');
-        const dots = document.querySelectorAll('.demo-carousel:not(#lockscreen-carousel) .dot');
+        const slides = document.querySelectorAll('#passcode-carousel .carousel-slide');
+        const dots = document.querySelectorAll('#passcode-carousel .dot');
 
         function showSlide(index) {
             // Hide all slides
