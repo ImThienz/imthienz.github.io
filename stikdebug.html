@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" href="public/img/logotron.png">
+    <link rel="shortcut icon" type="public/image/x-icon" href="./public/img/logotron.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+
+    <script>
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp, basepath;
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                file = elmnt.getAttribute("include-html");
+                basepath = elmnt.getAttribute("data-basepath");
+                if (file) {
+                    if (basepath) {
+                        file = basepath + file;
+                    }
+
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) {
+                                elmnt.innerHTML = this.responseText;
+                                var cy = elmnt.querySelector("#copyright-year");
+                                if (cy) {
+                                    var y = new Date().getFullYear();
+                                    cy.textContent = y;
+                                    cy.setAttribute("datetime", String(y));
+                                }
+                            }
+                            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                            elmnt.removeAttribute("include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    return;
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        h4 {
+            color: #2c3e50;
+            font-size: 1.6em;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        h5 {
+            color: #2c3e50;
+            font-size: 1.4em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        b {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        i {
+            color: #666;
+            font-style: italic;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.02);
+        }
+
+        .feature-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .feature-box b {
+            color: #3498db;
+            font-size: 1.1em;
+        }
+
+        .feature-box i {
+            color: #666;
+            font-style: italic;
+        }
+
+        .step-number {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .note-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .note-box b {
+            color: #856404;
+        }
+
+        .note-box-images {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            align-items: start;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+
+        .note-box img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h4 {
+                font-size: 1.4em;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .note-box-images {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #3498db;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .intro-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .intro-box::before {
+            content: "SideStore";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .intro-box p {
+            margin: 0;
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+
+        .intro-box a {
+            color: #2980b9;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dotted #2980b9;
+        }
+
+        .intro-box a:hover {
+            color: #1abc9c;
+            border-bottom: 1px solid #1abc9c;
+        }
+
+        .intro-box i {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body onload="includeHTML()">
+    <div include-html="view/header.html" data-basepath="./"></div>
+    <main>
+        <h1 onclick="toggleIntroduction('intro-windows')" id="intro-windows">📍Fake Location via⚡StikDebug⚡</h1>
+        
+        <br><h4>Chuẩn bị:</h4>
+        <ul>
+            <li>Windows: <a href="https://github.com/nab138/iloader/releases/download/v2.2.4/iloader-windows-x64.exe" style="text-decoration:none" target="_blank">iLoader</a> & <a href="https://github.com/StephenDev0/StikDebug/releases/download/3.1.2/StikDebug-3.1.2.ipa" style="text-decoration: none;" target="_blank">StikDebug</a>.</li>
+            <li>Cáp kết nối iPhone với máy tính.</li>
+            <li>Thiết bị iOS 17.4 - 26.x và yêu cầu có đặt mật khẩu máy.</li>
+        </ul>
+
+        <h4><span class="step-number">I</span>Thực hiện:</h4>
+        <h5>Trên iPhone: Bật Chế độ nhà phát triển (iOS 16 trở lên)</h5>
+        
+        <p>Đối với iOS 16 trở lên, bạn cần bật Chế độ nhà phát triển trên thiết bị của mình bằng cách vào <b><i>Cài đặt -> Quyền riêng tư và Bảo mật -> Chế độ nhà phát triển.</i></b></p>
+        <img src="./public/img/altstore/developer mode.png" alt="Developer Mode" style="width:350px; height:300px">
+        <p>Chạy iPA StikDebug <a href="./sidestore.html" style="text-decoration: none;">via SideStore</a> (hoặc sideload iPA qua PC)</p><br>
+
+        <h5>Trên Windows</h5>
+        Tải xuống và cài đặt phiên bản <b>iTunes</b> mới nhất trực tiếp từ Apple <b>(không phải Microsoft Store)</b>.
+        <ol>
+            <li>Liên kết tải xuống trực tiếp iTunes: <a href="https://www.apple.com/itunes/download/win64">Windows 64-bit</a> / <a href="https://www.apple.com/itunes/download/win32">Windows 32-bit</a>                </li>
+            <li>Cài đặt <a href="./stikdebug.html#intro-windows" style="text-decoration:none">iLoader và StikDebug</a></li>
+        </ol> 
+
+        <h5><span class="step-number">II</span>Thao tác:</h5>
+        <ol>
+            <li>Kết nối iPhone với máy Windows.</li>
+            <li><b>Trust Device</b> và nhập mật khẩu khóa màn hình</li>
+            <div class="image-grid">
+                <img src="./public/img/sidestore/Trust.jpg" title="Trust device" style="width:350px; height:500px">
+                <img src="./public/img/sidestore/Trust-1.jpg" title="Enter Passcode iPhone" style="width:350px; height:500px">
+            </div>
+        </ol>
+        
+        <div class="note-box">
+            <p><b>Trên PC:</b> Cài đặt & mở iLoader, tiến hành đăng nhập id apple & chọn iDevice</p>
+            <div class="note-box-images">
+                <img src="./public/img/stikdebug/1.jpg" alt="iLoader login and select device">
+                <img src="./public/img/stikdebug/2.jpg" alt="StikDebug steps on PC">
+            </div>
+            <a href="./public/vid/fake-gps-stikdebug.mp4" style="text-decoration: none;">Demo Fake Location on iPhone</a>
+        </div>
+    </main>
+    <div include-html="view/footer.html" data-basepath="./"></div>
+</body>
+</html>

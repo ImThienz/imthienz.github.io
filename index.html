@@ -168,36 +168,54 @@
                                 Sparse Restore hoạt động trên tất cả các phiên bản iOS 17.0-18.1.1. Có sự hỗ trợ từng phần cho iOS 18.2 developer beta 3 và mới hơn không sử dụng bất kỳ trục trặc nào.<br>
                                 Các sửa đổi Mobilegestalt và AI Enabler không được hỗ trợ trên iOS 18.2+. Nó sẽ không bao giờ được hỗ trợ, đừng tạo các vấn đề yêu cầu khi nó được hỗ trợ.<br>
                                 <a href="https://github.com/leminlimez/Nugget/releases" class="nugget-link">Thêm chi tiết</a>`
+            },
+            'stikdebug-text': {
+                english: `<a href="https://github.com/StephenDev0/StikDebug" style="text-decoration:none">StikDebug</a> is a debugging-focused utility for iOS that helps you inspect and troubleshoot issues more easily.
+                                <ul>
+                                    <li><b>JIT:</b> Enable Just In Time compilation for sideloaded apps that have the get-task-allow entitlement.</li>
+                                    <li><b>App Launching:</b> Launch every app installed on your device.</li>
+                                    <li><b>Console: </b>Live app and system logs.</li>
+                                    <li><b>Scripts: </b>Manage automation scripts (mainly used for iOS 26 JIT).</li>
+                                    <li><b>App Expiry: </b>See when apps will expire and install/remove profiles.</li>
+                                    <li><b>Device Info: </b>View detailed device metadata.</li>
+                                    <li><b>Processes: </b>Inspect running apps/processes and terminate them.</li>
+                                    <li><b>Location Simulator: </b>Simulate the GPS location of your device.</li>
+                                </ul>`,
+                vietnamese: `<a href="https://github.com/StephenDev0/StikDebug" style="text-decoration:none">StikDebug</a> là một tiện ích tập trung vào gỡ lỗi dành cho iOS, giúp bạn kiểm tra và khắc phục sự cố dễ dàng hơn.
+                                <ul>
+                                    <li><b>JIT:</b> Bật Just-In-Time cho app sideload (có entitlement phù hợp)</li>
+                                    <li><b>App Launching:</b> Mở mọi app trên thiết bị.</li>
+                                    <li><b>Console: </b>Xem log hệ thống và app theo thời gian thực</li>
+                                    <li><b>Scripts: </b>Quản lý script tự động (đặc biệt cho iOS 26 JIT)</li>
+                                    <li><b>App Expiry: </b>Theo dõi hạn chứng chỉ và quản lý profile.</li>
+                                    <li><b>Device Info: </b>Xem thông tin chi tiết thiết bị.</li>
+                                    <li><b>Processes: </b>Kiểm tra và kill tiến trình đang chạy.</li>
+                                    <li><b>Location Simulator: </b>Giả lập vị trí GPS</li>
+                                </ul>`
             }
         };
 
-        // Toggle translation function
+        // Toggle translation function (stable: do not compare innerHTML)
         function toggleTranslate(elementId) {
             const element = document.getElementById(elementId);
-            if (!element) {
-                console.error('Element not found:', elementId);
-                return;
-            }
-            
-            // Find the button more reliably
-            const button = element.parentNode.querySelector('.translate-btn');
-            if (!button) {
-                console.error('Button not found for element:', elementId);
-                return;
-            }
-            
-            const currentText = element.innerHTML.trim();
-            const englishText = translations[elementId].english.trim();
-            
-            if (currentText === englishText) {
-                element.innerHTML = translations[elementId].vietnamese;
-                button.innerHTML = '<i class="fas fa-language"></i> English';
-                button.classList.add('translated');
-            } else {
-                element.innerHTML = translations[elementId].english;
-                button.innerHTML = '<i class="fas fa-language"></i> Tiếng Việt';
-                button.classList.remove('translated');
-            }
+            if (!element) return;
+
+            const translation = translations[elementId];
+            if (!translation) return;
+
+            const button = element.parentElement ? element.parentElement.querySelector('.translate-btn') : null;
+            if (!button) return;
+
+            const currentLang = element.getAttribute('data-lang') || 'en';
+            const nextLang = currentLang === 'en' ? 'vi' : 'en';
+
+            element.innerHTML = nextLang === 'vi' ? translation.vietnamese : translation.english;
+            element.setAttribute('data-lang', nextLang);
+
+            button.innerHTML = nextLang === 'vi'
+                ? '<i class="fas fa-language"></i> English'
+                : '<i class="fas fa-language"></i> Tiếng Việt';
+            button.classList.toggle('translated', nextLang === 'vi');
         }
     </script>
 

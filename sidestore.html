@@ -207,6 +207,49 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
 
+        .collapsible-section {
+            margin: 22px 0;
+        }
+
+        .collapsible-section > summary {
+            cursor: pointer;
+            list-style: none;
+            user-select: none;
+        }
+
+        .collapsible-section > summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .collapsible-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 0;
+            padding: 14px 16px;
+            border-radius: 10px;
+            background: #ffffff;
+            border: 2px solid rgba(0, 123, 255, 0.25);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .collapsible-title::after {
+            content: "▾";
+            font-size: 18px;
+            color: rgba(44, 62, 80, 0.75);
+            transition: transform 160ms ease;
+            flex: 0 0 auto;
+        }
+
+        .collapsible-section[open] .collapsible-title::after {
+            transform: rotate(180deg);
+        }
+
+        .collapsible-content {
+            padding-top: 14px;
+        }
+
         @media (max-width: 768px) {
             main {
                 padding: 20px;
@@ -419,20 +462,27 @@
         </div>
 
         <p>Sau khi sideload thành công SparseBox, đảm bảo tắt ứng dụng SideStore đi (vì không thể đa nhiệm cùng lúc).</p>
-        <div class="image-grid">
-            <img src="./public/img/sidestore/SparseBox-PairingFile.jpg" title="Make sure SideStore is closed before running SparseBox ➙ Select Pairing File" style="width:350px; height:500px">
-            <img src="./public/img/sidestore/MobileDevicePairing.jpg" title="Choose the file .mobiledevicepairing to config SparseBox" style="width:350px; height:500px">
-        </div>
+        <details class="collapsible-section">
+            <summary>
+                <h3 class="collapsible-title">SparseBox for iOS < 18 (Nhấn vào để mở rộng)</h3>
+            </summary>
+            <div class="collapsible-content">
+                <div class="image-grid">
+                    <img src="./public/img/sidestore/SparseBox-PairingFile.jpg" title="Make sure SideStore is closed before running SparseBox ➙ Select Pairing File" style="width:350px; height:500px">
+                    <img src="./public/img/sidestore/MobileDevicePairing.jpg" title="Choose the file .mobiledevicepairing to config SparseBox" style="width:350px; height:500px">
+                </div>
 
-        <p>Tiếp tục thực hiện Bypass giới hạn 3 apps cho SideStore, miễn là có thông báo: <i><b>"Result: restore successful"</b></i> là được.</p>
-        <div class="image-grid">
-            <img src="./public/img/sidestore/Bypass-apps.jpg" title="Choose Bypass 3 App Limit" style="width:350px; height:500px">
-            <img src="./public/img/sidestore/log.jpg" title="has `Result: restore successful` is okay." style="width:350px; height:500px">
-        </div>
+                <p>Tiếp tục thực hiện Bypass giới hạn 3 apps cho SideStore, miễn là có thông báo: <i><b>"Result: restore successful"</b></i> là được.</p>
+                <div class="image-grid">
+                    <img src="./public/img/sidestore/Bypass-apps.jpg" title="Choose Bypass 3 App Limit" style="width:350px; height:500px">
+                    <img src="./public/img/sidestore/log.jpg" title="has `Result: restore successful` is okay." style="width:350px; height:500px">
+                </div>
 
-        <div class="highlight-box">
-            <p title="If the .log file reports an error, go to the Applications Settings -> iCloud -> Find My iPhone -> Turn off Find My iPhone and try again in SparseBox."><i><b>Nếu file .log báo lỗi, vào Ứng dụng Cài đặt -> Tài khoản iCloud -> Tìm iPhone -> Tắt Tìm iPhone đi và vào SparseBox thử lại.</b></i></p>
-        </div>
+                <div class="highlight-box">
+                    <p title="If the .log file reports an error, go to the Applications Settings -> iCloud -> Find My iPhone -> Turn off Find My iPhone and try again in SparseBox."><i><b>Nếu file .log báo lỗi, vào Ứng dụng Cài đặt -> Tài khoản iCloud -> Tìm iPhone -> Tắt Tìm iPhone đi và vào SparseBox thử lại.</b></i></p>
+                </div>
+            </div>
+        </details>
 
         <div class="note-box">
             <p><b>P/s</b>: nếu bạn đăng nhập Apple ID vào SideStore bị lỗi <b>(no valid server found)</b>, hãy thử cách sau:</p>
@@ -452,7 +502,23 @@
 
         </div>
 
-        <p onclick="toggleIntroduction('intro-lara')"><img id="intro-lara" src="./public/img/lara.png" style="width:25px; height:25px">SparseBox sẽ không hỗ trợ đối với thiết bị iOS > 18, ta có giải pháp khác với <a href="https://github.com/rooootdev/lara" target="_blank" style="text-decoration: none">lara</a> (iOS 18-26.0.1), cần <a href="https://github.com/rooootdev/lara/releases/download/latest/lara.ipa" target="_blank" style="text-decoration: none">cài đặt</a> và làm theo <a href="./public/vid/sidestore-via-lara.mp4" style="text-decoration: none">hướng dẫn sau</a></p>
+        <p onclick="toggleIntroduction('intro-lara')">
+            <span style="display:flex; align-items:center; justify-content:center; gap:8px;">
+                <img title="SparseBox" src="./public/img/sparsebox.png" style="width:50px; height:50px; margin:0;" alt="SparseBox">
+                <span aria-hidden="true">🔁</span>
+                <img title="Lara" id="intro-lara" src="./public/img/lara.png" style="width:50px; height:50px; margin:0;" alt="Lara">
+            </span>
+            SparseBox sẽ không hỗ trợ đối với thiết bị iOS > 18, như vậy ta có giải pháp khác với <a href="https://github.com/rooootdev/lara" 
+            target="_blank" style="text-decoration: none">lara</a> (iOS 18 - 26.0.1), cần <a href="https://github.com/rooootdev/lara/releases/download/latest/lara.ipa" 
+            target="_blank" style="text-decoration: none">cài đặt</a> và làm theo <a href="./public/vid/sidestore-via-lara.mp4" style="text-decoration: none">
+            hướng dẫn sau</a>
+
+            <!-- <p><br>
+                Không thể lấy file MobileGestalt cho iOS > 18? Hãy thử
+                <a href="./utilities.html#intro-mobilegestalt>18" style="text-decoration:none">phím tắt sau</a>
+                trong Shortcut
+            </p> -->
+        </p>
     </main>
     <div include-html="view/footer.html" data-basepath="./"></div>
     
