@@ -294,9 +294,9 @@
         
         <br><h4>Chuẩn bị:</h4>
         <ul>
-            <li>Windows: <a href="https://github.com/nab138/iloader/releases/download/v2.2.4/iloader-windows-x64.exe" style="text-decoration:none" target="_blank">iLoader</a> & <a href="https://github.com/StephenDev0/StikDebug/releases/download/3.1.2/StikDebug-3.1.2.ipa" style="text-decoration: none;" target="_blank">StikDebug</a>.</li>
+            <li>Windows: <a title="ver 2.2.4" href="https://github.com/nab138/iloader/releases/download/v2.2.4/iloader-windows-x64.exe" style="text-decoration:none" target="_blank">iLoader</a> & <a title="ver 3.1.2" href="https://github.com/StephenDev0/StikDebug/releases/download/3.1.2/StikDebug-3.1.2.ipa" style="text-decoration: none;">iPA StikDebug</a> via Sideload.</li>
             <li>Cáp kết nối iPhone với máy tính.</li>
-            <li>Thiết bị iOS 17.4 - 26.x và yêu cầu có đặt mật khẩu máy.</li>
+            <li>iPhone: iOS 17.4 - 26.x và yêu cầu có đặt mật khẩu máy; <a href="https://apps.apple.com/us/app/localdevvpn/id6755608044?l=vi" style="text-decoration: none;" target="_blank">LocalDevVPN</a>; <a title="ver 3.1.2" href="https://github.com/StephenDev0/StikDebug/releases/download/3.1.2/StikDebug-3.1.2.ipa" style="text-decoration: none;">iPA StikDebug</a> via SideStore</li>
         </ul>
 
         <h4><span class="step-number">I</span>Thực hiện:</h4>
@@ -326,11 +326,25 @@
         <div class="note-box">
             <p><b>Trên PC:</b> Cài đặt & mở iLoader, tiến hành đăng nhập id apple & chọn iDevice</p>
             <div class="note-box-images">
-                <img src="./public/img/stikdebug/1.jpg" alt="iLoader login and select device">
-                <img src="./public/img/stikdebug/2.jpg" alt="StikDebug steps on PC">
+                <img src="./public/img/stikdebug/iloader-1.jpg" alt="iLoader login and select device">
+                <img src="./public/img/stikdebug/iloader-2.jpg" alt="StikDebug steps on PC">
             </div>
             <a href="./public/vid/fake-gps-stikdebug.mp4" style="text-decoration: none;">Demo Fake Location on iPhone</a>
         </div>
+        <p style="text-align:center">
+            <b>[ERROR 61: CONNECTION ERROR]</b>
+            <div class='image-grid'>
+                <img src="./public/img/stikdebug/error-61.jpg" style="width:350px; height:600px;">
+                <img src="./public/img/stikdebug/enable-JIT.jpg" style="width:350px; height:600px;">
+            </div>
+            <ol>
+                <li>Vào <b>[Cài đặt]</b> -> <b>[Quyền riêng tư & Bảo mật]</b> -> <b>[Chế độ nhà phát triển]</b> -> Tắt đi và bật lại (Khởi động lại iPhone)</li>
+                <li>Kết nối iPhone với PC & <b>Tin cậy</b> thiết bị</li>
+                <li>Tại iLoader, thực hiện lại thao tác cũ: <b>Place Pairing File StikDebug</b> </li>
+                <li>Kết nối với <a href="https://apps.apple.com/us/app/localdevvpn/id6755608044?l=vi" style="text-decoration: none;" target="_blank">LocalDevVPN</a> và đợi khoảng 10s, sau đó vào lại StikDebug</li>
+            </ol>
+            Như vậy là xong!            
+        </p>
     </main>
     <div include-html="view/footer.html" data-basepath="./"></div>
 </body>
