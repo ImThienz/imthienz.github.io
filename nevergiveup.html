@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" href="public/img/logotron.png">
+    <link rel="shortcut icon" type="public/image/x-icon" href="./public/img/logotron.png">
+    <title>Never Give Up | ImThienz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        // Disclaimer translation functions - Define early to ensure availability
+        window.disclaimerTranslations = {
+            en: {
+                disclaimer: "<strong>Disclaimer:</strong> This website is for educational purposes only. I'm not responsible for any damage, data loss, or warranty issues caused by using the tools or methods shared here. Use at your own risk.",
+                title: "Translate to Vietnamese"
+            },
+            vi: {
+                disclaimer: "<strong>Tuyên bố miễn trừ:</strong> Trang web này chỉ dành cho mục đích giáo dục. Tôi không chịu trách nhiệm về bất kỳ thiệt hại, mất dữ liệu hoặc vấn đề bảo hành nào do việc sử dụng các công cụ hoặc phương pháp được chia sẻ ở đây. Sử dụng có rủi ro của riêng bạn.",
+                title: "Dịch sang tiếng Anh"
+            }
+        };
+
+        window.currentDisclaimerLanguage = 'en';
+
+        window.toggleDisclaimerTranslate = function() {
+            const disclaimerText = document.getElementById('disclaimerText');
+            const translateBtn = document.getElementById('translateBtn');
+            
+            if (!disclaimerText || !translateBtn) {
+                console.error('Disclaimer elements not found');
+                return;
+            }
+            
+            // Toggle language
+            window.currentDisclaimerLanguage = window.currentDisclaimerLanguage === 'en' ? 'vi' : 'en';
+            
+            // Update text
+            disclaimerText.innerHTML = window.disclaimerTranslations[window.currentDisclaimerLanguage].disclaimer;
+            
+            // Update button title
+            translateBtn.title = window.disclaimerTranslations[window.currentDisclaimerLanguage].title;
+            
+            // Toggle active class for visual feedback
+            translateBtn.classList.toggle('active', window.currentDisclaimerLanguage === 'vi');
+            
+            // Add smooth transition effect
+            disclaimerText.style.opacity = '0.7';
+            setTimeout(() => {
+                disclaimerText.style.opacity = '1';
+            }, 150);
+        };
+
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp, basepath;
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                file = elmnt.getAttribute("include-html");
+                basepath = elmnt.getAttribute("data-basepath");
+                if (file) {
+                    if (basepath) {
+                        file = basepath + file;
+                    }
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) {
+                                elmnt.innerHTML = this.responseText;
+                                var cy = elmnt.querySelector("#copyright-year");
+                                if (cy) {
+                                    var y = new Date().getFullYear();
+                                    cy.textContent = y;
+                                    cy.setAttribute("datetime", String(y));
+                                }
+                            }
+                            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                            elmnt.removeAttribute("include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    return;
+                }
+            }
+        }
+
+        function closeDisclaimer() {
+            const disclaimer = document.getElementById('disclaimerNotification');
+            if (disclaimer) {
+                disclaimer.style.animation = 'slideUp 0.5s ease-out forwards';
+                
+                setTimeout(() => {
+                    disclaimer.style.display = 'none';
+                    // Adjust main content margin when disclaimer is closed
+                    const mainElement = document.querySelector('main');
+                    if (mainElement) {
+                        mainElement.style.marginTop = '40px';
+                    }
+                }, 500);
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .story-container {
+            width: 90%;
+            max-width: 1000px;
+            height: 600px;
+            position: relative;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .story-content {
+            padding: 30px;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s ease;
+        }
+        
+        .story-content h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeInDown 0.8s ease;
+        }
+        
+        .story-content p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .story-content img {
+            width: 60%;
+            min-width: 400px;
+            min-height: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            animation: fadeIn 1s ease;
+        }
+
+        .story-content img:hover {
+            transform: scale(1.02);
+        }
+        
+        .story-slide {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 100%;
+            height: 100%;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+        }
+        
+        .story-slide.active {
+            left: 0;
+            display: block;
+            opacity: 1;
+        }
+        
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            color: #2c3e50;
+            border: none;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .left-btn {
+            left: 20px;
+        }
+        
+        .right-btn {
+            right: 20px;
+        }
+        
+        .nav-button:hover {
+            background: #2c3e50;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {  
+            .story-content img {
+                width: 90%;
+                min-width: 0;
+                height: auto;
+            }
+
+            main {
+                padding: 10px;
+            }
+
+            .story-container {
+                width: 100%;
+                height: auto;
+                min-height: 500px;
+            }
+
+            .story-content h2 {
+                font-size: 2rem;
+            }
+
+            .story-content p {
+                font-size: 1rem;
+            }
+
+            .nav-button {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .left-btn {
+                left: 10px;
+            }
+
+            .right-btn {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body onload="includeHTML()">
+    <div include-html="view/header.html" data-basepath="./"></div>
+    
+    <main>
+        <div class="story-container">
+            <button class="nav-button left-btn" id="prevBtn">&#10094;</button>
+    
+            <div class="story-slide active">
+                <div class="story-content">
+                    <h2>Hello guys!</h2>
+                    <p>For a moment, I thought that I'd give up!</p>
+                    <img src="./public/img/hihihi/1.png" alt="Story Image 1">
+                </div>
+            </div>
+            <div class="story-slide">
+                <div class="story-content">
+                    <h2>Don't give up!</h2>
+                    <p>But then I realized that every challenge is a chance to grow...</p>
+                    <img src="./public/img/hihihi/2.png" alt="Story Image 2">
+                </div>
+            </div>
+            <div class="story-slide">
+                <div class="story-content">
+                    <h2>Go ahead, my buddy!</h2>
+                    <p>...and you're stronger than you think</p>
+                    <img src="./public/img/hihihi/3.png" alt="Story Image 3">
+                </div>
+            </div>
+            <div class="story-slide">
+                <div class="story-content">
+                    <h2>Believe in yourself!</h2>
+                    <p>Keep pushing forward—you're doing great, even when it feels tough!</p>
+                    <img src="./public/img/hihihi/4.png" alt="Story Image 4">
+                </div>
+            </div>
+            <div class="story-slide">
+                <div class="story-content">
+                    <h2>Will we meet again? <a class="nav-link" href="https://github.com/ImThienz">Don't forget me</a></h2>
+                    <p>Stay determined, you'll reach your goals!</p>
+                    <img src="./public/img/hihihi/5.png" alt="Story Image 5">
+                </div>
+            </div>
+    
+            <button class="nav-button right-btn" id="nextBtn">&#10095;</button>
+        </div>
+    </main>
+
+    <div include-html="view/footer.html" data-basepath="./"></div>
+
+    <script src="public/js/news-1.11.0.min.js"></script>
+    <script src="public/js/news-migrate-1.2.1.min.js"></script>
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script src="public/js/templatemo.js"></script>
+    <script src="public/js/custom.js"></script>  
+    
+    <script src="script.js"></script>
+</body>
+</html>

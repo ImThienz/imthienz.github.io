@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ImThienz</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="apple-touch-icon" href="../public/img/logotron.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../public/img/logotron.png">
+
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/main.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <style>
+        .danger {
+            color: red;
+            font-weight: bold;
+        }
+        .danger-font {
+            font-family: 'Share Tech Mono', monospace;
+            color: red;
+            background-color: black;
+            padding: 10px;
+            border: 2px solid red;
+            font-size: 20px;
+            text-shadow: 0 0 5px red;
+          }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+        }
+
+        /* Carousel Styles */
+        .demo-carousel {
+            position: relative;
+            max-width: 600px;
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            background: #f8f9fa;
+        }
+
+        .demo-carousel .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+        }
+
+        .demo-carousel .carousel-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .demo-carousel .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .demo-carousel .carousel-image {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: block;
+            background: white;
+        }
+
+        .demo-carousel .carousel-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            text-align: center;
+            background: rgba(0,0,0,0.7);
+            padding: 8px 20px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            z-index: 5;
+        }
+
+        .demo-carousel .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.8);
+            border: none;
+            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 15px 20px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .demo-carousel .carousel-btn:hover {
+            background: rgba(255,255,255,0.95);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .demo-carousel .carousel-btn.prev {
+            left: -2px;
+        }
+
+        .demo-carousel .carousel-btn.next {
+            right: 8px;
+        }
+
+        .demo-carousel .carousel-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .demo-carousel .dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .demo-carousel .dot.active {
+            background: var(--secondary-color);
+            transform: scale(1.2);
+        }
+
+        .demo-carousel .dot:hover {
+            background: rgba(255,255,255,0.8);
+        }
+
+        /* Respring preview — tách khỏi .demo-carousel để không bị JS autoplay/slide Passcode */
+        .respring-static {
+            position: relative;
+            max-width: min(100%, 800px);
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            background: #f8f9fa;
+        }
+
+        .respring-static-inner {
+            width: 100%;
+            min-height: 450px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        /*
+         * Ảnh/GIF pixel nhỏ: nếu chỉ đặt max-width/max-height thì trình duyệt vẫn vẽ đúng kích thước gốc → nhỏ xíu.
+         * width: 100% buộc scale theo khung; max-height giới hạn chiều cao; object-fit giữ tỉ lệ.
+         */
+        .respring-static-img {
+            width: 100%;
+            height: auto;
+            max-height: 410px;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: block;
+            background: white;
+        }
+
+        .respring-static-caption {
+            position: static;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            text-align: center;
+            background: rgba(0,0,0,0.7);
+            padding: 8px 20px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .respring-static {
+                max-width: 100%;
+            }
+
+            .respring-static-inner {
+                min-height: 350px;
+            }
+
+            .respring-static-img {
+                max-height: 310px;
+            }
+
+            .respring-static-caption {
+                font-size: 14px;
+                padding: 6px 15px;
+            }
+
+            .demo-carousel {
+                max-width: 450px;
+            }
+
+            .demo-carousel .carousel-container {
+                height: 350px;
+            }
+
+            .demo-carousel .carousel-image {
+                max-height: 280px;
+            }
+
+            .demo-carousel .carousel-btn {
+                padding: 4px 8px;
+                font-size: 20px;
+            }
+
+            .demo-carousel .carousel-caption {
+                font-size: 14px;
+                padding: 6px 15px;
+            }
+        }
+    </style>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #1abc9c;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --border-color: #e9ecef;
+            --shadow-color: rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-bg);
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .main-about {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .content-about {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .menu {
+            color: var(--primary-color);
+            font-size: 2.2em;
+            font-weight: 700;
+            margin: 30px 0;
+            cursor: pointer;
+            padding: 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background: var(--light-bg);
+            border-left: 5px solid var(--secondary-color);
+            box-shadow: 0 2px 10px var(--shadow-color);
+            position: relative;
+        }
+
+        .menu:hover {
+            background: linear-gradient(135deg, var(--light-bg), white);
+            transform: translateX(10px);
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
+        #ipaApps, #shortcut,
+        #telegramApps {
+            display: none;
+            position: relative;
+            padding-left: 80px;
+        }
+
+        #ipaApps::before, #shortcut::before,
+        #telegramApps::before {
+            content: '';
+            position: absolute;
+            left: 40px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--accent-color);
+        }
+
+        #ipaApps.active,
+        #shortcut.active,
+        #telegramApps.active {
+            display: block;
+        }
+
+        .submenu {
+            background: white;
+            padding: 15px 25px;
+            margin: 15px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 2px 5px var(--shadow-color);
+            font-size: 1.1em;
+            color: var(--text-color);
+            margin-left: 80px;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: slideIn 0.5s ease forwards;
+            animation-delay: calc(var(--order) * 0.1s);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .submenu::before {
+            content: '';
+            position: absolute;
+            left: -60px;
+            top: 50%;
+            width: 60px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+        .submenu:first-child::before {
+            top: 50%;
+        }
+
+        .submenu:last-child::before {
+            top: 50%;
+        }
+
+        .submenu:hover {
+            transform: translateX(10px);
+            background: var(--light-bg);
+            box-shadow: 0 4px 10px var(--shadow-color);
+        }
+
+        .introduction {
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            margin-left: 140px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            display: none;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.3s ease;
+        }
+
+        .introduction.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .introduction::before {
+            content: '';
+            position: absolute;
+            left: -60px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: var(--accent-color);
+        }
+
+        .introduction h4 {
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        .introduction p {
+            color: var(--text-color);
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .introduction a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .introduction a:hover {
+            color: var(--accent-color);
+        }
+
+        .downloads-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .downloads-container a {
+            text-decoration: none;
+        }
+
+        .downloads-container button {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px var(--shadow-color);
+            min-width: 200px;
+        }
+
+        .downloads-container button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
+        .introduction img {
+            max-width: 25px;
+            height: auto;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        /* Path Respring: tách scope — không dùng :not() trên toàn .introduction img (sẽ thắng cả .demo-carousel .carousel-image) */
+        .introduction .respring-path-preview img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            margin-right: 0;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 0 15px;
+            }
+
+            .main-about {
+                padding: 20px;
+            }
+
+            .menu {
+                font-size: 1.8em;
+                padding: 15px;
+            }
+
+            #ipaApps, #shortcut,
+            #telegramApps {
+                padding-left: 40px;
+            }
+
+            #ipaApps::before, #shortcut::before,
+            #telegramApps::before {
+                left: 20px;
+            }
+
+            .submenu {
+                margin-left: 40px;
+            }
+
+            .submenu::before {
+                left: -30px;
+                width: 30px;
+            }
+
+            .introduction {
+                margin-left: 80px;
+            }
+
+            .introduction::before {
+                left: -40px;
+            }
+
+            .introduction h4 {
+                font-size: 1.5em;
+            }
+
+            .downloads-container {
+                flex-direction: column;
+            }
+
+            .downloads-container button {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <script>
+        // Disclaimer translation functions - Define early to ensure availability
+        window.disclaimerTranslations = {
+            en: {
+                disclaimer: "<strong>Disclaimer:</strong> This website is for educational purposes only. I'm not responsible for any damage, data loss, or warranty issues caused by using the tools or methods shared here. Use at your own risk.",
+                title: "Translate to Vietnamese"
+            },
+            vi: {
+                disclaimer: "<strong>Tuyên bố miễn trừ:</strong> Trang web này chỉ dành cho mục đích giáo dục. Tôi không chịu trách nhiệm về bất kỳ thiệt hại, mất dữ liệu hoặc vấn đề bảo hành nào do việc sử dụng các công cụ hoặc phương pháp được chia sẻ ở đây. Sử dụng có rủi ro của riêng bạn.",
+                title: "Dịch sang tiếng Anh"
+            }
+        };
+
+        window.currentDisclaimerLanguage = 'en';
+
+        window.toggleDisclaimerTranslate = function() {
+            const disclaimerText = document.getElementById('disclaimerText');
+            const translateBtn = document.getElementById('translateBtn');
+            
+            if (!disclaimerText || !translateBtn) {
+                console.error('Disclaimer elements not found');
+                return;
+            }
+            
+            // Toggle language
+            window.currentDisclaimerLanguage = window.currentDisclaimerLanguage === 'en' ? 'vi' : 'en';
+            
+            // Update text
+            disclaimerText.innerHTML = window.disclaimerTranslations[window.currentDisclaimerLanguage].disclaimer;
+            
+            // Update button title
+            translateBtn.title = window.disclaimerTranslations[window.currentDisclaimerLanguage].title;
+            
+            // Toggle active class for visual feedback
+            translateBtn.classList.toggle('active', window.currentDisclaimerLanguage === 'vi');
+            
+            // Add smooth transition effect
+            disclaimerText.style.opacity = '0.7';
+            setTimeout(() => {
+                disclaimerText.style.opacity = '1';
+            }, 150);
+        };
+
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp, basepath;
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                file = elmnt.getAttribute("include-html");
+                basepath = elmnt.getAttribute("data-basepath");
+                if (file) {
+                    if (basepath) {
+                        file = basepath + file;
+                    }
+
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) {
+                                elmnt.innerHTML = this.responseText;
+                                var cy = elmnt.querySelector("#copyright-year");
+                                if (cy) {
+                                    var y = new Date().getFullYear();
+                                    cy.textContent = y;
+                                    cy.setAttribute("datetime", String(y));
+                                }
+                            }
+                            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                            elmnt.removeAttribute("include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    return;
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="includeHTML()">
+    <div include-html="view/header.html" data-basepath="./"></div>
+    
+    <main>
+        <div class="main-about"> 
+            <div class="content-about">
+                <h1 class="menu" onclick="toggleSection('ipaApps')">📁 Filza (Click to expand) <p class="danger-font">⚠️ WARNING: REQUIRES JAILBROKEN IPHONE OR <img class="filza-jailed" style="width: 40px; height: 40px;" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/" target="_blank" rel="noopener noreferrer">FilzaJailed  WITHOUT JB</a></p> </h1>
+                <div id="ipaApps">
+                    <div class="submenu" onclick="toggleIntroduction('intro1')">Change logo Lockscreen (Update 10/04/2026)</div>
+                    <div id="intro1" class="introduction">
+                        <h4>📁 Path Lockscreen</h4>
+                        <p>⚙:/System/Library/PrivateFrameworks/SpringBoardUIServices.framework<br><br>
+                            <img class="filza-jailed" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/download/2.2/Filza.ipa" target="_blank" rel="noopener noreferrer">FilzaJailed</a> via Huy Nguyen is unavailable! 🚫<br>
+                            <div class="demo-carousel" id="lockscreen-carousel">
+                                <div class="carousel-container">
+                                    <div class="carousel-slide active">
+                                        <img src="./public/img/Logo Hutao.gif" alt="Demo 1" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div class="carousel-caption">Hu Tao</div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="./public/img/Logo Conan.gif" alt="Demo 2" class="carousel-image" style="width: 100%; height: 100%;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div class="carousel-caption">Conan</div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="./public/img/Logo hello.gif" alt="Demo 3" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div class="carousel-caption">hello</div>
+                                    </div>
+                                </div>
+                                <button class="carousel-btn prev" onclick="changeLockscreenSlide(-1)">❮</button>
+                                <button class="carousel-btn next" onclick="changeLockscreenSlide(1)">❯</button>
+                                <div class="carousel-dots">
+                                    <span class="dot active" onclick="currentLockscreenSlide(1)"></span>
+                                    <span class="dot" onclick="currentLockscreenSlide(2)"></span>
+                                    <span class="dot" onclick="currentLockscreenSlide(3)"></span>
+                                </div>
+                            </div> <br>
+                            ➤ <a href="./public/vid/ChangeLogoLockScreen-How to set up.mp4">How to set up?</a>   <br>
+                        </p>
+                        <div class="downloads-container">
+                            <a href="https://drive.google.com/file/d/16gPPZloDb2qfe6mzx-VMKo5efws2M1WY/view?usp=sharing" target="_blank" download><button>Download Logo Lockscreen (root)</button></a>
+                            <!-- <a href="./path filza/Logo Lockscreen (root).zip" download><button>Download Logo Lockscreen (root)</button></a> -->
+                            <a href="https://drive.google.com/file/d/1vyL7pwLddc8-FCwJfhpsYx8Z3DN_pbAy/view?usp=sharing" target="_blank" title="https://github.com/34306" download><button>Download Logo Lockscreen Hello (author: #Little34306)</button></a>
+                            <!-- <a href="./path filza/Face ID (hello).zip" download><button>Download Logo Lockscreen Hello</button></a> -->
+                            <a href="https://taixuongmienphi.click/s/logo-lockscreen-hu-tao-genshin-impactz1u11d3mdnx4mop" target="_blank" title="https://github.com/ImThienz" download><button>Download Logo Lockscreen Hutao (author: #ImThienz)</button></a>
+                            <!-- <a href="./path filza/Logo Lockscreen Hutao Loop.zip" download><button>Download Logo Lockscreen Hutao</button></a> -->
+                            <a href="https://taixuongmienphi.click/s/logo-lock-screen-conan-detective-conanz1u1tpmdo0qt7e" target="_blank" title="https://github.com/ImThienz" download><button>Download Logo Lockscreen Conan (author: #ImThienz)</button></a>
+                            <!-- <a href="./path filza/Logo Lockscreen Edogawa Conan.zip" download><button>Download Logo Lockscreen Conan</button></a> -->
+                        </div>
+                    </div>
+
+                    <div class="submenu" onclick="toggleIntroduction('intro2')">Change Theme Passcode (Update 10/04/2026)</div>
+                    <div id="intro2" class="introduction">
+                        <h4>📁 Path Passcode</h4>
+                        <p>⚙:/var/mobile/Library/Caches/TelephonyUI-8 (hoặc TelephonyUI-7,10,...)<br><br>
+                           <img class="filza-jailed" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/download/2.2/Filza.ipa" target="_blank" rel="noopener noreferrer">FilzaJailed</a> via Huy Nguyen is available to use! [non-jb, iOS 17.0 - 26.0.1 (except 18.7.2 - 18.7.7)] ✅<br>
+                           <div class="demo-carousel" id="passcode-carousel">
+                                <div class="carousel-container">
+                                    <div class="carousel-slide active">
+                                        <img src="./public/img/Theme Hutao Passcode.PNG" alt="Demo 1" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div class="carousel-caption">Hu Tao</div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="./public/img/Theme Chitoge Passcode.PNG" alt="Demo 2" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div class="carousel-caption">Chitoge</div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="./public/img/Theme Anna Passcode.PNG" alt="Demo 3" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <div class="carousel-caption">Anna</div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="./public/img/Theme Paimon Passcode.PNG" alt="Demo 4" class="carousel-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIG5vdCBmb3VuZDwvdGV4dD48L3N2Zz4='; this.alt='Image not found';">
+                                        <div class="carousel-caption">Paimon</div>
+                                    </div>
+                                </div>
+                                <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
+                                <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
+                                <div class="carousel-dots">
+                                    <span class="dot active" onclick="currentSlide(1)"></span>
+                                    <span class="dot" onclick="currentSlide(2)"></span>
+                                    <span class="dot" onclick="currentSlide(3)"></span>
+                                    <span class="dot" onclick="currentSlide(4)"></span>
+                                </div>
+                            </div> <br>
+                           🔍 Check trong Path xem hiện tại đang là TelephonyUI-8 hay khác để ghi đè folder cho phù hợp! <br>
+                           ✅ Ngoài ra, bạn có thể kết hợp với icon lockscreen để kết hợp với theme trông hoàn chỉnh hơn nhé! 😁 <br>
+                           ➤ <a href="./public/vid/ChangeThemeChitogePasscode-How to set up.mp4">How to set up?</a>   <br>
+                        </p>
+                        <div class="downloads-container">
+                            <a href="https://drive.google.com/file/d/1qC5IrhNxs-QxDBoKzSDjcNKpLrifWej5/view?usp=drive_link" target="_blank" download><button>Download Theme Passcode (root)</button></a>
+                            <!-- <a href="./path filza/Theme Passcode (root).zip"download><button>Download Theme Passcode (root)</button></a> -->
+                            <a href="https://drive.google.com/file/d/1MBXMbgPB4Mb-xFGRwRW0rjk7AXbVe0NN/view?usp=sharing" target="_blank" title="https://github.com/ImThienz" download><button>Download Hutao's Theme Passcode (author: #ImThienz)</button></a>
+                            <!-- <a href="./path filza/Theme Hutao Passcode.zip"download><button>Download Hutao's Theme Passcode</button></a> -->
+                            <a href="https://drive.google.com/file/d/1EY3iWY4rwonBJq9QRUTvpmIh_SUVEGKK/view?usp=sharing" target="_blank" title="https://github.com/ImThienz" download><button>Download Chitoge's Theme Passcode (author: #ImThienz)</button></a>
+                            <!-- <a href="./path filza/Theme Chitoge Passcode.zip" download><button>Download Chitoge's Theme Passcode</button></a> -->
+                            <a href="https://drive.google.com/file/d/1Dhx9NIx4PnWAYnyLrejk0MvBetJhdKm_/view?usp=sharing" target="_blank" title="https://github.com/ImThienz" download><button>Download Anna's Theme Passcode (author: #ImThienz)</button></a>
+                            <!-- <a href="./path filza/Theme Anna Senpai Passcode.zip" download><button>Download Anna's Theme Passcode</button></a> -->
+                            <a href="https://drive.google.com/file/d/1DlwWu6Hh4-HQwK_-a8H3KunZxLj4k_5R/view?usp=sharing" target="_blank" title="https://github.com/34306" download><button>Download Paimon's Theme Passcode (author: #Little34306)</button></a>
+                            <!-- <a href="./path filza/Theme Paimon Passcode.zip" download><button>Download Paimon's Theme Passcode</button></a> -->
+                        </div>
+                        <p>
+                            <br><br>✉︎ <a href="https://mail.google.com/mail/?view=cm&fs=1&to=imthienz@gmail.com" target="_blank" rel="noopener noreferrer">Liên hệ tôi</a> nếu có đề xuất về theme passcode mới!
+                        </p>
+                    </div>
+
+                    <div class="submenu" onclick="toggleIntroduction('intro3')">Change Logo Respring (Upload 11/04/2026)</div>
+                    <div id="intro3" class="introduction">
+                        <h4>📁 Path Respring</h4>
+                        <p>⚙:/System/Library/PrivateFrameworks/BackBoardServices.framework<br><br>
+                            <img class="filza-jailed" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/download/2.2/Filza.ipa" target="_blank" rel="noopener noreferrer">FilzaJailed</a> via Huy Nguyen is unavailable! 🚫<br>
+                            <div class="respring-path-preview">
+                                <div class="respring-static">
+                                    <div class="respring-static-inner">
+                                        <img src="./public/img/Logo Respring HuTao.gif" alt="Logo Respring Hu Tao demo" class="respring-static-img" loading="lazy" decoding="async" onerror="this.style.display='none';">
+                                        <div class="respring-static-caption">Hu Tao</div>
+                                    </div>
+                                </div>
+                            </div> <br>
+                           🔍 Nhớ backup file root để còn restore lại sau này nhé! ✅<br>
+                        </p>
+                        <div class="downloads-container">
+                            <a href="https://drive.google.com/file/d/1E2b69n5cXlxF7LMm_wY1l2cIGSZuFweg/view?usp=sharing" target="_blank" download><button>Download Logo Respring (root) <img src="./public/img/logo apple.png"></button></a>
+                            <a href="https://drive.google.com/file/d/1msHYSCjIsrDNg_WuNsSCoyJnKIlvbB7S/view?usp=sharing" target="_blank" title="https://github.com/ImThienz" download><button>Download Logo Respring HuTao <img src="./public/img/hutao respring.png">(author: #ImThienz)</button></a> <a href="https://github.com/ImThienz/imthienz.github.io/blob/master/public/img/hutao-respring-sample.gif?raw=true">Sample logo HuTao</a>
+                            <a href="https://drive.google.com/file/d/1DYIt6i2zNBqcJoW8b89aQgXn_qM1JNI2/view?usp=sharing" target="_blank" title="https://github.com/ImThienz" download><button>Download Logo Respring Samsung <img src="./public/img/samsung respring.png">(author: #ImThienz)</button></a> <a href="https://github.com/ImThienz/imthienz.github.io/blob/master/public/img/samsung-respring-sample.gif?raw=true">Sample logo Samsung</a>
+                        </div>
+                    </div>
+
+                    <div class="submenu" onclick="toggleIntroduction('intro4')">Capcut Pro 🎞️ - via 34306 (Upload 28/04/2026)</div>
+                    <div id="intro4" class="introduction">
+                        <h4>📁 Path to Capcut</h4>
+                        <p>⚙: ☆/Application Management/Capcut/Library/Cookies/Cookies.binarycookies <br></p>
+                        <img class="filza-jailed" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/download/2.2/Filza.ipa" target="_blank" rel="noopener noreferrer">FilzaJailed</a> via Huy Nguyen is available to use! [non-jb, iOS 17.0 - 26.0.1 (except 18.7.2 - 18.7.7)] ✅<br>
+
+                        <div class="demo-carousel" id="capcut-carousel">
+                            <div class="carousel-container">
+                                <div class="carousel-slide active">
+                                    <img src="./public/img/capcut-pro-1.jpg" alt="Step 1" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div class="carousel-caption">Step 1</div>
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="./public/img/capcut-pro-2.jpg" alt="Step 2" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div class="carousel-caption">Step 2</div>
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="./public/img/capcut-pro-3.jpg" alt="Step 3" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div class="carousel-caption">Step 3</div>
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="./public/img/capcut-pro-4.jpg" alt="Step 4" class="carousel-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIG5vdCBmb3VuZDwvdGV4dD48L3N2Zz4='; this.alt='Image not found';">
+                                    <div class="carousel-caption">Step 4</div>
+                                </div>
+                            </div>
+                            <button class="carousel-btn prev" onclick="changeCapcutSlide(-1)">❮</button>
+                            <button class="carousel-btn next" onclick="changeCapcutSlide(1)">❯</button>
+                            <div class="carousel-dots">
+                                <span class="dot active" onclick="currentCapcutSlide(1)"></span>
+                                <span class="dot" onclick="currentCapcutSlide(2)"></span>
+                                <span class="dot" onclick="currentCapcutSlide(3)"></span>
+                                <span class="dot" onclick="currentCapcutSlide(4)"></span>
+                            </div>
+                        </div>
+                        <p>
+                            ✅ Xóa Capcut và <a href="https://apps.apple.com/vn/app/capcut-photo-video-editor/id1500855883" target="_blank" rel="noopener noreferrer">cài đặt lại</a> (không đăng nhập tài khoản) <br>
+                            ✅ Thay thế tên của <a href="https://is.gd/ccprofile">file này</a> vào path Capcut phía trên (Replace File) <br>
+                            ✅ Vào lại Capcut và tận hưởng thành quả!
+                        </p>
+                    </div>
+
+                    <div class="submenu" onclick="toggleIntroduction('intro5')">Show Password Wifi under iOS 16 (Upload 13/08/2024)</div>
+                    <div id="intro5" class="introduction">
+                        <h4>📁 Path to WiFi</h4>
+                        <p>⚙:/var/preferences/SystemConfiguration/com.apple.wifi.plist<br>
+                            ✅ Mở tập tin com.apple.wifi.plist bấm biểu tượng " i " <img class="info" src="./public/img/info.png"> và thêm item mới: <br>
+                            <img class="username" src="./public/img/user.png">Tên: kWiFiShowKnownNetworks <br>
+                            <img class="category" src="./public/img/category.png">Loại: Boolean   <br>
+                            <img class="index" src="./public/img/index.png">Giá trị: Yes    <br>
+                            ✅ Lưu lại, vào User Space - LDRestart (hoặc Reboot).   <br>
+                            ✅ Hỗ trợ các thiết bị TrollStore & Jailbreak <br>
+                            ➤ <a href="./public/vid/ShowPassWifi-How to set up.mp4">How to set up?</a>   <br>
+                        </p>
+                    </div>
+
+                    <div class="submenu" onclick="toggleIntroduction('intro6')">Tips Path in Filza (Update 01/05/2026)</div>
+                    <div id="intro6" class="introduction">
+                        <h4>📁 Path to DPKG ⚠️</h4>
+                        <p>⚙:/var/lib/dpkg</p>
+                        <img class="filza-jailed" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/download/2.2/Filza.ipa" target="_blank" rel="noopener noreferrer">FilzaJailed</a> via Huy Nguyen is unavailable! 🚫<br><br>
+
+                        <h4>📁 Path to iCloud 👁</h4>
+                        <p>⚙:/var/mobile/Library/Accounts</p>
+                        <img class="filza-jailed" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/download/2.2/Filza.ipa" target="_blank" rel="noopener noreferrer">FilzaJailed</a> via Huy Nguyen is available to use! [non-jb, iOS 17.0 - 26.0.1 (except 18.7.2 - 18.7.7)] ✅<br>
+                        <br><p>[Hide iCloud 👁  ⃠   &nbsp; ??? &nbsp; <a href="https://mail.google.com/mail/?view=cm&fs=1&to=imthienz@gmail.com" target="_blank">inbox me</a>]</p>
+
+                        <h4>📁 Path to Font ᝰ.ᐟ</h4>
+                        <p>⚙:/System/Library/Fonts &nbsp; <a href="https://drive.google.com/file/d/1gxtuwQ2dkNU1p04SwyA9xhLEN_QHUPCe/view?usp=sharing" target="_blank">Path ROOT</a></p>
+                        <img class="filza-jailed" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/download/2.2/Filza.ipa" target="_blank" rel="noopener noreferrer">FilzaJailed</a> via Huy Nguyen is unavailable! 🚫, try with <img title="Lara" id="intro-lara" src="./public/img/lara.png" style="width:30px; height:30px; margin:0;" alt="Lara"> <a href="./sidestore.html#intro-lara" style="text-decoration: none">Lara</a><br><br>
+
+                        <h4>📁 Path to UISound 🕪 (Sound Device)</h4>
+                        <p>⚙:/System/Library/Audio/UISounds &nbsp; <a href="https://drive.google.com/file/d/1OB0IxjBx8XeP0Rc2JxIuPGjSAXoum6EH/view?usp=sharing" target="_blank">Path ROOT</a></p>
+                        <img class="filza-jailed" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/download/2.2/Filza.ipa" target="_blank" rel="noopener noreferrer">FilzaJailed</a> via Huy Nguyen is unavailable! 🚫<br><br>
+
+                        <h4>📁 Path to iPhone Downloads 🗃️ (Files)</h4>
+                        <p>⚙:/var/mobile/Containers/Shared/AppGroup/group.com.apple.FileProvider.LocalStorage/File Provider Storage/Downloads</p>
+                        <img class="filza-jailed" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/download/2.2/Filza.ipa" target="_blank" rel="noopener noreferrer">FilzaJailed</a> via Huy Nguyen is available to use! [non-jb, iOS 17.0 - 26.0.1 (except 18.7.2 - 18.7.7)] ✅<br><br>
+
+                        <h4>📁 Path to Ringtones 🔔🎶</h4>
+                        <p>⚙:/var/Library/Ringtones (TKRingtones.plist) &nbsp; <a href="https://drive.google.com/file/d/1JYf9o5YvOJ-wmkcLhVK-lHYvz3t1mMUG/view?usp=sharing" target="_blank">Path ROOT</a></p>
+                        <p>⚙:/System/Library/PrivateFrameworks/ToneKit.framework (TKRingtones.plist >> modern) &nbsp; <a href="https://drive.google.com/file/d/1SJ8726Yevk7YVfM3PzXGtObfck4blRPt/view?usp=sharing" target="_blank">Path ROOT</a></p>
+                        <p><b>Purchase:</b> ⚙:/private/var/mobile/Media/Purchases</p>
+                    
+                        <h4>📁 Path to iPhone's  📝 (Name Device)</h4>
+                        <p>⚙:/var/containers/Shared/Systemgroup/systemgroup.com.apple.mobilegestaltcache/Library/Caches/com.apple.MobileGestalt.plist/CacheExtra/oPeik.../ArtworkDeviceProduct...</p>
+                        <img class="filza-jailed" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/download/2.2/Filza.ipa" target="_blank" rel="noopener noreferrer">FilzaJailed</a> via Huy Nguyen is available to use! [non-jb, iOS 17.0 - 26.0.1 (except 18.7.2 - 18.7.7)] ✅<br><br>
+                        
+                        <h4>📁 Path to Info Passcode 🔐ᝰ.ᐟ</h4>
+                        <p>⚙:/System/Library/PrivateFrameworks/SpringBoardUIServices.framework/vi.lproj/SpringBoardUIService.strings &nbsp; <a href="https://drive.google.com/file/d/1ml5LOTwD1wcqj7rGdV29XF3HtZpzpRhi/view?usp=sharing" target="_blank">Path ROOT</a></p>
+                        <img class="filza-jailed" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/download/2.2/Filza.ipa" target="_blank" rel="noopener noreferrer">FilzaJailed</a> via Huy Nguyen is unavailable! 🚫<br><br>
+
+                        <h4>📁 Path to Applications 📱</h4>
+                        <p>⚙: ☆/Application Management</p>
+                        <img class="filza-jailed" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/download/2.2/Filza.ipa" target="_blank" rel="noopener noreferrer">FilzaJailed</a> via Huy Nguyen is available to use! [non-jb, iOS 17.0 - 26.0.1 (except 18.7.2 - 18.7.7)] ✅<br><br>
+
+                        <h4>📁 Path to Music ♫</h4>
+                        <p>⚙: ☆/Music</p>
+                        <img class="filza-jailed" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/download/2.2/Filza.ipa" target="_blank" rel="noopener noreferrer">FilzaJailed</a> via Huy Nguyen is unavailable! 🚫<br><br>
+
+                        <h4>📁 Path to Logo Lockscreen 🔒︎</h4>
+                        <p>⚙:/System/Library/PrivateFrameworks/SpringBoardUIServices.framework</p>
+                        <img class="filza-jailed" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/download/2.2/Filza.ipa" target="_blank" rel="noopener noreferrer">FilzaJailed</a> via Huy Nguyen is unavailable! 🚫<br><br>
+
+                        <h4>📁 Path to Theme Passcode 🎨</h4>
+                        <p>⚙:/var/mobile/Library/Caches/TelephonyUI-8 (or TelephonyUI-7,10,...)</p>
+                        <img class="filza-jailed" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/download/2.2/Filza.ipa" target="_blank" rel="noopener noreferrer">FilzaJailed</a> via Huy Nguyen is available to use! [non-jb, iOS 17.0 - 26.0.1 (except 18.7.2 - 18.7.7)] ✅<br><br>
+
+                        <h4>📁 Path to Logo Respring <img src="./public/img/logo apple.png" style="width:25px; height:25px"></h4>
+                        <p>⚙:/System/Library/PrivateFrameworks/BackBoardServices.framework</p>
+                        <img class="filza-jailed" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/download/2.2/Filza.ipa" target="_blank" rel="noopener noreferrer">FilzaJailed</a> via Huy Nguyen is unavailable! 🚫<br><br>
+
+                        <h4>📁 Path to WiFi ᯤ</h4>
+                        <p>⚙:/var/preferences/SystemConfiguration/com.apple.wifi.plist <img class="info" src="./public/img/info.png"><br></p>
+                        <img class="filza-jailed" src="./public/img/filzajailed.png"> <a href="https://github.com/34306/FilzaJailedDS/releases/download/2.2/Filza.ipa" target="_blank" rel="noopener noreferrer">FilzaJailed</a> via Huy Nguyen is unavailable! 🚫<br><br>
+                    </div>
+                </div>
+
+                <h1 class="menu" onclick="toggleSection('telegramApps')">✈️ Telegram (Click to expand)</h1>
+                <div id="telegramApps">
+                    <div class="submenu">
+                        <a href="https://t.me/decrypt_download_bot" target="_blank" rel="noopener noreferrer">🤖Bot Decrypt .iPA (Clone Apps by ID)</a>
+                    </div>
+
+                    <div class="submenu">
+                        <a href="https://t.me/ProxyMTProto" target="_blank" rel="noopener noreferrer">🌐Server Proxy</a>
+                    </div>
+                    
+                    <div class="submenu">
+                        <a href="https://t.me/cld_community" target="_blank" rel="noopener noreferrer">👥Check Scam Link</a>
+                    </div>
+                    
+                    <!-- <div class="submenu" onclick="toggleIntroduction('tgIntro1')">Nhóm cộng đồng TroubIeiOS</div>
+                    <div id="tgIntro1" class="introduction">
+                        <h4>✈️ Cộng đồng iOS</h4>
+                        <p>
+                            Nhóm Telegram cộng đồng (được giới thiệu trên các trang dự án).<br>
+                            ➤ <a href="https://t.me/TroubIeiOS" target="_blank" rel="noopener noreferrer">Mở nhóm TroubIeiOS</a>
+                        </p>
+                    </div> -->
+
+                </div>
+
+                <h1 class="menu" onclick="toggleSection('shortcut')">🛠️ Shortcut (Click to expand)</h1>
+                <div id="shortcut">
+                    <div class="submenu">
+                        <a href="https://www.icloud.com/shortcuts/d51d56e6310f49a9b1786d4f6764b38d" target="_blank" rel="noopener noreferrer"><img src="./public/img/logo apple.png" style="width:25px; height:25px"> Test iPhone</a>
+                    </div>
+                    <div class="submenu">
+                        <a href="https://www.icloud.com/shortcuts/873a0b635482494381811fdc962842a2" target="_blank" rel="noopener noreferrer">⚙️ Save Mobile Gestalt iOS < 18 </a>
+                    </div>
+                    <div class="submenu" onclick="toggleIntroduction('intro-mobilegestalt>18')">
+                        <a id="intro-mobilegestalt>18" href="https://www.icloud.com/shortcuts/7b0d2bb9a5c14e1783db1a3cb19b5f90" target="_blank" rel="noopener noreferrer">➤ Save Mobile Gestalt iOS 26.x</a> 
+                        &nbsp; || &nbsp; (required <a href="https://apps.apple.com/vn/app/a-shell-mini/id1543537943" target="_blank" rel="noopener noreferrer">a-Shell mini</a> app to run)
+                    </div>
+                    <div class="submenu">
+                        <a href="https://www.icloud.com/shortcuts/7c3ff2a2f9164c3ca9db136cb412afc2" target="_blank" rel="noopener noreferrer">🔌SideStore via StosVPN</a>
+                    </div>
+                    <div class="submenu">
+                        <a href="https://www.icloud.com/shortcuts/aa897eb388ee4a82a908f52cda4037bb" target="_blank" rel="noopener noreferrer">🔌⚡SideStore via LocalDevVPN</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleSection(id) {
+            const section = document.getElementById(id);
+            section.classList.toggle('active');
+            if (section.classList.contains('active')) {
+                const submenus = section.getElementsByClassName('submenu');
+                Array.from(submenus).forEach((submenu, index) => {
+                    submenu.style.setProperty('--order', index + 1);
+                });
+            }
+        }
+
+        function toggleIntroduction(id) {
+            const intro = document.getElementById(id);
+            if (intro.style.display === 'none' || intro.style.display === '') {
+                intro.style.display = 'block';
+                setTimeout(() => {
+                    intro.classList.add('active');
+                }, 10);
+            } else {
+                intro.classList.remove('active');
+                setTimeout(() => {
+                    intro.style.display = 'none';
+                }, 300);
+            }
+        }
+
+        function revealIntroductionByHash() {
+            const rawHash = window.location.hash;
+            if (!rawHash || rawHash.length <= 1) return;
+
+            const targetId = decodeURIComponent(rawHash.slice(1));
+            const target = document.getElementById(targetId);
+            if (!target) return;
+
+            if (target.classList.contains('introduction')) {
+                const parentSection = target.closest('#ipaApps, #shortcut, #telegramApps');
+                if (parentSection) {
+                    parentSection.classList.add('active');
+                }
+
+                target.style.display = 'block';
+                requestAnimationFrame(() => {
+                    target.classList.add('active');
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+                return;
+            }
+
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function closeDisclaimer() {
+            const disclaimer = document.getElementById('disclaimerNotification');
+            if (disclaimer) {
+                disclaimer.style.animation = 'slideUp 0.5s ease-out forwards';
+                
+                setTimeout(() => {
+                    disclaimer.style.display = 'none';
+                    // Adjust main content margin when disclaimer is closed
+                    const mainElement = document.querySelector('main');
+                    if (mainElement) {
+                        mainElement.style.marginTop = '40px';
+                    }
+                }, 500);
+            }
+        }
+
+        // Carousel Functions (for Passcode carousel only)
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('#passcode-carousel .carousel-slide');
+        const dots = document.querySelectorAll('#passcode-carousel .dot');
+
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Show current slide
+            if (index < 0 || index >= slides.length) return;
+            
+            const slide = slides[index];
+            if (slide) slide.classList.add('active');
+
+            const dot = dots[index];
+            if (dot) dot.classList.add('active');
+        }
+
+        function changeSlide(direction) {
+            currentSlideIndex += direction;
+            
+            if (currentSlideIndex >= slides.length) {
+                currentSlideIndex = 0;
+            } else if (currentSlideIndex < 0) {
+                currentSlideIndex = slides.length - 1;
+            }
+            
+            showSlide(currentSlideIndex);
+        }
+
+        function currentSlide(index) {
+            currentSlideIndex = index - 1;
+            showSlide(currentSlideIndex);
+        }
+
+        // Auto-play carousel (only for passcode carousel)
+        function autoPlay() {
+            changeSlide(1);
+        }
+
+        // Start auto-play when page loads (only for passcode carousel)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto-play every 4 seconds (only for passcode carousel)
+            if (slides.length > 0) {
+                setInterval(autoPlay, 4000);
+            }
+
+            revealIntroductionByHash();
+        });
+
+        window.addEventListener('hashchange', revealIntroductionByHash);
+
+        // CapCut Carousel Functions
+        let currentCapcutSlideIndex = 0;
+        const capcutSlides = document.querySelectorAll('#capcut-carousel .carousel-slide');
+        const capcutDots = document.querySelectorAll('#capcut-carousel .dot');
+
+        function showCapcutSlide(index) {
+            capcutSlides.forEach(slide => slide.classList.remove('active'));
+            capcutDots.forEach(dot => dot.classList.remove('active'));
+
+            if (index < 0 || index >= capcutSlides.length) return;
+
+            const slide = capcutSlides[index];
+            if (slide) slide.classList.add('active');
+
+            const dot = capcutDots[index];
+            if (dot) dot.classList.add('active');
+        }
+
+        function changeCapcutSlide(direction) {
+            currentCapcutSlideIndex += direction;
+
+            if (currentCapcutSlideIndex >= capcutSlides.length) {
+                currentCapcutSlideIndex = 0;
+            } else if (currentCapcutSlideIndex < 0) {
+                currentCapcutSlideIndex = capcutSlides.length - 1;
+            }
+
+            showCapcutSlide(currentCapcutSlideIndex);
+        }
+
+        function currentCapcutSlide(index) {
+            currentCapcutSlideIndex = index - 1;
+            showCapcutSlide(currentCapcutSlideIndex);
+        }
+
+        // Lockscreen Carousel Functions
+        let currentLockscreenSlideIndex = 0;
+        const lockscreenSlides = document.querySelectorAll('#lockscreen-carousel .carousel-slide');
+        const lockscreenDots = document.querySelectorAll('#lockscreen-carousel .dot');
+
+        function showLockscreenSlide(index) {
+            // Hide all slides
+            lockscreenSlides.forEach(slide => slide.classList.remove('active'));
+            lockscreenDots.forEach(dot => dot.classList.remove('active'));
+            
+            // Show current slide
+            if (index < 0 || index >= lockscreenSlides.length) return;
+
+            const slide = lockscreenSlides[index];
+            if (slide) slide.classList.add('active');
+
+            // `lockscreenDots` có thể không khớp số lượng với `lockscreenSlides`
+            const dot = lockscreenDots[index];
+            if (dot) dot.classList.add('active');
+        }
+
+        function changeLockscreenSlide(direction) {
+            currentLockscreenSlideIndex += direction;
+            
+            if (currentLockscreenSlideIndex >= lockscreenSlides.length) {
+                currentLockscreenSlideIndex = 0;
+            } else if (currentLockscreenSlideIndex < 0) {
+                currentLockscreenSlideIndex = lockscreenSlides.length - 1;
+            }
+            
+            showLockscreenSlide(currentLockscreenSlideIndex);
+        }
+
+        function currentLockscreenSlide(index) {
+            currentLockscreenSlideIndex = index - 1;
+            showLockscreenSlide(currentLockscreenSlideIndex);
+        }
+
+        // No auto-play for lockscreen carousel (GIF images)
+        // User must manually click to navigate
+    </script>
+
+    <div include-html="view/footer.html" data-basepath="./"></div>
+    <script src="public/js/news-1.11.0.min.js"></script>
+    <script src="public/js/news-migrate-1.2.1.min.js"></script>
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script src="public/js/templatemo.js"></script>
+    <script src="public/js/custom.js"></script>   
+</body>
+</html>

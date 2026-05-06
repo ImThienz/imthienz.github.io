@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <title>ImThienz</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="apple-touch-icon" href="../public/img/logotron.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../public/img/logotron.png">
+
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/main.css">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+
+    <script>
+        // Disclaimer translation functions - Define early to ensure availability
+        window.disclaimerTranslations = {
+            en: {
+                disclaimer: "<strong>Disclaimer:</strong> This website is for educational purposes only. I'm not responsible for any damage, data loss, or warranty issues caused by using the tools or methods shared here. Use at your own risk.",
+                title: "Translate to Vietnamese"
+            },
+            vi: {
+                disclaimer: "<strong>Tuyên bố miễn trừ:</strong> Trang web này chỉ dành cho mục đích giáo dục. Tôi không chịu trách nhiệm về bất kỳ thiệt hại, mất dữ liệu hoặc vấn đề bảo hành nào do việc sử dụng các công cụ hoặc phương pháp được chia sẻ ở đây. Sử dụng có rủi ro của riêng bạn.",
+                title: "Dịch sang tiếng Anh"
+            }
+        };
+
+        window.currentDisclaimerLanguage = 'en';
+
+        window.toggleDisclaimerTranslate = function() {
+            const disclaimerText = document.getElementById('disclaimerText');
+            const translateBtn = document.getElementById('translateBtn');
+            
+            if (!disclaimerText || !translateBtn) {
+                console.error('Disclaimer elements not found');
+                return;
+            }
+            
+            // Toggle language
+            window.currentDisclaimerLanguage = window.currentDisclaimerLanguage === 'en' ? 'vi' : 'en';
+            
+            // Update text
+            disclaimerText.innerHTML = window.disclaimerTranslations[window.currentDisclaimerLanguage].disclaimer;
+            
+            // Update button title
+            translateBtn.title = window.disclaimerTranslations[window.currentDisclaimerLanguage].title;
+            
+            // Toggle active class for visual feedback
+            translateBtn.classList.toggle('active', window.currentDisclaimerLanguage === 'vi');
+            
+            // Add smooth transition effect
+            disclaimerText.style.opacity = '0.7';
+            setTimeout(() => {
+                disclaimerText.style.opacity = '1';
+            }, 150);
+        };
+
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp;
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                file = elmnt.getAttribute("include-html");
+                if (file) {
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) {
+                                elmnt.innerHTML = this.responseText;
+                                var cy = elmnt.querySelector("#copyright-year");
+                                if (cy) {
+                                    var y = new Date().getFullYear();
+                                    cy.textContent = y;
+                                    cy.setAttribute("datetime", String(y));
+                                }
+                            }
+                            if (this.status == 404) {
+                                elmnt.innerHTML = "Page not found.";
+                            }
+                            elmnt.removeAttribute("include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    return;
+                }
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            includeHTML();
+        });
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #1abc9c;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --border-color: #e9ecef;
+            --shadow-color: rgba(0,0,0,0.1);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .suspended-notice {
+            position: relative;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2rem 2rem 2rem 3.25rem;
+            text-align: left;
+            background: var(--light-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px var(--shadow-color);
+            border-left: 6px solid #c0392b;
+        }
+
+        .suspended-notice::before {
+            content: "";
+            position: absolute;
+            left: 1.25rem;
+            top: 2rem;
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 50%;
+            background: #c0392b;
+            box-shadow: 0 0 0 6px rgba(192, 57, 43, 0.15);
+        }
+
+        .suspended-notice__title {
+            margin: 0 0 0.75rem;
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.25;
+        }
+
+        .suspended-notice__lead {
+            margin: 0 0 1rem;
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--text-color);
+            line-height: 1.55;
+        }
+
+        .suspended-notice__body {
+            margin: 0 0 1rem;
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.65;
+        }
+
+        .suspended-notice__footer {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 0 15px;
+            }
+
+            .about1, .about {
+                padding: 20px;
+            }
+
+            .suspended-notice {
+                padding: 1.5rem 1.25rem 1.5rem 2.75rem;
+            }
+
+            .suspended-notice::before {
+                left: 1rem;
+                top: 1.5rem;
+            }
+
+            .heading h1 {
+                font-size: 2.2em;
+            }
+
+            .menu {
+                font-size: 1.8em;
+                padding: 15px;
+            }
+
+            #ipaApps, #injectFiles {
+                padding-left: 40px;
+            }
+
+            #ipaApps::before, #injectFiles::before {
+                left: 15px;
+            }
+
+            .submenu {
+                margin-left: 15px;
+                padding: 12px 20px;
+            }
+
+            .submenu::before {
+                left: -30px;
+                width: 30px;
+            }
+
+            .introduction {
+                margin-left: 45px;
+                padding: 20px;
+            }
+
+            .introduction::before {
+                left: -30px;
+            }
+
+            .introduction h4 {
+                font-size: 1.5em;
+            }
+
+            .downloads-container {
+                flex-direction: column;
+            }
+
+            .downloads-container button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body onload="includeHTML()">
+    <div include-html="view/header.html" data-basepath="./"></div>
+    
+    <main>
+        <section class="about1 suspended-notice" role="alert" aria-live="polite">
+            <h1 class="suspended-notice__title">Thông báo tạm ngừng hoạt động</h1>
+            <p class="suspended-notice__lead">
+                Site này sẽ tạm thời ngừng hoạt động.
+            </p>
+            <p class="suspended-notice__body">
+                <strong>Lý do:</strong> Nội dung trên trang có chứa tài nguyên liên quan đến bản quyền
+                hoặc crack các ứng dụng có bản quyền.
+            </p>
+            <p class="suspended-notice__footer">
+                Cảm ơn bạn đã theo dõi.
+            </p>
+
+            <br><button onclick="window.location.href='./index.html'">Quay về trang chủ</button>
+        </section>
+        
+        <script>
+            // Function to format current date
+            function getCurrentDate() {
+                const today = new Date();
+                const day = today.getDate().toString().padStart(2, '0');
+                const month = (today.getMonth() + 1).toString().padStart(2, '0');
+                const year = today.getFullYear();
+                return `${day}/${month}/${year}`;
+            }
+
+            // Function to update date in h4 tags and their parent sections
+            function updateSectionDates() {
+                const sections = document.querySelectorAll('.introduction');
+                sections.forEach(section => {
+                    const h4Tag = section.querySelector('h4');
+                    if (h4Tag) {
+                        const text = h4Tag.textContent;
+                        if (text.includes('(Upload:') || text.includes('(Update:')) {
+                            const newDate = getCurrentDate();
+                            const newText = text.replace(/\(Upload:.*?\)|\(Update:.*?\)/, `(Update: ${newDate})`);
+                            h4Tag.textContent = newText;
+                        }
+                    }
+                });
+            }
+
+            // Create a MutationObserver to watch for changes
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.type === 'childList' && mutation.target.tagName === 'H4') {
+                        updateSectionDates();
+                    }
+                });
+            });
+
+            // Start observing all h4 tags
+            document.querySelectorAll('h4').forEach(h4 => {
+                observer.observe(h4, { childList: true, characterData: true, subtree: true });
+            });
+
+            // Initial update
+            updateSectionDates();
+
+            // Handle scroll from other pages
+            window.onload = function() {
+                // Check for anchor hash in URL
+                if (window.location.hash) {
+                    const targetId = window.location.hash.substring(1);
+                    setTimeout(function() {
+                        const element = document.getElementById(targetId);
+                        if (element) {
+                            // First ensure the parent section is visible
+                            const parentSection = document.getElementById('injectFiles');
+                            if (parentSection) {
+                                parentSection.style.display = "block";
+                            }
+                            // Then ensure the target section is visible
+                            element.style.display = "block";
+                            // Finally scroll to it
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }, 1000);
+                }
+                
+                // Handle scroll from other pages (existing functionality)
+                if (localStorage.getItem('scrollToTrollFools') === 'true') {
+                    localStorage.removeItem('scrollToTrollFools');
+                    const targetId = localStorage.getItem('scrollTarget');
+                    if (targetId) {
+                        localStorage.removeItem('scrollTarget');
+                        setTimeout(function() {
+                            const element = document.getElementById(targetId);
+                            if (element) {
+                                // First ensure the parent section is visible
+                                const parentSection = document.getElementById('injectFiles');
+                                if (parentSection) {
+                                    parentSection.style.display = "block";
+                                }
+                                // Then ensure the target section is visible
+                                element.style.display = "block";
+                                // Finally scroll to it
+                                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                        }, 1000);
+                    }
+                }
+            }
+
+
+            function toggleSection(id) {
+                var section = document.getElementById(id);
+                var submenus = section.getElementsByClassName("submenu");
+                if (section.style.display === "none" || section.style.display === "") {
+                    section.style.display = "block";
+                    for (var i = 0; i < submenus.length; i++) {
+                        submenus[i].style.display = "block";
+                    }
+                } else {
+                    section.style.display = "none";
+                    for (var i = 0; i < submenus.length; i++) {
+                        submenus[i].style.display = "none";
+                    }
+                }
+            }
+    
+            function toggleIntroduction(id) {
+                var intro = document.getElementById(id);
+                if (intro.style.display === "none" || intro.style.display === "") {
+                    intro.style.display = "block";
+                } else {
+                    intro.style.display = "none";
+                }
+            }
+
+            function closeDisclaimer() {
+                const disclaimer = document.getElementById('disclaimerNotification');
+                if (disclaimer) {
+                    disclaimer.style.animation = 'slideUp 0.5s ease-out forwards';
+                    
+                    setTimeout(() => {
+                        disclaimer.style.display = 'none';
+                        // Adjust main content margin when disclaimer is closed
+                        const mainElement = document.querySelector('main');
+                        if (mainElement) {
+                            mainElement.style.marginTop = '40px';
+                        }
+                    }, 500);
+                }
+            }            
+        </script>
+
+    </main>
+    
+    <div include-html="view/footer.html" data-basepath="./"></div>
+    
+    <script src="public/js/news-1.11.0.min.js"></script>
+    <script src="public/js/news-migrate-1.2.1.min.js"></script>
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script src="public/js/templatemo.js"></script>
+    <script src="public/js/custom.js"></script>    
+</body>
+</html>
+

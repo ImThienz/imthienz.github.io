@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" href="public/img/logotron.png">
+    <link rel="shortcut icon" type="public/image/x-icon" href="./public/img/logotron.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        h5 {
+            color: #2c3e50;
+            font-size: 1.4em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        b {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.02);
+        }
+
+        .note-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .note-box b {
+            color: #3498db;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h3 {
+                font-size: 1.5em;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+
+    <script>
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp, basepath;
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                file = elmnt.getAttribute("include-html");
+                basepath = elmnt.getAttribute("data-basepath");
+                if (file) {
+                    if (basepath) {
+                        file = basepath + file;
+                    }
+
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) {
+                                elmnt.innerHTML = this.responseText;
+                                var cy = elmnt.querySelector("#copyright-year");
+                                if (cy) {
+                                    var y = new Date().getFullYear();
+                                    cy.textContent = y;
+                                    cy.setAttribute("datetime", String(y));
+                                }
+                            }
+                            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                            elmnt.removeAttribute("include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    return;
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="includeHTML()">
+    <div include-html="view/header.html" data-basepath="./"></div>
+    <main>
+        <br><h1>Hướng dẫn cài đặt & sử dụng AltStore (Trên Windows)</h1>
+        <div class="note-box">
+            <p><a href="https://altstore.io/">AltStore</a> - ứng dụng giúp bạn sideload file .ipa trên iphone (chỉ có hiệu lực trong 7 ngày,
+                sau đó bạn cần PC cài đặt lại altstore để thực hiện việc signload .ipa một lần nữa - Đồng nghĩa với việc data trên .ipa sẽ bị mất đi). 
+                Khuyển nghị nên <a href="./sidestore.html" style="text-decoration: none; font-style: italic;">cài đặt SideStore</a> sẽ hiệu quả hơn vì không mất dữ liệu file .ipa
+           </p>
+        </div>
+
+        <h3>Trước khi cài đặt AltStore:        </h3>
+        <ol>
+            <li>Tải xuống và cài đặt phiên bản <b>iTunes</b> và <b>iCloud</b> mới nhất trực tiếp từ Apple <b>(không phải Microsoft Store)</b>.            </li>
+            <ul>
+                <li>Liên kết tải xuống trực tiếp iTunes: <a href="https://www.apple.com/itunes/download/win64">Windows 64-bit</a> / <a href="https://www.apple.com/itunes/download/win32">Windows 32-bit</a>                </li>
+                <li>Liên kết tải xuống trực tiếp iCloud: <a href="https://updates.cdn-apple.com/2020/windows/001-39935-20200911-1A70AA56-F448-11EA-8CC0-99D41950005E/iCloudSetup.exe">Windows 32-bit và 64-bit</a>                </li>
+            </ul> 
+        </ol>
+        <h3>Cài đặt AltStore:        </h3>
+        <ol>
+            <li>Tải xuống <a href="https://cdn.altstore.io/file/altstore/altinstaller.zip">AltServer cho Windows</a></li>
+            <li>Giải nén <b>AltInstaller.zip</b> và chạy <b>Setup.exe</b>            </li>
+            <li>Vào mục tìm kiếm trên thanh tác vụ Windows, sau đó nhập "AltServer" và nhấp vào "Chạy với tư cách quản trị viên". Đảm bảo cho phép truy cập vào mạng riêng nếu được nhắc. AltStore sẽ xuất hiện dưới dạng biểu tượng trên thanh tác vụ.            </li>
+            <li>Kết nối thiết bị iOS của bạn với máy tính và đảm bảo thiết bị đã được mở khóa. Nếu cần, hãy tin tưởng thiết bị của bạn với máy tính.</li>
+            <li>Mở iTunes, sau đó bật "Đồng bộ hóa Wi-Fi" trên thiết bị của bạn.</li>
+            <img src="./public/img/altstore/itunes-sync wifi.webp" alt="" style="width:350px; height:300px">
+            <li>Nhấp vào biểu tượng AltServer ở thanh tác vụ góc dưới bên phải. Sau đó, đi đến "Cài đặt AltStore" và chọn thiết bị iOS của bạn.</li>
+            <li>Nhập địa chỉ email và mật khẩu Apple ID của bạn. Điều này sẽ cho phép AltServer xác thực với Apple và cấu hình tài khoản của bạn để hỗ trợ tải ứng dụng.</li>
+            <div class="note-box">
+                <b>Notes:</b> ID Apple và mật khẩu của bạn chỉ được gửi cho Apple — không phải chúng tôi hay bất kỳ ai khác.
+            </div>
+            <li>Đợi vài giây, sau đó thông báo <b>AltServer</b> sẽ xuất hiện cho biết AltStore đã được cài đặt thành công vào thiết bị của bạn.</li>
+            <li>Trên thiết bị iOS của bạn, hãy vào Cài đặt -> Chung -> Quản lý hồ sơ & thiết bị. Chạm vào "Tin cậy [ID Apple của bạn]", sau đó chạm vào "Tin cậy" một lần nữa để xác nhận.</li>
+            <img src="./public/img/altstore/set up configuration.jpg" alt="Set up configuration" style="width:350px; height:300px">
+            <div class="note-box">
+                <b>Notes:</b> "Quản lý hồ sơ và thiết bị" có thể được hiểu theo nhiều cách khác nhau tùy thuộc vào phiên bản của bạn, nhưng bạn luôn có thể tìm thấy mục này ở gần cuối mục Cài đặt -> Chung.
+            </div>
+            <br><h5>Bật Chế độ nhà phát triển (iOS 16 trở lên)            </h5>
+            <li>Để sử dụng AltStore trên iOS 16 trở lên, bạn cần bật Chế độ nhà phát triển trên thiết bị của mình bằng cách vào Cài đặt -> Quyền riêng tư và Bảo mật -> Chế độ nhà phát triển.</li>
+            <img src="./public/img/altstore/developer mode.png" alt="Developer Mode" style="width:350px; height:300px">
+
+        </ol>
+        <p>Và bây giờ bạn đã sẵn sàng tải ứng dụng về máy bằng AltStore!        </p>
+
+
+
+    </main>
+    <div include-html="view/footer.html" data-basepath="./"></div>
+    
+    <script src="public/js/news-1.11.0.min.js"></script>
+    <script src="public/js/news-migrate-1.2.1.min.js"></script>
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script src="public/js/templatemo.js"></script>
+    <script src="public/js/custom.js"></script>
+    
+    <script>
+        // Disclaimer translation functions
+        window.disclaimerTranslations = {
+            en: {
+                disclaimer: "<strong>Disclaimer:</strong> This website is for educational purposes only. I'm not responsible for any damage, data loss, or warranty issues caused by using the tools or methods shared here. Use at your own risk.",
+                title: "Translate to Vietnamese"
+            },
+            vi: {
+                disclaimer: "<strong>Tuyên bố miễn trừ:</strong> Trang web này chỉ dành cho mục đích giáo dục. Tôi không chịu trách nhiệm về bất kỳ thiệt hại, mất dữ liệu hoặc vấn đề bảo hành nào do việc sử dụng các công cụ hoặc phương pháp được chia sẻ ở đây. Sử dụng có rủi ro của riêng bạn.",
+                title: "Dịch sang tiếng Anh"
+            }
+        };
+
+        window.currentDisclaimerLanguage = 'en';
+
+        window.toggleDisclaimerTranslate = function() {
+            const disclaimerText = document.getElementById('disclaimerText');
+            const translateBtn = document.getElementById('translateBtn');
+            
+            if (!disclaimerText || !translateBtn) {
+                console.error('Disclaimer elements not found');
+                return;
+            }
+            
+            // Toggle language
+            window.currentDisclaimerLanguage = window.currentDisclaimerLanguage === 'en' ? 'vi' : 'en';
+            
+            // Update text
+            disclaimerText.innerHTML = window.disclaimerTranslations[window.currentDisclaimerLanguage].disclaimer;
+            
+            // Update button title
+            translateBtn.title = window.disclaimerTranslations[window.currentDisclaimerLanguage].title;
+            
+            // Toggle active class for visual feedback
+            translateBtn.classList.toggle('active', window.currentDisclaimerLanguage === 'vi');
+            
+            // Add smooth transition effect
+            disclaimerText.style.opacity = '0.7';
+            setTimeout(() => {
+                disclaimerText.style.opacity = '1';
+            }, 150);
+        };
+
+        function closeDisclaimer() {
+            const disclaimer = document.getElementById('disclaimerNotification');
+            if (disclaimer) {
+                disclaimer.style.animation = 'slideUp 0.5s ease-out forwards';
+                setTimeout(() => {
+                    disclaimer.style.display = 'none';
+                }, 500);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+[
+    {
+      "id": 1,
+      "name": "Audio Recorder (iPA)",
+      "description": "⚙ Audio Recorder - Ghi âm cuộc gọi 🆕 \n ✅ Đồng bộ hóa qua Dropbox ; Google Drive \n ✅ Tùy chỉnh ứng dụng ghi âm: (Telegram/Facetime/Zalo/Telephony/...) \n ✅ Demo: <a href='./public/vid/Audiorecorder-demo.mp4'>AudioRecorder.mp4</a>",
+      "link": "./iPA TrollStore/AudioRecorder_6.0.3.tipa"
+    },
+    {
+      "id": 13,
+      "name": "Wifi List (iPA)",
+      "description": "✅ Cài đặt qua Troll Store \n ✅ <a href='./public/img/wifi_list.jpg'>Example</a>",
+      "link": "./iPA TrollStore/WiFiList_1.0.tipa"
+    },
+    {
+      "id": 22,
+      "name": "Youtube Plus ++ (dylib)",
+      "description": "⚙ Gói đa chức năng tiêm cho Youtube 🆕 \n ⚠️ Đẩy các gói cũ đã tiêm ra, rồi tiêm lại nhé ! Tiêm luôn tệp zip mới này nha, giải nén ra rồi mới tiêm là ăn ban \n ✅ iSponsorBlock : Chặn quảng cáo chèn trong video \n ✅ YouMute : Nút tắt tiếng nhanh  \n ✅ YouPiP : Hỗ trợ bật PiP  \n ✅ YouQuality : Chất lượng video Premium  \n  ✅ YoutubeLite : hay còn gọi là Youtube Plus chặn quảng cáo, hỗ trợ tải video, nhạc trực tiếp về Album; Tuỳ biến giao diện...  \n ✅ Và các gói bổ trợ khác : YTClassicVideoQuality, YTUHD,YTVideoOverlay, Alderis.",
+      "link": "./Inject into TrollFools's Apps/Youtube Plus ++.zip",
+      "link4": "./Inject into TrollFools's Apps/YouTube Dylib.zip"
+    },
+    {
+      "id": 23,
+      "name": "Blacklist (iPA)",
+      "description": "⚙ Gỡ bỏ trình duyệt/ứng dụng chặn ra khỏi danh sách đen 🆕 \n ✅ Cài đặt bằng Sideloadly (<a href='https://sideloadly.io/SideloadlySetup64.exe'>x64bit</a> / <a href='https://sideloadly.io/SideloadlySetup32.exe'>x32bit</a>) qua PC hoặc trực tiếp từ Troll Store   \n ➤ <a href='./public/vid/'>How to install via Sideloadly?</a>",
+      "link": "./iPA TrollStore/Blacklist_1.0.ipa"
+    },
+    {
+      "id": 24,
+      "name": "Facebook Wolf (dylib)",
+      "description": "⚙ Facebook Wolf - Tiêm vào ứng dụng Facebook qua TrollFool 🆕 \n 🖥️ Chức năng: Tính năng của Facebook Wolf: \n ✅ Chặn quảng cáo Facebook \n ✅ Tải video bằng cách nhấn giữ vào videos \n ",
+      "link": "./Inject into TrollFools's Apps/Wolf.dylib"
+    },
+    {
+      "id": 25,
+      "name": "Messed (dylib)",
+      "description": "⚙  Messed - dylib được nâng cấp bởi npt HuyNguyen(Little34306) 🆕\n 🖥️ Chức năng: Chặn quảng cáo Messenger \n ✅ Chặn đối phương phát hiện đã xem tin nhắn. (Công tắt bật tắt chức năng ở phía trên gần thanh trạng thái) \n ",
+      "link": "./Inject into TrollFools's Apps/Messed.dylib"
+    },
+    {
+      "id": 26,
+      "name": "Rocket Instagram (dylib)",
+      "description": "⚙  Rocket Pro - Gói tiện ích cho Instagram 🆕 \n 🖥️ Chức năng: Tải video mọi nơi không logo \n ✅ Rất nhiều tiện ích khác ai chưa dùng tự nghiên cứu nhé. \n ➤ Cách mở bảng điều khiển Rocket và nâng cấp lên Rocket Pro với đầy đủ tính năng : Vào trang cá nhân ➠ chọn dấu 3 gạch góc phải ➠ Rocket Settings ➠ Upgrade Now ➠ Restore Purchases!",
+      "link": "./Inject into TrollFools's Apps/Rocket_Instagram.zip"
+    },
+    {
+      "id": 27,
+      "name": "TrueCaller Premium (dylib)",
+      "description": "⚙  TrueCaller Premium - Gói tiện ích cho TrueCaller ứng dụng chặn cuộc gọi spam tự động 🆕 \n ✅ Nâng cấp tự động Premium miễn phí",
+      "link": "./Inject into TrollFools's Apps/TrueCaller Premium.dylib"
+    },
+    {
+      "id": 28,
+      "name": "Postbox (iPA)",
+      "description": "⚙ Postbox - bạn có thể sử dụng ứng dụng này để giải nén tệp Deb lấy các nội dung như dylib, bundle, framework có trong deb sử dụng với  TrollFools \"tiêm chích\" 🆕",
+      "link": "./iPA TrollStore/Postbox.ipa"
+    },
+    {
+      "id": 29,
+      "name": "Picsart Gold (dylib)",
+      "description": "⚙ Picsart Gold  - Dylib nâng cấp gói Gold đầy đủ tính năng cao cấp cho Picsart ứng dụng chỉnh ảnh nổi tiếng 🆕 \n ✅ Nâng cấp Gold tự động.    ",
+      "link": "./Inject into TrollFools's Apps/PicsArt_Gold.dylib"
+    },
+    {
+      "id": 30,
+      "name": "LightRoom (dylib)",
+      "description": "⚙ LightRoom - Dylib nâng cấp gói Pro cao cấp miễn phí cho Lightroom ứng dụng chỉnh sửa ảnh 🆕",
+      "link": "./Inject into TrollFools's Apps/Lightroom.dylib"
+    },
+    {
+      "id": 31,
+      "name": "We Chat ++ (dylib)",
+      "description": "✅ Gói đa chức năng ++ cho Wechat - Mạng xã hội Trung Quốc \n ✅ Rất nhiều chức năng thú vị tự tìm hiểu, gói này mình tự tổng hợp theo nhu cầu cá nhân \n <a href='./public/img/wechat-demo.jpg'>Cách tải video</a>",
+      "link": "./Inject into TrollFools's Apps/Wechat++.zip"
+    },
+    {
+      "id": 32,
+      "name": "Xingtu ++ (dylib)",
+      "description": "✅ Dylib mở khoá chức năng VIP miễn phí cho Xingtu (醒图) ứng dụng chỉnh ảnh sịn sò Trung Quốc \n <a href='./public/img/xingtu-demo.jpg'>Cách chuyển vùng</a>",
+      "link": "./Inject into TrollFools's Apps/Xingtu.dylib"
+    },
+    {
+      "id": 33,
+      "name": "Fake GPS 📍 (.zip)",
+      "description": "☄️ Dylib Fake vị trí - Có hiệu lực cho ứng dụng được tiêm 🆕 \n ✅ Gõ 2 lần bằng 3 ngón tay lên màn hình để gọi Menu. Bấm giữ vào vị trí muốn Fake để chọn sau đó bật công tắc bên trái màn hình. \n <a href='./public/vid/fake-gps.mp4'>👉Demo ở đây!👈</a> \n ✅ Vào TrollFools và tìm ứng dụng cần fake GPS, tiêm file <span style='font-style: italic'>'FakeGPS-v3.zip'</span> này vào",
+      "link": "./Inject into TrollFools's Apps/FakeGPS-v3.zip"
+    },
+    {
+      "id": 2,
+      "name": "Air Troller (iPA)",
+      "description": "⚙ Spam AirDrop 🆕",
+      "link": "./iPA TrollStore/AirTroller.ipa"
+    },
+    {
+      "id": 3,
+      "name": "Apps Manager (iPA)",
+      "description": "⚙ AppsManager - Trình quản lý ipa & Apps 🆕 \n ✅ Sửa bundle Định danh \n ✅ Điều hướng đến đường dẫn Package & Data trong Filza \n ✅ Cho phép Sao lưu & Khôi phục & Xóa",
+      "link": "./iPA TrollStore/AppsManager_1.8.4.ipa"
+    },
+    {
+      "id": 4,
+      "name": "Azula (iPA)",
+      "description": "⚙ Azula - Tiêm .dylib(s) vào ipa 🆕 \n ✅ Chỉ hỗ trợ trên TrollStore!",
+      "link": "./iPA TrollStore/Azula.ipa"
+    },
+    {
+      "id": 5,
+      "name": "Deb To IPA (iPA)",
+      "description": "⚙ Chuyển .deb sang .ipa 🆕",
+      "link": "./iPA TrollStore/DebToIPA-1.1.1.ipa"
+    },
+    {
+      "id": 6,
+      "name": "iMem Scan TS (iPA)",
+      "description": "⚙ Dễ dàng sửa đổi bộ nhớ ứng dụng, hữu ích cho việc gian lận trong game offline.🆕",
+      "link": "./iPA TrollStore/iMemScanTS.tipa"
+    },
+    {
+      "id": 7,
+      "name": "Troll Lock (iPA)",
+      "description": "⚙ Tạo logo chuyển động tại vị trí màn hình khóa iphone 🆕 \n ✅ Yêu cầu từ iOS 15. \n ✅ Path: /System/Library/PrivateFrameworks/SpringBoardUIServices.framework/ \n ✅ Demo <a href='./public/vid/trolllock-demo.mp4'>TrollLock.mp4</a>",
+      "link": "./iPA TrollStore/TrollLock-1.1.ipa",
+      "link2": "./iPA TrollStore/TrollLock_HuTao.zip",
+      "link3": "./iPA TrollStore/trolllock-main.zip"
+    },
+    {
+      "id": 8,
+      "name": "App Store ++ (iPA)",
+      "description": "⚙ AppStore++ - Cho phép hạ cấp phiên bản ứng dụng (Nhấn giữ) 🆕",
+      "link": "./iPA TrollStore/AppStore++_v1.0.3-1.ipa"
+    },
+    {
+      "id": 9,
+      "name": "Provenance (iPA)",
+      "description": "⚙ Provenance - iOS & tvOS multi-emulator frontend, supporting various Atari, Bandai, NEC, Nintendo, Sega, SNK and Sony console systems… 🆕 \n ✅ Full <a href='https://github.com/Provenance-Emu/Provenance'>Provenance</a>",
+      "link": "https://drive.google.com/file/d/1g3U5Aj0zbBBYVyBdsl3Yu2dBN1uoxNn1/view?usp=sharing"
+    },
+    {
+      "id": 10,
+      "name": "TrollFools (iPA)",
+      "description": "TrollFools for iOS 15-16-17",
+      "link": "./iPA TrollStore/TrollFools_4.2-227.tipa"
+    },
+
+    {
+      "id": 12,
+      "name": "Action Bar Reborn (dylib)",
+      "description": "⚙ ActionBarReborn - Dylib bổ trợ chức năng cho bàn phím 🆕 \n ✅ Chỉ có tác dụng cho ứng dụng nào được tiêm \n ✅ Thêm 3 nút vào bàn phím : \n 🟢Undo (Hoàn tác) \n 🟢Select (Chọn, chọn tất cả) \n 🟢Paste (Dán) \n ✅ Dành cho ai có nhu cầu sao chép và dán nhiều nội dung rất phù hợp cho công việc và spammer 😂",
+      "link": "./Inject into TrollFools's Apps/ActionBarReborn.dylib"
+    },
+    
+    {
+      "id": 14,
+      "name": "adSpeed-Noads-purchase (dylib)",
+      "description": "⚙ Dylib đa chức năng 🆕 \n ✅ Chặn quảng cáo \n ✅ Tua nhanh quảng cáo tự chỉnh tốc độ đảm bảo cho việc tua quảng cáo nhận thưởng trong game/app \n ✅ Miễn phí thanh toán mua hàng như Satella \n ❌ Không mở cùng lúc 2 chức năng chặn quảng cáo và tua quảng cáo \n ⚠️ Dùng 3 ngón tay chạm 2-3 lần vào màn hình để mở bảng điều khiển",
+      "link": "./Inject into TrollFools's Apps/adSpeed-Noads-purchase.dylib"
+    },
+    {
+      "id": 15,
+      "name": "BH Tiktok Plus (dylib)",
+      "description": "⚙ BHTikTokPlus - Gói tiện ích cho Tiktok 🆕 \n ✅ Tải video không logo chất lượng thường và HD. \n ✅ Rất nhiều tiện ích khác ai chưa dùng tự nghiên cứu nhé. \n Cách mở bảng điều khiển BHTiktokPlus : Vào trang cá nhân ➠ chọn dấu 3 gạch góc phải ➠ Vòng tròn góc phải ➠ BHTikTok Plus",
+      "link": "./Inject into TrollFools's Apps/BHTiktokPlus.zip"
+    },
+    {
+      "id": 16,
+      "name": "Eevee Spotify (dylib)",
+      "description":"⚙ EeveeSpotify 4.5 - Gói tiện ích cho Spotify 🆕 \n ✅ Cho phép sử dụng một số tính năng của Premium \n Nếu không kích hoạt được tính năng Premium hãy thử mở Bảng điều khiển EeveeSpotify : Biểu tượng trang cá nhân góc trái ➠ Cài đặt và quyền riêng tư ➠ EeveeSpotify ➠ Patching ➠ Patching Method ➠ Dynamic ➠ Quay ra đánh tích vào mục Overwrite Configuration",
+      "link": "./Inject into TrollFools's Apps/EeveeSpotify.zip"
+    },
+    {
+      "id": 17,
+      "name": "Cam Scanner Gold (dylib)",
+      "description": "⚙ Dylib nâng cấp gói Gold cao cấp miễn phí cho CamScanner ứng dụng scan văn bản thành PFD 🆕 \n ✅ Tự động mở khoá gói Gold. \n 🅰️ Tải về từ Appstore",
+      "link": "./Inject into TrollFools's Apps/CamScanner Gold.dylib"
+    },
+    {
+      "id": 18,
+      "name": "Show Touches (dylib)",
+      "description": "⚙ Dylib hiển thị vị trí cảm ứng chạm màn hình 🆕 \n ✅ Chỉ có tác dụng khi quay màn hình và chỉ có tác dụng cho ứng dụng nào được tiêm \n 😎 Gói được phát triển bởi i82",
+      "link": "./Inject into TrollFools's Apps/ShowTouches.dylib"
+    },
+    {
+      "id": 19,
+      "name": "Screen off Recoring (dylib)",
+      "description": "⚙ Dylib tiêm cho ứng dụng ghi âm mặc định của iPhone 🆕 \n ✅ Ẩn hoàn toàn giao diện ghi âm khi khoá màn hình.",
+      "link": "./Inject into TrollFools's Apps/Screen_off_Recording.dylib"
+    },
+    {
+      "id": 20,
+      "name": "iGameGod NoAds (dylib)",
+      "description": "⚙ iGameGod - Cheat Engine for iPhone 🆕 \n\n ✅ Memory/Cheat Engine \n iGameGod's iOS Cheat Engine cung cấp nhiều tính năng như tìm kiếm chính xác, mờ, gần & nhóm. Nó cũng có trình duyệt bộ nhớ và khả năng sửa đổi hàng loạt kết quả, khóa giá trị, địa chỉ yêu thích & nhiều hơn nữa! Tất cả các tính năng này đều hoạt động trên thiết bị Jailbroken/Non-Jailbroken. \n\n ✅ Speed Manager \n Điều chỉnh tốc độ trò chơi! Tăng hoặc giảm tốc độ trò chơi xuống mức mong muốn. \n\n ✅ Record & Replay Touches \n Dễ dàng ghi lại và phát lại các lần chạm một lần hoặc lặp lại. Hoàn hảo cho các trò chơi nông trại và chạm như Tap Titans 2. \n\n ✅ Device Information Spoofer \n Công cụ iGSpoof của iGameGod cho phép thay đổi hoặc giả mạo thông tin thiết bị của mình cho các ứng dụng App Store. Điều này giúp bạn có thể dễ dàng thay đổi kiểu máy, UDID, số sê-ri, phiên bản iOS và nhiều thông tin khác! Hiện chỉ khả dụng cho các thiết bị đã Jailbreak. \n\n ✅ More features! \n iGameGod cung cấp nhiều tính năng như trình cài đặt tweak (.deb), công cụ giải mã ứng dụng để hỗ trợ các nhà nghiên cứu bảo mật, chế độ sáng & tối và nhiều hơn nữa! Kiểm tra <a href='https://iosgods.com/topic/134184-introducing-igamegod-cheat-engine-speed-manager-auto-touch-device-spoofer-more/#comment-4265745'>danh sách đầy đủ các tính năng và cách sử dụng chúng tại đây</a>.",
+      "link": "./Inject into TrollFools's Apps/iGameGod_NoAds.zip"
+    },
+    {
+      "id": 21,
+      "name": "Locket Gold (dylib)",
+      "description": "⚙ Locket Gold - Gói tiện ích cho Locket Widget 🆕 \n ✅ Nâng cấp Gold miễn phí. \n Nếu không kích hoạt được Gold \n 1. Dùng Appsmanager xoá sạch dữ liệu ứng dụng Locket \n 2. Mở Locket đăng nhập lại và kiểm tra \n ========================================== \n ✅ Để upload video 10s, cần dán (thay thế) file RemoteConfig.sqlite3 vào path sau: \n ✅ /var/mobile/Containers/Data/Application/Locket/Library/Application Support/Google/RemoteConfig.sqlite3 \n ========================================== \n Nếu xảy ra lỗi cài đặt .ipa Locket Gold, bạn có thể <a href='./locket-gold.html'>cài đặt bằng cách khác</a>",
+      "link": "./Inject into TrollFools's Apps/Locket-Gold.dylib",
+      "link1": "./Inject into TrollFools's Apps/RemoteConfig.sqlite3"
+    }
+
+  ]
+  

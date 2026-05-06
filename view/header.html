@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ImThienz</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ImThienz - iOS Apps and Utilities">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" as="style">
+    <link rel="preload" href="public/css/bootstrap.min.css" as="style">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" href="public/img/logotron.png">
+    <link rel="shortcut icon" type="image/x-icon" href="public/img/logotron.png">
+    
+    <!-- Critical CSS -->
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/main.css">
+    
+    <!-- Fonts and Icons (loaded asynchronously) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+</head>
+
+<body>
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+        <div class="container text-light">
+            <div class="w-100 d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="https://mail.google.com/mail/?view=cm&fs=1&to=imthienz@gmail.com" target="_blank">Send an Email</a>
+                    <i class="fab fa-paypal fa-sm fa-fw"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="https://paypal.me/vtdvuthanhdat" target="_blank" rel="noopener">Buy for me a coffee!</a>
+                </div>
+                <div>
+                    <a class="text-light" href="https://github.com/ImThienz" target="_blank" rel="noopener"><i class="fab fa-github fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://x.com/DzKoi23" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.facebook.com/profile.php?id=100011968744036" target="_blank" rel="noopener"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow fixed-top" style="background: white;">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+                ImThienz
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between"
+                id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="disclaimer.html">TrollStore & TrollFools</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="utilities.html">Utilities</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://t.me/ImThienz" target="_blank">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="nevergiveup.html">Click here if you've a bad day!</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- <a href="search.html" class="btn btn-primary">
+                    <i class="fa fa-fw fa-search text-dark mr-2"></i>
+                </a> -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Disclaimer Notification -->
+    <div class="disclaimer-notification" id="disclaimerNotification">
+        <div class="disclaimer-content">
+            <div class="disclaimer-icon">⚠️</div>
+            <div class="disclaimer-text" id="disclaimerText">
+                <strong>Disclaimer:</strong> This website is for educational purposes only. I'm not responsible for any damage, data loss, or warranty issues caused by using the tools or methods shared here. Use at your own risk.
+            </div>
+            <button class="disclaimer-translate" id="translateBtn" title="Translate to Vietnamese" onclick="window.toggleDisclaimerTranslate()">
+                <i class="fas fa-language"></i>
+            </button>
+            <button class="disclaimer-close" onclick="closeDisclaimer()">×</button>
+        </div>
+    </div>
+
+    <!-- Deferred JavaScript loading -->
+    <script defer src="public/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Disclaimer Functions - Define early -->
+    <script>
+        // Define disclaimer functions immediately when script loads
+        window.disclaimerTranslations = {
+            en: {
+                disclaimer: "<strong>Disclaimer:</strong> This website is for educational purposes only. I'm not responsible for any damage, data loss, or warranty issues caused by using the tools or methods shared here. Use at your own risk.",
+                title: "Translate to Vietnamese"
+            },
+            vi: {
+                disclaimer: "<strong>Tuyên bố miễn trừ:</strong> Trang web này chỉ dành cho mục đích giáo dục. Tôi không chịu trách nhiệm về bất kỳ thiệt hại, mất dữ liệu hoặc vấn đề bảo hành nào do việc sử dụng các công cụ hoặc phương pháp được chia sẻ ở đây. Sử dụng có rủi ro của riêng bạn.",
+                title: "Dịch sang tiếng Anh"
+            }
+        };
+
+        window.currentDisclaimerLanguage = 'en';
+
+        window.toggleDisclaimerTranslate = function() {
+            const disclaimerText = document.getElementById('disclaimerText');
+            const translateBtn = document.getElementById('translateBtn');
+            
+            if (!disclaimerText || !translateBtn) {
+                console.error('Disclaimer elements not found');
+                return;
+            }
+            
+            // Toggle language
+            window.currentDisclaimerLanguage = window.currentDisclaimerLanguage === 'en' ? 'vi' : 'en';
+            
+            // Update text
+            disclaimerText.innerHTML = window.disclaimerTranslations[window.currentDisclaimerLanguage].disclaimer;
+            
+            // Update button title
+            translateBtn.title = window.disclaimerTranslations[window.currentDisclaimerLanguage].title;
+            
+            // Toggle active class for visual feedback
+            translateBtn.classList.toggle('active', window.currentDisclaimerLanguage === 'vi');
+            
+            // Add smooth transition effect
+            disclaimerText.style.opacity = '0.7';
+            setTimeout(() => {
+                disclaimerText.style.opacity = '1';
+            }, 150);
+        };
+    </script>
+    
+    <!-- Disclaimer Styles -->
+    <style>
+        body {
+            padding-top: 80px; 
+        }
+
+        .disclaimer-notification {
+            position: fixed;
+            top: 80px; 
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            z-index: 1000;
+            padding: 15px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+        }
+
+        .disclaimer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        .disclaimer-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .disclaimer-text {
+            flex: 1;
+            font-size: 14px;
+            line-height: 1.4;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .disclaimer-text strong {
+            font-weight: 700;
+        }
+
+        .disclaimer-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .disclaimer-close:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.1);
+        }
+
+        .disclaimer-translate {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+
+        .disclaimer-translate:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.1);
+        }
+
+        .disclaimer-translate.active {
+            background: rgba(255,255,255,0.4);
+            box-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+
+        main {
+            margin-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px; 
+            }
+            
+            .disclaimer-notification {
+                top: 70px; 
+            }
+            
+            .disclaimer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .disclaimer-text {
+                font-size: 13px;
+            }
+
+            .disclaimer-close {
+                position: absolute;
+                top: -5px;
+                right: -10px;
+            }
+
+            .disclaimer-translate {
+                position: absolute;
+                top: -10px;
+                right: 30px;
+                font-size: 14px;
+                padding: 6px 10px;
+            }
+
+            main {
+                margin-top: 120px;
+            }
+        }
+    </style>
+
+    <!-- Disclaimer JavaScript -->
+    <script>
+        // Function to close disclaimer (keep existing functionality)
+        function closeDisclaimer() {
+            const disclaimer = document.getElementById('disclaimerNotification');
+            disclaimer.style.animation = 'slideUp 0.5s ease-out forwards';
+            
+            setTimeout(() => {
+                disclaimer.style.display = 'none';
+                // Adjust main content margin when disclaimer is closed
+                const mainElement = document.querySelector('main');
+                if (mainElement) {
+                    mainElement.style.marginTop = '0px';
+                }
+            }, 500);
+        }
+    </script>
+</body>
+</html>
