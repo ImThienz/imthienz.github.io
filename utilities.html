@@ -475,6 +475,68 @@
             box-shadow: 0 4px 15px var(--shadow-color);
         }
 
+        .icon-link {
+            margin-top: 20px;
+        }
+
+        .icon-menu-wrap {
+            display: inline-block;
+            text-align: center;
+        }
+
+        .icon-menu-wrap summary {
+            list-style: none;
+            cursor: pointer;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px var(--shadow-color);
+            min-width: 240px;
+        }
+
+        .icon-menu-wrap summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .icon-menu-wrap summary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
+        .mini-options {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.95);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px var(--shadow-color);
+            display: none;
+            text-align: left;
+            min-width: 240px;
+        }
+
+        .icon-menu-wrap[open] .mini-options {
+            display: block;
+        }
+
+        .mini-options-item {
+            display: block;
+            padding: 8px 10px;
+            border-radius: 10px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .mini-options-item:hover {
+            background: rgba(52, 152, 219, 0.12);
+        }
+
         .introduction img {
             max-width: 25px;
             height: auto;
@@ -668,12 +730,12 @@
                         <div class="downloads-container">
                             <a href="https://drive.google.com/file/d/16gPPZloDb2qfe6mzx-VMKo5efws2M1WY/view?usp=sharing" target="_blank" download><button>Download Logo Lockscreen (root)</button></a>
                             <!-- <a href="./path filza/Logo Lockscreen (root).zip" download><button>Download Logo Lockscreen (root)</button></a> -->
+                            <a href="https://drive.google.com/file/d/1K7N7BjGlYNTDhdKHuNmW7q8LX_KV7j5q/view?usp=drive_link" target="_blank" title="https://github.com/ImThienz" download><button>Download Logo Lockscreen Hutao (author: #ImThienz)</button></a>
+                            <!-- <a href="./path filza/Logo Lockscreen Hutao Loop.zip" download><button>Download Logo Lockscreen Hutao</button></a> -->
+                            <a href="https://drive.google.com/file/d/1ujTZ2WijfzWzlg7muaz5AeRucCEJyOgd/view?usp=drive_link" target="_blank" title="https://github.com/ImThienz" download><button>Download Logo Lockscreen Conan (author: #ImThienz)</button></a>
+                            <!-- <a href="./path filza/Logo Lockscreen Edogawa Conan.zip" download><button>Download Logo Lockscreen Conan</button></a> -->
                             <a href="https://drive.google.com/file/d/1vyL7pwLddc8-FCwJfhpsYx8Z3DN_pbAy/view?usp=sharing" target="_blank" title="https://github.com/34306" download><button>Download Logo Lockscreen Hello (author: #Little34306)</button></a>
                             <!-- <a href="./path filza/Face ID (hello).zip" download><button>Download Logo Lockscreen Hello</button></a> -->
-                            <a href="https://taixuongmienphi.click/s/logo-lockscreen-hu-tao-genshin-impactz1u11d3mdnx4mop" target="_blank" title="https://github.com/ImThienz" download><button>Download Logo Lockscreen Hutao (author: #ImThienz)</button></a>
-                            <!-- <a href="./path filza/Logo Lockscreen Hutao Loop.zip" download><button>Download Logo Lockscreen Hutao</button></a> -->
-                            <a href="https://taixuongmienphi.click/s/logo-lock-screen-conan-detective-conanz1u1tpmdo0qt7e" target="_blank" title="https://github.com/ImThienz" download><button>Download Logo Lockscreen Conan (author: #ImThienz)</button></a>
-                            <!-- <a href="./path filza/Logo Lockscreen Edogawa Conan.zip" download><button>Download Logo Lockscreen Conan</button></a> -->
                         </div>
                     </div>
 
@@ -685,19 +747,19 @@
                            <div class="demo-carousel" id="passcode-carousel">
                                 <div class="carousel-container">
                                     <div class="carousel-slide active">
-                                        <img src="./public/img/Theme Hutao Passcode.PNG" alt="Demo 1" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <img src="./public/img/Theme/Theme Hutao Passcode.PNG" alt="Demo 1" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                                         <div class="carousel-caption">Hu Tao</div>
                                     </div>
                                     <div class="carousel-slide">
-                                        <img src="./public/img/Theme Chitoge Passcode.PNG" alt="Demo 2" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <img src="./public/img/Theme/Theme Chitoge Passcode.PNG" alt="Demo 2" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                                         <div class="carousel-caption">Chitoge</div>
                                     </div>
                                     <div class="carousel-slide">
-                                        <img src="./public/img/Theme Anna Passcode.PNG" alt="Demo 3" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                        <img src="./public/img/Theme/Theme Anna Passcode.PNG" alt="Demo 3" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                                         <div class="carousel-caption">Anna</div>
                                     </div>
                                     <div class="carousel-slide">
-                                        <img src="./public/img/Theme Paimon Passcode.PNG" alt="Demo 4" class="carousel-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIG5vdCBmb3VuZDwvdGV4dD48L3N2Zz4='; this.alt='Image not found';">
+                                        <img src="./public/img/Theme/Theme Paimon Passcode.PNG" alt="Demo 4" class="carousel-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIG5vdCBmb3VuZDwvdGV4dD48L3N2Zz4='; this.alt='Image not found';">
                                         <div class="carousel-caption">Paimon</div>
                                     </div>
                                 </div>
@@ -714,8 +776,23 @@
                            ✅ Ngoài ra, bạn có thể kết hợp với icon lockscreen để kết hợp với theme trông hoàn chỉnh hơn nhé! 😁 <br>
                            ➤ <a href="./public/vid/ChangeThemeChitogePasscode-How to set up.mp4">How to set up?</a>   <br>
                         </p>
+
+                            <div class="d-block icon-link">
+                                <details class="icon-menu-wrap">
+                                    <summary>Download Theme Passcode (root)</summary>
+
+                                    <div class="mini-options" role="menu" aria-label="Theme Passcode ROOT options">
+                                        <a role="menuitem" class="mini-options-item" href="https://drive.google.com/drive/folders/1sqBCXXke4xGA_MJraqnCf6wh6lN6s_xA?usp=drive_link" target="_blank"> <img src="../public/img/iPhone/6plus.png" style="width:30px; height:30px;">TelephonyUI-7</a><br>
+                                        <a role="menuitem" class="mini-options-item" href="https://drive.google.com/drive/folders/1b4z-EN-_3Orh9_ATGqmuIpxQvDRxGFlE?usp=drive_link" target="_blank"> <img src="../public/img/iPhone/xsmax.png" style="width:30px; height:30px;">TelephonyUI-8</a><br>
+                                        <a role="menuitem" class="mini-options-item" href="https://drive.google.com/drive/folders/1WRXhEN6LlrX5rNhMhZ0ECocLgmviyd6J?usp=drive_link" target="_blank"> <img src="../public/img/iPhone/8plus.png" style="width:30px; height:30px;">TelephonyUI-9</a><br>
+                                        <a role="menuitem" class="mini-options-item" href="https://drive.google.com/drive/folders/1SjTMhI3DmW7LyYwflT1Ag4RgJp6t_Con?usp=drive_link" target="_blank"> <img src="../public/img/iPhone/11promax.png" style="width:30px; height:30px;">TelephonyUI-10</a>
+                                    </div>
+                                </details>
+                            </div>
                         <div class="downloads-container">
-                            <a href="https://drive.google.com/file/d/1qC5IrhNxs-QxDBoKzSDjcNKpLrifWej5/view?usp=drive_link" target="_blank" download><button>Download Theme Passcode (root)</button></a>
+                            <!-- <a href="https://drive.google.com/file/d/1qC5IrhNxs-QxDBoKzSDjcNKpLrifWej5/view?usp=drive_link" target="_blank" download><button>Download Theme Passcode (root)</button></a> -->
+
+                            
                             <!-- <a href="./path filza/Theme Passcode (root).zip"download><button>Download Theme Passcode (root)</button></a> -->
                             <a href="https://drive.google.com/file/d/1MBXMbgPB4Mb-xFGRwRW0rjk7AXbVe0NN/view?usp=sharing" target="_blank" title="https://github.com/ImThienz" download><button>Download Hutao's Theme Passcode (author: #ImThienz)</button></a>
                             <!-- <a href="./path filza/Theme Hutao Passcode.zip"download><button>Download Hutao's Theme Passcode</button></a> -->
@@ -762,19 +839,19 @@
                         <div class="demo-carousel" id="capcut-carousel">
                             <div class="carousel-container">
                                 <div class="carousel-slide active">
-                                    <img src="./public/img/capcut-pro-1.jpg" alt="Step 1" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <img src="./public/img/capcut/capcut-pro-1.jpg" alt="Step 1" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                                     <div class="carousel-caption">Step 1</div>
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="./public/img/capcut-pro-2.jpg" alt="Step 2" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <img src="./public/img/capcut/capcut-pro-2.jpg" alt="Step 2" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                                     <div class="carousel-caption">Step 2</div>
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="./public/img/capcut-pro-3.jpg" alt="Step 3" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <img src="./public/img/capcut/capcut-pro-3.jpg" alt="Step 3" class="carousel-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                                     <div class="carousel-caption">Step 3</div>
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="./public/img/capcut-pro-4.jpg" alt="Step 4" class="carousel-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIG5vdCBmb3VuZDwvdGV4dD48L3N2Zz4='; this.alt='Image not found';">
+                                    <img src="./public/img/capcut/capcut-pro-4.jpg" alt="Step 4" class="carousel-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIG5vdCBmb3VuZDwvdGV4dD48L3N2Zz4='; this.alt='Image not found';">
                                     <div class="carousel-caption">Step 4</div>
                                 </div>
                             </div>
@@ -792,6 +869,8 @@
                             ✅ Thay thế tên của <a href="https://is.gd/ccprofile">file này</a> vào path Capcut phía trên (Replace File) <br>
                             ✅ Vào lại Capcut và tận hưởng thành quả!
                         </p>
+
+                        <br>// <i>Cách khác:</i> <a href="https://drive.google.com/file/d/1Kk7Wju-8Yvidi1JENgcwbD1SI1C8mjvv/view?usp=drive_link" target="_blank" style="text-decoration:none">Capcut Pro</a> với <a href="https://drive.google.com/file/d/1HWkTCv0zZ7T2ltozxwuHEWJsL_aVyyW9/view?usp=drive_link" target="_blank" style="text-decoration:none">iMazing 2 (Windows)</a>
                     </div>
 
                     <div class="submenu" onclick="toggleIntroduction('intro5')">Show Password Wifi under iOS 16 (Upload 13/08/2024)</div>
