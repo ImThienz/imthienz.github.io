@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <title>Shadowrocket | ImThienz</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="apple-touch-icon" href="./public/img/logotron.png">
+    <link rel="shortcut icon" type="image/x-icon" href="./public/img/logotron.png">
+    <link rel="stylesheet" href="./public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./public/css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <style>
+        :root { --primary-color:#2c3e50; --secondary-color:#3498db; --accent-color:#1abc9c; --light-bg:#f8f9fa; --shadow-color:rgba(0,0,0,.1); }
+        body { background-color:var(--light-bg); color:#333; font-family:'Roboto',sans-serif; line-height:1.6; }
+        .shadowrocket-main { max-width:1000px; margin:40px auto; padding:0 20px; }
+        .shadowrocket-card { background:#fff; border-radius:15px; box-shadow:0 4px 20px var(--shadow-color); padding:40px; }
+        .shadowrocket-heading { align-items:center; border-bottom:3px solid var(--secondary-color); color:var(--primary-color); display:flex; gap:15px; margin:0 0 25px; padding-bottom:15px; }
+        .shadowrocket-heading img { border-radius:12px; height:55px; object-fit:cover; width:55px; }
+        .shadowrocket-intro { margin-bottom:25px; }
+        .shadowrocket-option { border-left:4px solid var(--accent-color); border-radius:10px; box-shadow:0 2px 10px var(--shadow-color); margin:20px 0; padding:22px; }
+        .shadowrocket-option h2 { color:var(--primary-color); font-size:1.35rem; margin:0 0 8px; }
+        .shadowrocket-option p { margin-bottom:15px; }
+        .copy-row { display:flex; gap:10px; }
+        .copy-row input { border:1px solid #ced4da; border-radius:6px; box-sizing:border-box; min-width:0; padding:10px 12px; width:100%; }
+        .copy-row button, .shadowrocket-submit { background:linear-gradient(135deg,var(--secondary-color),var(--accent-color)); border:0; border-radius:6px; color:#fff; cursor:pointer; flex:0 0 auto; padding:10px 18px; transition:transform .2s ease,box-shadow .2s ease; }
+        .copy-row button:hover, .shadowrocket-submit:hover { box-shadow:0 4px 12px var(--shadow-color); transform:translateY(-2px); }
+        .form-message { color:var(--accent-color); display:block; font-weight:500; margin-top:10px; min-height:24px; }
+        .shadowrocket-note { background:var(--light-bg); border-radius:8px; font-size:.95rem; margin-top:20px; padding:12px 15px; }
+        @media (max-width:600px) {
+            .shadowrocket-main { margin:20px auto; padding:0 15px; }
+            .shadowrocket-card { padding:25px 18px; }
+            .copy-row { flex-direction:column; }
+            .copy-row button, .shadowrocket-submit { width:100%; }
+        }
+    </style>
+</head>
+<body onload="includeHTML()">
+    <div include-html="view/header.html" data-basepath="./"></div>
+    <main class="shadowrocket-main">
+        <section class="shadowrocket-card">
+            <h1 class="shadowrocket-heading"><img src="./public/img/shadowrocket.png" alt="Shadowrocket">Shadowrocket Options</h1>
+            <p class="shadowrocket-intro">Chọn option bên dưới để sao chép nhanh cấu hình Shadowrocket.</p>
+
+            <article class="shadowrocket-option" onclick="toggleIntroduction('intro-locketgold')">
+                <h2><img src="./public/img/locket.png" alt="Locket Gold" width="30" height="30"> Cấu hình Locket Gold </h2>
+                <p>Copy URL và thêm vào mục <b>Module</b> trong Shadowrocket.</p>
+                <div class="copy-row">
+                    <input type="text" value="https://raw.githubusercontent.com/vuong2023/shad/main/modules/Locket_ohb.sgmodule" readonly aria-label="URL cấu hình Locket Gold">
+                    <button type="button" data-copy-url="https://raw.githubusercontent.com/vuong2023/shad/main/modules/Locket_ohb.sgmodule">Copy</button>
+                </div>
+                <span class="form-message" aria-live="polite"></span>
+            </article>
+
+            <article class="shadowrocket-option" onclick="toggleIntroduction('intro-fakegps')">
+                <h2><img src="./public/img/fakegps.png" alt="Spoof GPS" width="30" height="30"> Cấu hình Spoof GPS </h2>
+                <p>Copy URL và thêm vào mục <b>Module</b> trong Shadowrocket.</p>
+                <div class="copy-row">
+                    <input type="text" value="https://raw.githubusercontent.com/mekos2772/ios-location-spoofer/main/ios-location-spoofer.sgmodule" readonly aria-label="URL cấu hình Fake GPS">
+                    <button type="button" data-copy-url="https://raw.githubusercontent.com/mekos2772/ios-location-spoofer/main/ios-location-spoofer.sgmodule">Copy</button>
+                </div>
+                <span class="form-message" aria-live="polite"></span>
+            </article>
+            <p class="shadowrocket-note">💡 Giá trị latitude và longtitude trong url cấu hình là tọa độ GPS mà bạn muốn thay đổi. Ví dụ: <b>latitude=10.762622</b>, <b>longtitude=-106.660172</b>.</p>
+        </section>
+    </main>
+    <div include-html="view/footer.html" data-basepath="./"></div>
+    <script>
+        function includeHTML() {
+            document.querySelectorAll('[include-html]').forEach(function (element) {
+                const request = new XMLHttpRequest();
+                let file = element.getAttribute('include-html');
+                const basePath = element.getAttribute('data-basepath');
+                if (basePath) file = basePath + file;
+                request.onreadystatechange = function () {
+                    if (request.readyState !== 4) return;
+                    if (request.status === 200) {
+                        element.innerHTML = request.responseText;
+                        const year = element.querySelector('#copyright-year');
+                        if (year) year.textContent = new Date().getFullYear();
+                    } else if (request.status === 404) {
+                        element.textContent = 'Page not found.';
+                    } else {
+                        element.textContent = 'Không thể tải nội dung trang.';
+                    }
+                    element.removeAttribute('include-html');
+                };
+                request.open('GET', file, true);
+                request.send();
+            });
+        }
+        function showCopyMessage(button, message) {
+            const status = button.closest('.shadowrocket-option').querySelector('.form-message');
+            status.textContent = message;
+            window.setTimeout(function () { status.textContent = ''; }, 2000);
+        }
+        async function copyUrl(button, value) {
+            try {
+                await navigator.clipboard.writeText(value);
+                showCopyMessage(button, 'Đã sao chép URL.');
+            } catch (error) {
+                const input = button.closest('.copy-row').querySelector('input');
+                input.focus();
+                input.select();
+                showCopyMessage(button, 'Hãy nhấn Ctrl+C để sao chép URL.');
+            }
+        }
+        document.querySelectorAll('[data-copy-url]').forEach(function (button) {
+            button.addEventListener('click', function () { copyUrl(button, button.getAttribute('data-copy-url')); });
+        });
+    </script>
+</body>
+</html>
