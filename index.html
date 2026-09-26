@@ -136,8 +136,8 @@
                 vietnamese: `<a href="https://github.com/StikDebug/StikDebug/releases" style="text-decoration:none">StikDebug</a> là một công cụ gỡ lỗi iOS để xem nhật ký, quản lý tiến trình, bật JIT và mô phỏng vị trí GPS.`
             },
             '3105-text': {
-                english: `<a href="https://github.com/YangJiiii/3105/releases" style="text-decoration:none">3105</a> is an iOS customization utility for applying patches, editing system files, and installing various customization features.<br><p style="font-style: italic; font-weight: bold"># Only works on iOS 17.0 - 18.7.1 ; iOS 26.0-26.6.1 and iOS 27 b1-b4, requires enterprise certificate to install!</p>`,
-                vietnamese: `<a href="https://github.com/YangJiiii/3105/releases" style="text-decoration:none">3105</a> là một tiện ích tùy chỉnh iOS để áp dụng các bản vá, chỉnh sửa tệp hệ thống và cài đặt các tính năng tùy chỉnh khác nhau.<br><p style="font-style: italic; font-weight: bold"># Chỉ hoạt động trên iOS 17.0 - 18.7.1 ; iOS 26.0-26.6.1 và iOS 27 b1-b4, yêu cầu chứng chỉ doanh nghiệp để cài đặt!</p>`
+                english: `<a href="https://github.com/YangJiiii/3105/releases" style="text-decoration:none">3105</a> is an iOS customization utility for applying patches, editing system files, and installing various customization features.<br><p style="font-style: italic; font-weight: bold"># Only works on iOS 17.0 - 18.7.1 ; iOS 26.0-26.6.1 and iOS 27 b1-b4, requires <a href="https://cc.dangdi.dev/" target="_blank" style="text-decoration:none">enterprise certificate</a> to install!</p>`,
+                vietnamese: `<a href="https://github.com/YangJiiii/3105/releases" style="text-decoration:none">3105</a> là một tiện ích tùy chỉnh iOS để áp dụng các bản vá, chỉnh sửa tệp hệ thống và cài đặt các tính năng tùy chỉnh khác nhau.<br><p style="font-style: italic; font-weight: bold"># Chỉ hoạt động trên iOS 17.0 - 18.7.1 ; iOS 26.0-26.6.1 và iOS 27 b1-b4, yêu cầu <a href="https://cc.dangdi.dev/" target="_blank" style="text-decoration:none">chứng chỉ doanh nghiệp</a> để cài đặt!</p>`
             }
         };
 
@@ -206,96 +206,7 @@
     <div include-html="view/header.html" data-basepath="./"></div>
 
     <!-- Main Content -->
-    <main id="content">
-        <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
-                <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
-                <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="container">
-                        <div class="row p-5">
-                            <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                                <img class="img-fluid" src="public/img/github.png" alt="Github">
-                            </div>
-                            <div class="col-lg-6 mb-0 d-flex align-items-center">
-                                <div class="text-align-left">
-                                    <h1 class="h1 text-success"><b>WELCOMES!</b></h1>
-                                    <p>
-                                        Welcomes to my page! Hope it's useful for you! :D
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="container">
-                        <div class="row p-5">
-                            <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                                <img class="img-fluid" src="public/img/cydia.png" alt="Cydia">
-                            </div>
-                            <div class="col-lg-6 mb-0 d-flex align-items-center">
-                                <div class="text-align-left">
-                                    <h1 class="h1 text-success"><b>Cydia</b></h1>
-                                    <p id="cydia-text">
-                                        Cydia is an alternative app store that allows you to install third-party apps and
-                                        tweaks on iPhones, iPads, and iPod touches. If you are an iDevice user for a
-                                        considerable time, you may have already noticed that the Apple app store doesn't
-                                        offer you third-party apps to install on your device. Therefore, you have to use an
-                                        alternative app store on your device to get third-party apps and tweaks on the
-                                        device. And that alternative app store is indeed the Cydia app store because it
-                                        provides the best-featured third-party apps, extensions, tweaks, add-ons, games, and
-                                        themes for iDevices.
-                                    </p>
-                                    <button class="translate-btn" onclick="toggleTranslate('cydia-text')">
-                                        <i class="fas fa-language"></i> Tiếng Việt
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="container">
-                        <div class="row p-5">
-                            <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                                <img class="img-fluid" src="public/img/trollstore.png" alt="TrollStore">
-                            </div>
-                            <div class="col-lg-6 mb-0 d-flex align-items-center">
-                                <div class="text-align-left align-self-center">
-                                    <h1 class="h1 text-success"><b>TrollStore</b></h1>
-                                    <p id="trollstore-text">
-                                        TrollStore is a utility which is able to permanently sign and install any
-                                        application with almost any entitlement with the help of a CoreTrust bug. The latest
-                                        releases of TrollStore (specifically 2.0 and later) work through the use of a
-                                        CoreTrust bug in which code signatures are not correctly verified under certain
-                                        circumstances. <br>
-                                        <a href="https://ios.cfw.guide/installing-trollstore/">Installing TrollStore</a> is
-                                        a process which varies depending on what device and iOS you are running, as a
-                                        result, different guides are attached below depending on said combination
-                                    </p>
-                                    <button class="translate-btn" onclick="toggleTranslate('trollstore-text')">
-                                        <i class="fas fa-language"></i> Tiếng Việt
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel"
-                role="button" data-bs-slide="prev">
-                <i class="fas fa-chevron-left"></i>
-            </a>
-            <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel"
-                role="button" data-bs-slide="next">
-                <i class="fas fa-chevron-right"></i>
-            </a>
-        </div>
-    </main>
+    <main id="content"></main>
 
     <div include-html="view/footer.html" data-basepath="./"></div>
 
