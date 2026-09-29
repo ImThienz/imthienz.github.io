@@ -13,7 +13,7 @@
     <style>
         :root { --primary-color:#2c3e50; --secondary-color:#3498db; --accent-color:#1abc9c; --light-bg:#f8f9fa; --shadow-color:rgba(0,0,0,.1); }
         body { background-color:var(--light-bg); color:#333; font-family:'Roboto',sans-serif; line-height:1.6; }
-        .shadowrocket-main { max-width:1000px; margin:40px auto; padding:0 20px; }
+        .shadowrocket-main { max-width:1000px; margin:80px auto 40px; padding:0 20px; }
         .shadowrocket-card { background:#fff; border-radius:15px; box-shadow:0 4px 20px var(--shadow-color); padding:40px; }
         .shadowrocket-heading { align-items:center; border-bottom:3px solid var(--secondary-color); color:var(--primary-color); display:flex; gap:15px; margin:0 0 25px; padding-bottom:15px; }
         .shadowrocket-heading img { border-radius:12px; height:55px; object-fit:cover; width:55px; }
@@ -28,23 +28,64 @@
         .form-message { color:var(--accent-color); display:block; font-weight:500; margin-top:10px; min-height:24px; }
         .shadowrocket-note { background:var(--light-bg); border-radius:8px; font-size:.95rem; margin-top:20px; padding:12px 15px; }
         @media (max-width:600px) {
-            .shadowrocket-main { margin:20px auto; padding:0 15px; }
+            .shadowrocket-main { margin:120px auto 20px; padding:0 15px; }
             .shadowrocket-card { padding:25px 18px; }
             .copy-row { flex-direction:column; }
             .copy-row button, .shadowrocket-submit { width:100%; }
         }
     </style>
+
+    <script>
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp, basepath;
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                file = elmnt.getAttribute("include-html");
+                basepath = elmnt.getAttribute("data-basepath");
+                if (file) {
+                    if (basepath) {
+                        file = basepath + file;
+                    }
+
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) {
+                                elmnt.innerHTML = this.responseText;
+                                var cy = elmnt.querySelector("#copyright-year");
+                                if (cy) {
+                                    var y = new Date().getFullYear();
+                                    cy.textContent = y;
+                                    cy.setAttribute("datetime", String(y));
+                                }
+                            }
+                            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                            elmnt.removeAttribute("include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    return;
+                }
+            }
+        }
+    </script>
 </head>
 <body onload="includeHTML()">
     <div include-html="view/header.html" data-basepath="./"></div>
     <main class="shadowrocket-main">
         <section class="shadowrocket-card">
             <h1 class="shadowrocket-heading"><img src="./public/img/shadowrocket.png" alt="Shadowrocket">Shadowrocket Options</h1>
-            <p class="shadowrocket-intro">Chọn option bên dưới để sao chép nhanh cấu hình Shadowrocket.</p>
+            <p class="shadowrocket-intro">
+                Chọn option bên dưới để sao chép nhanh cấu hình <a href="https://apps.apple.com/vn/app/shadowrocket/id932747118" style="text-decoration: none;" target="_blank">Shadowrocket</a>.<br>
+                ⛭ <a href="./public/vid/config.mp4" style="text-decoration: none;">Cách cài đặt cấu hình</a> 
+            </p>
 
             <article class="shadowrocket-option" onclick="toggleIntroduction('intro-locketgold')">
                 <h2><img src="./public/img/locket.png" alt="Locket Gold" width="30" height="30"> Cấu hình Locket Gold </h2>
-                <p>Copy URL và thêm vào mục <b>Module</b> trong Shadowrocket.</p>
+                <p>Copy URL và thêm vào mục <b>Config</b> trong <a href="shadowrocket://" style="text-decoration: none;">Shadowrocket</a>.</p>
                 <div class="copy-row">
                     <input type="text" value="https://raw.githubusercontent.com/vuong2023/shad/main/modules/Locket_ohb.sgmodule" readonly aria-label="URL cấu hình Locket Gold">
                     <button type="button" data-copy-url="https://raw.githubusercontent.com/vuong2023/shad/main/modules/Locket_ohb.sgmodule">Copy</button>
@@ -54,17 +95,27 @@
 
             <article class="shadowrocket-option" onclick="toggleIntroduction('intro-fakegps')">
                 <h2><img src="./public/img/FakeGPS.png" alt="Spoof GPS" width="30" height="30"> Cấu hình Spoof GPS </h2>
-                <p>Copy URL và thêm vào mục <b>Module</b> trong Shadowrocket.</p>
+                <p>Copy URL và thêm vào mục <b>Config</b> trong <a href="shadowrocket://" style="text-decoration: none;">Shadowrocket</a>.</p>
                 <div class="copy-row">
-                    <input type="text" value="https://raw.githubusercontent.com/mekos2772/ios-location-spoofer/main/ios-location-spoofer.sgmodule" readonly aria-label="URL cấu hình Fake GPS">
-                    <button type="button" data-copy-url="https://raw.githubusercontent.com/mekos2772/ios-location-spoofer/main/ios-location-spoofer.sgmodule">Copy</button>
+                    <input type="text" value="https://raw.githubusercontent.com/suversal/warehouse/refs/heads/main/wloc.module" readonly aria-label="URL cấu hình Fake GPS">
+                    <button type="button" data-copy-url="https://raw.githubusercontent.com/suversal/warehouse/refs/heads/main/wloc.module">Copy</button><br>
                 </div>
                 <span class="form-message" aria-live="polite"></span>
+                <p>
+                    Tại Shadowrocket / Cấu hình / Tệp cục bộ: wloc.conf (i) / Giải mã HTTPS / Hostname, bạn cần thêm <b>gs-loc.apple.com</b> để tránh lỗi khi sử dụng Spoof GPS.<br><br>
+                    <a href="https://www.icloud.com/shortcuts/3f92581782204047ab8c1b6bac67ba40" target="_blank" style="text-decoration: none;">Shortcut WLOC Spoof GPS</a><br>
+                    <a href="https://www.icloud.com/shortcuts/852eee40287d499eb5087602004981af" target="_blank" style="text-decoration: none;">Shortcut WLOC Restore GPS</a><br><br>
+                    <i>Lưu ý: cần reload lại <a href="prefs:root=Privacy&path=LOCATION" target="_blank" style="text-decoration: none;">Dịch vụ định vị</a> trong Cài đặt iPhone mỗi khi thay đổi (hoặc Restore WLOC) tọa độ.</i>
+
+                </p>
             </article>
-            <p class="shadowrocket-note">💡 Giá trị latitude và longtitude trong url cấu hình là tọa độ GPS mà bạn muốn thay đổi. Ví dụ: <b>latitude=10.762622</b>, <b>longtitude=-106.660172</b>.</p>
+            <p class="shadowrocket-note">
+                💡 Giá trị latitude và longtitude trong url cấu hình là tọa độ GPS mà bạn muốn thay đổi. Ví dụ: <b>latitude=10.762622</b>, <b>longtitude=-106.660172</b>.<br>
+                🔥🔥🔥 <a href="./public/vid/wloc-spoof-gps.mp4" style="text-decoration: none;">Demo Spoof GPS</a> 🔥🔥🔥
+            </p>
         </section>
     </main>
-    <div include-html="view/footer.html" data-basepath="./"></div>
+    
     <script>
         function includeHTML() {
             document.querySelectorAll('[include-html]').forEach(function (element) {
@@ -108,6 +159,71 @@
         document.querySelectorAll('[data-copy-url]').forEach(function (button) {
             button.addEventListener('click', function () { copyUrl(button, button.getAttribute('data-copy-url')); });
         });
+
+        // Disclaimer translation functions
+        window.disclaimerTranslations = {
+            en: {
+                disclaimer: "<strong>Disclaimer:</strong> This website is for educational purposes only. I'm not responsible for any damage, data loss, or warranty issues caused by using the tools or methods shared here. Use at your own risk.",
+                title: "Translate to Vietnamese"
+            },
+            vi: {
+                disclaimer: "<strong>Tuyên bố miễn trừ:</strong> Trang web này chỉ dành cho mục đích giáo dục. Tôi không chịu trách nhiệm về bất kỳ thiệt hại, mất dữ liệu hoặc vấn đề bảo hành nào do việc sử dụng các công cụ hoặc phương pháp được chia sẻ ở đây. Sử dụng có rủi ro của riêng bạn.",
+                title: "Dịch sang tiếng Anh"
+            }
+        };
+
+        window.currentDisclaimerLanguage = 'en';
+
+        window.toggleDisclaimerTranslate = function() {
+            const disclaimerText = document.getElementById('disclaimerText');
+            const translateBtn = document.getElementById('translateBtn');
+            
+            if (!disclaimerText || !translateBtn) {
+                console.error('Disclaimer elements not found');
+                return;
+            }
+            
+            // Toggle language
+            window.currentDisclaimerLanguage = window.currentDisclaimerLanguage === 'en' ? 'vi' : 'en';
+            
+            // Update text
+            disclaimerText.innerHTML = window.disclaimerTranslations[window.currentDisclaimerLanguage].disclaimer;
+            
+            // Update button title
+            translateBtn.title = window.disclaimerTranslations[window.currentDisclaimerLanguage].title;
+            
+            // Toggle active class for visual feedback
+            translateBtn.classList.toggle('active', window.currentDisclaimerLanguage === 'vi');
+            
+            // Add smooth transition effect
+            disclaimerText.style.opacity = '0.7';
+            setTimeout(() => {
+                disclaimerText.style.opacity = '1';
+            }, 150);
+        };
+
+        function closeDisclaimer() {
+            const disclaimer = document.getElementById('disclaimerNotification');
+            if (disclaimer) {
+                disclaimer.style.animation = 'slideUp 0.5s ease-out forwards';
+                
+                setTimeout(() => {
+                    disclaimer.style.display = 'none';
+                    // Adjust main content margin when disclaimer is closed
+                    const mainElement = document.querySelector('main');
+                    if (mainElement) {
+                        mainElement.style.marginTop = '40px';
+                    }
+                }, 500);
+            }
+        }
     </script>
+    <div include-html="view/footer.html" data-basepath="./"></div>
+
+    <script src="public/js/news-1.11.0.min.js"></script>
+    <script src="public/js/news-migrate-1.2.1.min.js"></script>
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script src="public/js/templatemo.js"></script>
+    <script src="public/js/custom.js"></script>   
 </body>
 </html>
