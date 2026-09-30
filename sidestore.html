@@ -532,6 +532,10 @@
     <script src="public/js/custom.js"></script>
     
     <script>
+        document.querySelectorAll("details.collapsible-section").forEach(section => {
+            section.open = false;
+        });
+        
         // Disclaimer translation functions
         window.disclaimerTranslations = {
             en: {

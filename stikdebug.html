@@ -9,6 +9,48 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
 
     <script>
+        // Disclaimer translation functions - Define early to ensure availability
+        window.disclaimerTranslations = {
+            en: {
+                disclaimer: "<strong>Disclaimer:</strong> This website is for educational purposes only. I'm not responsible for any damage, data loss, or warranty issues caused by using the tools or methods shared here. Use at your own risk.",
+                title: "Translate to Vietnamese"
+            },
+            vi: {
+                disclaimer: "<strong>Tuyên bố miễn trừ:</strong> Trang web này chỉ dành cho mục đích giáo dục. Tôi không chịu trách nhiệm về bất kỳ thiệt hại, mất dữ liệu hoặc vấn đề bảo hành nào do việc sử dụng các công cụ hoặc phương pháp được chia sẻ ở đây. Sử dụng có rủi ro của riêng bạn.",
+                title: "Dịch sang tiếng Anh"
+            }
+        };
+
+        window.currentDisclaimerLanguage = 'en';
+
+        window.toggleDisclaimerTranslate = function() {
+            const disclaimerText = document.getElementById('disclaimerText');
+            const translateBtn = document.getElementById('translateBtn');
+            
+            if (!disclaimerText || !translateBtn) {
+                console.error('Disclaimer elements not found');
+                return;
+            }
+            
+            // Toggle language
+            window.currentDisclaimerLanguage = window.currentDisclaimerLanguage === 'en' ? 'vi' : 'en';
+            
+            // Update text
+            disclaimerText.innerHTML = window.disclaimerTranslations[window.currentDisclaimerLanguage].disclaimer;
+            
+            // Update button title
+            translateBtn.title = window.disclaimerTranslations[window.currentDisclaimerLanguage].title;
+            
+            // Toggle active class for visual feedback
+            translateBtn.classList.toggle('active', window.currentDisclaimerLanguage === 'vi');
+            
+            // Add smooth transition effect
+            disclaimerText.style.opacity = '0.7';
+            setTimeout(() => {
+                disclaimerText.style.opacity = '1';
+            }, 150);
+        };
+
         function includeHTML() {
             var z, i, elmnt, file, xhttp, basepath;
             z = document.getElementsByTagName("*");
@@ -58,9 +100,9 @@
 
         main {
             max-width: 1000px;
-            margin: 0 auto;
+            margin:80px auto 40px;
             background: white;
-            padding: 30px;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -202,7 +244,8 @@
 
         @media (max-width: 768px) {
             main {
-                padding: 20px;
+                margin:120px auto 20px;
+                padding: 15px;
             }
 
             h1 {
@@ -285,6 +328,49 @@
             justify-items: center;
             margin-bottom: 10px;
         }
+
+        .collapsible-section {
+            margin: 22px 0;
+        }
+
+        .collapsible-section > summary {
+            cursor: pointer;
+            list-style: none;
+            user-select: none;
+        }
+
+        .collapsible-section > summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .collapsible-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 0;
+            padding: 14px 16px;
+            border-radius: 10px;
+            background: #ffffff;
+            border: 2px solid rgba(0, 123, 255, 0.25);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .collapsible-title::after {
+            content: "▾";
+            font-size: 18px;
+            color: rgba(44, 62, 80, 0.75);
+            transition: transform 160ms ease;
+            flex: 0 0 auto;
+        }
+
+        .collapsible-section[open] .collapsible-title::after {
+            transform: rotate(180deg);
+        }
+
+        .collapsible-content {
+            padding-top: 14px;
+        }
     </style>
 </head>
 <body onload="includeHTML()">
@@ -336,31 +422,62 @@
             </div>
             <a href="./public/vid/fake-gps-stikdebug.mp4" style="text-decoration: none;">Demo Fake Location on iPhone</a>
         </div>
-        <p style="text-align:center">
-            <b>[ERROR 61: CONNECTION ERROR]</b>
-            <div class='image-grid'>
-                <img src="./public/img/stikdebug/error-61.jpg" style="width:350px; height:600px;">
-                <img src="./public/img/stikdebug/enable-JIT.jpg" style="width:350px; height:600px;">
+
+        <details class="collapsible-section">
+            <summary>
+                <h3 class="collapsible-title">[ERROR 61: CONNECTION ERROR] (Nhấn vào để mở rộng)</h3>
+            </summary>
+            <div class="collapsible-content">
+                <img class='image-grid' src="./public/img/stikdebug/error-61.jpg" style="width:350px; height:600px;">
+                <ol>
+                    <li>Vào <b>[Cài đặt]</b> -> <b>[Quyền riêng tư & Bảo mật]</b> -> <b>[Chế độ nhà phát triển]</b> -> Tắt đi và bật lại (Khởi động lại iPhone)</li>
+                    <li>Kết nối iPhone với PC & <b>Tin cậy</b> thiết bị</li>
+                    <li>
+                        Tại
+                        <span style="display:inline-flex;align-items:center;">
+                            <img src="./public/img/iloader.png"
+                                alt="iLoader"
+                                style="width:30px;height:30px;">
+                            <span>&nbsp;iLoader</span>
+                        </span>,
+                        thực hiện lại thao tác cũ:
+                        <b>Place Pairing File StikDebug</b>
+                    </li>
+                    <li>Kết nối với <a href="https://apps.apple.com/us/app/localdevvpn/id6755608044?l=vi" style="text-decoration: none;" target="_blank">LocalDevVPN</a> và đợi khoảng 10s, sau đó vào lại <a href="stikdebug://" style="text-decoration: none;">StikDebug</a></li>
+                </ol>
+                <img class='image-grid' src="./public/img/stikdebug/enable-JIT.jpg" style="width:350px; height:600px;">
+                Như vậy là xong!
             </div>
-            <ol>
-                <li>Vào <b>[Cài đặt]</b> -> <b>[Quyền riêng tư & Bảo mật]</b> -> <b>[Chế độ nhà phát triển]</b> -> Tắt đi và bật lại (Khởi động lại iPhone)</li>
-                <li>Kết nối iPhone với PC & <b>Tin cậy</b> thiết bị</li>
-                <li>
-                    Tại
-                    <span style="display:inline-flex;align-items:center;">
-                        <img src="./public/img/iloader.png"
-                            alt="iLoader"
-                            style="width:30px;height:30px;">
-                        <span>&nbsp;iLoader</span>
-                    </span>,
-                    thực hiện lại thao tác cũ:
-                    <b>Place Pairing File StikDebug</b>
-                </li>
-                <li>Kết nối với <a href="https://apps.apple.com/us/app/localdevvpn/id6755608044?l=vi" style="text-decoration: none;" target="_blank">LocalDevVPN</a> và đợi khoảng 10s, sau đó vào lại <a href="stikdebug://" style="text-decoration: none;">StikDebug</a></li>
-            </ol>
-            Như vậy là xong!            
-        </p>
+        </details>
     </main>
+
+    <script>
+        document.querySelectorAll("details.collapsible-section").forEach(section => {
+            section.open = false;
+        });
+
+        function closeDisclaimer() {
+            const disclaimer = document.getElementById('disclaimerNotification');
+            if (disclaimer) {
+                disclaimer.style.animation = 'slideUp 0.5s ease-out forwards';
+                
+                setTimeout(() => {
+                    disclaimer.style.display = 'none';
+                    // Adjust main content margin when disclaimer is closed
+                    const mainElement = document.querySelector('main');
+                    if (mainElement) {
+                        mainElement.style.marginTop = '40px';
+                    }
+                }, 500);
+            }
+        }
+    </script>
+
     <div include-html="view/footer.html" data-basepath="./"></div>
+    <script src="public/js/news-1.11.0.min.js"></script>
+    <script src="public/js/news-migrate-1.2.1.min.js"></script>
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script src="public/js/templatemo.js"></script>
+    <script src="public/js/custom.js"></script> 
 </body>
 </html>
