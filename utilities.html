@@ -315,14 +315,14 @@
         }
 
         #ipaApps, #shortcut,
-        #telegramApps {
+        #telegramApps, #wallpaper {
             display: none;
             position: relative;
             padding-left: 80px;
         }
 
         #ipaApps::before, #shortcut::before,
-        #telegramApps::before {
+        #telegramApps::before, #wallpaper::before {
             content: '';
             position: absolute;
             left: 40px;
@@ -334,7 +334,8 @@
 
         #ipaApps.active,
         #shortcut.active,
-        #telegramApps.active {
+        #telegramApps.active,
+        #wallpaper.active {
             display: block;
         }
 
@@ -950,6 +951,67 @@
                     </div>
                 </div>
 
+                <h1 class="menu" onclick="toggleSection('wallpaper')">🖼️ Wallpaper iOS (Click to expand)</h1>
+                <div id="wallpaper">
+                    <div class="submenu" onclick="toggleIntroduction('wallpaper-ipa')"><img src="./public/img/iPA.png" style="width:30px; height:30px;"> iPA to install (Upload 16/10/2026)</img></div>
+                    <div id="wallpaper-ipa" class="introduction">
+                        <h4><img src="./public/img/nugget.ico" style="width:25px; height:25px;">Nugget (need PC)</h4>
+                        <p>
+                            Tham khảo các theme wallpaper <a href="https://mwallx.com/" target="_blank" rel="noopener noreferrer" title="MWallX" style="text-decoration: none;">tại đây</a><br>
+                            ➤ <a href="https://nugget.host/vi/download" target="_blank" rel="noopener noreferrer">Cài đặt Nugget</a> <b><i>(Chỉ hỗ trợ < iOS 27)</i></b>
+                        </p>
+
+                        <h4><img src="./public/img/AirCard.png" style="width:35px; height:30px;">AirCard (iOS)</h4>
+                        <p>
+                            ➤ <a href="https://github.com/Mak5er/AirCard-iOS/releases/download/v1.3.2/AirCard-iOS.ipa" target="_blank" rel="noopener noreferrer">Cài đặt AirCard</a> <b><i>(Hỗ trợ iOS 18.0 - 27.2 beta 2)</i></b><br>
+                            <a href="https://www.tiktok.com/@truong_2099/video/7689086380881841414?_r=1&_t=ZS-9AawNULNPfT" target="_blank" rel="noopener noreferrer" style="text-decoration: none;" title="AirCard for iOS 27">Video hướng dẫn iOS 27</a><br>
+                            <a href="./public/vid/aircard-ios26.mp4" rel="noopener noreferrer" style="text-decoration: none;" title="AirCard for < iOS 27">Video hướng dẫn < iOS 27</a>, <a href="./public/vid/get-file-pairing-iOS26.mp4" 
+                            rel="noopener noreferrer" style="text-decoration: none;" title="Lấy file pairing < iOS 27">cách lấy file pairing?</a> (<a href="https://github.com/pwnapplehat/iPASide/releases/latest" target="_blank" 
+                            rel="noopener noreferrer" style="text-decoration: none;">iPASide</a>, cần PC)
+                        </p>
+
+                        <h4><img src="./public/img/pocket-poster.png" style="width:30px; height:30px;">Pocket Poster (iOS)</h4>
+                        <p>
+                            ➤ <a href="https://github.com/Mak5er/Pocket-Poster/releases/download/v3.2.2/Pocket_Poster.ipa" target="_blank" rel="noopener noreferrer">Cài đặt Pocket Poster</a>
+                        </p>
+
+                        <h4><img src="./public/img/3105.png" style="width:30px; height:30px;">3105 (iOS), only work with cert-enterprise</h4>
+                        <p>
+                            ➤ <a href="https://github.com/YangJiiii/3105/releases/download/v2.0/3105-2.0-build8-20260914-125906-unsigned.ipa" target="_blank" rel="noopener noreferrer">Cài đặt 3105</a>
+                        </p>
+                    </div>
+
+                    <div class="submenu" onclick="toggleIntroduction('wallpaper-tendies')"><img src="./public/img/sparsebox.png" style="width:30px; height:30px;"> tendies (Upload 16/10/2026)</img></div>
+                    <div id="wallpaper-tendies" class="introduction">
+                        <p>➤ Tham khảo các mẫu <a href="https://mwallx.com/" target="_blank" rel="noopener noreferrer">tendies tại đây!</a></p>
+                        <h4>My sample tendies:</h4>
+                        <div class="demo-carousel" id="tendies-carousel">
+                            <div class="carousel-container">
+                                <div class="carousel-slide active">
+                                    <video src="./public/vid/tendies/ronova-pierro.mp4" aria-label="Ronova-Pierro" class="carousel-image" controls muted playsinline loop preload="metadata"></video>
+                                    <div class="carousel-caption">Ronova-Pierro</div>
+                                </div>
+                                <div class="carousel-slide">
+                                    <video src="./public/vid/tendies/hutao-qiqi.mp4" aria-label="HuTao-Qiqi" class="carousel-image" controls muted playsinline loop preload="metadata"></video>
+                                    <div class="carousel-caption">HuTao-Qiqi</div>
+                                </div>
+                                <div class="carousel-slide">
+                                    <video src="./public/vid/tendies/nastya.mp4" aria-label="Nastya" class="carousel-image" controls muted playsinline loop preload="metadata"></video>
+                                    <div class="carousel-caption">Nastya</div>
+                                </div>
+                            </div>
+                            <button type="button" class="carousel-btn prev" onclick="changeTendies(-1)" aria-label="Previous tendies">❮</button>
+                            <button type="button" class="carousel-btn next" onclick="changeTendies(1)" aria-label="Next tendies">❯</button>
+                            <div class="carousel-dots">
+                                <span class="dot active" onclick="currentTendies(1)"></span>
+                                <span class="dot" onclick="currentTendies(2)"></span>
+                                <span class="dot" onclick="currentTendies(3)"></span>
+                            </div>
+                        </div>
+                        <p><a href="https://mail.google.com/mail/?view=cm&fs=1&to=imthienz@gmail.com" target="_blank" rel="noopener noreferrer">Liên hệ với tôi</a> nếu bạn thích chúng ($0.99)</p>
+                    </div>
+                </div>
+
                 <h1 class="menu" onclick="toggleSection('telegramApps')">✈️ Telegram (Click to expand)</h1>
                 <div id="telegramApps">
                     <div class="submenu">
@@ -1048,7 +1110,7 @@
             if (!target) return;
 
             if (target.classList.contains('introduction')) {
-                const parentSection = target.closest('#ipaApps, #shortcut, #telegramApps');
+                const parentSection = target.closest('#ipaApps, #shortcut, #telegramApps, #wallpaper');
                 if (parentSection) {
                     parentSection.classList.add('active');
                 }
@@ -1117,6 +1179,39 @@
             showSlide(currentSlideIndex);
         }
 
+        // Tendies carousel: separate selectors/state from the Passcode carousel.
+        let currentTendiesIndex = 0;
+        const tendiesSlides = document.querySelectorAll('#tendies-carousel .carousel-slide');
+        const tendiesDots = document.querySelectorAll('#tendies-carousel .dot');
+
+        function showTendies(index) {
+            if (index < 0 || index >= tendiesSlides.length) return;
+
+            tendiesSlides.forEach((slide, slideIndex) => {
+                slide.classList.toggle('active', slideIndex === index);
+                const video = slide.querySelector('video');
+                if (!video) return;
+                if (slideIndex === index) {
+                    video.play().catch(() => {});
+                } else {
+                    video.pause();
+                    video.currentTime = 0;
+                }
+            });
+            tendiesDots.forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === index));
+        }
+
+        function changeTendies(direction) {
+            if (!tendiesSlides.length) return;
+            currentTendiesIndex = (currentTendiesIndex + direction + tendiesSlides.length) % tendiesSlides.length;
+            showTendies(currentTendiesIndex);
+        }
+
+        function currentTendies(index) {
+            currentTendiesIndex = index - 1;
+            showTendies(currentTendiesIndex);
+        }
+
         // Auto-play carousel (only for passcode carousel)
         function autoPlay() {
             changeSlide(1);
@@ -1127,6 +1222,11 @@
             // Auto-play every 4 seconds (only for passcode carousel)
             if (slides.length > 0) {
                 setInterval(autoPlay, 4000);
+            }
+
+            if (tendiesSlides.length > 0) {
+                showTendies(currentTendiesIndex);
+                setInterval(() => changeTendies(1), 7000);
             }
 
             revealIntroductionByHash();
