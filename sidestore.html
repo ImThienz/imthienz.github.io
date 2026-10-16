@@ -377,7 +377,7 @@
                 <img class="step-image" src="./public/img/sidestore/LiveContainer-Multitask.jpg" style="width:300px; height:500px" title="LiveContainer Multitask allow run many apps and create multy task">
             </div>
 
-            <li>Tải <a href="https://github.com/khanhduytran0/SparseBox/releases/download/2.0/SparseBox.ipa" target="_blank">SparseBox iPA</a> (Cho phép SideStore sideload > 3 ứng dụng).</li>
+            <li>Tải <a href="https://github.com/khanhduytran0/SparseBox/releases/download/2.0/SparseBox.ipa" target="_blank">SparseBox iPA</a> (Cho phép SideStore sideload > 3 ứng dụng, <i><b>SparseBox chỉ hỗ trợ < iOS 18</b></i>).</li>
             <img src="./public/img/sidestore/SideStore-2.jpg" title="SparseBox allow sideload > 3 apps" style="width:300px; height:500px">
 
         </ul>
@@ -385,27 +385,27 @@
         
         <h5>Trên máy Mac/Windows</h5>
         <ul>
-            <li>Tải <a href="https://github.com/SideStore/SideStore/releases/download/0.6.3/SideStore.ipa" target="_blank">SideStore iPA</a> (mặc định SideStorechỉ sideload được tối đa 3 ứng dụng).</li>
+            <li>Tải <a href="https://github.com/SideStore/SideStore/releases/download/0.7.0-alpha/SideStore.ipa" target="_blank" title="SideStore 0.7.0-alpha" alt="SideStore 0.7.0-alpha">SideStore iPA</a> (mặc định SideStorechỉ sideload được tối đa 3 ứng dụng).</li>
             <img src="./public/img/sidestore/SideStore-1.jpg" title="SideStore allow sideload only 3 apps" style="width:300px; height:500px">
             
             <li>Tải Jitterbug Pair: <a href="https://github.com/osy/Jitterbug/releases/download/v1.3.1/jitterbugpair-macos.zip">macOS</a> hoặc <a href="https://github.com/osy/Jitterbug/releases/download/v1.3.1/jitterbugpair-win64.zip">Windows (x64 bit)</a>.</li>
         </ul>
 
-        <h5><span class="step-number">2</span>Pair Jitterbug</h5>
-        <p>Đầu tiên là cắm iPhone/iPad vào máy Mac/Windows.</p>
-        <p><b>Pair Jitterbug</b>: tiến hành giải nén file zip Jitterbug Pair đã download ở <b>bước 1</b> sau đó mở <b>Terminal</b> (macOS) hoặc <b>CMD</b> (Windows) và chạy lệnh sau:</p>
+        <h5><span id="intro-jitterbugpair" class="step-number">2</span>Pair Jitterbug</h5>
+        <p>- Cắm iPhone/iPad vào máy Mac/Windows.</p>
+        <p><b>- Pair Jitterbug</b>: tiến hành giải nén file zip Jitterbug Pair đã download ở <b>mục 1</b> sau đó mở <b>Terminal</b> (macOS) hoặc <b>CMD</b> (Windows) và chạy lệnh sau:</p>
         
         <div class="note-box">
             <p><b>Đối với macOS</b>: /Users/imthienz/Downloads/jitterbugpair</p>
-            <p>Trong đó <b>imthienz</b> chính là user máy của bạn. Cách đơn giản nhất là bạn kéo cái file <b>jitterbugpair</b> vô Terminal sau đó bấm Enter (return) và cấp quyền cho nó để nó có thể chạy.</p>
-            <p>Sau khi chạy xong nó sẽ sinh ra file *<b>.mobiledevicepairing</b> là được, nếu chưa sinh ra file này thì bạn chưa thực hiện thành công.</p>
+            <p>Trong đó <b>imthienz</b> chính là user máy của bạn. Cách đơn giản nhất là bạn kéo thả file <b>jitterbugpair</b> vào Terminal và bấm Enter rồi cấp quyền tin cậy (Nhập passcode) trên thiết bị iPhone.</p>
+            <p>Sau khi chạy xong nó sẽ sinh ra file *<b>.mobiledevicepairing</b> là được, nếu chưa hiện ra file này thì bạn chưa thực hiện thành công.</p>
         </div>
 
         <div class="note-box">
             <p><b>Đối với Windows</b>:</p>
             <ol>
                 <li>Kết nối iPhone của bạn với PC <b>(Tin cậy thiết bị)</b></li>
-                <li>Trên PC, tạo folder chứa file <b>jitterbugpair-win64.zip</b> và giải nén nó ra (Extract files)</li>
+                <li>Trên PC, giải nén file <b>jitterbugpair-win64.zip</b> (Extract files)</li>
                 <img src="./public/img/sidestore/jitterbugpair-win64 install.jpg" alt="jitterbugpair" style="width:300px; height:300px">
                 
                 <li>Tiếp đến, vào <b><i>menu search</i></b> trên windows <b>(Windows + S)</b> và tìm kiếm <b>"Windows Security"</b></li>
@@ -425,8 +425,27 @@
 
                 <li>Đảm bảo iPhone đã kết nối với PC, kéo thả file <b><i>jitterbugpair.exe</i></b> vào <b>CMD</b> sau đó nhấn <b>Enter</b>, thấy menu cmd báo <i><u>Success</u></i> và xuất hiện file <i><u>*.mobiledevicepairing</u></i> là được.</li>
                 <img src="./public/img/sidestore/jitterbugpair success.jpg" alt="jitterbugpair - success" style="width:350px; height:300px">
-
             </ol>
+            <details class="collapsible-section">
+            <summary>
+                <h6 class="collapsible-title">Lỗi ở bước 8</h6>
+            </summary>
+            <div class="collapsible-content">
+                <ul>
+                    <li>Nếu đã kéo thả file nhưng không có gì xảy ra, hãy thêm ký tự '<b><i>&</i></b>' , kéo thả file vào rồi Enter 
+                        <div class="image-grid">
+                            <img src="./public/img/sidestore/jitterbugpair-error-1.jpg" alt="jitterbugpair - error" style="width:350px; height:300px">
+                            <img src="./public/img/sidestore/jitterbugpair-error-1-fix.jpg" alt="jitterbugpair - error" style="width:350px; height:300px">
+                        </div>
+                    </li>
+                    <li>Nếu đã kết nối thiết bị nhưng vẫn báo "No device found.", hãy thử kiểm tra lại xem thiết bị iPhone/iPad đã được <b>tin cậy</b> hay chưa, nếu chưa thì hãy mở iPhone/iPad lên và chọn <b>Trust</b> thiết bị.</li>
+                        <div class="image-grid">
+                            <img src="./public/img/sidestore/jitterbugpair-error-2.jpg" alt="jitterbugpair - error" style="width:350px; height:300px">
+                            <img src="./public/img/sidestore/jitterbugpair-error-2-fix.jpg" alt="jitterbugpair - error" style="width:150px; height:300px">
+                        </div>    
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <p>Sau khi đã có file *<b>.mobiledevicepairing</b>, hãy nén file đó thành *<b>.zip</b> và chuyển vào iPhone/iPad của bạn (bạn có thể tải lên <a href="https://drive.google.com/drive/home" style="text-decoration:none" target="_blank">Google Drive</a>, <a href="https://www.dropbox.com" style="text-decoration:none" target="_blank">Dropbox</a>… sau đó trên iPhone/iPad truy cập vào link đó để tải về).</p>
